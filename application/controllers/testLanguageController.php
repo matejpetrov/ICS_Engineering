@@ -15,9 +15,7 @@ class TestLanguageController extends CI_Controller{
 	}
 	
 	
-	public function index(){
-		
-		//$data["language_msg"] = $this->lang->line("msg_first_name");
+	public function index(){				
 		
 		$data["menus_home"]	= $this->lang->line("menus_home");
 		

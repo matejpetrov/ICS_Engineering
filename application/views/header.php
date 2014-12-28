@@ -122,6 +122,9 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/back_top.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2tnEc20g8Oh5nhCSHHKsbLJERhS--y-k&sensor=false"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
+
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>
+		
 		<script>
 			// $(document).ready(function() {
 				// $.fn.snow();
@@ -158,11 +161,11 @@
 				});
 
 			});
-		</script>
+		</script>		
+
 	</head>
 	
-	<body>
-	
+	<body>	
 		<input type="hidden" id="uri_string" name="uri_string" value="<?php echo uri_string(); ?>" />		
 		<div id="header" style="border: none;" >
 			<div class="container-fluid" style="background-color: #CD5A01;">
@@ -204,14 +207,14 @@
 
 						<div class="collapse navbar-collapse collapse-custom">
 
-							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<a href="<?php echo base_url();?>" id="home" class="selected"><?php echo $menus_home; ?></a>
+							<ul class="nav navbar-nav navbar-right nav-menu">
+								<li class="selected">
+									<a href="<?php echo base_url();?>" id="home"><?php echo $menus_home; ?></a>
 								</li>
-								<li class="dropdown">									
+								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 									role="button" aria-expanded="false"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">										
+									<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="#"><?php echo $menus_about_us; ?></a>
 										</li>
