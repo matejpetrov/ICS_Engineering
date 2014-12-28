@@ -1,0 +1,237 @@
+::selection {
+    color: #FFFFFF;
+    background-color: #CD5A01;
+}
+body {
+    background-color: #F8F8F8;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.header {
+    text-align: right;
+    color: white;
+    height: 29px;
+}
+.lang > ul > li > a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0;
+}
+.lang > ul > li > a.en {
+    color: #FFFFFF;
+    padding: 0;
+    padding-right: 3px;
+}
+.lang > ul > li > a.mk {
+    color: #FFFFFF;
+    padding: 0;
+    padding-left: 3px;
+    padding-top: 2px;
+    padding-right: 10px;
+}
+i {
+    text-align: center;
+}
+.i_header {
+    color: white;
+    font-size: 21px;
+    float: right;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    transition: 0.5s ease-in-out;
+}
+.i_header:hover {
+    color: #CD5A01;
+    background-color: #FFFFFF;
+    text-decoration: none;
+}
+div.navbar-collapse > ul {
+    margin: 0;
+    text-align: right;
+}
+ul > li {
+    text-decoration: none;
+    text-align: center;
+    list-style: none;
+    display: inline;
+}
+li > a {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+a.brand-custom {
+    padding: 0;
+}
+div.collapse-custom > ul {
+    /*height: 71px;*/
+    z-index: 1;
+}
+div.collapse-custom > ul > li > a {
+    text-transform: uppercase;
+    font-family: 'Oswald', Arial, helvetica, sans-serif;
+    padding-top: 25px;
+    padding-bottom: 26px;
+    font-weight: bold;
+    color: #626262 !important;
+    border-bottom: 2px solid #FFFFFF;
+    border-top: 2px solid #FFFFFF;
+    transition: 0.4s ease-in-out;
+}
+div.collapse-custom > ul > li > a:hover {
+    color: #CD5A01 !important;
+    background-color: #FFFFFF !important;
+    /*border-bottom: 2px solid #CD5A01;*/
+    /*border-top: 2px solid #CD5A01;*/
+}
+div.collapse-custom > ul > li > a.selected {
+    border-bottom: 2px solid #CD5A01;
+    border-top: 2px solid #CD5A01;
+    color: #CD5A01 !important;
+    background-color: #FFFFFF !important;
+}
+.nav-custom {
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+    background-color: #FFFFFF;
+}
+div.push {
+    background-color: #F8F8F8;
+    height: 400px;
+    /*margin-bottom: 40px;*/
+}
+img.img-rounded {
+    width: 100%;
+    height: 140px;
+    /*padding: 0 15px;*/
+    z-index: 1;
+}
+
+div.news-row {
+    background-color: #F8F8F8;
+}
+div.col-md-3, .news {
+    margin-right: 20px;
+    padding-top: 30px;
+    height: 460px;
+    z-index: 1;
+    background-color: #FFFFFF;
+}
+.marketing {
+    text-align: center;
+    margin-bottom: 40px;
+}
+div.footer-navigation > .container-fluid {
+    background-color: black;
+    padding: 0;
+}
+div.footer-navigation > .container-fluid > .col-md-12 {
+    padding: 0;
+}
+div.footer-cprt > .container-fluid {
+    background-color: gray;
+    height: 30px;
+}
+.footer-nav {
+    text-align: center;
+    list-style: none;
+    padding-bottom: 10px;
+    padding-left: 0;
+    margin: 0;
+}
+ul.footer-nav > li {
+    text-align: right;
+    height: 20px;
+}
+ul.footer-nav > li > a {
+    padding-left: 0;
+    height: 20px;
+    padding-right: 60px;
+    font-size: 21px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition: 0.4s ease-in-out;
+}
+ul.footer-nav > li > a:hover {
+    color: #CD5A01;
+}
+ul.footer-nav > .last > a {
+    padding: 0;
+}
+div.footer {
+    margin-top: 12px;
+}
+.footer-nav > p {
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+}
+ul.social-media {
+    text-align: center;
+    margin-bottom: 15px;
+}
+ul.social-media > li > a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 35px;
+    transition: 0.5s all ease-in-out;
+}
+ul.social-media > li > a:hover {
+    color: #CD5A01;
+}
+
+ul.social-media > li.go-up-logo {
+    position: relative;
+}
+ul.social-media > li.go-up-logo > a > img.top {
+    position: absolute;
+    transition: 0.4s ease-in-out;
+}
+ul.social-media > li.go-up-logo > a > img.bottom {
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+ul.social-media > li.go-up-logo > a:hover .bottom {
+    opacity: 1;
+    border: 1px solid #808080;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    transform: rotate(360deg);
+}
+ul.social-media > li.go-up-logo > a:hover .top {
+    opacity: 0;
+    transform: rotate(360deg);
+}
+
+div.contact>h1{
+    margin-bottom: 30px;
+}
+
+div.contact > .input-group{
+    margin-bottom: 20px;
+}
+.form-group>textarea{
+    margin-bottom:15px;
+    height: 220px;
+    resize: none;
+}
+
+@media screen and (max-width: 991px) {
+}
+@media screen and (max-width: 751px) {
+    ul.footer-nav > li > a {
+        padding-right: 30px;
+    }
+}
+@media screen and (max-width: 585px) {
+    li.go-up-logo {
+        display: block;
+    }
+}
+@media screen and (max-width: 428px) {
+    ul.footer-nav > li > a {
+        padding-right: 5px;
+    }
+}
+@media screen and (max-width: 390px) {
+}
+
