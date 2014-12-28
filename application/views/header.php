@@ -5,7 +5,7 @@
 		<title>ICS Engineering</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
 
 		<!--///////////////////////////   Styles   ///////////////////////////-->
 		<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/camera_slider/camera.css' type='text/css' media='all'>
@@ -163,7 +163,6 @@
 
 			});
 		</script>		
-
 	</head>
 	
 	<body>	
@@ -208,7 +207,7 @@
 
 						<div class="collapse navbar-collapse collapse-custom">
 
-							<ul class="nav navbar-nav navbar-right nav-menu">
+							<ul class="nav navbar-nav navbar-right nav-menu" id="navMenu">
 								<li class="selected">
 									<a href="<?php echo base_url();?>" id="home"><?php echo $menus_home; ?></a>
 								</li>
@@ -270,7 +269,7 @@
 								</li>
 
 								<li class="last">
-									<a href="<?php echo base_url(); ?>testLanguageController/contact" id="kontakt"><?php echo $menus_contact; ?></a>
+									<a href="<?php echo base_url(); ?>testLanguageController/contact" id="contact"><?php echo $menus_contact; ?></a>
 								</li>
 							</ul>
 						</div>

@@ -23,7 +23,7 @@
 						ИЦС Консалтинг Инженеринг го дизајнира и имплементира решението за аудио-визуелно следење на судските процеси... 
 					</p>
 					<p>
-						<a href="<?php echo base_url(); ?>/testLanguageController/news_example">
+						<a href="<?php echo base_url(); ?>testLanguageController/news_example">
 								<button type="button" class="btn btn-default">
 									Повеќе>>
 								</button>

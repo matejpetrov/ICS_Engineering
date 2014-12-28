@@ -83,7 +83,7 @@ div.collapse-custom > ul > li > a:hover {
     /*border-bottom: 2px solid #CD5A01;*/
     /*border-top: 2px solid #CD5A01;*/
 }
-div.collapse-custom > ul > li.selected {
+div.collapse-custom > ul >li> a.selected {
     border-bottom: 2px solid #CD5A01;
     border-top: 2px solid #CD5A01;
     color: #CD5A01 !important;
