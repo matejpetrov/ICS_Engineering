@@ -199,7 +199,7 @@
 								<span class="sr-only">Toggle navigation</span>
 								<i class="fa fa-bars fa-lg"></i>
 							</button>
-							<a href="#" class="navbar-brand brand-custom"><img src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" height="75" /></a>
+							<a href="<?php echo base_url();?>" class="navbar-brand brand-custom"><img src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" height="75" /></a>
 						</div>
 
 						<div class="collapse navbar-collapse collapse-custom">

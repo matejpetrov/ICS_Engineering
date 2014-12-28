@@ -14,7 +14,6 @@ class LangSwitch extends CI_Controller{
 		
 		$language = ($language != "") ? $language : "english";
 		$this->session->set_userdata('site_lang', $language);																		
-		
 		//tuka treba da ja prikazeme stranata na koja sme bile prethodno na drugiot jazik. 
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
 	}

@@ -3,9 +3,11 @@ jQuery(document).ready(function() {
 	var duration = 500;
 	jQuery(window).scroll(function() {
 		if (jQuery(this).scrollTop() > offset) {
-			jQuery('.back-to-top').fadeIn(duration);
+			$("#go-up").removeClass();
+			$("#go-up").addClass("go-up-logo");
 		} else {
-			jQuery('.back-to-top').fadeOut(duration);
+			$("#go-up").removeClass();
+			$("#go-up").addClass("go-up-logo-static");
 		}
 	});
 
