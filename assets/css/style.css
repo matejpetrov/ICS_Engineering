@@ -178,6 +178,15 @@ ul.social-media > li > a {
 ul.social-media > li > a:hover {
     color: #CD5A01;
 }
+ul.social-media>li.go-up-logo-static{
+    position: relative;
+}
+ul.social-media>li.go-up-logo-static>a>img.top{
+    position: absolute;
+}
+ul.social-media>li.go-up-logo-static >a>img.bottom{
+    opacity: 0;
+}
 
 ul.social-media > li.go-up-logo {
     position: relative;
@@ -214,6 +223,13 @@ div.contact > .input-group{
     height: 220px;
     resize: none;
 }
+
+/*News*/
+div.news-page>.row>.col-md-8{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
 
 @media screen and (max-width: 991px) {
 }

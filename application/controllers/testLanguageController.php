@@ -80,6 +80,34 @@ class TestLanguageController extends CI_Controller{
 	public function test(){
 		$this->load->view('view_language');
 	}
-	
+
+	public function news_example(){
+
+		$data["menus_home"]	= $this->lang->line("menus_home");
+		
+		$data["menus_about_us"] = $this->lang->line("menus_about_us");
+		$data["menus_mission"] = $this->lang->line("menus_mission");
+		$data["menus_vision"] = $this->lang->line("menus_vision");
+		$data["menus_structure"] = $this->lang->line("menus_structure");
+		$data["menus_partners"] = $this->lang->line("menus_partners");
+		
+		$data["menus_corporate_info"] = explode(" ", $this->lang->line("menus_corporate_info"));
+		
+		$data["menus_services"]	= $this->lang->line("menus_services");
+		$data["menus_engineering"] = $this->lang->line("menus_engineering");
+		$data["menus_system_integration"] = explode(" ", $this->lang->line("menus_system_integration"));
+		$data["menus_consulting"] = $this->lang->line("menus_consulting");
+		
+		$data["menus_news"]	= $this->lang->line("menus_news");
+		$data["menus_web_mail"]	= $this->lang->line("menus_web_mail");
+		$data["menus_contact"]	= $this->lang->line("menus_contact");
+		
+		$data["additional_address"] = $this->lang->line("additional_address");
+
+		$data_news["header"] = $this->load->view('header', $data, TRUE);
+		$data_news["footer"] = $this->load->view('footer', $data, TRUE);
+
+		$this->load->view('news_example', $data_news);
+	}
 	
 }

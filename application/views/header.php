@@ -35,6 +35,7 @@
             }
             #owl-news .item {
                 background-color: #FFFFFF;
+                height: 435px;
                 border: 1px solid #CD5A01;
                 display: block;
                 padding: 30px 15px;

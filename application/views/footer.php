@@ -41,7 +41,7 @@
 								<li>
 									<a href="#"><i class="fa fa-linkedin"></i></a>
 								</li>
-								<li class="go-up-logo">
+								<li id="go-up">
 									<a href="#" class="back-to-top"> <img src="<?php echo base_url(); ?>assets/images/ics-logo-malo1.svg" class="top" style="height: 60px;width: 60px;" /> <img src="<?php echo base_url(); ?>assets/images/arrow_up.svg" class="bottom" style="height: 60px;width: 60px;" /> </a>
 								</li>
 								<li>
