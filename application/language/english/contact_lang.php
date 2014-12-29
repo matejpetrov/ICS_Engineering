@@ -17,5 +17,7 @@ $lang["contact_message_placeholder"] = "Content of your message...";
 
 $lang["contact_btn_send"] = "Send";
 
+$lang["contact_success_message"] = "Your message is successfully sent";
+
 
 ?>

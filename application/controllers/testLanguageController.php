@@ -101,7 +101,8 @@ class TestLanguageController extends CI_Controller{
 		$data["contact_message"]	= $this->lang->line("contact_message");
 		$data["contact_message_placeholder"]	= $this->lang->line("contact_message_placeholder");
 		$data["contact_btn_send"]	= $this->lang->line("contact_btn_send");
-
+		$data["contact_success_message"] = $this->lang->line("contact_success_message");
+ 
 
 		return $data;
 	}

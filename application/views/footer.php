@@ -1,5 +1,5 @@
 	<div class="footer-navigation">
-		 <div class="container-fluid" style="background-color: #626262;">
+		 <div class="container-fluid" style="background-color: #949494;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-sm-12 footer">

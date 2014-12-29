@@ -4,7 +4,7 @@
 		<div class="col-md-9 contact">
 			<h1 id="title-page"><?php echo $contact_page_title; ?></h1>
 			<div id="mailSuccess" class="alert alert-success hide" role="alert">
-				Вашата порака е успешно испратена
+				<?php echo $contact_success_message; ?>
 			</div>
 			<form method="post" id="form-mail" name="form-mail">
 				<div class="form-group">

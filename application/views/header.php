@@ -127,9 +127,9 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>
 		
 		<script>
-			// $(document).ready(function() {
-				// $.fn.snow();
-			// });
+			$(document).ready(function() {
+				$.fn.snow();
+			});
 		</script>
 		</script>
 		<script>
