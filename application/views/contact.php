@@ -2,25 +2,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9 contact">
-			<h1>Контактирајте не</h1>
+			<h1><?php echo $contact_page_title; ?></h1>
 			<form>
 				<div class="form-group">
-					<label>Име и Презиме</label>
-					<input type="text" class="form-control" placeholder="Внесете го вашето име и презиме" aria-describedby="basic-addon1">
+					<label><?php echo $contact_name_surname; ?></label>
+					<input type="text" class="form-control" placeholder="<?php echo $contact_name_surname_placeholder; ?>" aria-describedby="basic-addon1">
 				</div>
 				<div class="form-group">
-					<label>E-Mail</label>
-					<input type="text" class="form-control" placeholder="Внесете ја вашата E-mail адреса" aria-describedby="basic-addon1">
+					<label><?php echo $contact_mail; ?></label>
+					<input type="text" class="form-control" placeholder="<?php echo $contact_mail_placeholder ?>" aria-describedby="basic-addon1">
 				</div>
 				<div class="form-group">
-					<label>Наслов</label>
-					<input type="text" class="form-control" placeholder="Наслов на вашата порака" aria-describedby="basic-addon1">
+					<label><?php echo $contact_title; ?></label>
+					<input type="text" class="form-control" placeholder="<?php echo $contact_title_placeholder; ?>" aria-describedby="basic-addon1">
 				</div>
 				<div class="form-group">
-					<label>Порака</label>
-					<textarea class="form-control" placeholder="Текстот на вашата порака..." ></textarea>
+					<label><?php echo $contact_message; ?></label>
+					<textarea class="form-control" placeholder="<?php echo $contact_message_placeholder; ?>" ></textarea>
 					<button type="submit" class="btn btn-default">
-						Испрати
+						<?php echo $contact_btn_send; ?>
 					</button>
 				</div>
 			</form>

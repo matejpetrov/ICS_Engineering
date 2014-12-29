@@ -14,6 +14,7 @@ class LanguageLoader
 		if ($site_lang) {
 			$ci->lang->load('menus', $ci->session->userdata('site_lang'));
 			$ci->lang->load('additional', $ci->session->userdata('site_lang'));
+			$ci->lang->load('contact', $ci->session->userdata('site_lang'));
 		} 
 		else {
 			$ci->lang->load('menus', 'english');
