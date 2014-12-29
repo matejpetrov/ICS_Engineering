@@ -127,9 +127,9 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>
 		
 		<script>
-			$(document).ready(function() {
-				$.fn.snow();
-			});
+			// $(document).ready(function() {
+			// 	$.fn.snow();
+			// });
 		</script>
 		</script>
 		<script>
@@ -265,7 +265,7 @@
 									<a href="#" id="news"><?php echo $menus_news; ?></a>
 								</li>
 								<li>
-									<a href="#" id="mail"><?php echo $menus_web_mail; ?></a>
+									<a href="<?php echo base_url(); ?>testLanguageController/webMail" id="webMail"><?php echo $menus_web_mail; ?></a>
 								</li>
 
 								<li class="last">

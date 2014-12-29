@@ -56,6 +56,16 @@ class TestLanguageController extends CI_Controller{
 
 		$this->load->view('news_example', $data_news);
 	}
+	public function webMail(){
+		$data = $this->get_menus_language_values();
+
+		$data["additional_address"] = $this->lang->line("additional_address");
+
+		$data_wMail["header"] = $this->load->view('header', $data, TRUE);
+		$data_wMail["footer"] = $this->load->view('footer', $data, TRUE);
+
+		$this->load->view('webMail', $data_wMail);
+	}
 
 
 	//=========================================================================================
