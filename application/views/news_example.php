@@ -2,12 +2,12 @@
 
 <div class="container news-page">
 	<div class="row">
-		<div class="col-md-8">
-			<div style="text-align: left;">
+		<div class="col-md-12">
+			<div style="text-align: center;">
 
 			<h1>Со ИЦС до најмодерна судница во Македонија</h1>
 			</div>
-			<div style="text-align: left; margin-bottom: 20px;">
+			<div style="text-align: center; margin-bottom: 20px;">
 			<img src="<?php echo base_url('assets/images/news_images/sudnica.png'); ?>" />
 			</div>
 			<p>

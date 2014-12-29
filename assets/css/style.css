@@ -89,6 +89,9 @@ div.collapse-custom > ul >li> a.selected {
     color: #CD5A01 !important;
     background-color: #FFFFFF !important;
 }
+ul.footer-nav >li> a.selected {
+    color: #CD5A01 !important;
+}
 .nav-custom {
     margin-bottom: 0px;
     border-bottom-width: 0px;
@@ -210,9 +213,20 @@ ul.social-media > li.go-up-logo > a:hover .top {
     opacity: 0;
     transform: rotate(360deg);
 }
+/* Contact Page Style */
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
 
 div.contact>h1{
     margin-bottom: 30px;
+}
+div#mailSuccess .hide{
+    display: none;
+}
+div#mailSuccess .show{
+    display: block;
 }
 
 div.contact > .input-group{
@@ -224,8 +238,8 @@ div.contact > .input-group{
     resize: none;
 }
 
-/*News*/
-div.news-page>.row>.col-md-8{
+/* News Page Style */
+div.news-page>.row>.col-md-12{
     text-align: justify;
     margin-bottom: 30px;
 }

@@ -6,9 +6,15 @@ class SendEmailController extends CI_Controller
 		$nameSurname=$this->input->post('name');
 		$email = $this->input->post('email');
 		$subject = $this->input->post('subject');
-		$message = $this->input->post('msg');
-		// echo "<script type='text/javascript'>alert($nameSurname);</script>";
+		$message = $this->input->post('message');
 
+		$array = array(
+			'ime' => $nameSurname,
+			'mejl' => $email,
+			'sub' => $subject,
+			'msg' => $message
+		 );
+		$this->output->set_output(json_encode($array));
 		require (APPPATH. 'third_party/class.phpmailer.php');
 		$mail = new PHPMailer ();
 		$mail->IsSMTP ();
@@ -33,8 +39,8 @@ class SendEmailController extends CI_Controller
 		$mail->Body = $message;
 		
 		$mail->Send ();
-		echo '<h1>Sucess</h1>' ;
-		redirect('testLanguageController/contact');
+		// echo '<h1>Sucess</h1>' ;
+		// redirect('testLanguageController/index');
 	}	
 }
 ?>

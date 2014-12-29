@@ -5,7 +5,7 @@
 						<div class="col-md-6 col-sm-12 footer">
 							<ul class="footer-nav">
 								<li>
-									<a href="#"><?php echo $menus_home; ?></a>
+									<a href="<?php echo base_url();?>" id="home-footer" ><?php echo $menus_home; ?></a>
 								</li>
 								<li>
 									<a href="#"><?php echo $menus_about_us; ?></a>
@@ -24,7 +24,7 @@
 									<a href="#"><?php echo $menus_web_mail; ?></a>
 								</li>
 								<li class="last">
-									<a href="#"><?php echo $menus_contact; ?></a>
+									<a href="<?php echo base_url();?>testLanguageController/contact" id="contact-footer" ><?php echo $menus_contact; ?></a>
 								</li>
 							</ul>
 						</div>
