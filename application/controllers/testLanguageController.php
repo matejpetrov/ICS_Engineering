@@ -59,18 +59,18 @@ class TestLanguageController extends CI_Controller{
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
 			$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");
 
-			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
 
 		}
 		else if($page == 1){
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
 
 			$mission_text = $this->lang->line("about_us_mission");
-			$mission_array = explode(".", $mission_text);
+			$mission_array = explode("^", $mission_text);
 
 			$data_temp["about_us_mission"] = $mission_array;
 
-			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
 						
 		}
 
@@ -78,15 +78,78 @@ class TestLanguageController extends CI_Controller{
 			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
 			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
 
-			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
 						
 		}
 		
 
-		$data_about_us["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
-		$data_about_us["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
+		$data_services["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_services["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
 
-		$this->load->view('about_us_views/view_about_us_template', $data_about_us);
+		$this->load->view('about_us_views/view_about_us_template', $data_services);
+	}
+
+
+	public function services($page){
+
+		$data = $this->get_menus_language_values();
+		$data["additional_address"] = $this->lang->line("additional_address");
+		
+		$data_temp = array();
+
+		if($page == 0){
+			$data_temp["services_title"] = $this->lang->line("services_title");			
+			$data_temp["services_first_page"] = $this->lang->line("services_first_page");
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
+
+		}
+		else if($page == 1){
+
+			$data_temp["services_engineering_title"] = $this->lang->line("services_engineering_title");
+			$data_temp["services_engineering_subtitle"] = $this->lang->line("services_engineering_subtitle");
+
+			$services_engineering_text = $this->lang->line("services_engineering_content");
+			$services_engineering_array = explode("^", $services_engineering_text);
+
+			$data_temp["services_engineering_content"] = $services_engineering_array;
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
+						
+		}
+
+		else if($page == 2){
+
+			$data_temp["services_system_integration_first_paragraph"] = $this->lang->line("services_system_integration_first_paragraph");
+			$data_temp["services_system_integration_second_paragraph"] = $this->lang->line("services_system_integration_second_paragraph");
+			$data_temp["services_system_integration_title"] = $this->lang->line("services_system_integration_title");
+			
+
+			$services_system_integration_list_text = $this->lang->line("services_system_integration_list");
+			$services_system_integration_list_array = explode("^", $services_system_integration_list_text);
+
+			$data_temp["services_system_integration_list"] = $services_system_integration_list_array;
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+						
+		}
+
+		else if($page == 3){
+
+			$data_temp["services_consulting_title"] = $this->lang->line("services_consulting_title");
+			$data_temp["services_consulting_subtitle"] = $this->lang->line("services_consulting_subtitle");
+
+			$data_services["services_page"] = $this->load->view('services_views/view_services_consulting', $data_temp, TRUE);
+
+		}
+
+		
+		
+
+		$data_services["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_services["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
+
+		$this->load->view('services_views/view_services_template', $data_services);		
 	}
 
 	public function webMail(){
@@ -152,7 +215,7 @@ class TestLanguageController extends CI_Controller{
 	}
 
 	//=========================================================================================
-
+	//AJAX
 
 	public function ajax_about_us_page_navigation(){
 
@@ -168,7 +231,7 @@ class TestLanguageController extends CI_Controller{
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
 
 			$mission_text = $this->lang->line("about_us_mission");
-			$mission_array = explode(".", $mission_text);
+			$mission_array = explode("^", $mission_text);
 
 			$data_temp["about_us_mission"] = $mission_array;
 
@@ -187,5 +250,54 @@ class TestLanguageController extends CI_Controller{
 		echo $data;
 
 	}
+
+	public function ajax_services_page_navigation(){
+
+		$page = $_POST["page_id"];
+
+		if($page == 0){
+			$data_temp["services_title"] = $this->lang->line("services_title");
+			$data_temp["services_first_page"] = $this->lang->line("services_first_page");
+
+			$data = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
+		}
+		else if($page == 1){
+
+			$data_temp["services_engineering_title"] = $this->lang->line("services_engineering_title");
+			$data_temp["services_engineering_subtitle"] = $this->lang->line("services_engineering_subtitle");
+
+			$services_engineering_text = $this->lang->line("services_engineering_content");
+			$services_engineering_array = explode("^", $services_engineering_text);
+
+			$data_temp["services_engineering_content"] = $services_engineering_array;
+
+			$data = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
+		}
+		else if($page == 2){
+			$data_temp["services_system_integration_first_paragraph"] = $this->lang->line("services_system_integration_first_paragraph");
+			$data_temp["services_system_integration_second_paragraph"] = $this->lang->line("services_system_integration_second_paragraph");
+			$data_temp["services_system_integration_title"] = $this->lang->line("services_system_integration_title");
+			
+
+			$services_system_integration_list_text = $this->lang->line("services_system_integration_list");
+			$services_system_integration_list_array = explode("^", $services_system_integration_list_text);
+
+			$data_temp["services_system_integration_list"] = $services_system_integration_list_array;
+
+			$data = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+		}
+		else if($page == 3){
+
+			$data_temp["services_consulting_title"] = $this->lang->line("services_consulting_title");
+			$data_temp["services_consulting_subtitle"] = $this->lang->line("services_consulting_subtitle");
+
+			$data = $this->load->view('services_views/view_services_consulting', $data_temp, TRUE);
+
+		}
+
+		echo $data;
+
+	}
+
 	
 }

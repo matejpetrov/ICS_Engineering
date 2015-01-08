@@ -1,12 +1,11 @@
-
-
 <style>
 
-	ul.mission-list {
-		list-style: square;
+	ul.mission-list {		
 	}
-	ul.mission-list > li{
+	ul.mission-list li{
 		display: block;		
+		list-style-type: circle !important;
+		text-align: justify;
 	}
 </style>
 
@@ -17,7 +16,7 @@
 
 ?>			
 	<li>
-		<?php echo $mission; ?>		
+		<?php echo $mission; ?>
 	</li>	
 
 <?php } ?>

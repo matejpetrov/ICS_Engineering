@@ -46,32 +46,23 @@
 			<ul>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(0);"><?php echo $menus_services; ?></a></li>
+						<li><a href="#" onclick="services_ajax_page(0);"><?php echo $menus_services; ?></a></li>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(1)"><?php echo $menus_engineering; ?></a></li>
+						<li><a href="#" onclick="services_ajax_page(1)"><?php echo $menus_engineering; ?></a></li>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(2)"><?php echo $menus_vision; ?></a></li>
+						<li><a href="#" onclick="services_ajax_page(2)"><?php echo $menus_system_integration[0]; ?>
+										<br /><?php echo $menus_system_integration[1]; ?></a></li>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(3)"><?php echo $menus_structure; ?></a></li>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(4)"><?php echo $menus_partners; ?></a></li>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<li><a href="#" onclick="about_us_ajax_page(5)"><?php echo "$menus_corporate_info[0] $menus_corporate_info[1]"; ?></a></li>
+						<li><a href="#" onclick="services_ajax_page(3)"><?php echo $menus_consulting; ?></a></li>
 					</div>
 				</div>
 																
