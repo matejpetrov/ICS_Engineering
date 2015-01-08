@@ -124,7 +124,7 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2tnEc20g8Oh5nhCSHHKsbLJERhS--y-k&sensor=false"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
 
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>		
 		
 		<script>
 			// $(document).ready(function() {
@@ -216,14 +216,14 @@
 									role="button" aria-expanded="false"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="#"><?php echo $menus_about_us; ?></a>
+											<a href="<?php echo base_url(); ?>testLanguageController/about_us/0"><?php echo $menus_about_us; ?></a>
 										</li>
 										<hr style="margin-top: 3px; margin-bottom: 5px;"/>										
 										<li>
-											<a href="#"><?php echo $menus_mission; ?></a>
+											<a href="<?php echo base_url(); ?>testLanguageController/about_us/1"><?php echo $menus_mission; ?></a>
 										</li>
 										<li>
-											<a href="#"><?php echo $menus_vision; ?></a>
+											<a href="<?php echo base_url(); ?>testLanguageController/about_us/2"><?php echo $menus_vision; ?></a>
 										</li>
 										<li>
 											<a href="#"><?php echo $menus_structure; ?></a>

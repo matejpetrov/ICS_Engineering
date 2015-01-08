@@ -3,29 +3,20 @@
 class TestLanguageController extends CI_Controller{
 	
 	public function __construct() {
-		parent::__construct();
-		//$this->lang->load("message", "english");
-		//loading the language file, that contains the language specific variabels. 
-				
-		//$this->lang->load("message", "macedonian");
-		
-		//the loading of the languages will be done with hooks. More specifically we will use the 
-		//post_controller_constructor hook that is invoked after the controller is invoked before each function
-		//is executed. 
+		parent::__construct();		
 	}
 	
 	//ja prikazuva homePage. Za ovaa strana mi trebaat menus_lang i additional address.
-	public function index(){				
+	public function index(){
 		
 		$data = $this->get_menus_language_values();
 
 		$data["additional_address"] = $this->lang->line("additional_address");		
 
-		$data_home_page["header"] = $this->load->view('header', $data, TRUE);
-		$data_home_page["footer"] = $this->load->view('footer', $data, TRUE);
+		$data_home_page["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_home_page["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
 		$this->load->view("homePage", $data_home_page);
-		
 	}
 	
 	
@@ -38,8 +29,8 @@ class TestLanguageController extends CI_Controller{
 		
 		$data["additional_address"] = $this->lang->line("additional_address");		
 		
-		$data_contact["header"] = $this->load->view('header', $data, TRUE);
-		$data_contact["footer"] = $this->load->view('footer', $data, TRUE);
+		$data_contact["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_contact["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
 		$this->load->view("contact", $data_contact);
 	}
@@ -51,25 +42,68 @@ class TestLanguageController extends CI_Controller{
 		
 		$data["additional_address"] = $this->lang->line("additional_address");
 
-		$data_news["header"] = $this->load->view('header', $data, TRUE);
-		$data_news["footer"] = $this->load->view('footer', $data, TRUE);
+		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 
 		$this->load->view('news_example', $data_news);
 	}
+
+	public function about_us($page){
+
+		$data = $this->get_menus_language_values();
+		$data["additional_address"] = $this->lang->line("additional_address");
+		
+		$data_temp = array();
+
+		if($page == 0){
+			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
+			$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+
+		}
+		else if($page == 1){
+			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
+
+			$mission_text = $this->lang->line("about_us_mission");
+			$mission_array = explode(".", $mission_text);
+
+			$data_temp["about_us_mission"] = $mission_array;
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+						
+		}
+
+		else if($page == 2){
+			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
+			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+						
+		}
+		
+
+		$data_about_us["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_about_us["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
+
+		$this->load->view('about_us_views/view_about_us_template', $data_about_us);
+	}
+
 	public function webMail(){
 		$data = $this->get_menus_language_values();
 
 		$data["additional_address"] = $this->lang->line("additional_address");
 
-		$data_wMail["header"] = $this->load->view('header', $data, TRUE);
-		$data_wMail["footer"] = $this->load->view('footer', $data, TRUE);
+		$data_wMail["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_wMail["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 
-		$this->load->view('webMail', $data_wMail);
+		$this->load->view('webMail', $data_wMail);	
 	}
 
 
 	//=========================================================================================
-	
+	// language functions
+
 	private function get_menus_language_values(){
 
 		$data = array();
@@ -115,6 +149,43 @@ class TestLanguageController extends CI_Controller{
  
 
 		return $data;
+	}
+
+	//=========================================================================================
+
+
+	public function ajax_about_us_page_navigation(){
+
+		$page = $_POST["page_id"];
+
+		if($page == 0){
+			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
+			$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");
+
+			$data = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+		}
+		else if($page == 1){
+			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
+
+			$mission_text = $this->lang->line("about_us_mission");
+			$mission_array = explode(".", $mission_text);
+
+			$data_temp["about_us_mission"] = $mission_array;
+
+			$data = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+						
+		}
+
+		else if($page == 2){
+			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
+			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
+
+			$data = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);						
+		}
+
+
+		echo $data;
+
 	}
 	
 }
