@@ -13,12 +13,23 @@ $(document).ready(function(){
 				username: $('#username').val(),
 				password: $('#password').val()
 			},
-			dataType: "html",
-			success: function(data){
-				$('#loginBtn').before(data);
+			beforeSend:function(){
+				$('.has-error').removeClass('has-error');
 			},
-			error: function(){
-				// alert("Fail");
+			dataType: "json",
+			success: function(data){
+				if('error' in data){
+					$('#' + data.id).addClass('has-error');
+					$('#error').addClass('alert alert-danger');
+
+					$('#error').text(data.error);
+					$('#password').val('');
+				}
+				else{
+					location.href = base_url;
+				}
+			},
+			error: function(data){
 			}
 		});
 		return false;
