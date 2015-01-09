@@ -9,15 +9,20 @@ class Model_admin extends CI_Model {
 			);
 		$query = $this->db->get_where('users', $data);
 		if (count($query->result () ) > 0) {
-			$result = array(
-				'id' =>$query->row()->id , 
-				'name' =>$query->row()->name , 
-				'surname' => $query->row()->surname, 
-				'role' => $query->row()->role 
-				);
-			return $result;
+			$id = $query->row()->id;
+			return $id;
 		}else{
 			return false;
 		}
+	}
+	public function getUserData($id){
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+		$result = array(
+			'name' => $query->row()->name,
+			'surname' => $query->row()->surname, 
+			'role' => $query->row()->role 
+			);
+		return $result;
 	}
 }

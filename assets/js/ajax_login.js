@@ -26,7 +26,7 @@ $(document).ready(function(){
 					$('#password').val('');
 				}
 				else{
-					location.href = base_url;
+					location.href = base_url + "admin/loginSuccess";
 				}
 			},
 			error: function(data){

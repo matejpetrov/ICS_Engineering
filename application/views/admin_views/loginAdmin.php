@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+
 	<title>Admin Login CMS</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
 	<!--///////////////////////////   Styles   ///////////////////////////-->
@@ -22,17 +24,18 @@
 				<img src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" style="height: 75px;" /> <h3>Admin Login</h3>
 				<form method="post" id="form-login" name="form-login">
 					<div id="user" class="form-group">
-						<label>Username</label>
+						<label for="username">Username</label>
 						<input  name="username" id="username" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
 					</div>
 					<div id="pass" class="form-group">
-						<label>Password</label>
+						<label for="password">Password</label>
 						<input name="password" id="password" type="password" class="form-control" placeholder="" aria-describedby="basic-addon1">
 					</div>
 					<div id="error" class="" role="alert"></div>
-					<input id="loginBtn" name="loginBtn" type="submit" class="btn btn-default" value="Login">						
-				</div>
-			</form>
+					<input id="loginBtn" name="loginBtn" type="submit" class="btn btn-default" value="Login">
+				</form>
+				<a href="<?php echo base_url(); ?>">← Back to ICS Engineering</a>
+			</div>			
 		</div>
 	</div>
 </div>
