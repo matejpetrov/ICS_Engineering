@@ -27,12 +27,24 @@ class Model_admin extends CI_Model {
 	}
 
 	//function that inserts a new row in the news table. 
-	public function add_new_news(){
+	public function add_new_news($news){
+
+		if($this->db->insert('news', $news)){
+			return $this->db->insert_id();
+		}
+		else return false;
 
 	}
 
 	//function that inserts new row int the translation table, invoked right after new news row will be added. 
-	public function add_new_translation(){
+	public function add_new_translation($translations){
+
+		$this->db->insert_batch('translation_content', $translations);
+
+		if($this->db->affected_rows() > 0){
+			return true;
+		}
+		else return false;
 
 	}
 

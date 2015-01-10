@@ -1,6 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+session_start();
+
 class Admin extends CI_Controller {
+
+	public function __construct()
+	{
+		parent::__construct();
+		// Your own constructor code
+		/*$this->load->model('models_post/model_post_formulari', 'model_post');
+		$this->load->model('models_get/model_get', 'model_get');*/
+		
+		$this->load->model('model_admin', 'model_admin', TRUE);
+
+	}
+
 
 	public function index(){
 		$userID = $this->session->userdata('user_id');
@@ -9,7 +23,6 @@ class Admin extends CI_Controller {
 		}else{
 			$this->home($userID);
 		}
-		
 	}
 	
 	public function homepageSlider()
@@ -26,25 +39,51 @@ class Admin extends CI_Controller {
 
 	public function post_create_new_news(){
 		
-	}
-
-	public function temp(){
-		echo "Matej";
-	}
-
-	public function temp1(){
-		//proba
-
-	}
-	public function testFunction($urda)
-	{
-		echo "blablablab";
-
-	}
+		foreach($_POST as $key => $value){
+			$post[$key] = $value;
+		}
 
 
-	public function login(){
-		$this->load->model('model_admin','',TRUE);
+		$created_at = date("Y-m-d");
+
+		$news_title_english = $post["news_title_english"];
+		$news_content_english = $post["editorEnglish"];
+
+		$news_title_macedonian = $post["news_title_macedonian"];
+		$news_content_macedonian = $post["editorMacedonian"];
+
+
+		$news = array(
+			'created_at' => $created_at
+		);
+
+		$translations = array(
+
+			array('lang' => 0, 'title' => $news_title_english, 'content' => $news_content_english),
+
+			array('lang' => 1, 'title' => $news_title_macedonian, 'content' => $news_content_macedonian)
+
+		);				
+		
+		$id = $this->model_admin->add_new_news($news);				
+
+		$translations[0]['news_id'] = $id;
+		$translations[1]['news_id'] = $id;
+
+		$data['id'] = $id;
+
+		if($id != false){
+
+			if($this->model_admin->add_new_translation($translations)){
+				$this->load->view('admin_views/view_news_preview', $data, FALSE);
+			}
+
+		}		
+
+	}	
+
+
+	public function login(){		
 		$username=$this->input->post('username');
 		$password=$this->input->post('password');
 		if(empty($username)){

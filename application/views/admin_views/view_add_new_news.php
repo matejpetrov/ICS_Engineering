@@ -21,7 +21,7 @@
 		<div class="container">
 			
 			<div class="row">
-				<form action="welcome/ck_editor" method="POST">
+				<form action="<?php echo base_url(); ?>admin/post_create_new_news" method="POST">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab" id="headingOne">
@@ -35,19 +35,19 @@
 					      <div class="panel-body">
 								
 							<div class="form-group">
-								<label for="title">Title</label>
+								<label for="news_title_english">Title</label>
 								<input class="form-control" name="news_title_english" placeholder="Enter news title..." />								
 							</div>	
 
 							  <div class="form-group">
-							    <label for="editor1">News Content</label>
+							    <label for="editorEnglish">News Content</label>
 							    <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> -->
-							    <textarea name="editor1" id="editor1" class="form-control"></textarea>
+							    <textarea name="editorEnglish" id="editorEnglish"></textarea>
 							  </div>							  					        					       					       
 					        <?php echo "<script>
 
 					        	var roxyFileman ='assets/RoxyFileman/index.html'; 
-					            CKEDITOR.replace( 'editor1', {
+					            CKEDITOR.replace( 'editorEnglish', {
 								    skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								    filebrowserBrowseUrl:roxyFileman,
 	                                filebrowserImageBrowseUrl:roxyFileman+'?type=image',
@@ -72,19 +72,19 @@
 					      <div class="panel-body">
 
 					      	<div class="form-group">
-								<label for="title">Title</label>
-								<input class="form-control" name="news_title_english" placeholder="Enter news title..." />								
+								<label for="news_title_macedonian">Title</label>
+								<input class="form-control" name="news_title_macedonian" placeholder="Enter news title..." />								
 							</div>
 
 					        <div class="form-group">
-							    <label for="editor1">News Content</label>
+							    <label for="editorMacedonian">News Content</label>
 							    <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> -->
-							    <textarea name="editor2" id="editor1" class="form-control"></textarea>
+							    <textarea name="editorMacedonian" id="editorMacedonian"></textarea>
 							  </div>							  					        					       					       
 					        <?php echo "<script>
 
 					            var roxyFileman ='assets/RoxyFileman/index.html'; 
-					            CKEDITOR.replace( 'editor2', {
+					            CKEDITOR.replace( 'editorMacedonian', {
 								    skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								    filebrowserBrowseUrl:roxyFileman,
 	                                filebrowserImageBrowseUrl:roxyFileman+'?type=image',
