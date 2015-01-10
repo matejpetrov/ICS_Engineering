@@ -27,6 +27,10 @@ class Admin extends CI_Controller {
 	public function post_create_new_news(){
 		
 	}
+	public function testFunction($urda)
+	{
+		echo "blablablab";
+	}
 
 
 	public function login(){
