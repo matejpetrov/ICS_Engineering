@@ -25,4 +25,9 @@ class Model_admin extends CI_Model {
 			);
 		return $result;
 	}
+
+	public function add_new_news(){
+		
+	}
+
 }

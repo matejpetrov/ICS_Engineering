@@ -2,8 +2,7 @@
 
 class Admin extends CI_Controller {
 
-	public function index()
-	{
+	public function index(){
 		$userID = $this->session->userdata('user_id');
 		if (empty($userID)) {
 			$this->load->view('admin_views/loginAdmin');
@@ -12,6 +11,22 @@ class Admin extends CI_Controller {
 		}
 		
 	}	
+
+
+
+	public function create_new_news(){
+
+		$this->load->view('admin_views/view_add_new_news', '', FALSE);
+
+	}
+
+	public function post_create_new_news(){
+
+		
+
+	}
+
+
 	public function login(){
 		$this->load->model('model_admin','',TRUE);
 		$username=$this->input->post('username');
@@ -48,19 +63,19 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
-	public function logout()
-	{
+
+
+	public function logout(){
 		$this->session->unset_userdata('user_id');
 		redirect('admin','refresh');
 	}
-	public function home($userID)
-	{
+	public function home($userID){
 		$this->load->model('model_admin','',TRUE);
-			$userData = $this->model_admin->getUserData($userID);
-			$data_index['name'] = $userData['name'];
-			$data_index['surname'] = $userData['surname'];
-			$data_index['role'] = $userData['role'];
-			$this->load->view('admin_views/indexAdmin', $data_index);
+		$userData = $this->model_admin->getUserData($userID);
+		$data_index['name'] = $userData['name'];
+		$data_index['surname'] = $userData['surname'];
+		$data_index['role'] = $userData['role'];
+		$this->load->view('admin_views/indexAdmin', $data_index);
 		
 	}
 	public function loginSuccess(){

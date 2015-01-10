@@ -30,7 +30,7 @@
 					</div>
 				</div>
 			</a>
-			<a href="#" class="items" >
+			<a href="<?php echo base_url(); ?>admin/create_new_news" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-plus-square-o fa-custom" ></i></br>
