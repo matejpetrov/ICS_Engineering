@@ -22,7 +22,7 @@
 			<a href="<?php echo base_url(); ?>admin/logout">Logout</a>
 		</div>
 		<div class="row admin">
-			<a href="#" class="items" >
+			<a href="<?php echo base_url(); ?>admin/homepageSlider" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-picture-o fa-custom" ></i></br>
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 			</a>
-			<a href="<?php echo base_url(); ?>admin/create_new_news" class="items" >
+			<a href="#" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-plus-square-o fa-custom" ></i></br>
