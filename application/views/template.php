@@ -162,6 +162,7 @@
 	</head>
 	
 	<body>
+		<p><?php echo $ ?></p>
 		<div id="header" style="border: none;" >
 			<div class="container-fluid" style="background-color: #CD5A01;">
 				<div class="container header" >

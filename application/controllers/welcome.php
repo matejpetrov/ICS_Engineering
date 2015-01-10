@@ -19,8 +19,22 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('CKEditor_test');
 	}
+
+	public function ck_editor(){
+
+		$ck_editor_content = $_POST['editor1'];
+
+		$data["editor"] = $ck_editor_content;
+
+		$this->load->view('temp', $data, FALSE);
+
+	}
+
+
+
+
 }
 
 /* End of file welcome.php */
