@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 
 	<title>Admin Login CMS</title>
-	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 	<!--///////////////////////////   Styles   ///////////////////////////-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" />

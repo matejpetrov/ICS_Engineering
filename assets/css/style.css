@@ -215,9 +215,9 @@ ul.social-media > li.go-up-logo > a:hover .top {
 }
 /* Contact Page Style */
 
-    input:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px white inset;
-    }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
 
 div.contact>h1{
     margin-bottom: 30px;
@@ -244,6 +244,49 @@ div.news-page>.row>.col-md-12{
     margin-bottom: 30px;
 }
 
+/* Admin Page Style */
+
+
+div.control-pannel-item {
+    border: 1px solid;
+    margin-left: 4%;
+    border-radius: 35px 35px 35px 35px;
+    margin-right: 50px;
+    padding-top: 30px;
+    text-align: center;
+    height: 250px;
+    /* z-index: 1; */
+    
+}
+div.control-pannel-item:hover{
+    background-color: #CD5A01;
+}
+
+.fa-custom{
+    font-size: 10em !important;
+}
+
+span.text{
+    color: #3D3D3D;
+    font-size: 20px;
+}
+div.control-pannel-item:hover span.text{
+    color: #FFFFFF;
+}
+div.row > a.items{
+    color: #CD5A01;
+    background-color: #FFFFFF;
+}
+
+div.row > a.items:hover{
+    color: #FFFFFF;
+}
+
+div.admin{
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*Responsive media*/
 
 @media screen and (max-width: 991px) {
 }
