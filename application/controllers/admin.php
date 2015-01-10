@@ -27,6 +27,13 @@ class Admin extends CI_Controller {
 	public function post_create_new_news(){
 		
 	}
+	public function temp(){
+		echo "Matej";
+	}
+
+	public function temp1(){
+		//proba
+	}
 
 
 	public function login(){
