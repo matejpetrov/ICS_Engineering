@@ -10,8 +10,12 @@ class Admin extends CI_Controller {
 			$this->home($userID);
 		}
 		
-	}	
-
+	}
+	
+	public function homepageSlider()
+	{
+		$this->load->view('admin_views/manageSlider', "", FALSE);
+	}
 
 
 	public function create_new_news(){
@@ -81,7 +85,7 @@ class Admin extends CI_Controller {
 		if (empty($userID)) {
 			redirect('admin', 'refresh');
 		}else{
-		redirect('admin','refresh');
+			redirect('admin','refresh');
 			// $this->home($userID);
 
 		}
