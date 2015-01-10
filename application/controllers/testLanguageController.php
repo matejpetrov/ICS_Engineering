@@ -16,6 +16,9 @@ class TestLanguageController extends CI_Controller{
 		$data_home_page["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_home_page["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
+		$this->load->model('model_admin','',TRUE);
+		$data_home_page["images"] = $this->model_admin->getSliderImages();
+
 		$this->load->view("homePage", $data_home_page);
 	}
 	

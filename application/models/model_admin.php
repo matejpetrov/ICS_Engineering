@@ -36,4 +36,24 @@ class Model_admin extends CI_Model {
 
 	}
 
+	public function getSliderImages(){	
+		$result = $this->db->get('homepage_images');
+		return $result;
+	}
+	public function getImagePath($id){
+		$this->db->where('id', $id);
+		$query = $this->db->get('homepage_images');
+
+		return $query->row()->image_url;
+	}
+
+	public function deleteImage($id){
+		$this->db->where('id', $id);
+		if ($this->db->delete('homepage_images')) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }

@@ -2,14 +2,9 @@
 
 <div class="push">
 	<div class="camera_wrap camera_orange_skin camera_emboss pattern_1" id="camera_wrap_4">
-		<div data-thumb="assets/images/slides/thumbs/bridge.jpg" data-src="assets/images/slides/bridge.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/leaf.jpg" data-src="assets/images/slides/leaf.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/road.jpg" data-src="assets/images/slides/road.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/sea.jpg" data-src="assets/images/slides/sea.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/shelter.jpg" data-src="assets/images/slides/shelter.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/tree.jpg" data-src="assets/images/slides/tree.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/plane.jpg" data-src="assets/images/slides/plane.jpg"></div>
-		<div data-thumb="assets/images/slides/thumbs/modem.jpg" data-src="assets/images/slides/modem.jpg"></div>
+		<?php foreach ($images->result() as $image) { ?>
+		<div  data-src="<?php echo base_url().$image->image_url; ?>"></div>
+		<?php } ?>
 	</div>
 </div>
 
