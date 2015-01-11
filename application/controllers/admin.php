@@ -77,12 +77,75 @@ class Admin extends CI_Controller {
 		if($id != false){
 
 			if($this->model_admin->add_new_translation($translations)){
-				$this->load->view('admin_views/view_news_preview', $data, FALSE);
+				$this->show_news($id);				
 			}
 
 		}		
 
 	}	
+
+	//functions that gets the news with the id given as argument and redirects to the view that displays that news
+	public function show_news($id){
+
+		$news = $this->model_admin->get_news($id);
+
+		$data['news'] = $news;
+		$data['id'] = $id;
+
+		$this->load->view('admin_views/view_news_preview', $data, FALSE);
+
+	}
+
+	public function edit_news($id){
+
+		$news = $this->model_admin->get_news($id);
+
+		$data['news'] = $news;
+		$data['id'] = $id;
+
+		$this->load->view('admin_views/view_edit_news', $data, FALSE);
+	}
+
+	public function post_edit_news(){
+
+		foreach($_POST as $key => $value){
+			$post[$key] = $value;
+		}
+		$id = $post['id'];
+
+		if(isset($_POST['btn-cancel'])){
+			$this->load->view('admin_views/loginAdmin', '', FALSE);
+		}
+		else{
+
+			$news_title_english = $post["news_title_english"];
+			$news_content_english = $post["editorEnglish"];
+
+			$news_title_macedonian = $post["news_title_macedonian"];
+			$news_content_macedonian = $post["editorMacedonian"];
+
+			$translation_english = array(
+				'news_id' => $id,
+				'title' => $news_title_english,
+				'content' => $news_content_english
+			);
+
+			$translation_macedonian = array(
+				'news_id' => $id,
+				'title' => $news_title_macedonian,
+				'content' => $news_content_macedonian
+			);
+
+			if($this->model_admin->edit_news($id, $translation_english, $translation_macedonian)){
+				$this->show_news($id);
+			}
+			else{
+				echo "error";
+			}
+
+		}
+
+	}
 
 	public function login(){
 

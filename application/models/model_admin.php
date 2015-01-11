@@ -15,6 +15,7 @@ class Model_admin extends CI_Model {
 			return false;
 		}
 	}
+	
 	public function getUserData($id){
 		$this->db->where('id', $id);
 		$query = $this->db->get('users');
@@ -48,6 +49,47 @@ class Model_admin extends CI_Model {
 
 	}
 
+
+	//function that will get the news with the id given as argument, as well as all the translations. 
+	public function get_news($id){
+
+		$this->db->select('n.created_at, tc.title, tc.content, tc.lang');
+		$this->db->from('news n');
+		$this->db->join('translation_content tc', 'n.id = tc.news_id');
+		$this->db->where('n.id', $id);
+
+		$query = $this->db->get();
+
+		$result = array();
+
+		foreach($query->result() as $row){
+			array_push($result, (array)$row);
+		}
+
+		return $result;
+
+	}
+
+	//functions that updates the news in the database with the new values. 
+	public function edit_news($id, $translation_english, $translation_macedonian){
+
+		$this->db->where('news_id', $id);
+		$this->db->where('lang', 0);
+
+		if($this->db->update('translation_content', $translation_english)){
+
+			$this->db->where('news_id', $id);
+			$this->db->where('lang', 1);
+
+			if($this->db->update('translation_content', $translation_macedonian)){
+				return true;
+			}
+			else return false;			
+		}
+		else return false;
+
+	}
+
 	public function getSliderImages(){	
 		$result = $this->db->get('homepage_images');
 		return $result;
@@ -66,6 +108,6 @@ class Model_admin extends CI_Model {
 		}else{
 			return false;
 		}
-	}
+	}	
 
 }
