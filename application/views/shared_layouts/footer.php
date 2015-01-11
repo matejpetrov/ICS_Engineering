@@ -21,10 +21,10 @@
 									<a href="#"><?php echo $menus_services; ?></a>
 								</li>
 								<li>
-									<a href="<?php echo base_url(); ?>testLanguageController/webMail" id="webMail-footer" ><?php echo $menus_web_mail; ?></a>
+									<a href="<?php echo base_url(); ?>staticPagesController/webMail" id="webMail-footer" ><?php echo $menus_web_mail; ?></a>
 								</li>
 								<li class="last">
-									<a href="<?php echo base_url();?>testLanguageController/contact" id="contact-footer" ><?php echo $menus_contact; ?></a>
+									<a href="<?php echo base_url();?>staticPagesController/contact" id="contact-footer" ><?php echo $menus_contact; ?></a>
 								</li>
 							</ul>
 						</div>

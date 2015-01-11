@@ -1,7 +1,7 @@
 
 function about_us_ajax_page(page_id){
 
-		var controller = "testLanguageController/";
+		var controller = "staticPagesController/";
 		var func = "ajax_about_us_page_navigation";	
 
 		var temp = page_id;	
@@ -28,7 +28,7 @@ function about_us_ajax_page(page_id){
 
 function services_ajax_page(page_id){
 
-	var controller = "testLanguageController/";
+	var controller = "staticPagesController/";
 	var func = "ajax_services_page_navigation";	
 
 	var temp = page_id;	

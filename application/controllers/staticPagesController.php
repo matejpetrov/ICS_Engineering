@@ -1,6 +1,6 @@
 <?php
 
-class TestLanguageController extends CI_Controller{
+class StaticPagesController extends CI_Controller{
 	
 	public function __construct() {
 		parent::__construct();		

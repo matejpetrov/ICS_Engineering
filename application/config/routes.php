@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "testLanguageController";
+$route['default_controller'] = "staticPagesController";
 $route['404_override'] = '';
 
 

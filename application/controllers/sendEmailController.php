@@ -40,7 +40,7 @@ class SendEmailController extends CI_Controller
 		
 		$mail->Send ();
 		// echo '<h1>Sucess</h1>' ;
-		// redirect('testLanguageController/index');
+		// redirect('staticPagesController/index');
 	}	
 }
 ?>
