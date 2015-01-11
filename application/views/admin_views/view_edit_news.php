@@ -61,7 +61,7 @@
 							  </div>							  					        					       					       
 					        <?php echo "<script>
 
-					        	var roxyFileman ='assets/RoxyFileman/index.html'; 
+					        	var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 					            CKEDITOR.replace( 'editorEnglish', {
 								    skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								    filebrowserBrowseUrl:roxyFileman,
@@ -99,7 +99,7 @@
 							  </div>							  					        					       					       
 					        <?php echo "<script>
 
-					            var roxyFileman ='assets/RoxyFileman/index.html'; 
+					            var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 					            CKEDITOR.replace( 'editorMacedonian', {
 								    skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								    filebrowserBrowseUrl:roxyFileman,
