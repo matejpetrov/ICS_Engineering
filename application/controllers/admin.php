@@ -113,6 +113,11 @@ class Admin extends CI_Controller {
 	public function show_news($id, $json=""){
 
 		$news = $this->model_admin->get_news($id);
+		
+		$date = date_create($news[0]['created_at']);
+		$news[0]['created_at'] = date_format($date, "d/m/Y");
+		$date = date_create($news[1]['created_at']);
+		$news[1]['created_at'] = date_format($date, "d/m/Y");		
 
 		$data['news'] = $news;
 		$data['id'] = $id;
