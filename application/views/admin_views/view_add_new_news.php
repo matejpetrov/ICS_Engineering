@@ -7,13 +7,31 @@
         <!-- <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script> -->
         <!-- <script src="//cdn.ckeditor.com/4.4.6/basic/ckeditor.js"></script> -->
 
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/CKEditor/ckeditor.js"></script>
+        
 
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.css" />
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap-theme.css" />
-		<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery_1.11.0.min.js'></script>
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap-theme.css" />		
+		<link href="<?php echo base_url(); ?>assets/css/fileUploader/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
+
+		<!-- <script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery_1.11.0.min.js'></script> -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/CKEditor/ckeditor.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
+
+		<script src="<?php echo base_url(); ?>assets/js/fileUploader/fileinput.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$( document ).ready(function() {			    
+				/*$("#file-input").fileinput({'showUpload':false});*/
+				$("#file-input").fileinput(
+					{
+						'showUpload':false, 
+						'previewFileType':'image',
+						'allowedFileExtensions':['jpg','png','gif']							
+					});
+			});	
+		</script>
 
     </head>
     <body>
@@ -21,7 +39,7 @@
 		<div class="container">
 			
 			<div class="row">
-				<form action="<?php echo base_url(); ?>admin/post_create_new_news" method="POST">
+				<form action="<?php echo base_url(); ?>admin/post_create_new_news" method="POST" enctype="multipart/form-data">				
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab" id="headingOne">
@@ -95,6 +113,11 @@
 					    </div>
 					  </div>		  
 					</div>
+
+					<input type="file" name="file-input" size="20" id="file-input" />
+
+					<br/>
+
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 			</div>

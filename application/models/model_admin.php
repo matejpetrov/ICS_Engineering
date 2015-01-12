@@ -53,7 +53,7 @@ class Model_admin extends CI_Model {
 	//function that will get the news with the id given as argument, as well as all the translations. 
 	public function get_news($id){
 
-		$this->db->select('n.created_at, tc.title, tc.content, tc.lang');
+		$this->db->select('n.created_at, n.news_image_url, tc.title, tc.content, tc.lang');
 		$this->db->from('news n');
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
 		$this->db->where('n.id', $id);
@@ -85,6 +85,18 @@ class Model_admin extends CI_Model {
 				return true;
 			}
 			else return false;			
+		}
+		else return false;
+
+	}
+
+	//function that changes the url of the main image of the news with the ID given as argument
+	public function edit_news_image($id, $news){
+
+		$this->db->where('id', $id);
+
+		if($this->db->update('news', $news)){
+			return true;
 		}
 		else return false;
 

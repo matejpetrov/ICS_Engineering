@@ -37,16 +37,25 @@ class Admin extends CI_Controller {
 
 
 	public function create_new_news(){
+		$this->load->helper('form');
 		$this->load->view('admin_views/view_add_new_news', '', FALSE);
 	}
 
 	public function post_create_new_news(){
 		
+
+		$image = $_FILES['file-input'];
+		$config['upload_path'] = 'assets/images/news_main_images';
+		$config['allowed_types'] = 'gif|jpg|png';
+
+		$this->load->library('upload', $config);
+
 		foreach($_POST as $key => $value){
 			$post[$key] = $value;
 		}
 
 		$created_at = date("Y-m-d");
+		$news_image_url = base_url().$config['upload_path'].'/'.$image['name'];
 
 		$news_title_english = $post["news_title_english"];
 		$news_content_english = $post["editorEnglish"];
@@ -56,7 +65,8 @@ class Admin extends CI_Controller {
 
 
 		$news = array(
-			'created_at' => $created_at
+			'created_at' => $created_at,
+			'news_image_url' => $news_image_url
 		);
 
 		$translations = array(
@@ -65,32 +75,48 @@ class Admin extends CI_Controller {
 
 			array('lang' => 1, 'title' => $news_title_macedonian, 'content' => $news_content_macedonian)
 
-		);				
+		);
 		
-		$id = $this->model_admin->add_new_news($news);				
+		//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
+		//translation_content		
+		if ( ! $this->upload->do_upload('file-input'))
+		{
+			$data['image'] = $image;
+			$data['errors'] = $this->upload->display_errors();
+			$data['upload_path'] = $config['upload_path'];
 
-		$translations[0]['news_id'] = $id;
-		$translations[1]['news_id'] = $id;
+			$this->load->view('temp', $data);
+		}
+		else
+		{
+			$id = $this->model_admin->add_new_news($news);	
 
-		$data['id'] = $id;
+			$translations[0]['news_id'] = $id;
+			$translations[1]['news_id'] = $id;
 
-		if($id != false){
+			$data['id'] = $id;
 
-			if($this->model_admin->add_new_translation($translations)){
-				$this->show_news($id);				
+			if($id != false){
+
+				if($this->model_admin->add_new_translation($translations)){
+					$json = json_encode('{error:}');
+					$this->show_news($id, $json);				
+				}
+
 			}
-
-		}		
+			
+		}										
 
 	}	
 
 	//functions that gets the news with the id given as argument and redirects to the view that displays that news
-	public function show_news($id){
+	public function show_news($id, $json=""){
 
 		$news = $this->model_admin->get_news($id);
 
 		$data['news'] = $news;
 		$data['id'] = $id;
+		$data['json'] = $json;
 
 		$this->load->view('admin_views/view_news_preview', $data, FALSE);
 
@@ -145,6 +171,51 @@ class Admin extends CI_Controller {
 
 		}
 
+	}
+
+	//function invoked from the popup for changin image, located on the edit news page.
+	public function edit_news_image($id){		
+
+		$image = $_FILES['file-input'];
+		$config['upload_path'] = 'assets/images/news_main_images';
+		$config['allowed_types'] = 'gif|jpg|png';
+
+		$this->load->library('upload', $config);
+
+		$news_image_url = base_url().$config['upload_path'].'/'.$image['name'];
+
+		$news = array(
+			'news_image_url' => $news_image_url
+		);
+
+
+		if ( ! $this->upload->do_upload('file-input'))
+		{
+			$data['image'] = $image;
+			$data['errors'] = $this->upload->display_errors();
+			$data['upload_path'] = $config['upload_path'];
+
+			$this->load->view('temp', $data);
+		}
+		else
+		{						
+			if($this->model_admin->edit_news_image($id, $news)){
+				
+				$json = array(
+			        'news_image_url' => $news['news_image_url'],
+			        'temp' => 'matej'
+			    );
+
+			    $json_encode = json_encode($json);
+
+				echo $json_encode;
+			}
+			else{
+				$data['image_path'] = "temp";
+				$this->load->view('temp_p', $data, FALSE);
+			}
+		}
+		
 	}
 
 	public function login(){

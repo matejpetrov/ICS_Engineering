@@ -19,7 +19,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('CKEditor_test');
+		$data['image'] = "nothing yet";
+		$data['errors'] = "no errors yet";
+		$data['json'] = "no json yet";
+		$data['upload_path'] = "no upload_path yet";
+		$this->load->view('temp', $data);
 	}
 
 	public function ck_editor(){
@@ -29,6 +33,43 @@ class Welcome extends CI_Controller {
 		$data["editor"] = $ck_editor_content;
 
 		$this->load->view('temp', $data, FALSE);
+
+	}
+
+
+	public function image_upload(){
+		
+		$image = $_FILES['uploadFile'];
+
+		if($image['name'][0] != ''){
+
+			$config['upload_path'] = 'assets/images/news_main_images';
+			$config['allowed_types'] = 'gif|jpg|png';
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload('uploadFile'))
+			{
+				$data['image'] = $image;
+				$data['errors'] = $this->upload->display_errors();
+				$data['upload_path'] = $config['upload_path'];
+
+				$this->load->view('temp', $data);
+			}
+			else
+			{			
+				$data['image_path'] = base_url().$config['upload_path'].'/'.$image['name'];
+				$data['json'] = json_encode('{error:}');
+				$this->load->view('temp_p', $data, FALSE);
+				
+			}
+
+		}	
+		else {
+			$data['image_path'] = "No image selected";
+			//$data['json'] = json_encode('{error:}');
+			$this->load->view('temp_p', $data, FALSE);
+		}	
 
 	}
 

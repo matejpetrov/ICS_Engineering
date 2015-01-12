@@ -23,9 +23,10 @@
 	    else{
 	    	$news_english = $news[1];
 			$news_macedonian = $news[0];
-	    }	
+	    }
+	    $news_image_url = $news_english['news_image_url'];
 
-	 ?>
+	 ?>	 
 
 	<div class="row">		
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -72,6 +73,15 @@
 		</div><!-- panel -->
 
 	</div><!-- row -->
+
+	<div class="row">
+		<div class="col-md-6">
+			<img src="<?php echo $news_image_url; ?>" alt="News main image" class="img-responsive"
+			width="300" height="300" />
+		</div>
+	</div>
+
+	<br/>
 
 	<div class="row">
 		<div class="col-md-2">
