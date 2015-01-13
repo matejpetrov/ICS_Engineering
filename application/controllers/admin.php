@@ -25,13 +25,16 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_views/manageSlider', $data_slider, FALSE);
 	}
 
-	public function deleteImageInSlider($imageID){
+	public function deleteImageInSlider(){
+		$imageID = $this->input->post('id');
 		$path = $this->model_admin->getImagePath($imageID);
 		if ($this->model_admin->deleteImage($imageID)) {
 			unlink($path);
-			redirect('admin/homepageSlider', 'refresh');
+			$array = array('success' => 'true' );
+			$this->output->set_output(json_encode($array));
 		}else{
-			echo "error";
+			$array = array('success' => 'false' );
+			$this->output->set_output(json_encode($array));
 		}
 	}
 

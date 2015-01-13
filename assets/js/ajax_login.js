@@ -2,8 +2,6 @@ $(document).ready(function(){
 	$('#loginBtn').click(function () 
 	{
 		var base_url = $('#base_url').val();
-		// var address= base_url + "admin/login";
-		// alert(address);
 		$.ajax({
 			type: "POST",
 			cache:false,

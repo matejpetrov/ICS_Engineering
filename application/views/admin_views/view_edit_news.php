@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
         <title>CKEditor</title>
         <!-- <script src="//cdn.ckeditor.com/4.4.6/full/ckeditor.js"></script> -->
         <!-- <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script> -->
