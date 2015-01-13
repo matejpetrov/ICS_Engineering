@@ -298,6 +298,7 @@ span.mH > .fix > .icon {
     border-radius: 5px;
     z-index: 10;
     opacity: 1;
+    cursor:pointer;
 }
 .icon-cancel {
     display: none;
@@ -316,12 +317,14 @@ span.mH > .fix > .icon-cancel {
     border-radius: 5px;
     z-index: 10;
     opacity: 1;
+    cursor:pointer;
 }
 span.mH > .fix > .icon-cancel:hover {
     background-color: #737373;
 }
 span.mH > .fix > .icon:hover {
     background-color: #737373;
+
 }
 span.image-holder {
     float: left;
