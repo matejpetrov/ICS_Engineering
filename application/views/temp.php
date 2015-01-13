@@ -29,7 +29,7 @@
 						'showUpload':false, 
 						'previewFileType':'image',
 						'allowedFileExtensions':['jpg','png','gif'],
-						'maxFileUpload':2
+						'maxFileCount':2
 					});
 			});			
 		</script>

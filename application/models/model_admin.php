@@ -102,6 +102,19 @@ class Model_admin extends CI_Model {
 
 	}
 
+	//functions that adds new slider image url to the database in the table homepage_images.
+	//the argument is an array of all the images that were added.
+	public function add_slider_images($image){
+
+		$this->db->insert('homepage_images', $image);
+
+		if($this->db->affected_rows() > 0){
+			return $this->db->insert_id();
+		}
+		else return false;
+
+	}
+
 	public function getSliderImages(){	
 		$result = $this->db->get('homepage_images');
 		return $result;

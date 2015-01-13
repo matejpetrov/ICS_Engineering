@@ -1,11 +1,38 @@
-jQuery(document).ready(function() {
-    $('span.image-holder').mouseenter(function() {
+jQuery(document).ready(function() {        
+
+
+    /*$('#slider-images-container').children().on({
+        mouseenter:function() {
+            $(this).addClass('mH');
+        },
+        mouseleave: function() {
+            $(this).removeClass('mH');
+            $('.icon').removeAttr("style");
+            $('.icon').removeClass('active');            
+        }
+    })  */  
+    
+    
+    $('#slider-images-container').on("mouseenter", "span.image-holder", function (){
+        $(this).addClass('mH');
+    });
+
+    $('#slider-images-container').on("mouseleave", "span.image-holder", function (){
+        $(this).removeClass('mH');
+        $('.icon').removeAttr("style");
+        $('.icon').removeClass('active');
+    });
+
+
+    /*$('#slider-images-container').mouseenter(function() {
         $(this).addClass('mH');
     }).mouseleave(function() {
         $(this).removeClass('mH');
         $('.icon').removeAttr("style");
         $('.icon').removeClass('active');
-    });
+    });*/
+
+
     $('.fix').on({
         mouseenter: function() {
             $(this).css('background-color', '#E60000');
@@ -22,7 +49,8 @@ jQuery(document).ready(function() {
             $(this).css('background-color', '#444444');
         }
     }, '[class="icon"]');
-    $('.icon').click(function() {
+
+    $('#slider-images-container').on("click", ".icon", function (){
         $(this).animate({
             left: "140px",
             backgroundColor: "#aa0000"
@@ -32,7 +60,7 @@ jQuery(document).ready(function() {
             }
         });
     });
-    $('.icon-cancel').click(function() {
+    $('#slider-images-container').on("click", ".icon-cancel", function (){
         $('.icon').removeClass('active');
         $('.icon').animate({
             left: "180px",
@@ -43,7 +71,7 @@ jQuery(document).ready(function() {
             }
         });
     });
-    $('.fix').on('click', '.active', function() {
+    $('#slider-images-container').on('click', '.active', function() {
         var base_url = $('#base_url').val();
         $.ajax({
             url: base_url + "admin/deleteImageInSlider",

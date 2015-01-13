@@ -182,7 +182,7 @@ class Admin extends CI_Controller {
 	}
 
 	//function invoked from the popup for changin image, located on the edit news page.
-	public function edit_news_image($id){		
+	public function edit_news_image($id){
 
 		$image = $_FILES['file-input'];
 		$config['upload_path'] = 'assets/images/news_main_images';
@@ -224,6 +224,70 @@ class Admin extends CI_Controller {
 			}
 		}
 		
+	}
+
+	public function add_slider_images(){		
+		
+		$this->load->library('upload');		
+		
+		/*$this->load->view('temp_p', $data, FALSE);*/
+		
+		$upload_options = $this->set_upload_options();
+
+		
+		$files = $_FILES;
+	    $cpt = count($_FILES['file-input']['name']);   
+	    for($i=0; $i<$cpt; $i++)
+	    {
+
+	        $_FILES['file-input']['name']= $files['file-input']['name'][$i];
+	        $_FILES['file-input']['type']= $files['file-input']['type'][$i];
+	        $_FILES['file-input']['tmp_name']= $files['file-input']['tmp_name'][$i];
+	        $_FILES['file-input']['error']= $files['file-input']['error'][$i];
+	        $_FILES['file-input']['size']= $files['file-input']['size'][$i];    
+
+
+
+		    $this->upload->initialize($upload_options);
+		    
+
+		    $homepage_image_url = $upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+
+		    if(! $this->upload->do_upload('file-input')){
+		    	$data['homepage_image'] = "Upload ".$upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+				$this->load->view('temp_p', $data, FALSE);	
+		    }
+		    //if the upload was successful we should add the image URL in the database, in the homepage_images
+		    //table.
+		    else{
+
+		    	$homepage_image = array(
+					'image_url' => $homepage_image_url
+				);				
+
+		    	$id = $this->model_admin->add_slider_images($homepage_image);
+
+		    	if($id != false){
+		    		
+		    		$json = array(
+				        'new_image_url' => base_url().$homepage_image_url,
+				        'new_image_id' => $id,
+				        'temp' => 'matej'
+				    );
+
+				    $json_encode = json_encode($json);
+					echo $json_encode;
+		    	}
+		    	else{
+		    		//what to do if something goes wrong...
+		    		$data['homepage_image'] = "Database";
+					$this->load->view('temp_p', $data, FALSE);
+		    	}
+
+		    }
+
+	    }
+
 	}
 
 	public function login(){
@@ -291,4 +355,20 @@ class Admin extends CI_Controller {
 			// $this->home($userID);
 		}
 	}
+
+
+	//========================================================================================================
+	//private functions
+
+	private function set_upload_options(){	  
+	//  upload an image options
+	    $config = array();
+	    $config['upload_path'] = 'assets/images/slides';
+		$config['allowed_types'] = 'gif|jpg|png';	    
+	    $config['overwrite']     = FALSE;
+
+
+	    return $config;
+	}
+
 }

@@ -41,39 +41,72 @@ class Welcome extends CI_Controller {
 		
 		$image = $_FILES['uploadFile'];
 
-		if($image['name'][0] != ''){
+		$data['images']	 = $image;		
+		$no_images = count($image['name']);
 
-			$config['upload_path'] = 'assets/images/news_main_images';
-			$config['allowed_types'] = 'gif|jpg|png';
+		$this->load->library('upload');
 
-			$this->load->library('upload', $config);
+		
+		/*$this->load->view('temp_p', $data, FALSE);*/
+						
+		
+		$files = $_FILES;
+		$temp = array();
+	    $cpt = count($_FILES['uploadFile']['name']);	    
+	    for($i=0; $i<$cpt; $i++)
+	    {
 
-			if ( ! $this->upload->do_upload('uploadFile'))
-			{
-				$data['image'] = $image;
-				$data['errors'] = $this->upload->display_errors();
-				$data['upload_path'] = $config['upload_path'];
+	        $_FILES['uploadFile']['name']= $files['uploadFile']['name'][$i];
+	        $_FILES['uploadFile']['type']= $files['uploadFile']['type'][$i];
+	        $_FILES['uploadFile']['tmp_name']= $files['uploadFile']['tmp_name'][$i];
+	        $_FILES['uploadFile']['error']= $files['uploadFile']['error'][$i];
+	        $_FILES['uploadFile']['size']= $files['uploadFile']['size'][$i];    
 
-				$this->load->view('temp', $data);
-			}
-			else
-			{			
-				$data['image_path'] = base_url().$config['upload_path'].'/'.$image['name'];
-				$data['json'] = json_encode('{error:}');
-				$this->load->view('temp_p', $data, FALSE);
-				
-			}
 
-		}	
-		else {
-			$data['image_path'] = "No image selected";
-			//$data['json'] = json_encode('{error:}');
-			$this->load->view('temp_p', $data, FALSE);
-		}	
+
+		    $this->upload->initialize($this->set_upload_options());
+		    $this->upload->do_upload('uploadFile');
+
+
+	    }
+
+		$data['new_array'] = $_FILES['uploadFile'];
+
+		$json = '{error:}';
+		$data['json'] = $json;
+		$this->load->view('temp_p', $data, FALSE);
+
+		
 
 	}
 
 
+	//change the structure of the array, to be in a format where there are multiple full image objects. 
+	private function reArrayFiles($file_post) {
+
+	    $file_ary = array();
+	    $file_count = count($file_post['name']);
+	    $file_keys = array_keys($file_post);
+
+	    for ($i=0; $i<$file_count; $i++) {
+	        foreach ($file_keys as $key) {
+	            $file_ary[$i][$key] = $file_post[$key][$i];
+	        }
+	    }
+
+	    return $file_ary;
+	}
+
+	private function set_upload_options(){	  
+	//  upload an image options
+	    $config = array();
+	    $config['upload_path'] = 'assets/images/news_main_images';
+		$config['allowed_types'] = 'gif|jpg|png';	    
+	    $config['overwrite']     = FALSE;
+
+
+	    return $config;
+	}
 
 
 }
