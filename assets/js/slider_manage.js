@@ -1,23 +1,31 @@
 jQuery(document).ready(function() {        
 
-$("#file-input").fileinput(
-{
-    'uploadUrl':'http://localhost/ICS_Engineering/admin/add_slider_images',
-    'previewFileType':'image',
-    'allowedFileExtensions':['jpg','png','gif']
+
+$( document ).ready(function() {            
+
+    $("#file-input").fileinput(
+    {
+        'uploadUrl':'http://localhost/ICS_Engineering/admin/add_slider_images',
+        'previewFileType':'image',
+        'allowedFileExtensions':['jpg','png','gif'],
+        'maxFileCount':3
+    });
+
+    $('#file-input').on('fileuploaded', function(event, data) {
+        $('#modalAddImages').modal('hide');         
+        var json = data.response;
+        var append_text = "The JSON object is: " + json;
+                                        
+        $.each(json, function(index,jsonObject){
+            new_image_url = jsonObject.new_image_url;
+            new_image_id = jsonObject.new_image_id;
+            $('#slider-images-container').append(                   
+                '<span class="image-holder" ><img src="'+new_image_url+'" style="height: 100px;width: 240px;" /><div class="fix"><div class="icon-cancel"><i class="fa fa-times fa-2x" style="height: 20px;width: 25px;" ></i></div><div id="'+new_image_id+'" class="icon"><i class="fa fa-trash-o fa-2x" style="height: 20px;width: 25px;" ></i></div><div class="over" ></div></div></span>'
+            );                  
+        });        
+        console.log('File uploaded triggered');
+    });
 });
-
-$('#file-input').on('fileuploaded', function(event, data) {
-    $('#modalAddImages').modal('hide');                 
-    var new_image_url = data.response.new_image_url;
-    var new_image_id = data.response.new_image_id;
-    $('#slider-images-container').append(                   
-        '<span class="image-holder" ><img src="'+new_image_url+'" style="height: 100px;width: 240px;" /><div class="fix"><div class="icon-cancel"><i class="fa fa-times fa-2x" style="height: 20px;width: 25px;" ></i></div><div id="'+new_image_id+'" class="icon"><i class="fa fa-trash-o fa-2x" style="height: 20px;width: 25px;" ></i></div><div class="over" ></div></div></span>'
-        );                              
-
-    console.log('File uploaded triggered');
-});
-
 
 
 $('#slider-images-container').on("mouseenter", "span.image-holder", function (){
@@ -102,4 +110,10 @@ $('#slider-images-container').on('click', '.active', function() {
     });
     return false;
 });
+
+
+$('#modalAddImages').on('hidden.bs.modal', function (e) {
+    $('#file-input').fileinput('refresh');  
+});
+
 });
