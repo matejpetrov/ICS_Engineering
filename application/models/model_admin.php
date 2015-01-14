@@ -70,6 +70,25 @@ class Model_admin extends CI_Model {
 
 	}
 
+	//function that will get all the news that are entered in the database. It will retrieve the id,
+	//the news_image_url and the created_at from the news table and the title from the translations.
+	public function get_all_news(){
+		
+		$this->db->select('n.id, n.created_at, n.news_image_url, tc.title, tc.lang');
+		$this->db->from('news n');
+		$this->db->join('translation_content tc', 'n.id = tc.news_id');
+
+		$query = $this->db->get();
+
+		$result = array();
+
+		foreach($query->result() as $row){
+			array_push($result, (array)$row);
+		}
+
+		return $result;
+	}
+
 	//functions that updates the news in the database with the new values. 
 	public function edit_news($id, $translation_english, $translation_macedonian){
 
@@ -99,6 +118,18 @@ class Model_admin extends CI_Model {
 			return true;
 		}
 		else return false;
+
+	}
+
+
+	public function delete_news($id){
+
+		$this->db->where('id', $id);
+		if ($this->db->delete('news')) {
+			return true;
+		}else{
+			return false;
+		}
 
 	}
 

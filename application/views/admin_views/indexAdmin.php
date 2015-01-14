@@ -39,7 +39,7 @@
 					</div>
 				</div>
 			</a>
-			<a href="#" class="items" >
+			<a href="<?php echo base_url(); ?>admin/show_all_news" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-pencil-square-o fa-custom" ></i></br>

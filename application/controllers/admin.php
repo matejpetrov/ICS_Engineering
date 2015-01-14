@@ -28,6 +28,7 @@ class Admin extends CI_Controller {
 	public function deleteImageInSlider(){
 		$imageID = $this->input->post('id');
 		$path = $this->model_admin->getImagePath($imageID);
+
 		if ($this->model_admin->deleteImage($imageID)) {
 			unlink($path);
 			$array = array('success' => 'true' );
@@ -109,6 +110,19 @@ class Admin extends CI_Controller {
 			}
 			
 		}										
+
+	}
+
+	//function that shows all the news that are in the database.
+	public function show_all_news()	{
+
+		$all_news = $this->model_admin->get_all_news();		
+
+		$all_news_better = $this->refactor_news_array($all_news);
+		
+		$data['all_news'] = $all_news_better;
+
+		$this->load->view('admin_views/view_show_all_news', $data, FALSE);
 
 	}	
 
@@ -226,7 +240,40 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function add_slider_images(){		
+
+	public function delete_news(){				
+
+		$id = $_POST['id'];
+		$news_image_url = $_POST['news_image_url'];
+		$base_url = base_url();
+		$start = strlen($base_url);
+
+		$news_image_url = substr($news_image_url, $start);
+
+
+		if($this->model_admin->delete_news($id)){			
+
+			if(file_exists($news_image_url)){
+				unlink($news_image_url);
+				$json = "{success:}";
+			}
+
+			else{
+				$json = "{success:not deleted ".$news_image_url."}";
+			}			
+			
+			$json_encode = json_encode($json);
+
+			echo $json_encode;
+
+		}
+		else{
+			return false;
+		}				
+
+	}
+
+	public function add_slider_images(){
 		
 		$this->load->library('upload');		
 		
@@ -383,6 +430,52 @@ class Admin extends CI_Controller {
 
 
 	    return $config;
+	}
+
+	//function that recieves all the news from the database as a parameter. That array has multiple 
+	//members for the same news, since there are two languages for each news.
+	//This function will merge those two array members into one and return it as a result. 
+	private function refactor_news_array($all_news){
+
+		$all_news_better = array();
+
+		foreach ($all_news as $news) {
+			
+			$key = $news['id'];
+			
+			if(!array_key_exists($key, $all_news_better)){
+				if($news['lang'] == 0){
+					$temp = array(					
+						'created_at' => $news['created_at'],
+						'news_image_url' => $news['news_image_url'],
+						'title_english' => $news['title'],
+					);
+				}
+				else {
+					$temp = array(					
+						'created_at' => $news['created_at'],
+						'news_image_url' => $news['news_image_url'],
+						'title_macedonian' => $news['title'],
+					);
+				}
+
+				$all_news_better[$news['id']] = $temp;
+			}
+			else{
+				if($news['lang'] == 0){
+					$all_news_better[$news['id']]['title_english'] = $news['title'];
+				}
+				else {
+					$all_news_better[$news['id']]['title_macedonian'] = $news['title'];
+				}				
+				
+
+			}			
+
+		}
+
+		return $all_news_better;
+
 	}
 
 }
