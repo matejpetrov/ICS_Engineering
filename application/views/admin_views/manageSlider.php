@@ -16,6 +16,54 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/slider_manage.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui-min.js"></script>
 
+<<<<<<< HEAD
+=======
+
+	<style type="text/css">
+
+		#add_image_btn{
+			background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+		}
+		#add_image_btn:focus{			
+            outline: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		
+		$( document ).ready(function() {			    
+
+			$("#file-input").fileinput(
+			{
+				'uploadUrl':'http://localhost/ICS_Engineering/admin/add_slider_images',
+				'previewFileType':'image',
+				'allowedFileExtensions':['jpg','png','gif'],
+				'maxFileCount':3
+			});
+
+			$('#file-input').on('fileuploaded', function(event, data) {
+			    $('#modalAddImages').modal('hide');		    
+			    var json = data.response;
+			    var append_text = "The JSON object is: " + json;
+			    			    			    
+			    $.each(json, function(index,jsonObject){
+			    	new_image_url = jsonObject.new_image_url;
+			    	new_image_id = jsonObject.new_image_id;
+				    $('#slider-images-container').append(					
+						'<span class="image-holder" ><img src="'+new_image_url+'" style="height: 100px;width: 240px;" /><div class="fix"><div class="icon-cancel"><i class="fa fa-times fa-2x" style="height: 20px;width: 25px;" ></i></div><div id="'+new_image_id+'" class="icon"><i class="fa fa-trash-o fa-2x" style="height: 20px;width: 25px;" ></i></div><div class="over" ></div></div></span>'
+				    );				    
+				});
+			    console.log('File uploaded triggered');
+			});
+		});	
+
+	</script>
+
+>>>>>>> origin/master
 </head>
 <body>
 	<div class="container">
