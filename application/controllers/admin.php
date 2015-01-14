@@ -233,7 +233,7 @@ class Admin extends CI_Controller {
 		/*$this->load->view('temp_p', $data, FALSE);*/
 		
 		$upload_options = $this->set_upload_options();
-
+		$homepage_images = array();
 		
 		$files = $_FILES;
 	    $cpt = count($_FILES['file-input']['name']);   
@@ -255,38 +255,52 @@ class Admin extends CI_Controller {
 
 		    if(! $this->upload->do_upload('file-input')){
 		    	$data['homepage_image'] = "Upload ".$upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+		    	$data['errors'] =  $this->upload->display_errors();
 				$this->load->view('temp_p', $data, FALSE);	
 		    }
-		    //if the upload was successful we should add the image URL in the database, in the homepage_images
-		    //table.
+		    //if the upload was successful we add the image_url in an array.
 		    else{
 
 		    	$homepage_image = array(
 					'image_url' => $homepage_image_url
-				);				
-
-		    	$id = $this->model_admin->add_slider_images($homepage_image);
-
-		    	if($id != false){
-		    		
-		    		$json = array(
-				        'new_image_url' => base_url().$homepage_image_url,
-				        'new_image_id' => $id,
-				        'temp' => 'matej'
-				    );
-
-				    $json_encode = json_encode($json);
-					echo $json_encode;
-		    	}
-		    	else{
-		    		//what to do if something goes wrong...
-		    		$data['homepage_image'] = "Database";
-					$this->load->view('temp_p', $data, FALSE);
-		    	}
+				);
+		    	array_push($homepage_images, $homepage_image);		    	
 
 		    }
 
 	    }
+
+	    //after all the images were uploaded we should add them all in the database
+
+	    $ids = $this->model_admin->add_slider_images($homepage_images);
+
+	    //if all the images were added in the database we should construct a JSON object and send it back to 
+	    //the view.
+
+	    $json = array();
+
+    	if($ids != false){
+    		
+    		foreach ($ids as $url => $id) {
+    			
+    			$temp = array(
+			        'new_image_url' => base_url().$url,
+			        'new_image_id' => $id,
+			        'temp' => 'matej'
+			    );
+    			array_push($json, $temp);
+    		}    		
+
+		    $json_encode = json_encode($json);
+			echo $json_encode;
+    	}
+    	//if the images are not successfully added to the database, we should delete all the uploaded images
+    	//and show message for error
+    	else{    		
+    		$data['homepage_image'] = "Database";
+    		$data['errors'] =  "The images were not successfully added to the database.";
+			$this->load->view('temp_p', $data, FALSE);
+    	}
 
 	}
 
