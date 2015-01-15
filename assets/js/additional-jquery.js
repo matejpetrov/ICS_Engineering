@@ -3,7 +3,22 @@ $(document).ready(function(){
 	var array=pathname.split('/');
 	var numEl=array.length-1;
 	var last = array[numEl];
-	if (last != "") {		
+	var prelast = array[numEl-1];
+	if (last != "") {
+
+		if($.isNumeric(last)){
+
+			if(prelast == 'about_us'){
+				$('#about_us').addClass('selected');
+				$('#about_us_footer').addClass('selected');
+			}
+			else{
+				$('#services').addClass('selected');
+				$('#services_footer').addClass('selected');
+			}
+		}
+
+
 		$('#' + last).addClass('selected');
 		$('#' + last + '-footer').addClass('selected');
 	}else{

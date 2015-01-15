@@ -8,7 +8,7 @@
 									<a href="<?php echo base_url();?>" id="home-footer" ><?php echo $menus_home; ?></a>
 								</li>
 								<li>
-									<a href="#"><?php echo $menus_about_us; ?></a>
+									<a href="#" id="about_us_footer"><?php echo $menus_about_us; ?></a>
 								</li>
 								<li class="last">
 									<a href="#"><?php echo $menus_news; ?></a>
@@ -18,7 +18,7 @@
 						<div class="col-md-6 col-sm-12 footer">
 							<ul class="footer-nav">
 								<li>
-									<a href="#"><?php echo $menus_services; ?></a>
+									<a href="#" id="services_footer"><?php echo $menus_services; ?></a>
 								</li>
 								<li>
 									<a href="<?php echo base_url(); ?>staticPagesController/webMail" id="webMail-footer" ><?php echo $menus_web_mail; ?></a>

@@ -213,10 +213,10 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-expanded="false"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
+								role="button" aria-expanded="false" id="about_us"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a href="<?php echo base_url(); ?>staticPagesController/about_us/0"><?php echo $menus_about_us; ?></a>
+										<a href="<?php echo base_url(); ?>staticPagesController/about_us/0" class="submenu"><?php echo $menus_about_us; ?></a>
 									</li>
 									<hr style="margin-top: 3px; margin-bottom: 5px;"/>										
 									<li>
@@ -238,20 +238,23 @@
 											<?php echo $menus_corporate_info[1]; ?></a>
 										</li>
 									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-									role="button" aria-expanded="false"><?php echo $menus_services; ?> <span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">										
-										<li>
-											<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
-										</li>
-										<hr style="margin-top: 3px; margin-bottom: 5px;"/>
-										
-										<li>
-											<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>
-										</li>
-										<li>
+								</li>								
+									<li>
+										<a href="#" id="news"><?php echo $menus_news; ?></a>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">										
+											<li>
+												<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
+											</li>
+											<hr style="margin-top: 3px; margin-bottom: 5px;"/>
+											
+											<li>
+												<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>
+											</li>
+											<li>
 											<a href="<?php echo base_url(); ?>staticPagesController/services/2"><?php echo $menus_system_integration[0]; ?>
 												<br />
 												<?php echo $menus_system_integration[1]; ?></a>
@@ -260,9 +263,6 @@
 												<a href="<?php echo base_url(); ?>staticPagesController/services/3"><?php echo $menus_consulting; ?></a>
 											</li>
 										</ul>
-									</li>
-									<li>
-										<a href="#" id="news"><?php echo $menus_news; ?></a>
 									</li>
 									<li>
 										<a href="<?php echo base_url(); ?>staticPagesController/webMail" id="webMail"><?php echo $menus_web_mail; ?></a>
