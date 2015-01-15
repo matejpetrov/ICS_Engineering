@@ -1,5 +1,15 @@
 <?php echo $header; ?>
 
+<style type="text/css">
+	
+
+	img{
+		padding-right: 20px;		
+	}
+
+
+</style>
+
 <div class="container news-page">
 	<div class="row">
 		<div class="col-md-12">

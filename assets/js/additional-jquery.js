@@ -18,6 +18,7 @@ $(document).ready(function(){
 			}
 			else if(prelast == 'show_news_homepage'){
 				$('#news').addClass('selected');
+				$('#news_footer').addClass('selected');				
 			}
 		}
 

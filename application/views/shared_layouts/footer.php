@@ -11,7 +11,7 @@
 									<a href="#" id="about_us_footer"><?php echo $menus_about_us; ?></a>
 								</li>
 								<li class="last">
-									<a href="#"><?php echo $menus_news; ?></a>
+									<a href="#" id="news_footer"><?php echo $menus_news; ?></a>
 								</li>
 							</ul>
 						</div>
