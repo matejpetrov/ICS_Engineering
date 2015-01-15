@@ -23,6 +23,9 @@
     	color: #CD5A01 !important; 
     	text-decoration: none;
 	}	
+	div#content-container{
+		margin-bottom: 60px;
+	}
 
 
 </style>
