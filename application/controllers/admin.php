@@ -142,7 +142,7 @@ class Admin extends CI_Controller {
 
 		$this->load->view('admin_views/view_news_preview', $data, FALSE);
 
-	}
+	}	
 
 	public function edit_news($id){
 

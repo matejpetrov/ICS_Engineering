@@ -4,6 +4,8 @@ class StaticPagesController extends CI_Controller{
 	
 	public function __construct() {
 		parent::__construct();		
+
+		$this->load->model('model_homepage','model_homepage',TRUE);
 	}
 	
 	//ja prikazuva homePage. Za ovaa strana mi trebaat menus_lang i additional address.
@@ -16,12 +18,78 @@ class StaticPagesController extends CI_Controller{
 		$data_home_page["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_home_page["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
-		$this->load->model('model_admin','',TRUE);
-		$data_home_page["images"] = $this->model_admin->getSliderImages();
+		
+		$data_home_page["images"] = $this->model_homepage->getSliderImages();
+
+		$all_news = $this->get_all_news_homepage();
+
+		$data_home_page['all_news'] = $all_news;
 
 		$this->load->view("homePage", $data_home_page);
 	}
+
+	public function get_all_news_homepage(){
+
+		$session_lang = $this->session->userdata('site_lang');
+
+		if($session_lang != ''){
+			$lang = $session_lang;
+		}		
+		else $lang = 'english';
+
+		$all_news = $this->model_homepage->get_all_news_homepage($lang);
+		$all_news_views = array();
+
+		foreach($all_news as $news){
+
+			$data_temp['id'] = $news['id'];
+			$data_temp['news_image_url'] = $news['news_image_url'];
+			$data_temp['title'] = $news['title'];
+
+			$view_temp = $this->load->view('admin_views/view_news_homepage_template', $data_temp, TRUE);
+
+			array_push($all_news_views, $view_temp);
+
+		}
+
+		//$data['all_news'] = $all_news;
+		//$data['all_news_views'] = $all_news_views;
+
+		/*$this->load->view('temp_p', $data, FALSE);*/
+		return $all_news_views;
+
+	}
 	
+	//function that retrieves the data for a news with the id given as argument. It should then load the 
+	//view_news_preview view, that displays the retrieved news.
+	public function show_news_homepage($id){			
+
+		$session_lang = $this->session->userdata('site_lang');
+
+		if($session_lang != ''){
+			$lang = $session_lang;
+		}		
+		else $lang = 'english';
+
+		$news = $this->model_homepage->get_news_homepage($id, $lang);
+
+		$menus_language = $this->get_menus_language_values();		
+		$contact_language = $this->get_contact_language_values();
+
+		$data = array_merge($menus_language, $contact_language);
+		
+		$data["additional_address"] = $this->lang->line("additional_address");		
+		
+		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
+
+		$data_news['news_image_url'] = $news['news_image_url'];
+		$data_news['title'] = $news['title'];
+		$data_news['content'] = $news['content'];
+
+		$this->load->view('view_news_preview', $data_news, FALSE);
+
+	}
 	
 	public function contact(){
 		

@@ -88,6 +88,7 @@ class Model_admin extends CI_Model {
 
 		return $result;
 	}
+	
 
 	//functions that updates the news in the database with the new values. 
 	public function edit_news($id, $translation_english, $translation_macedonian){
@@ -161,11 +162,7 @@ class Model_admin extends CI_Model {
 		else return $ids;
 
 	}
-
-	public function getSliderImages(){	
-		$result = $this->db->get('homepage_images');
-		return $result;
-	}
+	
 	public function getImagePath($id){
 		$this->db->where('id', $id);
 		$query = $this->db->get('homepage_images');
@@ -180,6 +177,6 @@ class Model_admin extends CI_Model {
 		}else{
 			return false;
 		}
-	}	
+	}
 
 }

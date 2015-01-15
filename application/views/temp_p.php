@@ -1,7 +1,6 @@
 
-<p><?php echo $homepage_image; ?></p>
+<p><?php var_dump($news); ?></p>
 
-<p><?php echo $errors; ?></p>
 
 <br/>
 
