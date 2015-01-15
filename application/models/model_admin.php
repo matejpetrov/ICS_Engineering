@@ -162,7 +162,13 @@ class Model_admin extends CI_Model {
 		else return $ids;
 
 	}
-	
+
+	//functions that retrieves all the homepage images from the database, intended to be shown in the 
+	//homepage slider. 
+	public function getSliderImages(){	
+		$result = $this->db->get('homepage_images');
+		return $result;
+	}	
 	public function getImagePath($id){
 		$this->db->where('id', $id);
 		$query = $this->db->get('homepage_images');

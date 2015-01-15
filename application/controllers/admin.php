@@ -51,6 +51,7 @@ class Admin extends CI_Controller {
 		$image = $_FILES['file-input'];
 		$config['upload_path'] = 'assets/images/news_main_images';
 		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = 8000;
 
 		$this->load->library('upload', $config);
 

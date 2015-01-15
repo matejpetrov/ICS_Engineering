@@ -12,9 +12,12 @@ $(document).ready(function(){
 				$('#about_us').addClass('selected');
 				$('#about_us_footer').addClass('selected');
 			}
-			else{
+			else if(prelast == 'services'){
 				$('#services').addClass('selected');
 				$('#services_footer').addClass('selected');
+			}
+			else if(prelast == 'show_news_homepage'){
+				$('#news').addClass('selected');
 			}
 		}
 
