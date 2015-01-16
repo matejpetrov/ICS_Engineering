@@ -18,9 +18,9 @@ class Admin extends CI_Controller {
 			$this->home($userID);
 		}
 	}
-	
+
 	public function homepageSlider(){
-		$this->checkIfLogedIn();
+		$data_slider['header'] = $this->checkIfLogedIn();
 		$data_slider['images'] = $this->model_admin->getSliderImages();
 		$this->load->view('admin_views/manageSlider', $data_slider, FALSE);
 	}
@@ -41,8 +41,9 @@ class Admin extends CI_Controller {
 
 
 	public function create_new_news(){
+		$create_news_data['header'] = $this->checkIfLogedIn();
 		$this->load->helper('form');
-		$this->load->view('admin_views/view_add_new_news', '', FALSE);
+		$this->load->view('admin_views/view_add_new_news', $create_news_data);
 	}
 
 	public function post_create_new_news(){
@@ -116,20 +117,19 @@ class Admin extends CI_Controller {
 
 	//function that shows all the news that are in the database.
 	public function show_all_news()	{
+		$data['header'] = $this->checkIfLogedIn();
 
 		$all_news = $this->model_admin->get_all_news();		
-
 		$all_news_better = $this->refactor_news_array($all_news);
-		
 		$data['all_news'] = $all_news_better;
-
-		$this->load->view('admin_views/view_show_all_news', $data, FALSE);
+		$this->load->view('admin_views/view_show_all_news', $data);
 
 	}	
 
 	//functions that gets the news with the id given as argument and redirects to the view that displays that news
 	public function show_news($id, $json=""){
-
+		$data['header'] = $this->checkIfLogedIn();
+		
 		$news = $this->model_admin->get_news($id);
 		
 		$date = date_create($news[0]['created_at']);
@@ -141,18 +141,18 @@ class Admin extends CI_Controller {
 		$data['id'] = $id;
 		$data['json'] = $json;
 
-		$this->load->view('admin_views/view_news_preview', $data, FALSE);
+		$this->load->view('admin_views/view_news_preview', $data);
 
 	}	
 
 	public function edit_news($id){
-
+		$data['header'] = $this->checkIfLogedIn();
 		$news = $this->model_admin->get_news($id);
 
 		$data['news'] = $news;
 		$data['id'] = $id;
 
-		$this->load->view('admin_views/view_edit_news', $data, FALSE);
+		$this->load->view('admin_views/view_edit_news', $data);
 	}
 
 	public function post_edit_news(){
@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
 		$id = $post['id'];
 
 		if(isset($_POST['btn-cancel'])){
-			$this->load->view('admin_views/loginAdmin', '', FALSE);
+			redirect('admin/show_all_news' , 'refresh');
 		}
 		else{
 
@@ -389,23 +389,13 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	private function checkIfLogedIn(){
-		$userID = $this->session->userdata('user_id');
-		if (empty($userID)) {
-			redirect('admin','refresh');
-		}
-	}
-
 	public function logout(){
 		$this->session->unset_userdata('user_id');
 		redirect('admin','refresh');
 	}
 	public function home($userID){
-		$userData = $this->model_admin->getUserData($userID);
-		$data_index['name'] = $userData['name'];
-		$data_index['surname'] = $userData['surname'];
-		$data_index['role'] = $userData['role'];
-		$this->load->view('admin_views/indexAdmin', $data_index);
+		$data['header'] = $this->load_admin_header($userID);
+		$this->load->view('admin_views/indexAdmin', $data);
 		
 	}
 	public function loginSuccess(){
@@ -417,10 +407,34 @@ class Admin extends CI_Controller {
 			// $this->home($userID);
 		}
 	}
+	
+	public function showAddUser(){
+		$this->load->view('admin_views/addUser');
 
+	}
+	public function addNewUser(){
+				
+	}
 
 	//========================================================================================================
 	//private functions
+
+	private function checkIfLogedIn(){
+		$userID = $this->session->userdata('user_id');
+		if (empty($userID)) {
+			redirect('admin','refresh');
+		}else{
+			return $this->load_admin_header($userID);
+		}
+	}
+
+	private function load_admin_header($userID){
+		$userData = $this->model_admin->getUserData($userID);
+		$data_index['name'] = $userData['name'];
+		$data_index['surname'] = $userData['surname'];
+		$data_index['role'] = $userData['role'];
+		return $this->load->view('admin_views/adminHeader', $data_index, TRUE);
+	}
 
 	private function set_upload_options(){	  
 	//  upload an image options

@@ -166,27 +166,30 @@
 </head>
 
 <body>	
-	<input type="hidden" id="uri_string" name="uri_string" value="<?php echo uri_string(); ?>" />		
+	<input type="hidden" id="base_url" name="base_url" value="<?php echo base_url(); ?>" />		
 	<div id="header" style="border: none;" >
 		<div class="container-fluid" style="background-color: #CD5A01;">
 			<div class="container header">
 				<div class="row">
 					<div class="col-md-12 lang">
-						<ul>
+						<ul class="user-info-list">
 							<li>
-								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/english" class="en">EN</a>
+								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/english" class="english">EN</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/macedonian" class="mk">MK</a>
+								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/macedonian" class="macedonian">MK</a>
 							</li>
 							<li>
-								<a href="http://facebook.com" class="i_header"> <i class="fa fa-youtube-play"></i> </a>
+								<a href="http://youtube.com" target="_blank" class="i_header"> <i class="fa fa-youtube-play"></i> </a>
 							</li>
 							<li>
-								<a href="http://facebook.com" class="i_header"> <i class="fa fa-twitter"></i> </a>
+								<a href="http://twitter.com" target="_blank" class="i_header"> <i class="fa fa-twitter"></i> </a>
 							</li>
 							<li>
-								<a href="http://facebook.com" class="i_header"> <i class="fa fa-facebook"></i> </a>
+									<a href="http://linkedin.com" target="_blank" class="i_header"><i class="fa fa-linkedin"></i></a>	
+							</li>
+							<li>
+								<a href="http://facebook.com" target="_blank" class="i_header"> <i class="fa fa-facebook"></i> </a>
 							</li>
 						</ul>
 					</div>
@@ -214,11 +217,11 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-expanded="false" id="about_us"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
+								<ul class="dropdown-menu header-menu" role="menu">
 									<li>
 										<a href="<?php echo base_url(); ?>staticPagesController/about_us/0" class="submenu"><?php echo $menus_about_us; ?></a>
 									</li>
-									<hr style="margin-top: 3px; margin-bottom: 5px;"/>										
+									<hr/>										
 									<li>
 										<a href="<?php echo base_url(); ?>staticPagesController/about_us/1"><?php echo $menus_mission; ?></a>
 									</li>
@@ -245,11 +248,11 @@
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 										role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
-										<ul class="dropdown-menu" role="menu">										
+										<ul class="dropdown-menu header-menu" role="menu">										
 											<li>
 												<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
 											</li>
-											<hr style="margin-top: 3px; margin-bottom: 5px;"/>
+											<hr/>
 											
 											<li>
 												<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>

@@ -3,13 +3,17 @@
 <head>
 	<title>Manage Homepage Slider</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
+	
 	<!--///////////////////////////   Styles   ///////////////////////////-->
+	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font_awesome/font-awesome.min.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap-theme.css" />
 	<link href="<?php echo base_url(); ?>assets/css/fileUploader/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+
 	<!--///////////////////////////   Scripts   ///////////////////////////-->
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/fileUploader/fileinput.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
@@ -18,22 +22,14 @@
 
 	<style type="text/css">
 
-		#add_image_btn{
-			background-color: transparent;
-            background-repeat: no-repeat;
-            border: none;
-            cursor:pointer;
-            overflow: hidden;
-		}
-		#add_image_btn:focus{			
-            outline: none;
-		}
+		
 	</style>
 </head>
 <body>
+<?php echo $header; ?>
 	<div class="container">
 		<input id="base_url" type="hidden" value="<?php echo base_url(); ?>" >
-		<div class="row admin">
+		<div class="row admin-holder">
 			<h2>Manage Homepage Slider Images</h2>
 		</div>
 		<div class="row">

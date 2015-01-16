@@ -36,19 +36,19 @@
 						<div class="col-md-12 social-btn">
 							<ul class="social-media">
 								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-linkedin"></i></a>
+									<a href="http://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
 								</li>
 								<li id="go-up">
 									<a href="#" class="back-to-top"> <img src="<?php echo base_url(); ?>assets/images/ics-logo-malo1.svg" class="top" style="height: 60px;width: 60px;" /> <img src="<?php echo base_url(); ?>assets/images/arrow_up.svg" class="bottom" style="height: 60px;width: 60px;" /> </a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-youtube-play"></i></a>
+									<a href="http://youtube.com" target="_blank"><i class="fa fa-youtube-play"></i></a>
 								</li>
 							</ul>
 						</div>

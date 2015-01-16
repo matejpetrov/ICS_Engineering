@@ -29,6 +29,18 @@ $(document).ready(function(){
 		$('#home').addClass('selected');
 		$('#home-footer').addClass('selected');
 	};
+	var base_url = $('#base_url').val();
+	$.ajax({
+		url: base_url + 'staticPagesController/getSetLanguageAjax',
+		type: 'GET',
+		dataType: 'json',
+		success:function(data){
+			$('.' + data.language).addClass('active');
+		}
+
+	
+	});
+	
 
 	function resetForm($form) {
 		$form.find('input:text, input:password, input:file, select, textarea').val('');

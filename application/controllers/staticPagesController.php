@@ -370,5 +370,9 @@ class StaticPagesController extends CI_Controller{
 
 	}
 
-	
+	public function getSetLanguageAjax(){
+		$lang = $this->session->userdata('site_lang');
+		$language = array('language' => $lang );
+		$this->output->set_output(json_encode($language));
+	}
 }

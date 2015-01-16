@@ -1,12 +1,15 @@
-: : selection {
+::selection {
     color: #FFFFFF;
     background-color: #CD5A01;
 }
 body {
     background-color: #F8F8F8;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
 }
+
+/* Header-Language Styles Begin */
+
 .header {
     text-align: right;
     color: white;
@@ -17,18 +20,29 @@ body {
     text-decoration: none;
     padding: 0;
 }
-.lang > ul > li > a.en {
+.lang > ul > li > a.english {
     color: #FFFFFF;
+    line-height: 28px;
+    font-size: 16px;
     padding: 0;
     padding-right: 3px;
 }
-.lang > ul > li > a.mk {
+.lang > ul > li > a.macedonian {
     color: #FFFFFF;
     padding: 0;
+    line-height: 28px;
+    font-size: 16px;
     padding-left: 3px;
     padding-top: 2px;
     padding-right: 10px;
 }
+.lang > ul > li > a:hover{
+    text-decoration: underline;
+}
+.lang > ul > li > a.active{
+    text-decoration: underline;
+}
+
 i {
     text-align: center;
 }
@@ -44,6 +58,29 @@ i {
     color: #CD5A01;
     background-color: #FFFFFF;
     text-decoration: none;
+}
+
+/* Header-Language Styles End */
+
+/* Header-Menu Styles Begin */
+.header-menu{
+    border: none ;
+    border-radius: 0 ;
+    padding: 0 ;
+}
+.header-menu > li > a{
+    padding: 6px 20px;
+    transition: 0.3s ease-in-out;
+}
+.header-menu > li > a:hover{
+    color: #CD5A01;
+    background-color: #ffffff;
+    background-image: none;    
+    border-left: 3px solid #CD5A01;
+    border-right: 3px solid #CD5A01;
+}
+hr{
+    margin: 0;
 }
 div.navbar-collapse > ul {
     margin: 0;
@@ -91,14 +128,15 @@ div.collapse-custom > ul >li> a.selected {
     color: #CD5A01 !important;
     background-color: #FFFFFF !important;
 }
-ul.footer-nav >li> a.selected {
-    color: #CD5A01 !important;
-}
+
 .nav-custom {
     margin-bottom: 0px;
     border-bottom-width: 0px;
     background-color: #FFFFFF;
 }
+
+/* Header-Menu Styles End */
+
 div.push {
     background-color: #F8F8F8;
     height: 400px;
@@ -125,6 +163,9 @@ div.col-md-3, .news {
     text-align: center;
     margin-bottom: 40px;
 }
+
+/* Footer Styles Begin */
+
 div.footer-navigation > .container-fluid {
     background-color: black;
     padding: 0;
@@ -157,6 +198,9 @@ ul.footer-nav > li > a {
     color: #FFFFFF;
     transition: 0.4s ease-in-out;
 }
+ul.footer-nav >li> a.selected {
+    color: #CD5A01 !important;
+}
 ul.footer-nav > li > a:hover {
     color: #CD5A01;
 }
@@ -183,13 +227,13 @@ ul.social-media > li > a {
 ul.social-media > li > a:hover {
     color: #CD5A01;
 }
-ul.social-media>li.go-up-logo-static {
+ul.social-media > li.go-up-logo-static {
     position: relative;
 }
-ul.social-media>li.go-up-logo-static>a>img.top {
+ul.social-media > li.go-up-logo-static>a>img.top {
     position: absolute;
 }
-ul.social-media>li.go-up-logo-static >a>img.bottom {
+ul.social-media > li.go-up-logo-static >a>img.bottom {
     opacity: 0;
 }
 ul.social-media > li.go-up-logo {
@@ -214,7 +258,11 @@ ul.social-media > li.go-up-logo > a:hover .top {
     opacity: 0;
     transform: rotate(360deg);
 }
-/* Contact Page Style */
+
+/* Footer Styles End */
+
+
+/* Contact Page Styles Begin */
 
 input: -webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
@@ -236,15 +284,36 @@ div.contact > .input-group {
     height: 220px;
     resize: none;
 }
-/* News Page Style */
+
+/* Contact Page Styles End */
+
+
+/* News Page Styles */
 
 div.news-page>.row>.col-md-12 {
     text-align: justify;
     margin-bottom: 30px;
 }
-/* Admin Page Style */
+.tbtn{
+    width: 130px;
+}
+.edit{
+    margin: 5px 0 !important;
+}
+.thead > tr > th{
+    width:90px;
+}
+.news-image-holder{
+    text-align:center;
+    margin: 20px 0;
+}
+
+/* News Page Styles End */
+
+/* Admin Page Styles */
 
 div.control-pannel-item {
+    margin-bottom: 20px;
     border: 1px solid;
     margin-left: 4%;
     border-radius: 35px 35px 35px 35px;
@@ -273,11 +342,16 @@ div.row > a.items {
 div.row > a.items:hover {
     color: #FFFFFF;
 }
-div.admin {
+div.admin-holder {
     text-align: center;
     margin-bottom: 20px;
 }
-/*Manage Slider*/
+div.admin{
+}
+
+/* Admin Page Styles End */
+
+/* Manage Slider Styles */
 
 div.fix {
     position: absolute;
@@ -352,7 +426,6 @@ span.image-add {
     width: 240px;
     position: absolute;
     border: 5px dashed;
-    /*border-radius: 16px;*/
 }
 .add {
     height: 90px;
@@ -374,7 +447,61 @@ span.image-add {
 #add_image_btn:focus{           
     outline: none;
 }
-/*Responsive media*/
+/* Manage Slider Styles End */
+
+
+/* Admin Header Styles */
+
+.settings-active.open > a{
+    color: #CD5A01;
+    background-color: #FFFFFF;
+    text-decoration: none;
+} 
+.admin-menu{
+    left: -128px ;
+    top: 113% ;
+    border: none ;
+    border-radius: 0 ;
+    padding: 0 ;
+}
+.admin-menu > li > a{
+    padding: 6px 20px;
+    transition: 0.3s ease-in-out;
+}
+.admin-menu > li > a:hover{
+    color: #CD5A01;
+    background-color: #ffffff;
+    background-image: none;    
+    border-left: 3px solid #CD5A01;
+    border-right: 3px solid #CD5A01;
+}
+.user-info-list{
+    margin: 0;
+}
+
+.user-info{
+    line-height: 30px;
+    font-size: 20px;
+}
+.user-info.last{
+    padding-right: 10px;
+
+}
+.home{
+    float:left;
+}
+.home:focus{
+    color: #CD5A01;
+    background-color: #ffffff;
+}
+.home > i {
+    font-size: 28px;
+}
+
+/* Admin Header Styles End */
+
+
+/* Responsive media Begin */
 
 @media screen and (max-width: 991px) {} @media screen and (max-width: 751px) {
     ul.footer-nav > li > a {
@@ -392,3 +519,5 @@ span.image-add {
     }
 }
 @media screen and (max-width: 390px) {}
+
+/* Responsive Media End*/
