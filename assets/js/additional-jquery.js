@@ -35,7 +35,11 @@ $(document).ready(function(){
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
-			$('.' + data.language).addClass('active');
+			if (data.language == false) {
+				$('.english').addClass('active');
+			} else{
+				$('.' + data.language).addClass('active');
+			};
 		}
 
 	
