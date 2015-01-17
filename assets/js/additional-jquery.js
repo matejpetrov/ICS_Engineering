@@ -35,11 +35,7 @@ $(document).ready(function(){
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
-			if (data.language == false) {
-				$('.english').addClass('active');
-			} else{
-				$('.' + data.language).addClass('active');
-			};
+			$('.' + data.language).addClass('active');
 		}
 
 	
