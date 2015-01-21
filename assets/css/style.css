@@ -8,6 +8,10 @@ body {
     font-family: 'Open Sans', sans-serif !important;
 }
 
+.list-body{
+    background-color: #ffffff;
+}
+
 /* Header-Language Styles Begin */
 
 .header {
@@ -300,8 +304,11 @@ div.news-page>.row>.col-md-12 {
 .edit{
     margin: 5px 0 !important;
 }
+.delete{
+    margin-top: 5px !important;
+}
 .thead > tr > th{
-    width:90px;
+    width:150px;
 }
 .news-image-holder{
     text-align:center;

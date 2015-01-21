@@ -68,7 +68,7 @@
 					</div>
 				</div>
 			</a>
-			<a href="#" class="items" >
+			<a href="<?php echo base_url(); ?>admin/showAllUsers" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-users fa-custom" ></i></br>

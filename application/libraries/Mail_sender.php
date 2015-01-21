@@ -7,7 +7,6 @@ class Mail_sender
 	protected $ci;
 	
 	var $mail;
-	var $address="borka@ekoplast.com.mk";
 
 	public function __construct()
 	{	
@@ -20,13 +19,14 @@ class Mail_sender
 	public function init(){
 		$this->mail->IsSMTP ();
 		$this->mail->IsHTML(true);
-		$this->$mail->Mailer = 'smtp';
+		$this->mail->Mailer = 'smtp';
 		$this->mail->SMTPAuth = true;
 		$this->mail->Host = 'mail.ekoplast.com.mk'; // "ssl://smtp.gmail.com" didn't worked
 		$this->mail->Port = 25;
 		$this->mail->SMTPSecure = '';
 		$this->mail->Username = "borka@ekoplast.com.mk";
 		$this->mail->Password = "Kondura2359";
+		$this->address="borka@ekoplast.com.mk";
 		$this->mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.		
 		
 		

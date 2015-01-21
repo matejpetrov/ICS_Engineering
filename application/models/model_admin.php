@@ -27,6 +27,105 @@ class Model_admin extends CI_Model {
 		return $result;
 	}
 
+	//checks if username exists
+	public function checkUsername($username)
+	{
+		$this->db->where('username',$username);
+		$query=$this->db->get('users');
+		if (count($query->result()) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	//checks if user email exists
+	public function checkEmail($email)
+	{
+		$this->db->where('email',$email);
+		$query=$this->db->get('authentication');
+		if (count($query->result()) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	public function createUser($name, $surname, $email, $username, $password, $auth_link, $role){
+		$user_data = array(
+			'name' => $name ,
+			'surname' => $surname ,
+			'username' => $username ,
+			'password' => $password ,
+			'role' => $role
+			);
+		$this->db->insert('users', $user_data);
+		$user_id = $this->db->insert_id();
+		$auth_data = array(
+			'user_id' =>$user_id,
+			'email' => $email,
+			'auth_link' => $auth_link 
+			);
+		$this->db->insert('authentication', $auth_data);
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public function checkLink($auth_link){
+		$this->db->where('auth_link',$auth_link);
+		$query = $this->db->get('authentication');
+		if (count($query->result()) > 0) {
+			if ($query->row()->authenticated == 0) {
+				return $query->row()->user_id;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	public function getAllUsers(){
+		$this->db->select('u.id,u.username,u.name,u.surname,u.protected,u.role,a.email,a.authenticated');
+		$this->db->from('users u');
+		$this->db->join('authentication a', 'u.id = a.user_id', 'left');
+
+		$query = $this->db->get();
+
+		return $query;
+	}
+	public function deleteUser($id){
+		$this->db->where('id', $id);
+		$this->db->delete('users');
+	}
+	public function changeRole($id){
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+		$this->db->where('id', $id);
+		if ($query->row()->role == 2) {
+			$this->db->update('users', array('role' => '3'));
+			return 3;
+		} else {
+			$this->db->update('users', array('role' => '2'));
+			return 2;
+		}
+		
+	}
+
+	public function complete($id,$password){
+		$this->db->where('id', $id);
+		$this->db->update('users', array('password'=>$password));
+		$this->db->where('user_id', $id);
+		$this->db->update('authentication', array('authenticated'=> '1'));
+		if ($this->db->affected_rows()>0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	//function that inserts a new row in the news table. 
 	public function add_new_news($news){
 
@@ -73,7 +172,7 @@ class Model_admin extends CI_Model {
 	//function that will get all the news that are entered in the database. It will retrieve the id,
 	//the news_image_url and the created_at from the news table and the title from the translations.
 	public function get_all_news(){
-		
+
 		$this->db->select('n.id, n.created_at, n.news_image_url, tc.title, tc.lang');
 		$this->db->from('news n');
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
@@ -88,7 +187,7 @@ class Model_admin extends CI_Model {
 
 		return $result;
 	}
-	
+
 
 	//functions that updates the news in the database with the new values. 
 	public function edit_news($id, $translation_english, $translation_macedonian){
@@ -154,7 +253,7 @@ class Model_admin extends CI_Model {
 
 		$this->db->trans_complete();
 
-		
+
 
 		if($this->db->trans_status() === FALSE){
 			return false;

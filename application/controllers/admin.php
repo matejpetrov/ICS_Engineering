@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function deleteImageInSlider(){
+		$this->checkIfLogedIn();
 		$imageID = $this->input->post('id');
 		$path = $this->model_admin->getImagePath($imageID);
 
@@ -73,7 +74,7 @@ class Admin extends CI_Controller {
 		$news = array(
 			'created_at' => $created_at,
 			'news_image_url' => $news_image_url
-		);
+			);
 
 		$translations = array(
 
@@ -81,7 +82,7 @@ class Admin extends CI_Controller {
 
 			array('lang' => 1, 'title' => $news_title_macedonian, 'content' => $news_content_macedonian)
 
-		);
+			);
 		
 		//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
 		//translation_content		
@@ -177,13 +178,13 @@ class Admin extends CI_Controller {
 				'news_id' => $id,
 				'title' => $news_title_english,
 				'content' => $news_content_english
-			);
+				);
 
 			$translation_macedonian = array(
 				'news_id' => $id,
 				'title' => $news_title_macedonian,
 				'content' => $news_content_macedonian
-			);
+				);
 
 			if($this->model_admin->edit_news($id, $translation_english, $translation_macedonian)){
 				$this->show_news($id);
@@ -209,7 +210,7 @@ class Admin extends CI_Controller {
 
 		$news = array(
 			'news_image_url' => $news_image_url
-		);
+			);
 
 
 		if ( ! $this->upload->do_upload('file-input'))
@@ -225,11 +226,11 @@ class Admin extends CI_Controller {
 			if($this->model_admin->edit_news_image($id, $news)){
 				
 				$json = array(
-			        'news_image_url' => $news['news_image_url'],
-			        'temp' => 'matej'
-			    );
+					'news_image_url' => $news['news_image_url'],
+					'temp' => 'matej'
+					);
 
-			    $json_encode = json_encode($json);
+				$json_encode = json_encode($json);
 
 				echo $json_encode;
 			}
@@ -284,71 +285,71 @@ class Admin extends CI_Controller {
 		$homepage_images = array();
 		
 		$files = $_FILES;
-	    $cpt = count($_FILES['file-input']['name']);   
-	    for($i=0; $i<$cpt; $i++)
-	    {
+		$cpt = count($_FILES['file-input']['name']);   
+		for($i=0; $i<$cpt; $i++)
+		{
 
-	        $_FILES['file-input']['name']= $files['file-input']['name'][$i];
-	        $_FILES['file-input']['type']= $files['file-input']['type'][$i];
-	        $_FILES['file-input']['tmp_name']= $files['file-input']['tmp_name'][$i];
-	        $_FILES['file-input']['error']= $files['file-input']['error'][$i];
-	        $_FILES['file-input']['size']= $files['file-input']['size'][$i];    
+			$_FILES['file-input']['name']= $files['file-input']['name'][$i];
+			$_FILES['file-input']['type']= $files['file-input']['type'][$i];
+			$_FILES['file-input']['tmp_name']= $files['file-input']['tmp_name'][$i];
+			$_FILES['file-input']['error']= $files['file-input']['error'][$i];
+			$_FILES['file-input']['size']= $files['file-input']['size'][$i];    
 
 
 
-		    $this->upload->initialize($upload_options);
-		    
+			$this->upload->initialize($upload_options);
 
-		    $homepage_image_url = $upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
 
-		    if(! $this->upload->do_upload('file-input')){
-		    	$data['homepage_image'] = "Upload ".$upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
-		    	$data['errors'] =  $this->upload->display_errors();
+			$homepage_image_url = $upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+
+			if(! $this->upload->do_upload('file-input')){
+				$data['homepage_image'] = "Upload ".$upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+				$data['errors'] =  $this->upload->display_errors();
 				$this->load->view('temp_p', $data, FALSE);	
-		    }
+			}
 		    //if the upload was successful we add the image_url in an array.
-		    else{
+			else{
 
-		    	$homepage_image = array(
+				$homepage_image = array(
 					'image_url' => $homepage_image_url
-				);
-		    	array_push($homepage_images, $homepage_image);		    	
+					);
+				array_push($homepage_images, $homepage_image);		    	
 
-		    }
+			}
 
-	    }
+		}
 
 	    //after all the images were uploaded we should add them all in the database
 
-	    $ids = $this->model_admin->add_slider_images($homepage_images);
+		$ids = $this->model_admin->add_slider_images($homepage_images);
 
 	    //if all the images were added in the database we should construct a JSON object and send it back to 
 	    //the view.
 
-	    $json = array();
+		$json = array();
 
-    	if($ids != false){
-    		
-    		foreach ($ids as $url => $id) {
-    			
-    			$temp = array(
-			        'new_image_url' => base_url().$url,
-			        'new_image_id' => $id,
-			        'temp' => 'matej'
-			    );
-    			array_push($json, $temp);
-    		}    		
+		if($ids != false){
 
-		    $json_encode = json_encode($json);
+			foreach ($ids as $url => $id) {
+
+				$temp = array(
+					'new_image_url' => base_url().$url,
+					'new_image_id' => $id,
+					'temp' => 'matej'
+					);
+				array_push($json, $temp);
+			}    		
+
+			$json_encode = json_encode($json);
 			echo $json_encode;
-    	}
+		}
     	//if the images are not successfully added to the database, we should delete all the uploaded images
     	//and show message for error
-    	else{    		
-    		$data['homepage_image'] = "Database";
-    		$data['errors'] =  "The images were not successfully added to the database.";
+		else{    		
+			$data['homepage_image'] = "Database";
+			$data['errors'] =  "The images were not successfully added to the database.";
 			$this->load->view('temp_p', $data, FALSE);
-    	}
+		}
 
 	}
 
@@ -409,15 +410,133 @@ class Admin extends CI_Controller {
 	}
 	
 	public function showAddUser(){
-		$this->load->view('admin_views/addUser');
+		$data_addUser['header'] = $this->checkIfLogedIn();
+		$this->load->view('admin_views/addUser',$data_addUser);
 
 	}
+	
 	public function addNewUser(){
-				
+		$temp_password = $this->generateAuthCode(10);
+		$auth_link = $this->generateAuthCode(30);
+		$name = $this->input->post('name');
+		$surname = $this->input->post('surname');
+		$email = $this->input->post('email');
+		$username = $this->input->post('username');
+		$role = $this->input->post('user_type');
+		$result = $this->model_admin->createUser($name, $surname, $email, $username, $temp_password, $auth_link, $role);
+		if ($result) {
+			$this->load->library('mail_sender');
+			$this->mail_sender->setAddress($email);
+			$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
+			$this->mail_sender->setSubject('New User Created');
+			$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
+			$this->mail_sender->setBody($message);
+
+			$this->mail_sender->sendMail();
+		}
+		redirect('admin/showAllUsers', 'refresh');
+	}
+
+	public function auth($code){
+		$id = $this->model_admin->checkLink($code);
+		if ($id) {
+			$data['id'] = $id;
+			$this->load->view('admin_views/changePassword',$data);
+		} else {
+			redirect('staticPagesController', 'refresh');
+		}
+	}
+
+	public function completeUser(){
+		$password = $this->input->post('password');
+		$id = $this->input->post('id');
+		$result = $this->model_admin->complete($id,$password);
+		if ($result) {
+			redirect('admin', 'refresh');
+		} else {
+			echo "error";
+		}
+		
+	}
+
+	public function checkMail(){
+		$email = $this->input->post('email');
+		if(empty($email)){
+			$return = array('result' => 'error' );
+			$this->output->set_output(json_encode($return));
+		}else{
+			$result = $this->model_admin->checkEmail($email);
+			if ($result) {
+				$return = array('result' => 'ok' );
+				$this->output->set_output(json_encode($return));
+			} else {
+				$return = array('result' => 'error' );
+				$this->output->set_output(json_encode($return));
+			}
+
+		}
+	}
+
+	public function checkUsername(){
+		$username = $this->input->post('username');
+		if (empty($username)) {
+			$return = array('result' => 'error' );
+			$this->output->set_output(json_encode($return));
+		}else{
+			$result = $this->model_admin->checkUsername($username);
+			if ($result) {
+				$return = array('result' => 'ok' );
+				$this->output->set_output(json_encode($return));
+			} else {
+				$return = array('result' => 'error' );
+				$this->output->set_output(json_encode($return));
+			}
+		}
+	}
+
+	public function changeRole(){
+		$id = $this->input->post('id');
+		$result = $this->model_admin->changeRole($id);
+		if ($result == 2) {
+			$data = array('role' => 'Super User' );
+		} else {
+			$data = array('role' => 'User' );
+		}
+		
+		$this->output->set_output(json_encode($data));
+		
+	}
+
+	public function showAllUsers(){
+		$data_showUser['header'] = $this->checkIfLogedIn();
+		$data_showUser['users'] = $this->model_admin->getAllUsers();
+
+		$this->load->view('admin_views/manageUsers', $data_showUser);
+
+		
+	}
+
+	public function deleteUser(){
+		$id = $this->input->post('id');
+		$this->model_admin->deleteUser($id);
+		$data = array('result' => '1');
+		$this->output->set_output(json_encode($data));
 	}
 
 	//========================================================================================================
 	//private functions
+
+	private function generateAuthCode($lenght)
+	{
+		$alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		$pass = array ();
+		$alphaLenght = strlen ( $alphabet ) - 1;
+		for($i = 0; $i < $lenght; $i ++) {
+			$n = rand ( 0, $alphaLenght );
+			$pass [] = $alphabet [$n];
+		}
+		return implode ( $pass );
+	}
 
 	private function checkIfLogedIn(){
 		$userID = $this->session->userdata('user_id');
@@ -438,13 +557,13 @@ class Admin extends CI_Controller {
 
 	private function set_upload_options(){	  
 	//  upload an image options
-	    $config = array();
-	    $config['upload_path'] = 'assets/images/slides';
+		$config = array();
+		$config['upload_path'] = 'assets/images/slides';
 		$config['allowed_types'] = 'gif|jpg|png';	    
-	    $config['overwrite']     = FALSE;
+		$config['overwrite']     = FALSE;
 
 
-	    return $config;
+		return $config;
 	}
 
 	//function that recieves all the news from the database as a parameter. That array has multiple 
@@ -455,23 +574,23 @@ class Admin extends CI_Controller {
 		$all_news_better = array();
 
 		foreach ($all_news as $news) {
-			
+
 			$key = $news['id'];
-			
+
 			if(!array_key_exists($key, $all_news_better)){
 				if($news['lang'] == 0){
 					$temp = array(					
 						'created_at' => $news['created_at'],
 						'news_image_url' => $news['news_image_url'],
 						'title_english' => $news['title'],
-					);
+						);
 				}
 				else {
 					$temp = array(					
 						'created_at' => $news['created_at'],
 						'news_image_url' => $news['news_image_url'],
 						'title_macedonian' => $news['title'],
-					);
+						);
 				}
 
 				$all_news_better[$news['id']] = $temp;
@@ -483,7 +602,7 @@ class Admin extends CI_Controller {
 				else {
 					$all_news_better[$news['id']]['title_macedonian'] = $news['title'];
 				}				
-				
+
 
 			}			
 
