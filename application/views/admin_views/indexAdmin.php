@@ -21,7 +21,7 @@
 	<?php echo $header; ?>
 	<div class="container">
 		<div class="row admin-holder">
-			<div class="col-md-12"><h2>Welcome to the ICS Engineering CMS admin page</h2></div>
+			<div class="col-md-12"><h2>Welcome to the ICS Engineering CMS control panel</h2></div>
 		</div>
 		<div class="row admin-holder">
 			<a href="<?php echo base_url(); ?>admin/homepageSlider" class="items" >
@@ -49,11 +49,11 @@
 					</div>
 				</div>
 			</a>
-			<a href="#" class="items" >
+			<a href="<?php echo base_url(); ?>staticPagesAdminController/edit_static_pages_info" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-newspaper-o fa-custom" ></i></br>
-						<span class="text">Edit about us info</span>
+						<span class="text">Edit static pages info</span>
 
 					</div>
 				</div>

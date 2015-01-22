@@ -1,5 +1,5 @@
 
-<p><?php var_dump($news); ?></p>
+<p><?php var_dump($about_us); ?></p>
 
 
 <br/>

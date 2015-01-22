@@ -631,6 +631,17 @@ span.image-add {
 /* Admin Header Styles End */
 
 
+/* Edit static pages Styles Begin  */
+
+div.static-pages-content{
+    text-align: center;
+    margin-top: 150px;
+    margin-left: 295px;
+}
+
+/* Edit static pages Styles End  */
+
+
 /* Responsive media Begin */
 
 @media screen and (max-width: 991px) {} @media screen and (max-width: 751px) {

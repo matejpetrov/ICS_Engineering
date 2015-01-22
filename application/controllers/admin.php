@@ -512,8 +512,6 @@ class Admin extends CI_Controller {
 		$data_showUser['users'] = $this->model_admin->getAllUsers();
 
 		$this->load->view('admin_views/manageUsers', $data_showUser);
-
-		
 	}
 
 	public function deleteUser(){
@@ -521,7 +519,10 @@ class Admin extends CI_Controller {
 		$this->model_admin->deleteUser($id);
 		$data = array('result' => '1');
 		$this->output->set_output(json_encode($data));
-	}
+	}	
+
+
+
 
 	//========================================================================================================
 	//private functions
