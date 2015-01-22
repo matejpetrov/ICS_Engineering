@@ -316,7 +316,7 @@
 
 
 
-							</script>" ?>s				    		
+							</script>" ?>
 
 				    	</form>
 				    	<button class="btn btn-primary" name="btnSubmitMission" id="btnSubmitMission" onclick="update_mission_AJAX();" disabled="disabled">Save Mission</button>

@@ -113,7 +113,7 @@ $('#slider-images-container').on('click', '.active', function() {
 
 
 $('#modalAddImages').on('hidden.bs.modal', function (e) {
-    $('#file-input').fileinput('refresh');  
+    $('#file-input').fileinput('clear');  
 });
 
 });

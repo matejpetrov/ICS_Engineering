@@ -61,10 +61,6 @@ class StaticPagesController extends CI_Controller{
 
 		}
 		$outputArray = array();
-		//$data['all_news'] = $all_news;
-		//$data['all_news_views'] = $all_news_views;
-		// $arrayName = array('' => , );
-		/*$this->load->view('temp_p', $data, FALSE);*/
 		if (empty($offset)) {
 			return $all_news_views;
 		}else{ 
@@ -80,11 +76,6 @@ class StaticPagesController extends CI_Controller{
 
 	}
 	
-	public function test()
-	{
-			echo "<p>Borka</p>";
-		
-	}
 	//function that retrieves the data for a news with the id given as argument. It should then load the 
 	//view_news_preview view, that displays the retrieved news.
 	public function show_news_homepage($id){			
@@ -148,41 +139,57 @@ class StaticPagesController extends CI_Controller{
 
 		$data = $this->get_menus_language_values();
 		$data["additional_address"] = $this->lang->line("additional_address");
-		
+
+		$this->load->model('model_about_us_pages', 'model_about_us_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
+
 		$data_temp = array();
 
 		if($page == 0){
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
-			$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");
+			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/					
 
-			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+			$column = 'about_us';
+
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_first_page"] = $result['about_us'];
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
 
 		}
 		else if($page == 1){
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
 
-			$mission_text = $this->lang->line("about_us_mission");
-			$mission_array = explode("^", $mission_text);
+			$column = 'mission';
 
-			$data_temp["about_us_mission"] = $mission_array;
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+			$data_temp["about_us_mission_page"] = $result['mission'];			
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
 			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
-			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
+			
+			$column = 'vision';
 
-			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_vision_page"] = $result['vision'];
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
 
 		}
 		
 
-		$data_services["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
-		$data_services["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
 
-		$this->load->view('about_us_views/view_about_us_template', $data_services);
+		$data_about_us["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_about_us["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
+
+		$this->load->view('about_us_views/view_about_us_template', $data_about_us);
 	}
 
 
@@ -316,34 +323,50 @@ class StaticPagesController extends CI_Controller{
 	public function ajax_about_us_page_navigation(){
 
 		$page = $_POST["page_id"];
+		$this->load->model('model_about_us_pages', 'model_about_us_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
 
 		if($page == 0){
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
-			$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");
+			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/					
 
-			$data = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+			$column = 'about_us';
+
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_first_page"] = $result['about_us'];
+
+			$data_about_us = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+
 		}
 		else if($page == 1){
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
 
-			$mission_text = $this->lang->line("about_us_mission");
-			$mission_array = explode("^", $mission_text);
+			$column = 'mission';
 
-			$data_temp["about_us_mission"] = $mission_array;
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+			$data_temp["about_us_mission_page"] = $result['mission'];			
+
+			$data_about_us = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
 			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
-			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
+			
+			$column = 'vision';
 
-			$data = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);						
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_vision_page"] = $result['vision'];
+
+			$data_about_us = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+
 		}
 
 
-		echo $data;
+		echo $data_about_us;
 
 	}
 

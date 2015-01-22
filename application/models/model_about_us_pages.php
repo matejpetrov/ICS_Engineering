@@ -165,6 +165,44 @@ class Model_about_us_pages extends CI_Model {
 
 	}
 
+
+
+	public function get_about_us_page_content($column, $lang){
+
+		$this->db->select($column);
+		$this->db->from('about_us_translation');
+		
+		$lang_db = -1;
+		if($lang == 'english'){
+			$lang_db = 0;
+		}
+		else $lang_db = 1;
+
+		$this->db->where('lang', $lang_db);
+
+		$query = $this->db->get();		
+
+
+		if (count($query->result () ) > 0) {
+			$result = (array)$query->row();
+			return $result;
+		}else{
+			return false;
+		}
+
+
+		/*foreach ($query->result() as $row){
+		    $result = (array)$row;
+		}
+
+		if($result){
+			return $result;
+		}
+		else return false;*/
+	
+	}
+
+
 }
 
 /* End of file model_about_us_pages.php */
