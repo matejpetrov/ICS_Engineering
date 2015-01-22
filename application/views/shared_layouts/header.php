@@ -17,100 +17,9 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font_awesome/font-awesome.min.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
-	<style type="text/css">
-		/* Set a size for our map container, the Google Map will take up 100% of this container */
-		#map {
-			width: 100%;
-			height: 250px;
-		}
-	</style>
+	
 	<style>
-		.owl-wrapper {
-			text-align: center;
-			/*background-color:#f8f8f8;*/
-			z-index: 1;
-		}
-		#owl-news {
-			margin-top: -70px;
-		}
-		#owl-news .item {
-			background-color: #FFFFFF;
-			height: 435px;
-			border: 1px solid #CD5A01;
-			display: block;
-			padding: 30px 15px;
-			margin: 0px 10px;
-			box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
-		}
-		.owl-theme .owl-controls .owl-buttons div {
-			padding: 5px 9px;
-			-webkit-border-radius: 0px !important;
-			-moz-border-radius: 0px !important;
-			border-radius: 0px !important;
-		}
-
-		.owl-theme .owl-buttons i {
-			margin-top: 2px;
-			font-size: 30px;
-		}
-
-		/*//To move navigation buttons outside use these settings:*/
-
-		.owl-theme .owl-controls .owl-buttons div {
-			position: absolute;
-		}
-
-		.owl-theme .owl-controls .owl-buttons .owl-prev {
-			left: -5px;
-			top: 120px;
-			padding: 10px 1px 10px 3px;
-			z-index: 1;
-		}
-
-		.owl-theme .owl-controls .owl-buttons .owl-next {
-			right: -5px;
-			top: 120px;
-			padding: 10px 3px 10px 0px;
-			z-index: 1;
-		}
-	</style>
-	<style>
-		.fluid_container {
-			bottom: 0;
-			height: 100%;
-			left: 0;
-			position: fixed;
-			right: 0;
-			top: 120px;
-			width: 50%;
-			z-index: 0;
-		}
-		#camera_wrap_4 {
-			bottom: 0;
-			height: 100%;
-			left: 0;
-			margin-bottom: 0 !important;
-			position: static;
-			right: 0;
-			top: 0;
-			margin-top: 0px;
-		}
-		.camera_bar {
-			z-index: 2;
-		}
-		.camera_thumbs {
-			margin-top: -100px;
-			position: relative;
-			z-index: 1;
-		}
-		.camera_thumbs_cont {
-			border-radius: 0;
-			-moz-border-radius: 0;
-			-webkit-border-radius: 0;
-		}
-		.camera_overlayer {
-			opacity: .1;
-		}
+		
 	</style>
 
 	<!--///////////////////////////   Scripts   ///////////////////////////-->
@@ -120,18 +29,12 @@
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/camera_slider/camera.js'></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/owl_carousel/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dynamic_news.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/back_top.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2tnEc20g8Oh5nhCSHHKsbLJERhS--y-k&sensor=false"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
-
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>		
 	
-	<script>
-			// $(document).ready(function() {
-			// 	$.fn.snow();
-			// });
-		</script>
-	</script>
 	<script>
 		jQuery(function() {
 
@@ -141,6 +44,7 @@
 				loaderColor : "#CD5A01",
 				pagination : false,
 				thumbnails : false,
+				fx: 'simpleFade',
 				hover : true,
 				opacityOnGrid : false,
 				navigation : true,
@@ -148,21 +52,7 @@
 			});
 
 		});
-	</script>
-	<script>
-		$(document).ready(function() {
-
-			$("#owl-news").owlCarousel({
-				items : 3,
-					// itemsDesktop:[1217,3],
-					navigation : true,
-					pagination : false,
-					lazyLoad : true,
-					navigationText : ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-				});
-
-		});
-	</script>		
+	</script>	
 </head>
 
 <body>	
@@ -186,7 +76,7 @@
 								<a href="http://twitter.com" target="_blank" class="i_header"> <i class="fa fa-twitter"></i> </a>
 							</li>
 							<li>
-									<a href="http://linkedin.com" target="_blank" class="i_header"><i class="fa fa-linkedin"></i></a>	
+								<a href="http://linkedin.com" target="_blank" class="i_header"><i class="fa fa-linkedin"></i></a>	
 							</li>
 							<li>
 								<a href="http://facebook.com" target="_blank" class="i_header"> <i class="fa fa-facebook"></i> </a>
@@ -242,22 +132,22 @@
 										</li>
 									</ul>
 								</li>								
-									<li>
-										<a href="#" id="news"><?php echo $menus_news; ?></a>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-										role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
-										<ul class="dropdown-menu header-menu" role="menu">										
-											<li>
-												<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
-											</li>
-											<hr/>
-											
-											<li>
-												<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>
-											</li>
-											<li>
+								<li>
+									<a href="#" id="news"><?php echo $menus_news; ?></a>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+									role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
+									<ul class="dropdown-menu header-menu" role="menu">										
+										<li>
+											<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
+										</li>
+										<hr/>
+
+										<li>
+											<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>
+										</li>
+										<li>
 											<a href="<?php echo base_url(); ?>staticPagesController/services/2"><?php echo $menus_system_integration[0]; ?>
 												<br />
 												<?php echo $menus_system_integration[1]; ?></a>

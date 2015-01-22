@@ -39,7 +39,7 @@ class Model_homepage extends CI_Model {
 	//function that gets all the news from the database intendet to be displayed on the main page. 
 	//It has a lang argument that tells us which language is used on the page. Depending on that value we select
 	//the right translation for the news.
-	public function get_all_news_homepage($lang){
+	public function get_all_news_homepage($lang,$offset){
 		
 		$this->db->select('n.id, n.news_image_url, tc.title');
 		$this->db->from('news n');		
@@ -51,6 +51,7 @@ class Model_homepage extends CI_Model {
 			$this->db->where('tc.lang = 1');
 		}
 
+		$this->db->limit(6, $offset);
 		$query = $this->db->get();
 
 		$result = array();

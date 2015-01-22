@@ -20,7 +20,6 @@ jQuery(document).ready(function() {
 				} else{
 					$('#user-notification').removeClass('fa-spinner fa-spin').addClass('fa-times');
 					$('#user-notification').parent().parent().addClass('has-error');
-
 				};
 			}
 

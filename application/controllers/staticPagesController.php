@@ -28,6 +28,8 @@ class StaticPagesController extends CI_Controller{
 		$this->load->view("homePage", $data_home_page);
 	}
 
+	//creates the news homepage slider
+
 	public function get_all_news_homepage(){
 
 		$session_lang = $this->session->userdata('site_lang');
@@ -37,7 +39,13 @@ class StaticPagesController extends CI_Controller{
 		}		
 		else $lang = 'english';
 
-		$all_news = $this->model_homepage->get_all_news_homepage($lang);
+		$offset = $this->input->post('offset');
+		if ($offset == false) {
+			$all_news = $this->model_homepage->get_all_news_homepage($lang, 0);
+		}else{
+			$all_news = $this->model_homepage->get_all_news_homepage($lang,$offset);
+		}
+
 		$all_news_views = array();
 
 		foreach($all_news as $news){
@@ -50,16 +58,33 @@ class StaticPagesController extends CI_Controller{
 
 			array_push($all_news_views, $view_temp);
 
-		}
 
+		}
+		$outputArray = array();
 		//$data['all_news'] = $all_news;
 		//$data['all_news_views'] = $all_news_views;
-
+		// $arrayName = array('' => , );
 		/*$this->load->view('temp_p', $data, FALSE);*/
-		return $all_news_views;
+		if (empty($offset)) {
+			return $all_news_views;
+		}else{ 
+			$outputArray['data'] = $all_news_views;
+			if (count($all_news_views) == 6) {
+				$outputArray['allLoaded'] = false;
+			} else {
+				$outputArray['allLoaded'] = true;
+			}
+			
+			echo json_encode($outputArray);
+		}
 
 	}
 	
+	public function test()
+	{
+			echo "<p>Borka</p>";
+		
+	}
 	//function that retrieves the data for a news with the id given as argument. It should then load the 
 	//view_news_preview view, that displays the retrieved news.
 	public function show_news_homepage($id){			
@@ -142,7 +167,7 @@ class StaticPagesController extends CI_Controller{
 			$data_temp["about_us_mission"] = $mission_array;
 
 			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
-						
+
 		}
 
 		else if($page == 2){
@@ -150,7 +175,7 @@ class StaticPagesController extends CI_Controller{
 			$data_temp["about_us_vision_subtitle"] = $this->lang->line("about_us_vision_subtitle");			
 
 			$data_services["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
-						
+
 		}
 		
 
@@ -186,7 +211,7 @@ class StaticPagesController extends CI_Controller{
 			$data_temp["services_engineering_content"] = $services_engineering_array;
 
 			$data_services["services_page"] = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
-						
+
 		}
 
 		else if($page == 2){
@@ -202,7 +227,7 @@ class StaticPagesController extends CI_Controller{
 			$data_temp["services_system_integration_list"] = $services_system_integration_list_array;
 
 			$data_services["services_page"] = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
-						
+
 		}
 
 		else if($page == 3){
@@ -280,7 +305,7 @@ class StaticPagesController extends CI_Controller{
 		$data["contact_message_placeholder"]	= $this->lang->line("contact_message_placeholder");
 		$data["contact_btn_send"]	= $this->lang->line("contact_btn_send");
 		$data["contact_success_message"] = $this->lang->line("contact_success_message");
- 
+
 
 		return $data;
 	}
@@ -307,7 +332,7 @@ class StaticPagesController extends CI_Controller{
 			$data_temp["about_us_mission"] = $mission_array;
 
 			$data = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
-						
+
 		}
 
 		else if($page == 2){
