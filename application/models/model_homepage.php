@@ -51,6 +51,7 @@ class Model_homepage extends CI_Model {
 			$this->db->where('tc.lang = 1');
 		}
 
+		$this->db->order_by('n.created_at', 'desc');
 		$this->db->limit(6, $offset);
 		$query = $this->db->get();
 

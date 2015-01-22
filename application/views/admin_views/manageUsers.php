@@ -80,10 +80,11 @@
 								?>
 								</td>									
 								<td>					
-									<button id="changeRole" class="btn btn-primary btn-block ">Change Role</button>
 									<?php if ($user->protected == 1) { ?>
+									<button id="changeRole" class="btn btn-primary btn-block" <?php echo "disabled=\"disabled\""; ?>>Change Role</button>
 									<button class="btn btn-danger  delete btn-block" <?php echo "disabled=\"disabled\""; ?> data-toggle="modal" data-target="#modalDelete">Delete</button>
 									<?php }else{ ?>
+									<button id="changeRole" class="btn btn-primary btn-block ">Change Role</button>
 									<button id="delete-user" class="btn btn-danger  delete btn-block " data-toggle="modal" data-target="#modalDelete">Delete</button>
 								<?php } ?>
 								</td>
