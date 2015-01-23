@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+
 	<title>Admin</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
@@ -567,14 +569,12 @@
 				  </div>
 
 				</div>
-
-				<a href="<?php echo base_url(); ?>staticPagesAdminController/edit_static_pages_info"> &lt&lt BACK</a>
-
+				
 			</div>
 
 		</div>
 
 	</div>
-
+<div style="height:100px;"></div>
 </body>
 </html>

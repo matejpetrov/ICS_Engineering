@@ -1,28 +1,38 @@
 
 function about_us_ajax_page(page_id){
 
-		var controller = "staticPagesController/";
-		var func = "ajax_about_us_page_navigation";	
+	var controller = "staticPagesController/";
+	var func = "ajax_about_us_page_navigation";	
 
-		var temp = page_id;	
+	var temp = page_id;	
 
-		var base_url = document.getElementById('base_url').value;
+	var base_url = document.getElementById('base_url').value;
 
-		var url = base_url + controller + func;
+	var url = base_url + controller + func;
 
-		$.ajax({
-		      'url' : url,        
-		      'type' : 'POST', //the way you want to send data to your URL
-		      //in the post object i am sending this parameter.
-		      'data' : {'page_id':temp},
-		      'dataType' : 'html',
-		      'success' : function(data){ //probably this request will return anything, it'll be put in var "data"
-		          var container = $('#content-container'); //jquery selector (get element by id)
-		          if(data){
-		        	container.html(data);
-		          }
-		      }
-		});
+	$.ajax({
+		'url' : url,        
+		'type' : 'POST', 
+
+		'data' : {'page_id':temp},
+
+		'dataType' : 'html',
+		beforeSend:function(){
+			$('li').removeClass('active');
+			$('a').removeClass('sub-selected');
+
+		},
+		'success' : function(data){ 
+			var container = $('#content-container');
+			if(data){
+				container.html(data);
+			}
+		}
+	}).done(function() {
+		$('.sidebar').find('#' + temp).addClass('active');
+		$('#about_' + temp).addClass('sub-selected');
+		window.history.pushState("", "", window.location.href.replace(/[0-9]#/, page_id));
+	});
 
 }
 
@@ -38,17 +48,26 @@ function services_ajax_page(page_id){
 	var url = base_url + controller + func;
 
 	$.ajax({
-	      'url' : url,        
-	      'type' : 'POST', //the way you want to send data to your URL
-	      //in the post object i am sending this parameter.
-	      'data' : {'page_id':temp},
-	      'dataType' : 'html',
-	      'success' : function(data){ //probably this request will return anything, it'll be put in var "data"
-	          var container = $('#content-container'); //jquery selector (get element by id)
-	          if(data){
-	        	container.html(data);
-	          }
-	      }
-	});	
+		'url' : url,        
+		'type' : 'POST', 
+
+		'data' : {'page_id':temp},
+		'dataType' : 'html',
+		beforeSend:function(){
+			$('li').removeClass('active');
+			$('a').removeClass('sub-selected');
+
+		},
+		'success' : function(data){ 
+			var container = $('#content-container');
+			if(data){
+				container.html(data);
+			}
+		}
+	}).done(function() {
+		$('.sidebar').find('#' + temp).addClass('active');
+		$('#services_' + temp).addClass('sub-selected');
+		window.history.pushState("", "", window.location.href.replace(/[0-9]#/, page_id));
+	});
 
 }

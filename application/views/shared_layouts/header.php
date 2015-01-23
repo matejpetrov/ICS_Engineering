@@ -109,24 +109,24 @@
 								role="button" aria-expanded="false" id="about_us"> <?php echo $menus_about_us; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu header-menu" role="menu">
 									<li>
-										<a href="<?php echo base_url(); ?>staticPagesController/about_us/0" class="submenu"><?php echo $menus_about_us; ?></a>
+										<a href="<?php echo base_url(); ?>staticPagesController/about_us/0" id="about_0"><?php echo $menus_about_us; ?></a>
 									</li>
 									<hr/>										
 									<li>
-										<a href="<?php echo base_url(); ?>staticPagesController/about_us/1"><?php echo $menus_mission; ?></a>
+										<a href="<?php echo base_url(); ?>staticPagesController/about_us/1" id="about_1"><?php echo $menus_mission; ?></a>
 									</li>
 									<li>
-										<a href="<?php echo base_url(); ?>staticPagesController/about_us/2"><?php echo $menus_vision; ?></a>
+										<a href="<?php echo base_url(); ?>staticPagesController/about_us/2" id="about_2"><?php echo $menus_vision; ?></a>
 									</li>
 									<li>
-										<a href="#"><?php echo $menus_structure; ?></a>
+										<a href="#" id="about_3"><?php echo $menus_structure; ?></a>
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a href="#"><?php echo $menus_partners; ?></a>
+										<a href="#" id="about_4"><?php echo $menus_partners; ?></a>
 									</li>
 									<li>
-										<a href="#"><?php echo $menus_corporate_info[0]; ?>
+										<a href="#" id="about_5"><?php echo $menus_corporate_info[0]; ?>
 											<br />
 											<?php echo $menus_corporate_info[1]; ?></a>
 										</li>
@@ -140,20 +140,20 @@
 									role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
 									<ul class="dropdown-menu header-menu" role="menu">										
 										<li>
-											<a href="<?php echo base_url(); ?>staticPagesController/services/0"><?php echo $menus_services; ?></a>
+											<a href="<?php echo base_url(); ?>staticPagesController/services/0" id="services_0"><?php echo $menus_services; ?></a>
 										</li>
 										<hr/>
 
 										<li>
-											<a href="<?php echo base_url(); ?>staticPagesController/services/1"><?php echo $menus_engineering; ?></a>
+											<a href="<?php echo base_url(); ?>staticPagesController/services/1" id="services_1"><?php echo $menus_engineering; ?></a>
 										</li>
 										<li>
-											<a href="<?php echo base_url(); ?>staticPagesController/services/2"><?php echo $menus_system_integration[0]; ?>
+											<a href="<?php echo base_url(); ?>staticPagesController/services/2" id="services_2"><?php echo $menus_system_integration[0]; ?>
 												<br />
 												<?php echo $menus_system_integration[1]; ?></a>
 											</li>
 											<li>
-												<a href="<?php echo base_url(); ?>staticPagesController/services/3"><?php echo $menus_consulting; ?></a>
+												<a href="<?php echo base_url(); ?>staticPagesController/services/3" id="services_3"><?php echo $menus_consulting; ?></a>
 											</li>
 										</ul>
 									</li>

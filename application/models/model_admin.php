@@ -95,10 +95,19 @@ class Model_admin extends CI_Model {
 
 		return $query;
 	}
+
 	public function deleteUser($id){
 		$this->db->where('id', $id);
 		$this->db->delete('users');
 	}
+
+	public function getUserRole($id){
+		$this->db->select('role');
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+		return $query->row()->role;
+	}
+
 	public function changeRole($id){
 		$this->db->where('id', $id);
 		$query = $this->db->get('users');
@@ -264,7 +273,8 @@ class Model_admin extends CI_Model {
 
 	//functions that retrieves all the homepage images from the database, intended to be shown in the 
 	//homepage slider. 
-	public function getSliderImages(){	
+	public function getSliderImages(){
+		$this->db->order_by('id', 'desc');	
 		$result = $this->db->get('homepage_images');
 		return $result;
 	}	

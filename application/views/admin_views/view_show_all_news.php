@@ -91,7 +91,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="delete-cancel-btn">Close</button>
-					<button type="button" class="btn btn-primary" id="delete-news-btn">Save changes</button>
+					<button type="button" class="btn btn-danger" id="delete-news-btn">Delete</button>
 				</div>
 			</div>
 		</div>

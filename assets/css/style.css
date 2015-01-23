@@ -77,7 +77,7 @@ i {
     transition: 0.3s ease-in-out;
 }
 .header-menu > li > a:hover{
-    color: #CD5A01;
+    /*color: #CD5A01;*/
     background-color: #ffffff;
     background-image: none;    
     border-left: 3px solid #CD5A01;
@@ -126,13 +126,23 @@ div.collapse-custom > ul > li > a:hover {
 
     /*border-top: 2px solid #CD5A01;*/
 }
-div.collapse-custom > ul >li> a.selected {
+div.collapse-custom > ul > li > a.selected {
     border-bottom: 2px solid #CD5A01;
     border-top: 2px solid #CD5A01;
     color: #CD5A01 !important;
     background-color: #FFFFFF !important;
 }
-
+.sub-selected{
+     color: #CD5A01 !important;
+    background-color: #ffffff;
+    background-image: none;    
+    border-left: 3px solid #CD5A01;
+    border-right: 3px solid #CD5A01;
+    /*background-color: #cd5a01;
+    color: #ffffff !important;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;*/
+}
 .nav-custom {
     margin-bottom: 0px;
     border-bottom-width: 0px;
@@ -274,17 +284,59 @@ img.img-rounded {
 div.news-row {
     background-color: #F8F8F8;
 }
-div.col-md-3, .news {
-    margin-right: 20px;
-    padding-top: 30px;
-    height: 460px;
-    z-index: 1;
-    background-color: #FFFFFF;
-}
+
+
 .marketing {
     text-align: center;
     margin-bottom: 40px;
 }
+
+/* About us and Services styles Begin */
+
+.sidebar {
+    margin-top: 26px;
+    margin-bottom: 15px;
+}
+.sidebar > li + li {
+    margin-top: 0;
+    border-top: 1px dotted;
+}
+.sidebar > li > a {
+    color: #CD5A01;
+    background-color: #ffffff;
+}
+.sidebar > li > a:hover {
+    border-radius: 0px;
+}
+.sidebar > li.active {
+    border: none;
+}
+.sidebar > li.active + li {
+    border: none;
+}
+.sidebar > li.active > a {
+    background-color: #CD5A01;
+    color: #ffffff;
+    border-radius: 0px;
+}
+.sidebar > li.active > a:hover {
+    background-color: #CD5A01;
+    color: #ffffff;
+}
+.sidebar > li.active > a:focus {
+    background-color: #CD5A01;
+    color: #ffffff;
+}
+
+div#content-container {
+    margin-bottom: 60px;
+    min-height: 250px;
+}
+
+
+
+/* About us and Services styles End */
+
 
 
 
@@ -443,6 +495,7 @@ div.news-page>.row>.col-md-12 {
 /* Admin Page Styles */
 
 div.control-pannel-item {
+    background-color: #ffffff;
     margin-bottom: 20px;
     border: 1px solid;
     margin-left: 4%;

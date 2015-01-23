@@ -411,8 +411,12 @@ class Admin extends CI_Controller {
 	
 	public function showAddUser(){
 		$data_addUser['header'] = $this->checkIfLogedIn();
-		$this->load->view('admin_views/addUser',$data_addUser);
 
+		if ($this->checkSuperUser()) {
+			$this->load->view('admin_views/addUser',$data_addUser);	
+		} else {
+			$this->show_error_user_role();
+		}
 	}
 	
 	public function addNewUser(){
@@ -509,9 +513,13 @@ class Admin extends CI_Controller {
 
 	public function showAllUsers(){
 		$data_showUser['header'] = $this->checkIfLogedIn();
-		$data_showUser['users'] = $this->model_admin->getAllUsers();
-
-		$this->load->view('admin_views/manageUsers', $data_showUser);
+		if ($this->checkSuperUser()) {
+			$data_showUser['users'] = $this->model_admin->getAllUsers();
+			$this->load->view('admin_views/manageUsers', $data_showUser);		
+		} else {
+			$this->show_error_user_role();
+		}
+		
 	}
 
 	public function deleteUser(){
@@ -521,11 +529,26 @@ class Admin extends CI_Controller {
 		$this->output->set_output(json_encode($data));
 	}	
 
-
+	public function show_error_user_role(){
+		$data['header'] = $this->checkIfLogedIn();
+		$this->load->view('admin_views/role_error', $data, FALSE);
+		
+	}
 
 
 	//========================================================================================================
 	//private functions
+
+	private function checkSuperUser(){
+		$userID = $this->session->userdata('user_id');
+		$role = $this->model_admin->getUserRole($userID);
+		if ($role == 2) {
+			return true;			
+		} else {
+			return false;
+		}
+		
+	}
 
 	private function generateAuthCode($lenght)
 	{

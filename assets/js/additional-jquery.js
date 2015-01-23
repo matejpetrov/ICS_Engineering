@@ -11,10 +11,14 @@ $(document).ready(function(){
 			if(prelast == 'about_us'){
 				$('#about_us').addClass('selected');
 				$('#about_us_footer').addClass('selected');
+				$('.sidebar').find('#' + last).addClass('active');
+				$('#about_' + last).addClass('sub-selected');
 			}
 			else if(prelast == 'services'){
 				$('#services').addClass('selected');
 				$('#services_footer').addClass('selected');
+				$('.sidebar').find('#' + last).addClass('active');
+				$('#services_' + last).addClass('sub-selected');
 			}
 			else if(prelast == 'show_news_homepage'){
 				$('#news').addClass('selected');
@@ -23,8 +27,8 @@ $(document).ready(function(){
 		}
 
 
-		$('#' + last).addClass('selected');
-		$('#' + last + '-footer').addClass('selected');
+		$('a#' + last).addClass('selected');
+		$('a#' + last + '-footer').addClass('selected');
 	}else{
 		$('#home').addClass('selected');
 		$('#home-footer').addClass('selected');
