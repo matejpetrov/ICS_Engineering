@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
 
 		if (current == (length) && !(allLoaded) && (done) && (lock)) {					
 			$.ajax({
-				url: base_url + 'staticPagesController/get_all_news_homepage',
+				url: base_url + 'static_pages_controller/get_all_news_homepage',
 				cache:false,
 				type: 'post',
 				dataType: 'json',

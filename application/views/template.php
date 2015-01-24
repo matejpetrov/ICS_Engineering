@@ -265,7 +265,7 @@
 								</li>
 
 								<li class="last">
-									<a href="staticPagesController/contact" id="kontakt"><?php echo $menus_contact; ?></a>
+									<a href="static_pages_controller/contact" id="kontakt"><?php echo $menus_contact; ?></a>
 								</li>
 							</ul>
 						</div>

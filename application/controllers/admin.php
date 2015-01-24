@@ -448,7 +448,7 @@ class Admin extends CI_Controller {
 			$data['id'] = $id;
 			$this->load->view('admin_views/changePassword',$data);
 		} else {
-			redirect('staticPagesController', 'refresh');
+			redirect('static_pages_controller', 'refresh');
 		}
 	}
 

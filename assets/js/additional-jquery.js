@@ -35,7 +35,7 @@ $(document).ready(function(){
 	};
 	var base_url = $('#base_url').val();
 	$.ajax({
-		url: base_url + 'staticPagesController/getSetLanguageAjax',
+		url: base_url + 'static_pages_controller/getSetLanguageAjax',
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
@@ -51,9 +51,10 @@ $(document).ready(function(){
 		$form.find('input:radio, input:checkbox')
 		.removeAttr('checked').removeAttr('selected');
 	};
+
 	$('#sendMail').click(function() 
 	{
-		base_url = $('#base_url').val;
+		base_url = $('#base_url').val();
 		var newText = $('#msg').val(); //value
 		newText = newText.replace(/\r?\n/g, '<br />');	
 		// alert(url);
