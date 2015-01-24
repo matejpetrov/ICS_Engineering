@@ -361,6 +361,7 @@ div.footer-cprt > .container-fluid {
     list-style: none;
     padding-bottom: 10px;
     padding-left: 0;
+    padding-right: 0;
     margin: 0;
 }
 ul.footer-nav > li {
@@ -396,6 +397,7 @@ div.footer {
 ul.social-media {
     text-align: center;
     margin-bottom: 15px;
+    padding: 0;
 }
 ul.social-media > li > a {
     color: #FFFFFF;
@@ -697,7 +699,8 @@ div.static-pages-content{
 
 /* Responsive media Begin */
 
-@media screen and (max-width: 991px) {} @media screen and (max-width: 751px) {
+@media screen and (max-width: 991px) {} 
+@media screen and (max-width: 751px) {
     ul.footer-nav > li > a {
         padding-right: 30px;
     }

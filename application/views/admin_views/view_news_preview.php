@@ -93,7 +93,7 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<img src="<?php echo $news_image_url; ?>" alt="News main image" class="img-responsive"
+					<img src="<?php echo base_url().$news_image_url; ?>" alt="News main image" class="img-responsive"
 					width="300" height="300" />
 				</div>
 			</div>

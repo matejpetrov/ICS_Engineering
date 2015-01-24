@@ -62,7 +62,8 @@ class Admin extends CI_Controller {
 		}
 
 		$created_at = date("Y-m-d");
-		$news_image_url = base_url().$config['upload_path'].'/'.$image['name'];
+		// $homepage_image_url = $upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+		$news_image_url = $config['upload_path'].'/'.$image['name'];
 
 		$news_title_english = $post["news_title_english"];
 		$news_content_english = $post["editorEnglish"];

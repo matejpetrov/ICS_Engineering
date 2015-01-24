@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
 	lock = false,
 	tempLength = 6,
 	base_url = $('#base_url').val(),
-	loading = "<div class=\"loading\"><img src=\"http://localhost/ICS_Engineering/assets/images/camera-loader.gif\" /></div>";
+	loading = "<div class=\"loading\"><img src=\"" + base_url + "assets/images/camera-loader.gif\" /></div>";
 	owl.owlCarousel({
 		items : 3,
 		navigation : true,

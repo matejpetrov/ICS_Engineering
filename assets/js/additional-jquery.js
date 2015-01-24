@@ -53,10 +53,7 @@ $(document).ready(function(){
 	};
 	$('#sendMail').click(function() 
 	{
-		pathArray = window.location.href.split( '/' );
-		protocol = pathArray[0];
-		host = pathArray[2];
-		base_url = protocol + '//' + host+'/'+pathArray[3]+'/';
+		base_url = $('#base_url').val;
 		var newText = $('#msg').val(); //value
 		newText = newText.replace(/\r?\n/g, '<br />');	
 		// alert(url);

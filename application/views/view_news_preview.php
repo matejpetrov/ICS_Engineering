@@ -18,7 +18,7 @@
 			</div>
 
 			<div style="text-align: center; margin-bottom: 20px;">
-				<img src="<?php echo $news_image_url; ?>" style="width: 800px; height: 400px;" />
+				<img src="<?php echo base_url().$news_image_url; ?>" style="width: 800px; height: 400px;" />
 			</div>
 
 			<?php echo $content; ?>

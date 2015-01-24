@@ -64,10 +64,10 @@
 					<div class="col-md-12 lang">
 						<ul class="user-info-list">
 							<li>
-								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/english" class="english">EN</a>
+								<a href="<?php echo base_url(); ?>langSwitch/switchLanguage/english" class="english">EN</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url(); ?>langswitch/switchLanguage/macedonian" class="macedonian">MK</a>
+								<a href="<?php echo base_url(); ?>langSwitch/switchLanguage/macedonian" class="macedonian">MK</a>
 							</li>
 							<li>
 								<a href="http://youtube.com" target="_blank" class="i_header"> <i class="fa fa-youtube-play"></i> </a>

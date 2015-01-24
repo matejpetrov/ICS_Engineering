@@ -2,10 +2,11 @@ jQuery(document).ready(function() {
 
 
 $( document ).ready(function() {            
+    var base_url = $('#base_url').val();
 
     $("#file-input").fileinput(
     {
-        'uploadUrl':'http://localhost/ICS_Engineering/admin/add_slider_images',
+        'uploadUrl':base_url + 'admin/add_slider_images',
         'previewFileType':'image',
         'allowedFileExtensions':['jpg','png','gif'],
         'maxFileCount':3
