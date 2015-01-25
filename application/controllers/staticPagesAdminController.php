@@ -13,6 +13,7 @@ class StaticPagesAdminController extends CI_Controller {
 		
 		$this->load->model('model_admin', 'model_admin', TRUE);
 		$this->load->model('model_about_us_pages', 'model_about_us_pages', TRUE);
+		$this->load->model('model_services_pages', 'model_services_pages', TRUE);
 
 	}
 
@@ -181,14 +182,111 @@ class StaticPagesAdminController extends CI_Controller {
 	}
 
 
-
+	//========================================================================================================
+	//admin services pages
 
 	//function that shows the services page where we can add the content of the static pages under the 
 	//services tab.
 	public function show_services_pages(){
+		$data['header'] = $this->checkIfLoggedIn();
+
+		$services_db = $this->model_services_pages->get_all_services_content();
+
+
+		foreach($services_db as $aud){
+			if($aud['lang'] == 0){
+				$data['services_english'] = $aud;
+			}
+			else{
+				$data['services_macedonian'] = $aud;	
+			}
+		}
+
+		$this->load->view('admin_views/view_services_pages_forms', $data, FALSE);
+	}
+
+	//function that is invoked from the services tab in the services_page and here we should update the content of the 
+	//services page
+	public function update_services_content(){
+
+		$services_english = $_POST['editorServicesEnglish'];
+		$services_macedonian = $_POST['editorServicesMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_services_pages->update_services_content($services_english, $services_macedonian)){
+			$json = "{message:".$services_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
 
 	}
 
+	public function update_engineering_content(){
+
+		$engineering_english = $_POST['editorEngineeringEnglish'];
+		$engineering_macedonian = $_POST['editorEngineeringMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_services_pages->update_engineering_content($engineering_english, $engineering_macedonian)){
+			$json = "{message:".$engineering_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+
+	}
+
+	public function update_system_integration_content(){
+
+		$system_integration_english = $_POST['editorSystemIntegrationEnglish'];
+		$system_integration_macedonian = $_POST['editorSystemIntegrationMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_services_pages->update_system_integration_content($system_integration_english, $system_integration_macedonian)){
+			$json = "{message:".$system_integration_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+
+
+	}
+
+	public function update_consulting_content(){
+
+		$consulting_english = $_POST['editorConsultingEnglish'];
+		$consulting_macedonian = $_POST['editorConsultingMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_services_pages->update_consulting_content($consulting_english, $consulting_macedonian)){
+			$json = "{message:".$consulting_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+
+	}
 
 
 

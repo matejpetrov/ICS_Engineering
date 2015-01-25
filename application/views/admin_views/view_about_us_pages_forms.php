@@ -73,7 +73,6 @@
 
 		}
 
-
 		function enableMissionEdit(){
 
 			var btnText = $("#edit-mission-content").html();

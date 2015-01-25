@@ -1,4 +1,5 @@
-//file where we will implement the functions for sending AJAX calls to the server and change the DOM content upon success.
+//file where we will implement the functions for sending AJAX calls to the server and change the DOM content 
+//upon success for the about us pages.
 
 function update_about_us_AJAX(){
 
