@@ -38,9 +38,18 @@
 |
 */
 
-$route['default_controller'] = "static_pages_controller";
+// $route['default_controller'] = "static_pages_controller";
+// $route['404_override'] = '';
+
+$default_controller = "static_pages_controller";
+$controller_exceptions = array('admin');
+
+$route['default_controller'] = $default_controller;
+// $route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $default_controller.'/$1';
+// $route['static_pages_controller/(:any)']= $default_controller.'/$1';
 $route['404_override'] = '';
 
+$route['news/(:any)'] = 'static_pages_controller/show_news_homepage/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
