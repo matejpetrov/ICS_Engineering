@@ -58,7 +58,7 @@
 								<td><?php echo $value['title_macedonian']; ?></td>
 								<td><?php echo $value['title_english']; ?></td>					
 								<td>
-									<img src="<?php echo $value['news_image_url']; ?>" style="height: 100px;width: 250px;" class="news_main_image" />
+									<img src="<?php echo base_url() . $value['news_image_url']; ?>" style="height: 100px;width: 250px;" class="news_main_image" />
 								</td>					
 								<td>					
 									<a href="<?php echo base_url() . "admin/show_news/" . $key; ?>" class="btn btn-primary btn-block">Preview</a>

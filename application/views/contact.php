@@ -22,10 +22,14 @@
 				<div class="form-group">
 					<label><?php echo $contact_message; ?></label>
 					<textarea name="msg" id="msg" class="form-control" placeholder="<?php echo $contact_message_placeholder; ?>" ></textarea>
-					<!-- <input id="sendMail" name="sendMail" type="submit" class="btn btn-default" value="<?php //echo $contact_btn_send; ?>"> -->
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" id="myself" name="myself"> <?php echo $contact_checkbox; ?>
+					</label>
+				</div>
+				<div class="form-group">
 					<button id="sendMail" name="sendMail" class="btn btn-default" ><?php echo $contact_btn_send; ?></button>
-						 <!-- <?php //echo $contact_btn_send; ?> -->
-					<!-- </button> -->
 				</div>
 			</form>
 		</div>

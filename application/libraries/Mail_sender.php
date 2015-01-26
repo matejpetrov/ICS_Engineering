@@ -26,7 +26,8 @@ class Mail_sender
 		$this->mail->SMTPSecure = '';
 		$this->mail->Username = "borka@ekoplast.com.mk";
 		$this->mail->Password = "Kondura2359";
-		$this->address="borka@ekoplast.com.mk";
+		// $this->address="borka@ekoplast.com.mk";
+		// $this->mail->addAddress("borka@ekoplast.com.mk");
 		$this->mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.		
 		
 		
@@ -39,7 +40,12 @@ class Mail_sender
 	}
 
 	public function setAddress($to){
-		$this->address=$to;
+		$this->mail->addAddress ($to);
+	}
+
+	public function setReplyTo($replyTo)
+	{
+		$this->mail->AddReplyTo($replyTo);
 	}
 
 	public function setSubject($subject){
@@ -52,7 +58,6 @@ class Mail_sender
 	}
 
 	public function sendMail(){
-		$this->mail->addAddress ($this->address);
 		return $this->mail->Send();
 	}
 

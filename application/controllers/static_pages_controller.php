@@ -51,6 +51,7 @@ class Static_pages_controller extends CI_Controller{
 		foreach($all_news as $news){
 
 			$data_temp['id'] = $news['id'];
+			$data_temp['news_url'] = $news['news_url'];
 			$data_temp['news_image_url'] = $news['news_image_url'];
 			$data_temp['title'] = $news['title'];
 
@@ -78,7 +79,7 @@ class Static_pages_controller extends CI_Controller{
 	
 	//function that retrieves the data for a news with the id given as argument. It should then load the 
 	//view_news_preview view, that displays the retrieved news.
-	public function show_news_homepage($id){			
+	public function show_news_homepage($url){			
 
 		$session_lang = $this->session->userdata('site_lang');
 
@@ -87,7 +88,7 @@ class Static_pages_controller extends CI_Controller{
 		}		
 		else $lang = 'english';
 
-		$news = $this->model_homepage->get_news_homepage($id, $lang);
+		$news = $this->model_homepage->get_news_homepage($url, $lang);
 
 		$menus_language = $this->get_menus_language_values();		
 		$contact_language = $this->get_contact_language_values();
@@ -310,6 +311,7 @@ class Static_pages_controller extends CI_Controller{
 		$data["contact_title_placeholder"]	= $this->lang->line("contact_title_placeholder");
 		$data["contact_message"]	= $this->lang->line("contact_message");
 		$data["contact_message_placeholder"]	= $this->lang->line("contact_message_placeholder");
+		$data["contact_checkbox"]	= $this->lang->line("contact_checkbox");
 		$data["contact_btn_send"]	= $this->lang->line("contact_btn_send");
 		$data["contact_success_message"] = $this->lang->line("contact_success_message");
 
