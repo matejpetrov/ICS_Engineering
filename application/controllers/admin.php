@@ -67,6 +67,8 @@ class Admin extends CI_Controller {
 
 		$news_title_english = $post["news_title_english"];
 		$news_content_english = $post["editorEnglish"];
+		$news_url_english = preg_replace('/(;|\/|:|(|)|\\\|=|\+|\"|\')/i', "", $news_title_english);
+		$news_url_english = url_title($news_url_english,'dash', true);
 
 		$news_title_macedonian = $post["news_title_macedonian"];
 		$news_content_macedonian = $post["editorMacedonian"];
@@ -74,6 +76,7 @@ class Admin extends CI_Controller {
 
 		$news = array(
 			'created_at' => $created_at,
+			'news_url' => $news_url_english,
 			'news_image_url' => $news_image_url
 			);
 

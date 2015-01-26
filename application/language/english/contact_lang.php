@@ -15,6 +15,8 @@ $lang["contact_title_placeholder"] = "Title of your message...";
 $lang["contact_message"] = "Message";
 $lang["contact_message_placeholder"] = "Content of your message...";
 
+$lang["contact_checkbox"] = "Send copy to myself";
+
 $lang["contact_btn_send"] = "Send";
 
 $lang["contact_success_message"] = "Your message is successfully sent";

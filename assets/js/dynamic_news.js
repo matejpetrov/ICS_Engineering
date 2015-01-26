@@ -43,9 +43,16 @@ jQuery(document).ready(function() {
 				},
 				success:function(data) {
 					allLoaded = data.allLoaded;
-					owl.data('owlCarousel').removeItem(tempLength);
-					owl.data('owlCarousel').addItem(data.data);
-					owl.data('owlCarousel').jumpTo(tempLength-2);
+					
+					if (data.data.length != 0) {
+						owl.data('owlCarousel').removeItem(tempLength);
+						owl.data('owlCarousel').addItem(data.data);
+						owl.data('owlCarousel').jumpTo(tempLength-2);
+					}else{
+						owl.data('owlCarousel').removeItem(length-1);
+						owl.data('owlCarousel').jumpTo(length-2);
+
+					}
 					tempLength = length;	
 				}
 			}).done(function(){

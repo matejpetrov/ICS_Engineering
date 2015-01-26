@@ -152,8 +152,8 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12 news-image-holder">
-			<img src="<?php echo $news_image_url; ?>" alt="No image yet" class="" id="news_image" />	
+		<div class="col-md-12 news-image-holder" style="text-align:center;">
+			<img class="img-responsive" src="<?php echo base_url(). $news_image_url; ?>" alt="No image yet" style="display:initial;height:350px;" id="news_image" />	
 		</div>
 	</div>
 

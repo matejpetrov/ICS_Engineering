@@ -42,21 +42,25 @@ $(document).ready(function(){
 			$('.' + data.language).addClass('active');
 		}
 
-	
+
 	});
 	
 
 	function resetForm($form) {
 		$form.find('input:text, input:password, input:file, select, textarea').val('');
-		$form.find('input:radio, input:checkbox')
-		.removeAttr('checked').removeAttr('selected');
+		$form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 	};
+
+	$('#myself').click(function(event) {
+		console.log($('input[name="myself"]').prop('checked'));
+	});
 
 	$('#sendMail').click(function() 
 	{
 		base_url = $('#base_url').val();
-		var newText = $('#msg').val(); //value
-		newText = newText.replace(/\r?\n/g, '<br />');	
+		var myself = $('input[name="myself"]').prop('checked'),
+			newText = $('#msg').val();
+			newText = newText.replace(/\r?\n/g, '<br />');	
 		// alert(url);
 		$.ajax({
 			type: "POST",
@@ -66,6 +70,7 @@ $(document).ready(function(){
 				name: $('#name').val(),
 				email: $('#email').val(),
 				subject: $('#subject').val(),
+				myself: myself,
 				message: newText
 			},
 			dataType: "json",

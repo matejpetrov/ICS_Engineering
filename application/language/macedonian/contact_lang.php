@@ -14,6 +14,8 @@ $lang["contact_title_placeholder"] = "Наслов на вашата порак�
 $lang["contact_message"] = "Message";
 $lang["contact_message_placeholder"] = "Содржина на вашата порака...";
 
+$lang["contact_checkbox"] = "Испрати копија и на себе";
+
 $lang["contact_btn_send"] = "Испрати";
 
 $lang["contact_success_message"] = "Вашата порака е успешно испратена";
