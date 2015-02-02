@@ -223,7 +223,7 @@
 
 
 				    <!-- Engineering CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="engineering">
+				    <div role="tabpanel" class="tab-pane fade in tab-container" id="engineering">
 				    	<h3>Enter the content of the engineering page</h3>
 
 				    	<form action="" method="POST">
@@ -283,7 +283,7 @@
 
 
 				    <!-- System Integration CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="system_integration">
+				    <div role="tabpanel" class="tab-pane fade in tab-container" id="system_integration">
 				    	<h3>Enter the content of the system integration page</h3>
 
 				    	<form action="" method="POST">
@@ -343,7 +343,7 @@
 
 
 				    <!-- Consulting CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="consulting">
+				    <div role="tabpanel" class="tab-pane fade in tab-container" id="consulting">
 				    	<h3>Enter the content of the consulting page</h3>
 
 				    	<form action="" method="POST">
@@ -412,6 +412,6 @@
 
 	</div>
 
-
+<div style="height:100px;"></div>
 </body>
 </html>
