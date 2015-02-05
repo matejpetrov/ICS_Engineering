@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/CKEditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/about_us_pages_AJAX.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/about_us_subpages_AJAX.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 
 
@@ -52,7 +53,7 @@
 	</style>
 
 	<script type="text/javascript">
-
+/*
 		function enableAboutUsEdit(){
 
 			var btnText = $("#edit-about-us-content").html();
@@ -71,7 +72,7 @@
 				CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
 			}
 
-		}
+		}*/
 
 		function enableMissionEdit(){
 
@@ -209,64 +210,11 @@
 				  <!-- Tab panes -->
 				  <div class="tab-content">
 				    
-				  	<!-- About us CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="about_us">
-				    	<h3>Enter the content of the about us page</h3>
+				  	<div role="tabpanel" class="tab-pane fade in active tab-container" id="about_us">
 
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorAboutUsEnglish">About us - English</label>
-				    		</div>
+				  		<?php echo $about_us_subpages; ?>
 
-				    		<div class="form-group">														
-								<textarea name="editorAboutUsEnglish" id="editorAboutUsEnglish"><?php echo $about_us_english['about_us']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorAboutUsEnglish', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-
-							<div class="form-group">
-				    			<label for="editorAboutUsMacedonian">About us - Macedonian</label>
-				    		</div>
-
-				    		<div class="form-group">																
-								<textarea name="editorAboutUsMacedonian" id="editorAboutUsMacedonian"><?php echo $about_us_macedonian['about_us']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorAboutUsMacedonian', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-																			
-
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitAboutUs" id="btnSubmitAboutUs" onclick="update_about_us_AJAX();" disabled="disabled">Save About us</button>
-				    	
-				    	<button class="btn btn-default" id="edit-about-us-content" onclick="enableAboutUsEdit();">Edit about us content</button>
-
-				    </div>
-				    <!-- About us CKEditor form end -->
+				  	</div>
 
 				    <!-- Mission CKEditor form begin -->
 				    <div role="tabpanel" class="tab-pane fade tab-container" id="mission">

@@ -40,8 +40,7 @@ class StaticPagesAdminController extends CI_Controller {
 	public function show_about_us_pages(){
 		$data['header'] = $this->checkIfLoggedIn();
 
-		$about_us_db = $this->model_about_us_pages->get_all_about_us_content();
-
+		$about_us_db = $this->model_about_us_pages->get_all_about_us_content();		
 
 		foreach($about_us_db as $aud){
 			if($aud['lang'] == 0){
@@ -52,10 +51,11 @@ class StaticPagesAdminController extends CI_Controller {
 			}
 		}
 
+		$data["about_us_subpages"] = $this->load->view('admin_views/view_about_us_subpages_forms', $data, TRUE);
+
 		$this->load->view('admin_views/view_about_us_pages_forms', $data, FALSE);
 
 	}
-
 
 	//function that is invoked from the about us tab in the about_us_page and here we should update the content of the about us page
 	public function update_about_us_content(){
@@ -77,6 +77,7 @@ class StaticPagesAdminController extends CI_Controller {
 		}
 
 	}
+
 
 
 	public function update_mission_content(){
@@ -179,8 +180,93 @@ class StaticPagesAdminController extends CI_Controller {
 			return false;
 		}
 
+	}	
+
+
+
+	//========================================================================================================
+	//about us subpages
+
+	public function update_telecommunication_content(){
+		$telecommunication_english = $_POST['editorTelecommunicationEnglish'];
+		$telecommunication_macedonian = $_POST['editorTelecommunicationMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_about_us_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian)){
+			$json = "{message:".$telecommunication_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
 	}
 
+
+	public function update_power_supply_content(){
+
+		$power_supply_english = $_POST['editorPowerSupplyEnglish'];
+		$power_supply_macedonian = $_POST['editorPowerSupplyMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_about_us_pages->update_power_supply_content($power_supply_english, $power_supply_macedonian)){
+			$json = "{message:".$power_supply_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+
+	}
+
+	public function update_audio_video_content(){
+		$audio_video_english = $_POST['editorAudioVideoEnglish'];
+		$audio_video_macedonian = $_POST['editorAudioVideoMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_about_us_pages->update_audio_video_content($audio_video_english, $audio_video_macedonian)){
+			$json = "{message:".$audio_video_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+
+	public function update_defence_security_content(){
+
+		$defence_security_english = $_POST['editorDefenceSecurityEnglish'];
+		$defence_security_macedonian = $_POST['editorDefenceSecurityMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_about_us_pages->update_defence_security_content($defence_security_english, $defence_security_macedonian)){
+			$json = "{message:".$defence_security_english."}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+
+	}
+
+
+	//========================================================================================================
 
 	//========================================================================================================
 	//admin services pages

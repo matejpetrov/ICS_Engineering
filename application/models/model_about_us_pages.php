@@ -25,8 +25,7 @@ class Model_about_us_pages extends CI_Model {
 
 		return $result;
 
-	}	
-
+	}
 
 	//function that updates the about_us content (english and macedonian) in the about_us_translation table. I will use a transaction because i am updating two rows because of the two 
 	//languages.
@@ -166,6 +165,97 @@ class Model_about_us_pages extends CI_Model {
 	}
 
 
+	//=================================================================================================
+	//about us subpages
+
+	public function update_telecommunication_content($telecommunication_english, $telecommunication_macedonian){
+		$english = array('telecommunication' => $telecommunication_english);
+		$macedonian = array('telecommunication' => $telecommunication_macedonian);
+
+		$this->db->trans_start();
+
+		$this->db->where('lang', 0);
+		$this->db->update('about_us_translation', $english);
+
+		$this->db->where('lang', 1);
+		$this->db->update('about_us_translation', $macedonian);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === FALSE){
+			return false;
+		}
+		else return true;
+	
+	}
+
+	public function update_power_supply_content($power_supply_english, $power_supply_macedonian){
+		$english = array('power-supply' => $power_supply_english);
+		$macedonian = array('power-supply' => $power_supply_macedonian);
+
+		$this->db->trans_start();
+
+		$this->db->where('lang', 0);
+		$this->db->update('about_us_translation', $english);
+
+		$this->db->where('lang', 1);
+		$this->db->update('about_us_translation', $macedonian);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === FALSE){
+			return false;
+		}
+		else return true;
+	
+	}
+
+	public function update_audio_video_content($audio_video_english, $audio_video_macedonian){
+
+		$english = array('audio-video' => $audio_video_english);
+		$macedonian = array('audio-video' => $audio_video_macedonian);
+
+		$this->db->trans_start();
+
+		$this->db->where('lang', 0);
+		$this->db->update('about_us_translation', $english);
+
+		$this->db->where('lang', 1);
+		$this->db->update('about_us_translation', $macedonian);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === FALSE){
+			return false;
+		}
+		else return true;
+
+	}
+
+	public function update_defence_security_content($defence_security_english, $defence_security_macedonian){
+
+		$english = array('defence-security' => $defence_security_english);
+		$macedonian = array('defence-security' => $defence_security_macedonian);
+
+		$this->db->trans_start();
+
+		$this->db->where('lang', 0);
+		$this->db->update('about_us_translation', $english);
+
+		$this->db->where('lang', 1);
+		$this->db->update('about_us_translation', $macedonian);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === FALSE){
+			return false;
+		}
+		else return true;
+
+	}
+
+
+	//=================================================================================================
 
 	public function get_about_us_page_content($column, $lang){
 
