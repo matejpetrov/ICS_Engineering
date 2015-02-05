@@ -26,14 +26,19 @@
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery_1.11.0.min.js'></script>		
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.snow.min.1.0.js"></script>
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery.easing.1.3.js'></script>
-	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/camera_slider/camera.js'></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/owl_carousel/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dynamic_news.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/back_top.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2tnEc20g8Oh5nhCSHHKsbLJERhS--y-k&sensor=false"></script>
+	<?php if (current_url() == base_url()) {?> 
+	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/camera_slider/camera.js'></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
+	<?php } ?>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>		
+	
+
+	<?php if (current_url() == base_url()) {?> 
 	
 	<script>
 		jQuery(function() {
@@ -52,7 +57,9 @@
 			});
 
 		});
-	</script>	
+	</script>
+	<?php } ?>
+	
 </head>
 
 <body>	
@@ -95,7 +102,7 @@
 							<span class="sr-only">Toggle navigation</span>
 							<i class="fa fa-bars fa-lg"></i>
 						</button>
-						<a href="<?php echo base_url();?>" class="navbar-brand brand-custom"><img class="logo" src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" height="75" /></a>
+						<a href="<?php echo base_url();?>" class="navbar-brand brand-custom"><img class="logo" src="<?php echo base_url(); ?>assets/images/logo_new.svg" style="height:125px;" /></a>
 					</div>
 
 					<div class="collapse navbar-collapse collapse-custom">
@@ -116,25 +123,15 @@
 										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/1" id="about_1"><?php echo $menus_mission; ?></a>
 									</li>
 									<li>
-										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/2" id="about_2"><?php echo $menus_vision; ?></a>
+										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/2" id="about_2"><?php echo $menus_partners; ?></a>
 									</li>
 									<li>
-										<a href="#" id="about_3"><?php echo $menus_structure; ?></a>
-									</li>
-									<li class="divider"></li>
-									<li>
-										<a href="#" id="about_4"><?php echo $menus_partners; ?></a>
-									</li>
-									<li>
-										<a href="#" id="about_5"><?php echo $menus_corporate_info[0]; ?>
+										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/3" id="about_3"><?php echo $menus_corporate_info[0]; ?>
 											<br />
 											<?php echo $menus_corporate_info[1]; ?></a>
 										</li>
 									</ul>
 								</li>								
-								<li>
-									<a href="#" id="news"><?php echo $menus_news; ?></a>
-								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 									role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
@@ -156,6 +153,9 @@
 												<a href="<?php echo base_url(); ?>static_pages_controller/services/3" id="services_3"><?php echo $menus_consulting; ?></a>
 											</li>
 										</ul>
+									</li>
+									<li>
+										<a href="#" id="news"><?php echo $menus_news; ?></a>
 									</li>
 									<li>
 										<a href="<?php echo base_url(); ?>static_pages_controller/webMail" id="webMail"><?php echo $menus_web_mail; ?></a>

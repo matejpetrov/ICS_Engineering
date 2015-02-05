@@ -1,6 +1,6 @@
 <?php 
 
-$lang["contact_page_title"] = "Контактирајте нè";
+$lang["contact_page_title"] = "Контакт";
 
 $lang["contact_name_surname"] = "Име и презиме";
 $lang["contact_name_surname_placeholder"] = "Внесете го вашето име и презиме...";

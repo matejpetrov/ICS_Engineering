@@ -3,8 +3,7 @@
 $lang["menus_home"] = "Дома";
 
 $lang["menus_about_us"] = "За нас";
-$lang["menus_mission"] = "Мисија";
-$lang["menus_vision"] = "Визија";
+$lang["menus_mission"] = "Мисија\Визија";
 $lang["menus_structure"] = "Структура";
 $lang["menus_partners"] = "Партнери";
 $lang["menus_corporate_info"] = "Корпорациски информации";

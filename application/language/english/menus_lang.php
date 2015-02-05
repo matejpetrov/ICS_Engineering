@@ -3,8 +3,7 @@
 $lang["menus_home"] = "Home";
 
 $lang["menus_about_us"] = "About us";
-$lang["menus_mission"] = "Mission";
-$lang["menus_vision"] = "Vision";
+$lang["menus_mission"] = "Mission\Vision";
 $lang["menus_structure"] = "Structure";
 $lang["menus_partners"] = "Partners";
 $lang["menus_corporate_info"] = "Corporate Info";

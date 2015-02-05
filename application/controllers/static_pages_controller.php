@@ -53,7 +53,16 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp['id'] = $news['id'];
 			$data_temp['news_url'] = $news['news_url'];
 			$data_temp['news_image_url'] = $news['news_image_url'];
-			$data_temp['title'] = $news['title'];
+			$title = $news['title'];
+			if (strlen($title) > 45) {
+				preg_match('/^.{1,45}\b/s', $title, $temp);
+				$short_title = $temp[0].'...';
+				$data_temp['title'] = $short_title;
+			} else {
+				$data_temp['title'] = $title;
+				
+			}
+			
 
 			$view_temp = $this->load->view('admin_views/view_news_homepage_template', $data_temp, TRUE);
 
@@ -148,7 +157,13 @@ class Static_pages_controller extends CI_Controller{
 
 		if($page == 0){
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
-			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/					
+			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/	
+
+			$data_temp["nav_about_us"] = $this->lang->line("nav_about_us");
+			$data_temp["nav_telecommunication"] = $this->lang->line("nav_telecommunication");
+			$data_temp["nav_power_supply"] = $this->lang->line("nav_power_supply");
+			$data_temp["nav_audio_video"] = $this->lang->line("nav_audio_video");
+			$data_temp["nav_defence_security"] = $this->lang->line("nav_defence_security");				
 
 			$column = 'about_us';
 
@@ -166,22 +181,33 @@ class Static_pages_controller extends CI_Controller{
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_temp["about_us_mission_page"] = $result['mission'];			
+			$data_temp["about_us_mission_page"] = $result[$column];			
 
 			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
-			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
+			$data_temp["about_us_partners_title"] = $this->lang->line("about_us_partners_title");
 			
-			$column = 'vision';
+			$column = 'partners';
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_temp["about_us_vision_page"] = $result['vision'];
+			$data_temp["about_us_partners_page"] = $result[$column];
 
-			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_partners", $data_temp, TRUE);
+
+		}else if($page == 3){
+			$data_temp["about_us_corporate_title"] = $this->lang->line("about_us_corporate_title");
+			
+			$column = 'corporate_info';
+
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_corporate_page"] = $result[$column];
+
+			$data_about_us["about_us_page"] = $this->load->view("about_us_views/view_about_us_corporate", $data_temp, TRUE);
 
 		}
 		
@@ -330,13 +356,26 @@ class Static_pages_controller extends CI_Controller{
 
 		if($page == 0){
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
-			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/					
+
+			$data_temp["nav_about_us"] = $this->lang->line("nav_about_us");
+			$data_temp["nav_telecommunication"] = $this->lang->line("nav_telecommunication");
+			$data_temp["nav_power_supply"] = $this->lang->line("nav_power_supply");
+			$data_temp["nav_audio_video"] = $this->lang->line("nav_audio_video");
+			$data_temp["nav_defence_security"] = $this->lang->line("nav_defence_security");				
 
 			$column = 'about_us';
+			$top_nav = $this->input->post('top_nav');
+
+			if (!empty($top_nav)) {
+				$column = $top_nav;
+				$nav_lang = preg_replace('/-/', '_', $top_nav);
+				$data_temp["about_us_title"] = $this->lang->line("nav_".$nav_lang);
+			}
+			
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_temp["about_us_first_page"] = $result['about_us'];
+			$data_temp["about_us_first_page"] = $result[$column];
 
 			$data_about_us = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
 
@@ -348,28 +387,43 @@ class Static_pages_controller extends CI_Controller{
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_temp["about_us_mission_page"] = $result['mission'];			
+			$data_temp["about_us_mission_page"] = $result[$column];			
 
 			$data_about_us = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
-			$data_temp["about_us_vision_title"] = $this->lang->line("about_us_vision_title");
+			$data_temp["about_us_partners_title"] = $this->lang->line("about_us_partners_title");
 			
-			$column = 'vision';
+			$column = 'partners';
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
-			$data_temp["about_us_vision_page"] = $result['vision'];
+			$data_temp["about_us_partners_page"] = $result[$column];
 
-			$data_about_us = $this->load->view("about_us_views/view_about_us_vision", $data_temp, TRUE);
+			$data_about_us = $this->load->view("about_us_views/view_about_us_partners", $data_temp, TRUE);
+
+		}else if($page == 3){
+			$data_temp["about_us_corporate_title"] = $this->lang->line("about_us_corporate_title");
+			
+			$column = 'corporate_info';
+
+			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+
+			$data_temp["about_us_corporate_page"] = $result[$column];
+
+			$data_about_us = $this->load->view("about_us_views/view_about_us_corporate", $data_temp, TRUE);
 
 		}
 
 
 		echo $data_about_us;
 
+	}
+
+	private function about_us_top_nav($column, $lang){
+		$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 	}
 
 	public function ajax_services_page_navigation(){

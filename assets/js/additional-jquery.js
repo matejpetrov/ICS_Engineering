@@ -9,10 +9,14 @@ $(document).ready(function(){
 		if($.isNumeric(last)){
 
 			if(prelast == 'about_us'){
+					getSubpage.init();
 				$('#about_us').addClass('selected');
 				$('#about_us_footer').addClass('selected');
 				$('.sidebar').find('#' + last).addClass('active');
 				$('#about_' + last).addClass('sub-selected');
+				if (last == 0) {
+					$('.top-nav').find('#' + last).addClass('active');
+				};
 			}
 			else if(prelast == 'services'){
 				$('#services').addClass('selected');
