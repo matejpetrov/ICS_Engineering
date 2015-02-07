@@ -64,6 +64,17 @@ class Model_homepage extends CI_Model {
 
 		return $result;
 
-	}		
+	}
+
+	public function getWord($lang){
+		$this->db->select('word');
+			if ($lang == 'english') {
+				$this->db->where('lang','0');
+			} else if($lang == 'macedonian') {
+				$this->db->where('lang','1');
+			}
+			$result = $this->db->get('words');
+			return $result->row()->word;
+		}	
 
 }

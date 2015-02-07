@@ -271,11 +271,43 @@ div.collapse-custom > ul > li > a.selected {
     opacity: .1;
 }
 
+.wordRight{
+    position: absolute;
+    font-size:20px;
+    color:#ffffff;
+    left: 100%;
+    /*top:5%;*/
+}
+.wordLeft{
+    position: absolute;
+    font-size:20px;
+    color:#ffffff;
+    right: 100%;
+    /*top:5%;*/
+}
+.wordTop{
+    position: absolute;
+    font-size:20px;
+    color:#ffffff;
+    bottom: 100%;
+}
+.wordBottom{
+    position: absolute;
+    font-size:20px;
+    color:#ffffff;
+    top: 100%;
+}
+.wordFade{
+    position: absolute;
+    font-size:20px;
+    color:#ffffff;
+    opacity: 0;
+}
 /* Camera Slider Styles End */
 
 .loading {
     background-color: #FFFFFF;
-    height: 435px;
+    height: 250px;
     display: block;
     padding: 30px 15px;
     margin: 0px 10px;

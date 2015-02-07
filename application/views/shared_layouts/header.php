@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2tnEc20g8Oh5nhCSHHKsbLJERhS--y-k&sensor=false"></script>
 	<?php if (current_url() == base_url()) {?> 
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/camera_slider/camera.js'></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/words_slider.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
 	<?php } ?>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>		
@@ -49,6 +50,7 @@
 				loaderColor : "#CD5A01",
 				pagination : false,
 				thumbnails : false,
+				autoAdvance: false,
 				fx: 'simpleFade',
 				hover : true,
 				opacityOnGrid : false,
@@ -108,7 +110,7 @@
 					<div class="collapse navbar-collapse collapse-custom">
 
 						<ul class="nav navbar-nav navbar-right nav-menu" id="navMenu">
-							<li class="selected">
+							<li>
 								<a href="<?php echo base_url();?>" id="home"><?php echo $menus_home; ?></a>
 							</li>
 							<li class="dropdown">

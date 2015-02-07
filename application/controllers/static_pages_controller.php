@@ -54,8 +54,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp['news_url'] = $news['news_url'];
 			$data_temp['news_image_url'] = $news['news_image_url'];
 			$title = $news['title'];
-			if (strlen($title) > 45) {
-				preg_match('/^.{1,45}\b/s', $title, $temp);
+			if (mb_strlen($title) > 45) {
+				preg_match('/^.{1,45}(\p{L}|\p{N})\b/u', $title, $temp);
 				$short_title = $temp[0].'...';
 				$data_temp['title'] = $short_title;
 			} else {
@@ -424,6 +424,12 @@ class Static_pages_controller extends CI_Controller{
 
 	private function about_us_top_nav($column, $lang){
 		$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
+	}
+
+	public function getWord(){
+		$lang = $this->session->userdata('site_lang');
+		$word = $this->model_homepage->getWord($lang);
+		echo $word;
 	}
 
 	public function ajax_services_page_navigation(){

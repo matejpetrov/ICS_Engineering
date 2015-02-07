@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#username').focus();
 	$('#loginBtn').click(function () 
 	{
 		var base_url = $('#base_url').val();

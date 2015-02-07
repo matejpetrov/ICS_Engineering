@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
 	var current,
 	owl = $('#owl-news'),
 	allLoaded = false,
