@@ -26,7 +26,7 @@
 	</style>
 </head>
 <body>
-<?php echo $header; ?>
+	<?php echo $header; ?>
 	<div class="container">
 		<input id="base_url" type="hidden" value="<?php echo base_url(); ?>" >
 		<div class="row admin-holder">
@@ -81,7 +81,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Image</h4>
 			</div>
 			<div class="modal-body">
-			
+				
 				<input type="file" name="file-input[]" size="20" id="file-input" multiple="true" />
 			</div>
 			<div class="modal-footer">

@@ -24,11 +24,11 @@
 			<div class="col-md-12"><h2>Welcome to the ICS Engineering CMS control panel</h2></div>
 		</div>
 		<div class="row admin-holder">
-			<a href="<?php echo base_url(); ?>admin/homepageSlider" class="items" >
+			<a href="<?php echo base_url(); ?>admin_images_controller/homepageSlider" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-picture-o fa-custom" ></i></br>
-						<span class="text">Manage Homepage slider images</span>
+						<span class="text">Manage Homepage Images</span>
 					</div>
 				</div>
 			</a>

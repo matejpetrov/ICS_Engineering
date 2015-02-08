@@ -49,7 +49,7 @@
 		<div class="item"><a href="http://www.overturenetworks.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/overture-networks.png" alt="Owl Image"></a></div>
 		<div class="item"><a href="http://axellwireless.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/axell-wirelss-logo.gif" alt="Owl Image"></a></div>
 		<div class="item"><a href="http://www.virtualaccess.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.srs.kiev.ua/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.srs.kiev.ua/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/srs-logo.png" alt="Owl Image"></a></div>
 		</div>
 	</div>
 </div>

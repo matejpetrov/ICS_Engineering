@@ -6,7 +6,7 @@ $( document ).ready(function() {
 
     $("#file-input").fileinput(
     {
-        'uploadUrl':base_url + 'admin/add_slider_images',
+        'uploadUrl':base_url + 'admin_images_controller/add_slider_images',
         'previewFileType':'image',
         'allowedFileExtensions':['jpg','png','gif'],
         'maxFileCount':3
@@ -90,7 +90,7 @@ $('#slider-images-container').on("click", ".icon-cancel", function (){
 $('#slider-images-container').on('click', '.active', function() {
     var base_url = $('#base_url').val();
     $.ajax({
-        url: base_url + "admin/deleteImageInSlider",
+        url: base_url + "admin_images_controller/deleteImageInSlider",
         type: 'POST',
         dataType: 'json',
         cache: false,
