@@ -20,10 +20,6 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/slider_manage.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui-min.js"></script>
 
-	<style type="text/css">
-
-		
-	</style>
 </head>
 <body>
 	<?php echo $header; ?>

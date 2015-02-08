@@ -6,19 +6,53 @@ class Admin_images_controller extends CI_Controller {
 		parent::__construct();				
 		
 		$this->load->model('model_admin', 'model_admin', TRUE);
+		$this->load->model('model_homepage', 'model_homepage', TRUE);
 
 	}
 
 	public function index()
 	{
-		$this->homepageSlider();
+		$data_slider['header'] = $this->checkIfLogedIn();
+		$this->load->view('manage_images/view_manage_images', $data_slider, FALSE);
+
+	}
+
+	public function homepageWords(){
+		$data_words['header'] = $this->checkIfLogedIn();		
+		$data_words['english'] = $this->model_homepage->getAllWords(0);
+		$data_words['macedonian'] = $this->model_homepage->getAllWords(1);
+		$this->load->view('manage_images/manage_words', $data_words, FALSE);
+		
+	}
+
+	public function deleteWords(){
+		$wordsID=$this->input->post('words');
+		$this->model_homepage->deleteWords($wordsID);
+	}
+
+	public function addWords(){
+		$words=$this->input->post('words');
+		$lang = $this->input->post('lang');
+		$words = explode(';', $words);
+		$words = array_filter($words);
+
+		$result = $this->model_homepage->insertWords($words,$lang);
+		// if ($result) {
+
+			$this->output->set_output(json_encode($result));
+		// } else {
+			// $this->output->set_output(json_encode($array('result' =>'error')));
+		// }
+		
+
 	}
 
 	public function homepageSlider(){
 		$data_slider['header'] = $this->checkIfLogedIn();
 		$data_slider['images'] = $this->model_admin->getSliderImages();
-		$this->load->view('admin_views/manageSlider', $data_slider, FALSE);
+		$this->load->view('manage_images/manage_slider', $data_slider, FALSE);
 	}
+
 
 	public function deleteImageInSlider(){
 		$this->checkIfLogedIn();

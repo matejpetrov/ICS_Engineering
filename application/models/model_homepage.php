@@ -68,13 +68,43 @@ class Model_homepage extends CI_Model {
 
 	public function getWord($lang){
 		$this->db->select('word');
-			if ($lang == 'english') {
-				$this->db->where('lang','0');
-			} else if($lang == 'macedonian') {
-				$this->db->where('lang','1');
-			}
-			$result = $this->db->get('words');
-			return $result->row()->word;
-		}	
+		if ($lang == 'english') {
+			$this->db->where('lang','0');
+		} else if($lang == 'macedonian') {
+			$this->db->where('lang','1');
+		}
+		$query = $this->db->get('words');
+		$resultNum = count($query->result());
+		$random = rand(0,$resultNum-1);
+		$data = $query->result_array();
+		return ($data[$random]['word']);
+		// return $random;
+	}	
 
+	public function getAllWords($lang){
+		$this->db->where('lang', $lang);
+		$result = $this->db->get('words');
+		return $result;
+	}
+
+	public function deleteWords($ids){
+		foreach ($ids as $id) {
+			$this->db->delete('words',array('id' =>$id));
+		}
+
+	}
+
+	public function insertWords($words,$lang){
+		$arrayWord = array();
+		$arrayID = array();
+		foreach ($words as $word) {
+			$this->db->insert('words',array('word' =>$word ,'lang'=>$lang ));
+			array_push($arrayWord,$word);
+			array_push($arrayID,$this->db->insert_id());
+			
+		}
+		$array = array_combine($arrayID, $arrayWord);
+		return $array;
+	}
 }
+

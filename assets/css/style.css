@@ -133,11 +133,11 @@ div.collapse-custom > ul > li > a.selected {
     background-color: #FFFFFF !important;
 }
 .sub-selected{
-   color: #CD5A01 !important;
-   background-color: #ffffff;
-   background-image: none;    
-   border-left: 3px solid #CD5A01;
-   border-right: 3px solid #CD5A01;
+ color: #CD5A01 !important;
+ background-color: #ffffff;
+ background-image: none;    
+ border-left: 3px solid #CD5A01;
+ border-right: 3px solid #CD5A01;
     /*background-color: #cd5a01;
     color: #ffffff !important;
     border-left: 3px solid #ffffff;
@@ -213,22 +213,22 @@ div.collapse-custom > ul > li > a.selected {
 
 /* Owl Carousel Logos Styles Begin */
 .partners-logo {
-   width: 260px;
-   height: 80px;
-   -webkit-filter: grayscale(100%);
-   -moz-filter: grayscale(100%);
-   filter: grayscale(100%);
-   filter: grayscale(1);
-   -webkit-filter: grayscale(1);
-   transition: 0.4s ease-in-out;
+ width: 260px;
+ height: 80px;
+ -webkit-filter: grayscale(100%);
+ -moz-filter: grayscale(100%);
+ filter: grayscale(100%);
+ filter: grayscale(1);
+ -webkit-filter: grayscale(1);
+ transition: 0.4s ease-in-out;
 
 }
 .partners-logo:hover {
-   -webkit-filter: grayscale(0%);
-   -moz-filter: grayscale(0%);
-   filter: grayscale(0%);
-   filter: grayscale(0);
-   -webkit-filter: grayscale(0);
+ -webkit-filter: grayscale(0%);
+ -moz-filter: grayscale(0%);
+ filter: grayscale(0%);
+ filter: grayscale(0);
+ -webkit-filter: grayscale(0);
 }
 /* Owl Carousel Logos Styles End */
 
@@ -584,7 +584,7 @@ div#mailSuccess .show {
 div.contact > .input-group {
     margin-bottom: 20px;
 }
-.form-group>textarea {
+.form-group > textarea {
     margin-bottom: 15px;
     height: 220px;
     resize: none;
@@ -758,6 +758,37 @@ span.image-add {
 }
 /* Manage Slider Styles End */
 
+/* Manage Homepage Slider Words Begin */
+
+.words-language{
+    text-align: center;
+}
+.words-language > h4{
+    text-align: center;
+}
+.words{
+    padding: 0;
+}
+.words > li{
+ display: flex;
+ padding-left: 220px;
+}
+
+.modal-content{
+    text-align: center;
+}
+.modal-content > textarea{
+    width: 450px;
+    height: 200px;
+    resize:none;
+}
+.modal-buttons{
+    text-align: right;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+/* Manage Homepage Slider Words End */
 
 /* Admin Header Styles */
 
