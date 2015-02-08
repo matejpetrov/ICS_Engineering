@@ -4,7 +4,7 @@
     <li role="presentation"><a href="#telecommunication" aria-controls="telecommunication" role="tab" data-toggle="tab">Telecommunication</a></li>
     <li role="presentation"><a href="#power-supply" aria-controls="power-supply" role="tab" data-toggle="tab">Power supply</a></li>
     <li role="presentation"><a href="#audio-video" aria-controls="audio-video" role="tab" data-toggle="tab">Audio/Video</a></li>
-    <li role="presentation"><a href="#defence-security" aria-controls="defence-security" role="tab" data-toggle="tab">Defence and Security</a></li>						    
+    <li role="presentation"><a href="#defence-security" aria-controls="defence-security" role="tab" data-toggle="tab">Secure communication</a></li>						    
 </ul>
 
 
@@ -254,12 +254,12 @@
 
 	<!-- Defence Security CKEditor form begin -->
 	<div role="tabpanel" class="tab-pane fade in tab-container" id="defence-security">
-		<h3>Enter the content of the defence/security page</h3>
+		<h3>Enter the content of the secure communication page</h3>
 
 		<form action="" method="POST">
 			
 			<div class="form-group">
-				<label for="editorDefenceSecurityEnglish">Defence/Security - English</label>
+				<label for="editorDefenceSecurityEnglish">Secure Communication - English</label>
 			</div>
 
 			<div class="form-group">														
@@ -281,7 +281,7 @@
 			</script>" ?>
 
 			<div class="form-group">
-				<label for="editorDefenceSecurityMacedonian">Defence/Security - Macedonian</label>
+				<label for="editorDefenceSecurityMacedonian">Secure Communication - Macedonian</label>
 			</div>
 
 			<div class="form-group">																
@@ -305,9 +305,9 @@
 
 		</form>
 		
-		<button class="btn btn-primary" name="btnSubmitDefenceSecurity" id="btnSubmitDefenceSecurity" onclick="update_defence_security_AJAX();" disabled="disabled">Save Defence/Security</button>
+		<button class="btn btn-primary" name="btnSubmitDefenceSecurity" id="btnSubmitDefenceSecurity" onclick="update_defence_security_AJAX();" disabled="disabled">Save Secure Communication</button>
 		
-		<button class="btn btn-default" id="edit-defence-security-content" onclick="enableDefenceSecurityEdit();">Edit defence/security content</button>
+		<button class="btn btn-default" id="edit-defence-security-content" onclick="enableDefenceSecurityEdit();">Edit secure communication content</button>
 
 	</div>
 	<!-- Defence Security CKEditor form end -->

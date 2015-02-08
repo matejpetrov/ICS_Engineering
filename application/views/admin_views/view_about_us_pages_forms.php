@@ -36,7 +36,7 @@
 
 		}
 
-		#edit-about-us-content, #edit-mission-content, #edit-vision-content, #edit-structure-content, #edit-partners-content{
+		#edit-about-us-content, #edit-mission-content, #edit-partners-content{
 			
 			position: relative;
 			left: 10px;
@@ -50,130 +50,7 @@
 			top: -1px;			
 		}
 
-	</style>
-
-	<script type="text/javascript">
-/*
-		function enableAboutUsEdit(){
-
-			var btnText = $("#edit-about-us-content").html();
-			var isEnabled = $("#btnSubmitAboutUs").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitAboutUs").prop("disabled", false);				
-				$("#edit-about-us-content").html("Cancel");
-				CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitAboutUs").prop("disabled", true);				
-				$("#edit-about-us-content").html("Edit about us content");
-				CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
-			}
-
-		}*/
-
-		function enableMissionEdit(){
-
-			var btnText = $("#edit-mission-content").html();
-			var isEnabled = $("#btnSubmitMission").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitMission").prop("disabled", false);				
-				$("#edit-mission-content").html("Cancel");
-				CKEDITOR.instances.editorMissionEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorMissionMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitMission").prop("disabled", true);				
-				$("#edit-mission-content").html("Edit mission content");				
-				CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
-			}
-
-		}
-
-		function enableVisionEdit(){
-
-			var btnText = $("#edit-vision-content").html();
-			var isEnabled = $("#btnSubmitVision").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitVision").prop("disabled", false);				
-				$("#edit-vision-content").html("Cancel");
-				CKEDITOR.instances.editorVisionEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorVisionMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitVision").prop("disabled", true);				
-				$("#edit-vision-content").html("Edit vision content");				
-				CKEDITOR.instances.editorVisionEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorVisionMacedonian.setReadOnly (true);
-			}
-		
-		}
-
-		function enableStructureEdit(){
-
-			var btnText = $("#edit-structure-content").html();
-			var isEnabled = $("#btnSubmitStructure").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitStructure").prop("disabled", false);				
-				$("#edit-structure-content").html("Cancel");
-				CKEDITOR.instances.editorStructureEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorStructureMacedonian.setReadOnly (false);			
-			}
-			else{
-				$("#btnSubmitStructure").prop("disabled", true);				
-				$("#edit-structure-content").html("Edit structure content");				
-				CKEDITOR.instances.editorStructureEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorStructureMacedonian.setReadOnly (true);
-			}
-		}		
-
-		function enablePartnersEdit(){
-
-			var btnText = $("#edit-partners-content").html();
-			var isEnabled = $("#btnSubmitPartners").prop("disabled");			
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitPartners").prop("disabled", false);				
-				$("#edit-partners-content").html("Cancel");
-				CKEDITOR.instances.editorPartnersEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitPartners").prop("disabled", true);				
-				$("#edit-partners-content").html("Edit partners content");				
-				CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (true);
-			}
-
-		}
-
-		function enableCorporateInfoEdit(){
-
-			var btnText = $("#edit-corporate-info-content").html();
-			var isEnabled = $("#btnSubmitCorporateInfo").prop("disabled");			
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitCorporateInfo").prop("disabled", false);				
-				$("#edit-corporate-info-content").html("Cancel");
-				CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitCorporateInfo").prop("disabled", true);				
-				$("#edit-corporate-info-content").html("Edit corporate info content");				
-				CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
-			}
-
-		}
-
-	</script>
+	</style>	
 
 
 </head>
@@ -182,6 +59,7 @@
 	<?php echo $header; ?>	
 	
 	<input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
+	<input type="hidden" id="page" value="about us" />
 
 	<div class="success"></div>
 
@@ -200,11 +78,9 @@
 				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs nav-justified" role="tablist">
 				    <li role="presentation" class="active"><a href="#about_us" aria-controls="about_us" role="tab" data-toggle="tab">About us</a></li>
-				    <li role="presentation"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab">Mission</a></li>
-				    <li role="presentation"><a href="#vision" aria-controls="vision" role="tab" data-toggle="tab">Vision</a></li>
-				    <li role="presentation"><a href="#structure" aria-controls="structure" role="tab" data-toggle="tab">Structure</a></li>
+				    <li role="presentation"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab">Mission&Vision</a></li>				    				    
 				    <li role="presentation"><a href="#partners" aria-controls="partners" role="tab" data-toggle="tab">Partners</a></li>
-				    <li role="presentation"><a href="#corporate_info" aria-controls="corporate_info" role="tab" data-toggle="tab">Corporate info</a></li>
+				    <li role="presentation"><a href="#corporate_info" aria-controls="corporate_info" role="tab" data-toggle="tab">Company Information</a></li>
 				  </ul>
 
 				  <!-- Tab panes -->
@@ -216,15 +92,15 @@
 
 				  	</div>
 
-				    <!-- Mission CKEditor form begin -->
+				    <!-- Mission and Vision CKEditor form begin -->
 				    <div role="tabpanel" class="tab-pane fade tab-container" id="mission">
 						
-						<h3>Enter the content of the mission page</h3>						
+						<h3>Enter the content of the mission/vision page</h3>						
 
 				    	<form action="" method="POST">
 				    		
 				    		<div class="form-group">
-				    			<label for="editorMissionEnglish">About us (Mission) - English</label>
+				    			<label for="editorMissionEnglish">About us (Mission&Vision) - English</label>
 				    		</div>
 
 				    		<div class="form-group">																
@@ -246,7 +122,7 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorMissionMacedonian">About us (Mission) - Macedonian</label>
+				    			<label for="editorMissionMacedonian">About us (Mission&Vision) - Macedonian</label>
 				    		</div>
 
 				    		<div class="form-group">																
@@ -268,129 +144,11 @@
 							</script>" ?>
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitMission" id="btnSubmitMission" onclick="update_mission_AJAX();" disabled="disabled">Save Mission</button>
-				    	<button class="btn btn-default" id="edit-mission-content" onclick="enableMissionEdit();">Edit mission content</button>
+				    	<button class="btn btn-primary" name="btnSubmitMission" id="btnSubmitMission" onclick="update_mission_AJAX();" disabled="disabled">Save Mission/Vision</button>
+				    	<button class="btn btn-default" id="edit-mission-content" onclick="enableMissionEdit();">Edit mission/vision content</button>
 
 				    </div>
-				    <!-- Mission CKEditor form end -->
-
-				    <!-- Vision CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade tab-container" id="vision">
-				    	
-				    	<h3>Enter the content of the vision page</h3>						
-
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorVisionEnglish">About us (Vision) - English</label>
-				    		</div>
-
-				    		<div class="form-group">																
-								<textarea name="editorVisionEnglish" id="editorVisionEnglish"><?php echo $about_us_english['vision']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorVisionEnglish', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-
-							<div class="form-group">
-				    			<label for="editorVisionMacedonian">About us (Vision) - Macedonian</label>
-				    		</div>
-
-				    		<div class="form-group">																
-								<textarea name="editorVisionMacedonian" id="editorVisionMacedonian"><?php echo $about_us_macedonian['vision']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorVisionMacedonian', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-
-				    		<!-- <input type="submit" name="btnSubmitVision" id="btnSubmitVision" value="Save Vision" class="btn btn-primary" disabled="disabled"/>							 -->
-
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitVision" id="btnSubmitVision" onclick="update_vision_AJAX();" disabled="disabled">Save Vision</button>
-				    	<button class="btn btn-default" id="edit-vision-content" onclick="enableVisionEdit();">Edit vision content</button>
-
-				    </div>
-				    <!-- Vision CKEditor form end -->
-
-				    <!-- Structure CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade tab-container" id="structure">
-				    	
-				    	<h3>Enter the content of the structure page</h3>						
-
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorStructureEnglish">About us (Structure) - English</label>
-				    		</div>
-
-				    		<div class="form-group">																
-								<textarea name="editorStructureEnglish" id="editorStructureEnglish"><?php echo $about_us_english['structure']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorStructureEnglish', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-
-							<div class="form-group">
-				    			<label for="editorStructureMacedonian">About us (Structure) - Macedonian</label>
-				    		</div>
-
-				    		<div class="form-group">																
-								<textarea name="editorStructureMacedonian" id="editorStructureMacedonian"><?php echo $about_us_macedonian['structure']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorStructureMacedonian', {
-								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>				    		
-
-				    	</form>
-						<button class="btn btn-primary" name="btnSubmitStructure" id="btnSubmitStructure" onclick="update_structure_AJAX();" disabled="disabled">Save Structure</button>
-				    	<button class="btn btn-default" id="edit-structure-content" onclick="enableStructureEdit();">Edit structure content</button>
-
-				    </div>
-				    <!-- Structure CKEditor form end -->
+				    <!-- Mission and Vision CKEditor form end -->				   				   
 
 
 				    <!-- Partners CKEditor form begin -->
@@ -454,12 +212,12 @@
 				    <!-- Corporate Info CKEditor form begin -->
 				    <div role="tabpanel" class="tab-pane fade tab-container" id="corporate_info">
 				    	
-				    	<h3>Enter the content of the corporate info page</h3>						
+				    	<h3>Enter the content of the company information page</h3>						
 
 				    	<form action="" method="POST">
 				    		
 				    		<div class="form-group">
-				    			<label for="editorCorporateInfoEnglish">About us (Corporate info) - English</label>
+				    			<label for="editorCorporateInfoEnglish">About us (Company Information) - English</label>
 				    		</div>
 
 				    		<div class="form-group">																
@@ -481,7 +239,7 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorCorporateInfoMacedonian">About us (Corporate info) - Macedonian</label>
+				    			<label for="editorCorporateInfoMacedonian">About us (Company Information) - Macedonian</label>
 				    		</div>
 
 				    		<div class="form-group">																
@@ -502,11 +260,11 @@
 
 							</script>" ?>
 
-				    		<!-- <input type="submit" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" value="Save Corporate info" class="btn btn-primary" disabled="disabled"/> -->							
+				    		<!-- <input type="submit" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" value="Save Company Information" class="btn btn-primary" disabled="disabled"/> -->							
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" onclick="update_corporate_info_AJAX();" disabled="disabled">Save Corporate Info</button>
-				    	<button class="btn btn-default" id="edit-corporate-info-content" onclick="enableCorporateInfoEdit();">Edit corporate info content</button>
+				    	<button class="btn btn-primary" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" onclick="update_corporate_info_AJAX();" disabled="disabled">Save company information</button>
+				    	<button class="btn btn-default" id="edit-corporate-info-content" onclick="enableCorporateInfoEdit();">Edit company information content</button>
 
 				    </div>
 				    <!-- Corporate Info CKEditor form end -->

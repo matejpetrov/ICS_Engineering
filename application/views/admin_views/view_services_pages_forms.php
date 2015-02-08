@@ -16,7 +16,8 @@
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery_1.11.0.min.js'></script>		
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/CKEditor/ckeditor.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/services_pages_AJAX.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/about_us_subpages_AJAX.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/services_subpages_AJAX.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 
 
@@ -44,90 +45,7 @@
 		}
 
 	</style>
-
-	<script type="text/javascript">
-
-		function enableServicesEdit(){
-
-			var btnText = $("#edit-services-content").html();
-			var isEnabled = $("#btnSubmitServices").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitServices").prop("disabled", false);				
-				$("#edit-services-content").html("Cancel");
-				CKEDITOR.instances.editorServicesEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorServicesMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitServices").prop("disabled", true);				
-				$("#edit-services-content").html("Edit services content");
-				CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
-			}
-
-		}
-
-		function enableEngineeringEdit(){
-
-			var btnText = $("#edit-engineering-content").html();
-			var isEnabled = $("#btnSubmitEngineering").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitEngineering").prop("disabled", false);				
-				$("#edit-engineering-content").html("Cancel");
-				CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorEngineeringMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitEngineering").prop("disabled", true);				
-				$("#edit-engineering-content").html("Edit engineering content");				
-				CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorEngineeringMacedonian.setReadOnly (true);
-			}
-
-		}
-
-		function enableSystemIntegrationEdit(){
-
-			var btnText = $("#edit-system-integration-content").html();
-			var isEnabled = $("#btnSubmitSystemIntegration").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitSystemIntegration").prop("disabled", false);				
-				$("#edit-system-integration-content").html("Cancel");
-				CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorSystemIntegrationMacedonian.setReadOnly (false);
-			}
-			else{
-				$("#btnSubmitSystemIntegration").prop("disabled", true);				
-				$("#edit-system-integration-content").html("Edit vision content");				
-				CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorSystemIntegrationMacedonian.setReadOnly (true);
-			}
-		
-		}
-
-		function enableConsultingEdit(){
-
-			var btnText = $("#edit-consulting-content").html();
-			var isEnabled = $("#btnSubmitConsulting").prop("disabled");
-
-			if(isEnabled && btnText != "Cancel"){
-				$("#btnSubmitConsulting").prop("disabled", false);				
-				$("#edit-consulting-content").html("Cancel");
-				CKEDITOR.instances.editorConsultingEnglish.setReadOnly (false);
-				CKEDITOR.instances.editorConsultingMacedonian.setReadOnly (false);			
-			}
-			else{
-				$("#btnSubmitConsulting").prop("disabled", true);				
-				$("#edit-consulting-content").html("Edit consulting content");				
-				CKEDITOR.instances.editorConsultingEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorConsultingMacedonian.setReadOnly (true);
-			}
-		
-		}
-
-	</script>
+	
 </head>
 <body>
 
@@ -135,6 +53,7 @@
 	<?php echo $header; ?>	
 	
 	<input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
+	<input type="hidden" id="page" value="services" />
 
 	<div class="success"></div>
 
@@ -147,38 +66,47 @@
 		<div class="row">
 			
 			<div class="col-md-10 col-md-offset-1">
-				
+
 				<div role="tabpanel">
-					
-					<!-- Nav tabs -->
+
+				<!-- Nav tabs -->
 				  <ul class="nav nav-tabs nav-justified" role="tablist">
 				    <li role="presentation" class="active"><a href="#services" aria-controls="services" role="tab" data-toggle="tab">Services</a></li>
-				    <li role="presentation"><a href="#engineering" aria-controls="engineering" role="tab" data-toggle="tab">Engineering</a></li>
-				    <li role="presentation"><a href="#system_integration" aria-controls="system_integration" role="tab" data-toggle="tab">System integration</a></li>
-				    <li role="presentation"><a href="#consulting" aria-controls="consulting" role="tab" data-toggle="tab">Consulting</a></li>				    
+				    <li role="presentation"><a href="#telecommunications" aria-controls="telecommunications" role="tab" data-toggle="tab">Telecommunications</a></li>				    				    
+				    <li role="presentation"><a href="#power-supply" aria-controls="power-supply" role="tab" data-toggle="tab">Power Supply</a></li>
+				    <li role="presentation"><a href="#audio-video" aria-controls="audio-video" role="tab" data-toggle="tab">Audio/Video</a></li>
+				    <li role="presentation"><a href="#defence-security" aria-controls="defence-security" role="tab" data-toggle="tab">Secure Communication</a></li>
 				  </ul>
 
-				  <!-- Tab panes -->
-				  <div class="tab-content">
-				  	
+				</div>				
+				
+				<div class="tab-content">
 
-				  	<!-- Services CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="services">
-				    	<h3>Enter the content of the services page</h3>
+					<!-- Services CKEditor form begin -->
+					<div role="tabpanel" class="tab-pane fade in active tab-container" id="services">
 
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorServicesEnglish">Services - English</label>
-				    		</div>
+				  		<?php echo $services_subpages; ?>
 
-				    		<div class="form-group">														
-								<textarea name="editorServicesEnglish" id="editorServicesEnglish"><?php echo $services_english['services']; ?></textarea>
+				  	</div>
+				  	<!-- Services CKEditor form end -->	
+
+				  	<!-- Telecommunication CKEditor form begin -->	
+				  	<div role="tabpanel" class="tab-pane fade in tab-container" id="telecommunications">
+						<h3>Enter the content of the telecommunication page</h3>
+
+						<form action="" method="POST">
+							
+							<div class="form-group">
+								<label for="editorTelecommunicationEnglish">Services (Telecommunication) - English</label>
+							</div>
+
+							<div class="form-group">														
+								<textarea name="editorTelecommunicationEnglish" id="editorTelecommunicationEnglish"><?php echo $services_english['telecommunication']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorServicesEnglish', {
+							CKEDITOR.replace( 'editorTelecommunicationEnglish', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -191,16 +119,16 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorServicesMacedonian">Services - Macedonian</label>
-				    		</div>
+								<label for="editorTelecommunicationMacedonian">Services (Telecommunication) - Macedonian</label>
+							</div>
 
-				    		<div class="form-group">																
-								<textarea name="editorServicesMacedonian" id="editorServicesMacedonian"><?php echo $services_macedonian['services']; ?></textarea>
+							<div class="form-group">																
+								<textarea name="editorTelecommunicationMacedonian" id="editorTelecommunicationMacedonian"><?php echo $services_macedonian['telecommunication']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorServicesMacedonian', {
+							CKEDITOR.replace( 'editorTelecommunicationMacedonian', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -213,32 +141,32 @@
 							</script>" ?>
 																			
 
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitServices" id="btnSubmitServices" onclick="update_services_AJAX();" disabled="disabled">Save Services</button>
-				    	
-				    	<button class="btn btn-default" id="edit-services-content" onclick="enableServicesEdit();">Edit services content</button>
+						</form>
+						<button class="btn btn-primary" name="btnSubmitTelecommunication" id="btnSubmitTelecommunication" onclick="update_telecommunication_AJAX();" disabled="disabled">Save Telecommunication</button>
+						
+						<button class="btn btn-default" id="edit-telecommunication-content" onclick="enableTelecommunicationEdit();">Edit telecommunication content</button>				  		
 
-				    </div>
-				    <!-- Services CKEditor form end -->
+					</div>		
+					<!-- Telecommunication CKEditor form end -->
 
 
-				    <!-- Engineering CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in tab-container" id="engineering">
-				    	<h3>Enter the content of the engineering page</h3>
+					<!-- PowerSupply CKEditor form begin -->
+					<div role="tabpanel" class="tab-pane fade in tab-container" id="power-supply">
+						<h3>Enter the content of the power supply page</h3>
 
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorEngineeringEnglish">Engineering - English</label>
-				    		</div>
+						<form action="" method="POST">
+							
+							<div class="form-group">
+								<label for="editorPowerSupplyEnglish">Services (Power Supply) - English</label>
+							</div>
 
-				    		<div class="form-group">														
-								<textarea name="editorEngineeringEnglish" id="editorEngineeringEnglish"><?php echo $services_english['engineering']; ?></textarea>
+							<div class="form-group">														
+								<textarea name="editorPowerSupplyEnglish" id="editorPowerSupplyEnglish"><?php echo $services_english['power-supply']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorEngineeringEnglish', {
+							CKEDITOR.replace( 'editorPowerSupplyEnglish', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -251,16 +179,16 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorEngineeringMacedonian">Engineering - Macedonian</label>
-				    		</div>
+								<label for="editorPowerSupplyMacedonian">Services (Power Supply) - Macedonian</label>
+							</div>
 
-				    		<div class="form-group">																
-								<textarea name="editorEngineeringMacedonian" id="editorEngineeringMacedonian"><?php echo $services_macedonian['engineering']; ?></textarea>
+							<div class="form-group">																
+								<textarea name="editorPowerSupplyMacedonian" id="editorPowerSupplyMacedonian"><?php echo $services_macedonian['power-supply']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorEngineeringMacedonian', {
+							CKEDITOR.replace( 'editorPowerSupplyMacedonian', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -273,32 +201,32 @@
 							</script>" ?>
 																			
 
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitEngineering" id="btnSubmitEngineering" onclick="update_engineering_AJAX();" disabled="disabled">Save Engineering</button>
-				    	
-				    	<button class="btn btn-default" id="edit-engineering-content" onclick="enableEngineeringEdit();">Edit engineering content</button>
+						</form>
+						<button class="btn btn-primary" name="btnSubmitPowerSupply" id="btnSubmitPowerSupply" onclick="update_power_supply_AJAX();" disabled="disabled">Save Power Supply</button>
+						
+						<button class="btn btn-default" id="edit-power-supply-content" onclick="enablePowerSupplyEdit();">Edit power supply content</button>
 
-				    </div>
-				    <!-- Engineering CKEditor form end -->
+					</div>
+					<!-- PowerSupply CKEditor form end -->
 
 
-				    <!-- System Integration CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in tab-container" id="system_integration">
-				    	<h3>Enter the content of the system integration page</h3>
+					<!-- Audio/Video CKEditor form begin -->
+					<div role="tabpanel" class="tab-pane fade in tab-container" id="audio-video">
+						<h3>Enter the content of the audio/video page</h3>
 
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorSystemIntegrationEnglish">System Integration - English</label>
-				    		</div>
+						<form action="" method="POST">
+							
+							<div class="form-group">
+								<label for="editorAudioVideoEnglish">Services (Audio/Video) - English</label>
+							</div>
 
-				    		<div class="form-group">														
-								<textarea name="editorSystemIntegrationEnglish" id="editorSystemIntegrationEnglish"><?php echo $services_english['system_integration']; ?></textarea>
+							<div class="form-group">														
+								<textarea name="editorAudioVideoEnglish" id="editorAudioVideoEnglish"><?php echo $services_english['audio-video']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorSystemIntegrationEnglish', {
+							CKEDITOR.replace( 'editorAudioVideoEnglish', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -311,16 +239,16 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorSystemIntegrationMacedonian">System Integration - Macedonian</label>
-				    		</div>
+								<label for="editorAudioVideoMacedonian">Services (Audio/Video) - Macedonian</label>
+							</div>
 
-				    		<div class="form-group">																
-								<textarea name="editorSystemIntegrationMacedonian" id="editorSystemIntegrationMacedonian"><?php echo $services_macedonian['system_integration']; ?></textarea>
+							<div class="form-group">																
+								<textarea name="editorAudioVideoMacedonian" id="editorAudioVideoMacedonian"><?php echo $services_macedonian['audio-video']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorSystemIntegrationMacedonian', {
+							CKEDITOR.replace( 'editorAudioVideoMacedonian', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -333,32 +261,32 @@
 							</script>" ?>
 																			
 
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitSystemIntegration" id="btnSubmitSystemIntegration" onclick="update_system_integration_AJAX();" disabled="disabled">Save System Integration</button>
-				    	
-				    	<button class="btn btn-default" id="edit-system-integration-content" onclick="enableSystemIntegrationEdit();">Edit system integration content</button>
+						</form>
+						<button class="btn btn-primary" name="btnSubmitAudioVideo" id="btnSubmitAudioVideo" onclick="update_audio_video_AJAX();" disabled="disabled">Save Audio/Video</button>
+						
+						<button class="btn btn-default" id="edit-audio-video-content" onclick="enableAudioVideoEdit();">Edit audio/video content</button>
 
-				    </div>
-				    <!-- System Integration CKEditor form end -->
+					</div>
+					<!-- Audio/Video CKEditor form end -->
 
 
-				    <!-- Consulting CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in tab-container" id="consulting">
-				    	<h3>Enter the content of the consulting page</h3>
+					<!-- Defence Security CKEditor form begin -->
+					<div role="tabpanel" class="tab-pane fade in tab-container" id="defence-security">
+						<h3>Enter the content of the defence/security page</h3>
 
-				    	<form action="" method="POST">
-				    		
-				    		<div class="form-group">
-				    			<label for="editorConsultingEnglish">Consulting - English</label>
-				    		</div>
+						<form action="" method="POST">
+							
+							<div class="form-group">
+								<label for="editorDefenceSecurityEnglish">Services (Secure Communication) - English</label>
+							</div>
 
-				    		<div class="form-group">														
-								<textarea name="editorConsultingEnglish" id="editorConsultingEnglish"><?php echo $services_english['consulting']; ?></textarea>
+							<div class="form-group">														
+								<textarea name="editorDefenceSecurityEnglish" id="editorDefenceSecurityEnglish"><?php echo $services_english['defence-security']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorConsultingEnglish', {
+							CKEDITOR.replace( 'editorDefenceSecurityEnglish', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -371,16 +299,16 @@
 							</script>" ?>
 
 							<div class="form-group">
-				    			<label for="editorConsultingMacedonian">Consulting - Macedonian</label>
-				    		</div>
+								<label for="editorDefenceSecurityMacedonian">Services (Secure Communication) - Macedonian</label>
+							</div>
 
-				    		<div class="form-group">																
-								<textarea name="editorConsultingMacedonian" id="editorConsultingMacedonian"><?php echo $services_macedonian['consulting']; ?></textarea>
+							<div class="form-group">																
+								<textarea name="editorDefenceSecurityMacedonian" id="editorDefenceSecurityMacedonian"><?php echo $services_macedonian['defence-security']; ?></textarea>
 							</div>							  					        					       					       
 							<?php echo "<script>
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorConsultingMacedonian', {
+							CKEDITOR.replace( 'editorDefenceSecurityMacedonian', {
 								readOnly: true,
 								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
@@ -393,18 +321,18 @@
 							</script>" ?>
 																			
 
-				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitConsulting" id="btnSubmitConsulting" onclick="update_consulting_AJAX();" disabled="disabled">Save Consulting</button>
-				    	
-				    	<button class="btn btn-default" id="edit-consulting-content" onclick="enableConsultingEdit();">Edit consulting content</button>
+						</form>
+						
+						<button class="btn btn-primary" name="btnSubmitDefenceSecurity" id="btnSubmitDefenceSecurity" onclick="update_defence_security_AJAX();" disabled="disabled">Save Secure communication</button>
+						
+						<button class="btn btn-default" id="edit-defence-security-content" onclick="enableDefenceSecurityEdit();">Edit secure communication content</button>
 
-				    </div>
-				    <!-- Consulting CKEditor form end -->
+					</div>
+					<!-- Defence Security CKEditor form end -->
 
 
-				  </div>
-
-				</div>
+				</div>													
+				
 
 			</div>
 

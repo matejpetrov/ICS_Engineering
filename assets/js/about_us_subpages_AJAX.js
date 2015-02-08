@@ -1,58 +1,10 @@
-function enableAboutUsEdit(){
+var global;
 
-    var btnText = $("#edit-about-us-content").html();
-    var isEnabled = $("#btnSubmitAboutUs").prop("disabled");
+$(document).ready(function() {
+    
+    global = $("#page").val();
 
-    if(isEnabled && btnText != "Cancel"){
-        $("#btnSubmitAboutUs").prop("disabled", false);             
-        $("#edit-about-us-content").html("Cancel");
-        CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (false);
-        CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (false);
-    }
-    else{
-        $("#btnSubmitAboutUs").prop("disabled", true);              
-        $("#edit-about-us-content").html("Edit about us content");
-        CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
-        CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
-    }
-
-}
-
-
-function update_about_us_AJAX(){
-
-	var base_url = $("#base_url").val();	
-	var about_us_english = CKEDITOR.instances.editorAboutUsEnglish.getData();
-	var about_us_macedonian = CKEDITOR.instances.editorAboutUsMacedonian.getData();
-
-
-	$.ajax({
-        url: base_url + "staticPagesAdminController/update_about_us_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorAboutUsEnglish: about_us_english,
-            editorAboutUsMacedonian: about_us_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitAboutUs").prop("disabled", true);				
-				$("#edit-about-us-content").html("Edit about us content");
-				CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-        	$('.success').html('There was an error');        	
-        }
-    });
-    return false;
-
-}
-
+});
 
 function enableTelecommunicationEdit(){
 
@@ -70,7 +22,7 @@ function enableTelecommunicationEdit(){
         $("#edit-telecommunication-content").html("Edit telecommunication content");
         CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
         CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (true);
-    }
+    }    
 
 }
 
@@ -88,7 +40,8 @@ function update_telecommunication_AJAX(){
         cache: false,
         data: {
             editorTelecommunicationEnglish: telecommunication_english,
-            editorTelecommunicationMacedonian: telecommunication_macedonian
+            editorTelecommunicationMacedonian: telecommunication_macedonian,
+            page: global
         },
         
         success: function(data) {
@@ -144,7 +97,8 @@ function update_power_supply_AJAX(){
         cache: false,
         data: {
             editorPowerSupplyEnglish: power_supply_english,
-            editorPowerSupplyMacedonian: power_supply_macedonian
+            editorPowerSupplyMacedonian: power_supply_macedonian,
+            page: global
         },
         
         success: function(data) {
@@ -200,7 +154,8 @@ function update_audio_video_AJAX(){
         cache: false,
         data: {
             editorAudioVideoEnglish: audio_video_english,
-            editorAudioVideoMacedonian: audio_video_macedonian
+            editorAudioVideoMacedonian: audio_video_macedonian,
+            page: global
         },
         
         success: function(data) {
@@ -234,7 +189,7 @@ function enableDefenceSecurityEdit(){
     }
     else{
         $("#btnSubmitDefenceSecurity").prop("disabled", true);              
-        $("#edit-defence-security-content").html("Edit defence/security content");
+        $("#edit-defence-security-content").html("Edit secure communication content");
         CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);
         CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (true);
     }
@@ -256,14 +211,15 @@ function update_defence_security_AJAX(){
         cache: false,
         data: {
             editorDefenceSecurityEnglish: defence_security_english,
-            editorDefenceSecurityMacedonian: defence_security_macedonian
+            editorDefenceSecurityMacedonian: defence_security_macedonian,
+            page: global
         },
         
         success: function(data) {
             if (data) {
                 $('.success').html(data);
                 $("#btnSubmitDefenceSecurity").prop("disabled", true);              
-                $("#edit-defence-security-content").html("Edit defence/security content");
+                $("#edit-defence-security-content").html("Edit security communication content");
                 CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (true);
             };

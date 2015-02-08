@@ -38,22 +38,52 @@ class StaticPagesAdminController extends CI_Controller {
 	//the fields in the database, so every change is not an insertion, it is an update to the database. 
 	//I will create a new model that will intended for getting and updating all the data for the about us pages. 
 	public function show_about_us_pages(){
-		$data['header'] = $this->checkIfLoggedIn();
+		$data_pages['header'] = $this->checkIfLoggedIn();
 
-		$about_us_db = $this->model_about_us_pages->get_all_about_us_content();		
+		$about_us_db = $this->model_about_us_pages->get_all_about_us_content();
 
-		foreach($about_us_db as $aud){
+
+		$array_words = array();
+
+		$array_words[0] = "about_us";
+		$array_words[1] = "telecommunication";
+		$array_words[2] = "power-supply";
+		$array_words[3] = "audio-video";
+		$array_words[4] = "defence-security";
+
+		
+
+		list($about_us_pages_1, $about_us_subpages_1) = $this->split_array_page_subpage($about_us_db[0], $array_words);
+		list($about_us_pages_2, $about_us_subpages_2) = $this->split_array_page_subpage($about_us_db[1], $array_words);
+
+
+		$data_pages['about_us_english'] = $about_us_pages_1;
+		$data_pages['about_us_macedonian'] = $about_us_pages_2;
+
+		$data_subpages['about_us_english'] = $about_us_subpages_1;
+		$data_subpages['about_us_macedonian'] = $about_us_subpages_2;
+
+		/*foreach($about_us_pages as $aud){
 			if($aud['lang'] == 0){
-				$data['about_us_english'] = $aud;
+				$data_pages['about_us_english'] = $aud;
 			}
 			else{
-				$data['about_us_macedonian'] = $aud;	
+				$data_pages['about_us_macedonian'] = $aud;	
 			}
 		}
 
-		$data["about_us_subpages"] = $this->load->view('admin_views/view_about_us_subpages_forms', $data, TRUE);
+		foreach($about_us_subpages as $aud){
+			if($aud['lang'] == 0){
+				$data_subpages['about_us_english'] = $aud;
+			}
+			else{
+				$data_subpages['about_us_macedonian'] = $aud;	
+			}
+		}*/
 
-		$this->load->view('admin_views/view_about_us_pages_forms', $data, FALSE);
+		$data_pages["about_us_subpages"] = $this->load->view('admin_views/view_about_us_subpages_forms', $data_subpages, TRUE);
+
+		$this->load->view('admin_views/view_about_us_pages_forms', $data_pages, FALSE);
 
 	}
 
@@ -98,47 +128,7 @@ class StaticPagesAdminController extends CI_Controller {
 			return false;
 		}
 
-	}
-
-	public function update_vision_content(){
-
-		$vision_english = $_POST['editorVisionEnglish'];
-		$vision_macedonian = $_POST['editorVisionMacedonian'];				
-
-		$json = "";
-		$json_encode = "";
-
-		if($this->model_about_us_pages->update_vision_content($vision_english, $vision_macedonian)){
-			$json = "{message:".$vision_english."}";
-			$json_encode = json_encode($json);
-			echo $json_encode;
-		}
-
-		else{
-			return false;
-		}
-
-	}
-
-	public function update_structure_content(){
-
-		$structure_english = $_POST['editorStructureEnglish'];
-		$structure_macedonian = $_POST['editorStructureMacedonian'];				
-
-		$json = "";
-		$json_encode = "";
-
-		if($this->model_about_us_pages->update_structure_content($structure_english, $structure_macedonian)){
-			$json = "{message:".$structure_english."}";
-			$json_encode = json_encode($json);
-			echo $json_encode;
-		}
-
-		else{
-			return false;
-		}
-
-	}
+	}	
 
 
 	public function update_partners_content(){
@@ -189,12 +179,20 @@ class StaticPagesAdminController extends CI_Controller {
 
 	public function update_telecommunication_content(){
 		$telecommunication_english = $_POST['editorTelecommunicationEnglish'];
-		$telecommunication_macedonian = $_POST['editorTelecommunicationMacedonian'];				
+		$telecommunication_macedonian = $_POST['editorTelecommunicationMacedonian'];
+		$page = $_POST['page'];
 
 		$json = "";
 		$json_encode = "";
 
-		if($this->model_about_us_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian)){
+		if($page == "about us"){
+			$result = $this->model_about_us_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian);
+		}
+		else{
+			$result = $this->model_services_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian);
+		}
+
+		if($result){
 			$json = "{message:".$telecommunication_english."}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
@@ -210,11 +208,19 @@ class StaticPagesAdminController extends CI_Controller {
 
 		$power_supply_english = $_POST['editorPowerSupplyEnglish'];
 		$power_supply_macedonian = $_POST['editorPowerSupplyMacedonian'];				
+		$page = $_POST['page'];
 
 		$json = "";
 		$json_encode = "";
 
-		if($this->model_about_us_pages->update_power_supply_content($power_supply_english, $power_supply_macedonian)){
+		if($page == "about us"){
+			$result = $this->model_about_us_pages->update_power_supply_content($power_supply_english, $power_supply_macedonian);
+		}
+		else{
+			$result = $this->model_services_pages->update_power_supply_content($power_supply_english, $power_supply_macedonian);
+		}
+
+		if($result){
 			$json = "{message:".$power_supply_english."}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
@@ -228,12 +234,20 @@ class StaticPagesAdminController extends CI_Controller {
 
 	public function update_audio_video_content(){
 		$audio_video_english = $_POST['editorAudioVideoEnglish'];
-		$audio_video_macedonian = $_POST['editorAudioVideoMacedonian'];				
+		$audio_video_macedonian = $_POST['editorAudioVideoMacedonian'];		
+		$page = $_POST['page'];		
 
 		$json = "";
 		$json_encode = "";
 
-		if($this->model_about_us_pages->update_audio_video_content($audio_video_english, $audio_video_macedonian)){
+		if($page == "about us"){
+			$result = $this->model_about_us_pages->update_audio_video_content($audio_video_english, $audio_video_macedonian);
+		}
+		else{
+			$result = $this->model_services_pages->update_audio_video_content($audio_video_english, $audio_video_macedonian);
+		}
+
+		if($result){
 			$json = "{message:".$audio_video_english."}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
@@ -248,12 +262,20 @@ class StaticPagesAdminController extends CI_Controller {
 	public function update_defence_security_content(){
 
 		$defence_security_english = $_POST['editorDefenceSecurityEnglish'];
-		$defence_security_macedonian = $_POST['editorDefenceSecurityMacedonian'];				
+		$defence_security_macedonian = $_POST['editorDefenceSecurityMacedonian'];	
+		$page = $_POST['page'];			
 
 		$json = "";
 		$json_encode = "";
 
-		if($this->model_about_us_pages->update_defence_security_content($defence_security_english, $defence_security_macedonian)){
+		if($page == "about us"){
+			$result = $this->model_about_us_pages->update_defence_security_content($defence_security_english, $defence_security_macedonian);
+		}
+		else{
+			$result = $this->model_services_pages->update_defence_security_content($defence_security_english, $defence_security_macedonian);
+		}
+
+		if($result){
 			$json = "{message:".$defence_security_english."}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
@@ -268,27 +290,45 @@ class StaticPagesAdminController extends CI_Controller {
 
 	//========================================================================================================
 
+
 	//========================================================================================================
 	//admin services pages
+
+
+
+	//========================================================================================================
+
+	//========================================================================================================
+	//admin services subpages
 
 	//function that shows the services page where we can add the content of the static pages under the 
 	//services tab.
 	public function show_services_pages(){
-		$data['header'] = $this->checkIfLoggedIn();
+		$data_pages['header'] = $this->checkIfLoggedIn();
 
 		$services_db = $this->model_services_pages->get_all_services_content();
 
+		$array_words = array();
 
-		foreach($services_db as $aud){
-			if($aud['lang'] == 0){
-				$data['services_english'] = $aud;
-			}
-			else{
-				$data['services_macedonian'] = $aud;	
-			}
-		}
+		$array_words[0] = "services";
+		$array_words[1] = "engineering";
+		$array_words[2] = "consulting";
+		$array_words[3] = "system_integration";
 
-		$this->load->view('admin_views/view_services_pages_forms', $data, FALSE);
+		list($services_pages_1, $services_subpages_1) = $this->split_array_page_subpage($services_db[0], $array_words);
+		list($services_pages_2, $services_subpages_2) = $this->split_array_page_subpage($services_db[1], $array_words);
+
+
+		$data_pages['services_english'] = $services_pages_1;
+		$data_pages['services_macedonian'] = $services_pages_2;
+
+		$data_subpages['services_english'] = $services_subpages_1;
+		$data_subpages['services_macedonian'] = $services_subpages_2;
+		
+
+		$data_pages["services_subpages"] = $this->load->view('admin_views/view_services_subpages_forms', $data_subpages, TRUE);
+
+		$this->load->view('admin_views/view_services_pages_forms', $data_pages, FALSE);
 	}
 
 	//function that is invoked from the services tab in the services_page and here we should update the content of the 
@@ -374,9 +414,7 @@ class StaticPagesAdminController extends CI_Controller {
 
 	}
 
-
-
-
+	//========================================================================================================
 
 	//========================================================================================================
 	//private functions
@@ -396,6 +434,28 @@ class StaticPagesAdminController extends CI_Controller {
 		$data_index['surname'] = $userData['surname'];
 		$data_index['role'] = $userData['role'];
 		return $this->load->view('admin_views/adminHeader', $data_index, TRUE);
+	}
+
+
+	//function that gets two arrays as an argument. The first one is an array that contains all the
+	//columns of a database table, and the second is list of keys that should be removed from that array and
+	//put in another one. This function should return array of two arrays which are actually the first array 
+	//from the arguments separated in two. 
+	private function split_array_page_subpage($array_full, $array_words){
+
+		$array_result = array();				
+
+		foreach($array_full as $key => $value){
+			
+			if(in_array($key, $array_words)){				
+				$array_result[$key] = $value;
+				unset($array_full[$key]);				
+			}			
+
+		}
+
+		return array($array_full, $array_result);
+
 	}
 
 

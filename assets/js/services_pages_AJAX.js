@@ -1,101 +1,47 @@
-//file where we will implement the functions for sending AJAX calls to the server and change the DOM content 
-//upon success for the services pages.
+function enableTelecommunicationEdit(){
 
-function update_services_AJAX(){
+    var btnText = $("#edit-telecommunication-content").html();
+    var isEnabled = $("#btnSubmitTelecommunication").prop("disabled");
 
-	var base_url = $("#base_url").val();	
-	var services_english = CKEDITOR.instances.editorServicesEnglish.getData();
-	var services_macedonian = CKEDITOR.instances.editorServicesMacedonian.getData();
-
-
-	$.ajax({
-        url: base_url + "staticPagesAdminController/update_services_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorServicesEnglish: services_english,
-            editorServicesMacedonian: services_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitServices").prop("disabled", true);				
-				$("#edit-services-content").html("Edit services content");
-				CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-        	$('.success').html('There was an error');        	
-        }
-    });
-    return false;
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitTelecommunication").prop("disabled", false);             
+        $("#edit-telecommunication-content").html("Cancel");
+        CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitTelecommunication").prop("disabled", true);              
+        $("#edit-telecommunication-content").html("Edit telecommunication content");
+        CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (true);
+    }
 
 }
 
-
-function update_engineering_AJAX(){
+function update_telecommunication_AJAX(){
 
     var base_url = $("#base_url").val();    
-    var engineering_english = CKEDITOR.instances.editorEngineeringEnglish.getData();
-    var engineering_macedonian = CKEDITOR.instances.editorEngineeringMacedonian.getData();
+    var telecommunication_english = CKEDITOR.instances.editorTelecommunicationEnglish.getData();
+    var telecommunication_macedonian = CKEDITOR.instances.editorTelecommunicationMacedonian.getData();
 
 
     $.ajax({
-        url: base_url + "staticPagesAdminController/update_engineering_content",
+        url: base_url + "staticPagesAdminController/update_services_telecommunication_content",
         type: 'POST',
         dataType: 'json',
         cache: false,
         data: {
-            editorEngineeringEnglish: engineering_english,
-            editorEngineeringMacedonian: engineering_macedonian
+            editorTelecommunicationEnglish: telecommunication_english,
+            editorTelecommunicationMacedonian: telecommunication_macedonian
         },
         
         success: function(data) {
             if (data) {
                 $('.success').html(data);
-                $("#btnSubmitEngineering").prop("disabled", true);             
-                $("#edit-engineering-content").html("Edit engineering content");
-                CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (true);
-                CKEDITOR.instances.editorEngineeringMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-            $('.success').html('There was an error');           
-        }
-    });
-    return false;
-
-
-}
-
-
-function update_system_integration_AJAX(){
-
-    var base_url = $("#base_url").val();    
-    var system_integration_english = CKEDITOR.instances.editorSystemIntegrationEnglish.getData();
-    var system_integration_macedonian = CKEDITOR.instances.editorSystemIntegrationMacedonian.getData();
-
-
-    $.ajax({
-        url: base_url + "staticPagesAdminController/update_system_integration_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorSystemIntegrationEnglish: system_integration_english,
-            editorSystemIntegrationMacedonian: system_integration_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitSystemIntegration").prop("disabled", true);             
-                $("#edit-system-integration-content").html("Edit system integration content");
-                CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (true);
-                CKEDITOR.instances.editorSystemIntegrationMacedonian.setReadOnly (true);
+                $("#btnSubmitTelecommunication").prop("disabled", true);              
+                $("#edit-telecommunication-content").html("Edit telecommunication content");
+                CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
@@ -106,36 +52,70 @@ function update_system_integration_AJAX(){
 
 }
 
-function update_consulting_AJAX(){
-
-    var base_url = $("#base_url").val();    
-    var consulting_english = CKEDITOR.instances.editorConsultingEnglish.getData();
-    var consulting_macedonian = CKEDITOR.instances.editorConsultingMacedonian.getData();
 
 
-    $.ajax({
-        url: base_url + "staticPagesAdminController/update_consulting_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorConsultingEnglish: consulting_english,
-            editorConsultingMacedonian: consulting_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitConsulting").prop("disabled", true);             
-                $("#edit-consulting-content").html("Edit consulting content");
-                CKEDITOR.instances.editorConsultingEnglish.setReadOnly (true);
-                CKEDITOR.instances.editorConsultingMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-            $('.success').html('There was an error');           
-        }
-    });
-    return false;
+
+
+function enablePowerSupplyEdit(){
+
+    var btnText = $("#edit-power-supply-content").html();
+    var isEnabled = $("#btnSubmitPowerSupply").prop("disabled");
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitPowerSupply").prop("disabled", false);             
+        $("#edit-power-supply-content").html("Cancel");
+        CKEDITOR.instances.editorPowerSupplyEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorPowerSupplyMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitPowerSupply").prop("disabled", true);              
+        $("#edit-power-supply-content").html("Edit power supply content");
+        CKEDITOR.instances.editorPowerSupplyEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorPowerSupplyMacedonian.setReadOnly (true);
+    }
+
+}
+
+
+
+
+function enableAudioVideoEdit(){
+
+    var btnText = $("#edit-audio-video-content").html();
+    var isEnabled = $("#btnSubmitAudioVideo").prop("disabled");
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitAudioVideo").prop("disabled", false);             
+        $("#edit-audio-video-content").html("Cancel");
+        CKEDITOR.instances.editorAudioVideoEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorAudioVideoMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitAudioVideo").prop("disabled", true);              
+        $("#edit-audio-video-content").html("Edit audio/video content");
+        CKEDITOR.instances.editorAudioVideoEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorAudioVideoMacedonian.setReadOnly (true);
+    }
+
+}
+
+
+function enableDefenceSecurityEdit(){
+
+    var btnText = $("#edit-defence-security-content").html();
+    var isEnabled = $("#btnSubmitDefenceSecurity").prop("disabled");
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitDefenceSecurity").prop("disabled", false);             
+        $("#edit-defence-security-content").html("Cancel");
+        CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitDefenceSecurity").prop("disabled", true);              
+        $("#edit-defence-security-content").html("Edit secure communication content");
+        CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (true);
+    }
 
 }

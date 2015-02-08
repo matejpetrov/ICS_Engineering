@@ -1,14 +1,35 @@
 //file where we will implement the functions for sending AJAX calls to the server and change the DOM content 
 //upon success for the about us pages.
 
+function enableAboutUsEdit(){
+
+    var btnText = $("#edit-about-us-content").html();
+    var isEnabled = $("#btnSubmitAboutUs").prop("disabled");
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitAboutUs").prop("disabled", false);             
+        $("#edit-about-us-content").html("Cancel");
+        CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitAboutUs").prop("disabled", true);              
+        $("#edit-about-us-content").html("Edit about us content");
+        CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
+    }
+
+}
+
+
 function update_about_us_AJAX(){
 
-	var base_url = $("#base_url").val();	
-	var about_us_english = CKEDITOR.instances.editorAboutUsEnglish.getData();
-	var about_us_macedonian = CKEDITOR.instances.editorAboutUsMacedonian.getData();
+    var base_url = $("#base_url").val();    
+    var about_us_english = CKEDITOR.instances.editorAboutUsEnglish.getData();
+    var about_us_macedonian = CKEDITOR.instances.editorAboutUsMacedonian.getData();
 
 
-	$.ajax({
+    $.ajax({
         url: base_url + "staticPagesAdminController/update_about_us_content",
         type: 'POST',
         dataType: 'json',
@@ -21,20 +42,40 @@ function update_about_us_AJAX(){
         success: function(data) {
             if (data) {
                 $('.success').html(data);
-                $("#btnSubmitAboutUs").prop("disabled", true);				
-				$("#edit-about-us-content").html("Edit about us content");
-				CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
+                $("#btnSubmitAboutUs").prop("disabled", true);              
+                $("#edit-about-us-content").html("Edit about us content");
+                CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
-        	$('.success').html('There was an error');        	
+            $('.success').html('There was an error');           
         }
     });
     return false;
 
 }
 
+
+function enableMissionEdit(){
+
+    var btnText = $("#edit-mission-content").html();
+    var isEnabled = $("#btnSubmitMission").prop("disabled");
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitMission").prop("disabled", false);             
+        $("#edit-mission-content").html("Cancel");
+        CKEDITOR.instances.editorMissionEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorMissionMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitMission").prop("disabled", true);              
+        $("#edit-mission-content").html("Edit mission/vision content");             
+        CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
+    }
+
+}   
 
 function update_mission_AJAX(){
 
@@ -57,7 +98,7 @@ function update_mission_AJAX(){
             if (data) {
                 $('.success').html(data);
                 $("#btnSubmitMission").prop("disabled", true);				
-				$("#edit-mission-content").html("Edit mission content");
+				$("#edit-mission-content").html("Edit mission/vision content");
 				CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
 				CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
             };
@@ -71,73 +112,23 @@ function update_mission_AJAX(){
 }
 
 
-function update_vision_AJAX(){
+function enablePartnersEdit(){
 
-	var base_url = $("#base_url").val();	
-	var vision_english = CKEDITOR.instances.editorVisionEnglish.getData();
-	var vision_macedonian = CKEDITOR.instances.editorVisionMacedonian.getData();
+    var btnText = $("#edit-partners-content").html();
+    var isEnabled = $("#btnSubmitPartners").prop("disabled");           
 
-
-	$.ajax({
-        url: base_url + "staticPagesAdminController/update_vision_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorVisionEnglish: vision_english,
-            editorVisionMacedonian: vision_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitVision").prop("disabled", true);				
-				$("#edit-vision-content").html("Edit vision content");
-				CKEDITOR.instances.editorVisionEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorVisionMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-        	$('.success').html('There was an error');        	
-        }
-    });
-    return false;
-
-}
-
-
-function update_structure_AJAX(){
-
-	var base_url = $("#base_url").val();	
-	var structure_english = CKEDITOR.instances.editorStructureEnglish.getData();
-	var structure_macedonian = CKEDITOR.instances.editorStructureMacedonian.getData();
-
-
-	$.ajax({
-        url: base_url + "staticPagesAdminController/update_structure_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorStructureEnglish: structure_english,
-            editorStructureMacedonian: structure_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {
-                $('.success').html(data);
-                $("#btnSubmitStructure").prop("disabled", true);				
-				$("#edit-structure-content").html("Edit structure content");
-				CKEDITOR.instances.editorStructureEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorStructureMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-        	$('.success').html('There was an error');        	
-        }
-    });
-    return false;
-
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitPartners").prop("disabled", false);                
+        $("#edit-partners-content").html("Cancel");
+        CKEDITOR.instances.editorPartnersEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitPartners").prop("disabled", true);             
+        $("#edit-partners-content").html("Edit partners content");              
+        CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (true);
+    }
 
 }
 
@@ -177,7 +168,25 @@ function update_partners_AJAX(){
 
 }
 
+function enableCorporateInfoEdit(){
 
+    var btnText = $("#edit-corporate-info-content").html();
+    var isEnabled = $("#btnSubmitCorporateInfo").prop("disabled");          
+
+    if(isEnabled && btnText != "Cancel"){
+        $("#btnSubmitCorporateInfo").prop("disabled", false);               
+        $("#edit-corporate-info-content").html("Cancel");
+        CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (false);
+        CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (false);
+    }
+    else{
+        $("#btnSubmitCorporateInfo").prop("disabled", true);                
+        $("#edit-corporate-info-content").html("Edit company information content");             
+        CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
+        CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
+    }
+
+}
 
 function update_corporate_info_AJAX(){
 
@@ -200,7 +209,7 @@ function update_corporate_info_AJAX(){
             if (data) {
                 $('.success').html(data);
                 $("#btnSubmitCorporateInfo").prop("disabled", true);				
-				$("#edit-corporate-info-content").html("Edit corporate info content");
+				$("#edit-corporate-info-content").html("Edit company information content");
 				CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
 				CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
             };

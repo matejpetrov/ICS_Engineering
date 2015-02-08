@@ -71,52 +71,7 @@ class Model_about_us_pages extends CI_Model {
 		}
 		else return true;		
 
-	}
-
-
-	public function update_vision_content($vision_english, $vision_macedonian){
-
-		$english = array('vision' => $vision_english);
-		$macedonian = array('vision' => $vision_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('about_us_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('about_us_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-
-	}
-
-	public function update_structure_content($structure_english, $structure_macedonian){
-
-		$english = array('structure' => $structure_english);
-		$macedonian = array('structure' => $structure_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('about_us_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('about_us_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-
-	}
+	}	
 
 
 	public function update_partners_content($partners_english, $partners_macedonian){
