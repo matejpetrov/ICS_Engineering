@@ -43,13 +43,13 @@
 <div class="container marketing">
 	<div class="row news-row">
 		<div id="owl-logo"  class="owl-carousel owl-theme">
-		<div class="item"><a href="http://www.alcatel-lucent.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/alcatel_lucent.png" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.airbus.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/airbus.gif" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.emersonnetworkpower.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/emerson_electric.gif" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.overturenetworks.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/overture-networks.png" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://axellwireless.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/axell-wirelss-logo.gif" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.virtualaccess.com/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
-		<div class="item"><a href="http://www.srs.kiev.ua/"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.alcatel-lucent.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/alcatel_lucent.png" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.airbus.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/airbus.gif" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.emersonnetworkpower.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/emerson_electric.gif" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.overturenetworks.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/overture-networks.png" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://axellwireless.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/axell-wirelss-logo.gif" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.virtualaccess.com/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
+		<div class="item"><a href="http://www.srs.kiev.ua/" target="_blank"><img class="partners-logo" src="<?php echo base_url(); ?>assets/images/companies/virtual-access.png" alt="Owl Image"></a></div>
 		</div>
 	</div>
 </div>

@@ -42,7 +42,6 @@ function about_us_ajax_page(page_id){
 
 var getSubpage = {
 	init: function() {
-		console.log('borka');
 		$('#content-container').on('click','a',this.requestPage);
 	},
 	requestPage:function(e) {

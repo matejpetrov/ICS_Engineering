@@ -21,7 +21,6 @@ var word = {
 		}
 	},
 	retrieveWord:function(){
-		var recievedWord;
 		var base_url = $('#base_url').val();
 		return $.ajax({
 			url: base_url + 'static_pages_controller/getWord',
@@ -30,7 +29,7 @@ var word = {
 		});	
 	},
 	destroy:function(){
-		$('.cameracurrent').find('div').fadeOut(function() {
+		$('.cameraContent.cameracurrent').find('div').fadeOut(function() {
 			this.remove();	
 		});
 	},
@@ -42,9 +41,9 @@ var word = {
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
 			div.text(recievedWord);
-			$('.cameracurrent').append(div);
-			$('.cameracurrent').find('.wordRight').css('top', top + '%');
-			$('.cameracurrent').find('.wordRight').delay(500).animate({left:left + '%'});
+			$('.cameraContent.cameracurrent').append(div);
+			$('.cameraContent.cameracurrent').find('.wordRight').css('top', top + '%');
+			$('.cameraContent.cameracurrent').find('.wordRight').delay(500).animate({left:left + '%'});
 		});
 	},
 	moveFromLeft:function(){
@@ -55,9 +54,9 @@ var word = {
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
 			div.text(recievedWord);
-			$('.cameracurrent').append(div);
-			$('.cameracurrent').find('.wordLeft').css('top', top + '%');
-			$('.cameracurrent').find('.wordLeft').delay(500).animate({right:right + '%'});
+			$('.cameraContent.cameracurrent').append(div);
+			$('.cameraContent.cameracurrent').find('.wordLeft').css('top', top + '%');
+			$('.cameraContent.cameracurrent').find('.wordLeft').delay(500).animate({right:right + '%'});
 		});
 	},
 	moveFromTop:function(){
@@ -68,9 +67,9 @@ var word = {
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
 			div.text(recievedWord);
-			$('.cameracurrent').append(div);
-			$('.cameracurrent').find('.wordTop').css('right', right + '%');
-			$('.cameracurrent').find('.wordTop').delay(500).animate({bottom:bottom + '%'});
+			$('.cameraContent.cameracurrent').append(div);
+			$('.cameraContent.cameracurrent').find('.wordTop').css('right', right + '%');
+			$('.cameraContent.cameracurrent').find('.wordTop').delay(500).animate({bottom:bottom + '%'});
 		});
 	},
 	moveFromBottom:function(){
@@ -81,9 +80,9 @@ var word = {
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
 			div.text(recievedWord);
-			$('.cameracurrent').append(div);
-			$('.cameracurrent').find('.wordBottom').css('right', right + '%');
-			$('.cameracurrent').find('.wordBottom').delay(500).animate({top:top + '%'});
+			$('.cameraContent.cameracurrent').append(div);
+			$('.cameraContent.cameracurrent').find('.wordBottom').css('right', right + '%');
+			$('.cameraContent.cameracurrent').find('.wordBottom').delay(500).animate({top:top + '%'});
 		});
 	},
 	fadeIn:function(){
@@ -94,10 +93,10 @@ var word = {
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
 			div.text(recievedWord);
-			$('.cameracurrent').append(div);
-			$('.cameracurrent').find('.wordFade').css('top', top + '%');
-			$('.cameracurrent').find('.wordFade').css('right', right + '%');
-			$('.cameracurrent').find('.wordFade').delay(500).animate({opacity:'1'});
+			$('.cameraContent.cameracurrent').append(div);
+			$('.cameraContent.cameracurrent').find('.wordFade').css('top', top + '%');
+			$('.cameraContent.cameracurrent').find('.wordFade').css('right', right + '%');
+			$('.cameraContent.cameracurrent').find('.wordFade').delay(500).animate({opacity:'1'});
 		});
 	}
 };

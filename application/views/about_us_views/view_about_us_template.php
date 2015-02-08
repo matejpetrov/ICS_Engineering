@@ -39,7 +39,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		getSubpage.init();
-		console.log('asdasd');
 	});
 </script>
 <?php echo $footer; ?>
