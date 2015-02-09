@@ -30,22 +30,30 @@
 		<div class="row">
 			<div class="col-md-6 words-language">
 				<h4>Words English</h4>
-				<ul id="en" class="words">
-					<?php foreach ($english->result() as $en) {?>
-					<li><input class="en" type="checkbox" value="<?php echo $en->id; ?>" /> <?php echo $en->word; ?></li>
-					<?php } ?>
-				</ul>
+				<div class="words-container">
+					<ul id="en" class="words">
+						<?php foreach ($english->result() as $en) {?>
+						<li><input class="en" type="checkbox" value="<?php echo $en->id; ?>" /> <?php echo $en->word; ?></li>
+						<?php } ?>
+					</ul>
+				</div>
 				<input type="button" id="" class="btn btn-primary" value="Add New Words" data-toggle="modal" data-target="#modal-en"/>
+				<input type="button" id="check-all-en" class="btn btn-default" value="Check all"/>
+				<input type="button" id="uncheck-all-en" class="btn btn-default" value="Uncheck all"/>
 				<input type="button" id="delete-en" class="btn btn-danger" value="Delete Selected"/>
 			</div>
 			<div class="col-md-6 words-language">
 				<h4>Words Macedonian</h4>
-				<ul id="mk" class="words">
-					<?php foreach ($macedonian->result() as $mk) {?>
-					<li><input class="mk" type="checkbox" value="<?php echo $mk->id; ?>" /> <?php echo $mk->word; ?></li>
-					<?php } ?>
-				</ul>
+				<div class="words-container">
+					<ul id="mk" class="words">
+						<?php foreach ($macedonian->result() as $mk) {?>
+						<li><input class="mk" type="checkbox" value="<?php echo $mk->id; ?>" /> <?php echo $mk->word; ?></li>
+						<?php } ?>
+					</ul>
+				</div>
 				<input type="button" id="" class="btn btn-primary" value="Add New Words" data-toggle="modal" data-target="#modal-mk"/>
+				<input type="button" id="check-all-mk" class="btn btn-default" value="Check all"/>
+				<input type="button" id="uncheck-all-mk" class="btn btn-default" value="Uncheck all"/>
 				<input type="button" id="delete-mk" class="btn btn-danger" value="Delete Selected"/>
 			</div>
 		</div>

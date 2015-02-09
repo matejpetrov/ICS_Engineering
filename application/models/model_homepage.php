@@ -78,7 +78,6 @@ class Model_homepage extends CI_Model {
 		$random = rand(0,$resultNum-1);
 		$data = $query->result_array();
 		return ($data[$random]['word']);
-		// return $random;
 	}	
 
 	public function getAllWords($lang){

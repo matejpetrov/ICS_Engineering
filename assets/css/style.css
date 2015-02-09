@@ -766,6 +766,11 @@ span.image-add {
 .words-language > h4{
     text-align: center;
 }
+.words-container{
+    height: 300px;
+    overflow: auto;
+    margin-bottom: 5px;
+}
 .words{
     padding: 0;
 }
