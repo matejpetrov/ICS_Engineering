@@ -55,10 +55,6 @@ $(document).ready(function(){
 		$form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 	};
 
-	$('#myself').click(function(event) {
-		console.log($('input[name="myself"]').prop('checked'));
-	});
-
 	$('#sendMail').click(function() 
 	{
 		base_url = $('#base_url').val();

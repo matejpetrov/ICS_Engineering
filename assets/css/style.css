@@ -12,6 +12,38 @@ body {
     background-color: #ffffff;
 }
 
+.btn.btn-default{
+    background-image: -webkit-linear-gradient(top, #FFB379 0%, #cd5a01 100%);
+    background-image: -o-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFB379), to(#cd5a01));
+    background-image: linear-gradient(to bottom, #FFB379 0%, #cd5a01 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffFFB379', endColorstr='#ffcd5a01', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #dbdbdb;
+    text-shadow: 0 0px 0 #fff; 
+    border-color: #ccc;
+    color: #ffffff;
+}
+.btn.btn-default:active{
+    background-color: #E56400;
+    color: #FFFFFF;
+    border-color: #dbdbdb;
+}
+
+.btn.btn-default:hover{
+    background-color: #cd5a01;
+    background-position: 0 -15px;
+}
+.btn.btn-default:focus{
+    background-color: #cd5a01;
+    background-position: 0 -15px;
+}
+.space{
+    margin-bottom: 20px;
+    float: left;
+}
+
 /* Header-Language Styles Begin */
 
 .header {
@@ -133,11 +165,11 @@ div.collapse-custom > ul > li > a.selected {
     background-color: #FFFFFF !important;
 }
 .sub-selected{
- color: #CD5A01 !important;
- background-color: #ffffff;
- background-image: none;    
- border-left: 3px solid #CD5A01;
- border-right: 3px solid #CD5A01;
+   color: #CD5A01 !important;
+   background-color: #ffffff;
+   background-image: none;    
+   border-left: 3px solid #CD5A01;
+   border-right: 3px solid #CD5A01;
     /*background-color: #cd5a01;
     color: #ffffff !important;
     border-left: 3px solid #ffffff;
@@ -213,22 +245,22 @@ div.collapse-custom > ul > li > a.selected {
 
 /* Owl Carousel Logos Styles Begin */
 .partners-logo {
- width: 260px;
- height: 80px;
- -webkit-filter: grayscale(100%);
- -moz-filter: grayscale(100%);
- filter: grayscale(100%);
- filter: grayscale(1);
- -webkit-filter: grayscale(1);
- transition: 0.4s ease-in-out;
+   width: 260px;
+   height: 80px;
+   -webkit-filter: grayscale(100%);
+   -moz-filter: grayscale(100%);
+   filter: grayscale(100%);
+   filter: grayscale(1);
+   -webkit-filter: grayscale(1);
+   transition: 0.4s ease-in-out;
 
 }
 .partners-logo:hover {
- -webkit-filter: grayscale(0%);
- -moz-filter: grayscale(0%);
- filter: grayscale(0%);
- filter: grayscale(0);
- -webkit-filter: grayscale(0);
+   -webkit-filter: grayscale(0%);
+   -moz-filter: grayscale(0%);
+   filter: grayscale(0%);
+   filter: grayscale(0);
+   -webkit-filter: grayscale(0);
 }
 /* Owl Carousel Logos Styles End */
 
@@ -273,33 +305,33 @@ div.collapse-custom > ul > li > a.selected {
 
 .wordRight{
     position: absolute;
-    font-size:20px;
+    font-size:30px;
     color:#ffffff;
     left: 100%;
     /*top:5%;*/
 }
 .wordLeft{
     position: absolute;
-    font-size:20px;
+    font-size:30px;
     color:#ffffff;
     right: 100%;
     /*top:5%;*/
 }
 .wordTop{
     position: absolute;
-    font-size:20px;
+    font-size:30px;
     color:#ffffff;
     bottom: 100%;
 }
 .wordBottom{
     position: absolute;
-    font-size:20px;
+    font-size:30px;
     color:#ffffff;
     top: 100%;
 }
 .wordFade{
     position: absolute;
-    font-size:20px;
+    font-size:30px;
     color:#ffffff;
     opacity: 0;
 }
@@ -775,8 +807,8 @@ span.image-add {
     padding: 0;
 }
 .words > li{
- display: flex;
- padding-left: 220px;
+   display: flex;
+   padding-left: 220px;
 }
 
 .modal-content{
@@ -844,6 +876,33 @@ span.image-add {
 }
 
 /* Admin Header Styles End */
+
+
+/* User Settings Styles Begin */
+
+.settings{
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding-top: 8px;
+    border: 1px solid #aeaeae;
+    border-radius: 0 0 5px 5px;   
+
+}
+.settings-title{
+    border: 1px solid #aeaeae;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;   
+}
+.alert-settings{
+    width: 500px;
+    float: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-left: 10px;
+}
+
+
+/*User Settings Styles End*/
 
 
 /* Edit static pages Styles Begin  */

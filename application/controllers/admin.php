@@ -1,12 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-	public function __construct()
-	{
+	public function __construct(){
 		parent::__construct();				
 		
 		$this->load->model('model_admin', 'model_admin', TRUE);
-
 	}
 
 
@@ -18,11 +16,6 @@ class Admin extends CI_Controller {
 			$this->home($userID);
 		}
 	}
-
-	
-
-	
-
 
 	public function create_new_news(){
 		$create_news_data['header'] = $this->checkIfLogedIn();
@@ -229,8 +222,7 @@ class Admin extends CI_Controller {
 		
 	}
 
-
-	public function delete_news(){				
+	public function delete_news(){
 
 		$id = $_POST['id'];
 		$news_image_url = $_POST['news_image_url'];
@@ -259,7 +251,6 @@ class Admin extends CI_Controller {
 		else{
 			return false;
 		}				
-
 	}
 
 	public function login(){
@@ -303,6 +294,7 @@ class Admin extends CI_Controller {
 		$this->session->unset_userdata('user_id');
 		redirect('admin','refresh');
 	}
+
 	public function home($userID){
 		$data['header'] = $this->load_admin_header($userID);
 		$this->load->view('admin_views/indexAdmin', $data);
@@ -362,14 +354,55 @@ class Admin extends CI_Controller {
 
 	public function completeUser(){
 		$password = $this->input->post('password');
+		$hash = password_hash($password, PASSWORD_BCRYPT);
 		$id = $this->input->post('id');
-		$result = $this->model_admin->complete($id,$password);
+		$result = $this->model_admin->complete($id,$hash,array('cost'=>14));
 		if ($result) {
 			redirect('admin', 'refresh');
 		} else {
 			echo "error";
+		}	
+	}
+
+	public function settings(){
+		$user_id = $this->session->userdata('user_id');
+		$userData = $this->model_admin->getUserData($user_id);
+		$data['header'] = $this->checkIfLogedIn();
+		$data['name'] = $userData['name'];
+		$data['surname'] = $userData['surname']; 
+		$this->load->view('admin_views/view_user_settings', $data, FALSE);
+	}
+
+	public function changeName(){
+		$user_id = $this->session->userdata('user_id');
+		$name = $this->input->post('name');
+		$surname = $this->input->post('surname');
+		$result = $this->model_admin->changeName($user_id,$name,$surname);
+		
+		if ($result) {
+			$this->output->set_output(json_encode(array('success'=>'Your personal info was successfully updated')));
+		} else {
+			$this->output->set_output(json_encode(array('error'=>'Something went wrong')));
 		}
 		
+		
+	}
+
+	public function changePassword(){
+		$user_id = $this->session->userdata('user_id');
+		$old = $this->input->post('pass-old');
+		$new = $this->input->post('pass-new');
+		$conf = $this->input->post('pass-conf');
+
+		if (empty($old) || empty($new) || empty($conf)) {
+			$this->output->set_output(json_encode(array('error'=>'All fields are required')));
+		} else if (!$this->compareOldPassword($old)) {
+			$this->output->set_output(json_encode(array('error'=>'Incorrect password','id'=>'pass-old')));
+		} else if (!$this->compareNewPassword($new,$conf)) {
+			$this->output->set_output(json_encode(array('error'=>'Passwords don\'t match','id'=>'pass-conf')));
+		} else if ($this->model_admin->changePassword($user_id,$new)) {
+			$this->output->set_output(json_encode(array('success'=>'Password was successfully updated')));
+		}
 	}
 
 	public function checkMail(){
@@ -386,7 +419,6 @@ class Admin extends CI_Controller {
 				$return = array('result' => 'error' );
 				$this->output->set_output(json_encode($return));
 			}
-
 		}
 	}
 
@@ -416,8 +448,7 @@ class Admin extends CI_Controller {
 			$data = array('role' => 'User' );
 		}
 		
-		$this->output->set_output(json_encode($data));
-		
+		$this->output->set_output(json_encode($data));	
 	}
 
 	public function showAllUsers(){
@@ -427,11 +458,11 @@ class Admin extends CI_Controller {
 			$this->load->view('admin_views/manageUsers', $data_showUser);		
 		} else {
 			$this->show_error_user_role();
-		}
-		
+		}	
 	}
 
 	public function deleteUser(){
+		$this->checkIfLogedIn();
 		$id = $this->input->post('id');
 		$this->model_admin->deleteUser($id);
 		$data = array('result' => '1');
@@ -440,13 +471,31 @@ class Admin extends CI_Controller {
 
 	public function show_error_user_role(){
 		$data['header'] = $this->checkIfLogedIn();
-		$this->load->view('admin_views/role_error', $data, FALSE);
-		
+		$this->load->view('admin_views/role_error', $data, FALSE);	
 	}
 
 
 	//========================================================================================================
 	//private functions
+
+	private function compareNewPassword($password,$password_confirm){
+		if ($password == $password_confirm) {
+			return true;
+		} else {
+			return false;
+		}	
+	}
+
+	private function compareOldPassword($formPassword){
+		$userID = $this->session->userdata('user_id');
+		$dbPassword = $this->model_admin->getOldPassword($userID);
+		if (password_verify($formPassword,$dbPassword)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
 
 	private function checkSuperUser(){
 		$userID = $this->session->userdata('user_id');
@@ -455,12 +504,10 @@ class Admin extends CI_Controller {
 			return true;			
 		} else {
 			return false;
-		}
-		
+		}	
 	}
 
-	private function generateAuthCode($lenght)
-	{
+	private function generateAuthCode($lenght){
 		$alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		$pass = array ();
 		$alphaLenght = strlen ( $alphabet ) - 1;
@@ -488,8 +535,8 @@ class Admin extends CI_Controller {
 		return $this->load->view('admin_views/adminHeader', $data_index, TRUE);
 	}
 
-	private function set_upload_options(){	  
 	//  upload an image options
+	private function set_upload_options(){	  
 		$config = array();
 		$config['upload_path'] = 'assets/images/slides';
 		$config['allowed_types'] = 'gif|jpg|png';	    
@@ -542,7 +589,6 @@ class Admin extends CI_Controller {
 		}
 
 		return $all_news_better;
-
 	}
 
 }

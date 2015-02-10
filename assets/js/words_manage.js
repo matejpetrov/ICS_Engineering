@@ -1,16 +1,16 @@
 var wordsSend = {
 	init:function(){
-		$('#delete-en').on('click',{lang:'en',lang_id:0},this.deleteWords);
-		$('#delete-mk').on('click',{lang:'mk',lang_id:1},this.deleteWords);
+		$('#delete-en').on('click',{lang:'en'},this.deleteWords);
+		$('#delete-mk').on('click',{lang:'mk'},this.deleteWords);
 		
 		$('#add-en').on('click',{lang:'en',lang_id:0},this.addWords);
 		$('#add-mk').on('click',{lang:'mk',lang_id:1},this.addWords);
 		
-		$('#check-all-en').on('click',{lang:'en',lang_id:0},this.checkAll);
-		$('#check-all-mk').on('click',{lang:'mk',lang_id:1},this.checkAll);
+		$('#check-all-en').on('click',{lang:'en'},this.checkAll);
+		$('#check-all-mk').on('click',{lang:'mk'},this.checkAll);
 		
-		$('#uncheck-all-en').on('click',{lang:'en',lang_id:0},this.uncheckAll);
-		$('#uncheck-all-mk').on('click',{lang:'mk',lang_id:1},this.uncheckAll);
+		$('#uncheck-all-en').on('click',{lang:'en'},this.uncheckAll);
+		$('#uncheck-all-mk').on('click',{lang:'mk'},this.uncheckAll);
 		
 		$('#modal-en').on('shown.bs.modal', function () {
 			$('#modal-en').find('#words').focus();
@@ -22,10 +22,10 @@ var wordsSend = {
 		});
 	},
 
-	deleteWords:function(event) {
+	deleteWords:function(param) {
 		var base_url = $('#base_url').val(),
 		word = [];
-		$('#' + event.data.lang).find('input[class="'+ event.data.lang +'"]:checked').each( function() {
+		$('#' + param.data.lang).find('input[class="'+ param.data.lang +'"]:checked').each( function() {
 			word.push($(this).val());
 		});
 		$.ajax({
@@ -41,9 +41,9 @@ var wordsSend = {
 		});
 	},
 
-	addWords:function(event){
+	addWords:function(param){
 		var base_url = $('#base_url').val(),
-		words = $('#modal-'+event.data.lang).find('#words').val();
+		words = $('#modal-'+param.data.lang).find('#words').val();
 		words = words.replace(/\r?\n/g, ';');
 
 		$.ajax({
@@ -52,29 +52,29 @@ var wordsSend = {
 			dataType: 'json',
 			data: {
 				words: words,
-				lang:event.data.lang_id
+				lang:param.data.lang_id
 			},
 			success:function(data) {
 				console.log(data);
-				$('#modal-' + event.data.lang).modal('hide');
+				$('#modal-' + param.data.lang).modal('hide');
 				var a; 
 				$.each(data, function(index, val) {
 					a=$('<li></li>').text(val);
-					a.prepend('<input class="'+ event.data.lang +'" type="checkbox" value="'+ index +'" />');
-					$('#' + event.data.lang).append(a);
+					a.prepend('<input class="'+ param.data.lang +'" type="checkbox" value="'+ index +'" />');
+					$('#' + param.data.lang).append(a);
 				});
 				$('#words').val('');
 			}
 		});	
 	},
-	checkAll:function(event) {
+	checkAll:function(param) {
 		console.log('checkAll');
-		$('#' + event.data.lang).find('input[class="'+ event.data.lang +'"]').each( function() {
+		$('#' + param.data.lang).find('input[class="'+ param.data.lang +'"]').each( function() {
 			$(this).prop('checked', true);
 		});
 	},
-	uncheckAll:function(event){
-		$('#' + event.data.lang).find('input[class="'+ event.data.lang +'"]:checked').each( function() {
+	uncheckAll:function(param){
+		$('#' + param.data.lang).find('input[class="'+ param.data.lang +'"]:checked').each( function() {
 			$(this).prop('checked', false);
 		});
 	}

@@ -23,7 +23,6 @@
 
 </head>
 <body>
-	<input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
 	<div class="container">
 		<input id="base_url" type="hidden" value="<?php echo base_url(); ?>" >
 		<div class="row admin-holder">

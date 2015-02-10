@@ -82,6 +82,7 @@ class Model_homepage extends CI_Model {
 
 	public function getAllWords($lang){
 		$this->db->where('lang', $lang);
+		$this->db->order_by('word', 'asc');
 		$result = $this->db->get('words');
 		return $result;
 	}

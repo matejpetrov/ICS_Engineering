@@ -4,7 +4,7 @@
 			<div class="col-md-12 lang">
 			<a href="<?php echo base_url(); ?>admin" class="i_header home"><i class="fa fa-home"></i></a>
 				<ul class="user-info-list">
-					<li class="user-info" >
+					<li class="user-info first" >
 						<?php echo $name; ?>
 					</li>
 					<li class="user-info last">
@@ -14,7 +14,7 @@
 						<a href="#" class="dropdown-toggle i_header" data-toggle="dropdown" role="button" aria-expanded="false" id="cog"><i class="fa fa-cog"></i></a>
 						<ul class="dropdown-menu admin-menu" role="menu">
 							<li>
-								<a id="settings" href="#">Settings</a>
+								<a id="settings" href="<?php echo base_url(); ?>admin/settings">Settings</a>
 							</li>								
 							<li>
 								<a id="logout" href="<?php echo base_url(); ?>admin/logout">Logout</a>

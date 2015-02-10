@@ -4,11 +4,10 @@ class Model_admin extends CI_Model {
 
 	public function UserLogin($username,$password){
 		$data = array(
-			'username' =>$username ,
-			'password'=>$password
+			'username' =>$username
 			);
 		$query = $this->db->get_where('users', $data);
-		if (count($query->result () ) > 0) {
+		if (count($query->result () ) > 0 && password_verify($password,$query->row()->password)) {
 			$id = $query->row()->id;
 			return $id;
 		}else{
@@ -124,6 +123,7 @@ class Model_admin extends CI_Model {
 
 	public function complete($id,$password){
 		$this->db->where('id', $id);
+		password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 		$this->db->update('users', array('password'=>$password));
 		$this->db->where('user_id', $id);
 		$this->db->update('authentication', array('authenticated'=> '1'));
@@ -133,6 +133,35 @@ class Model_admin extends CI_Model {
 			return false;
 		}
 
+	}
+
+	public function getOldPassword($id){
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+
+		return $query->row()->password;
+	}
+
+	public function changePassword($id,$password){
+		$this->db->where('id', $id);
+		$password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+		$this->db->update('users', array('password'=>$password));
+		if ($this->db->affected_rows()>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function changeName($id,$name,$surname){
+		$this->db->where('id', $id);
+		$this->db->update('users', array('name'=>$name,'surname'=>$surname));
+
+		if ($this->db->affected_rows()>0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	//function that inserts a new row in the news table. 
