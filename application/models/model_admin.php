@@ -2,7 +2,7 @@
 
 class Model_admin extends CI_Model {
 
-	public function UserLogin($username,$password){
+	public function userLogin($username,$password){
 		$data = array(
 			'username' =>$username
 			);

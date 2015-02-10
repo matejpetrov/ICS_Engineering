@@ -5,12 +5,29 @@ class Static_pages_controller extends CI_Controller{
 	public function __construct() {
 		parent::__construct();		
 
+		$this->load->library('session');
+		
+		$cookie_lang = $this->input->cookie('ics_language');
+		if (empty($cookie_lang)) {
+			$this->session->set_userdata( array('site_lang' => 'english'));
+			$cookie = array(
+				'name'   => 'language',
+				'value'  => 'english',
+				'expire' => '86500',
+				'path'   => '/',
+				'prefix' => 'ics_',
+				'secure' => false
+				);
+			$this->input->set_cookie($cookie);
+		}else{
+			$this->session->set_userdata( array('site_lang' => $cookie_lang));
+		}
+
 		$this->load->model('model_homepage','model_homepage',TRUE);
 	}
 	
 	//ja prikazuva homePage. Za ovaa strana mi trebaat menus_lang i additional address.
 	public function index(){
-		
 		$data = $this->get_menus_language_values();
 
 		$data["additional_address"] = $this->lang->line("additional_address");		
@@ -275,7 +292,7 @@ class Static_pages_controller extends CI_Controller{
 		$data_temp = array();
 
 		if($page == 0){
-				
+
 			$data_temp["services_title"] = $this->lang->line("services_title");		
 
 			$data_temp["nav_services"] = $this->lang->line("nav_services");

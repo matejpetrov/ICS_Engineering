@@ -17,7 +17,7 @@
 	
 	<div class="row">
 		
-		<div class="col-md-9" id="content-container">				
+		<div class="col-md-9 about_us" id="content-container">				
 
 			<?php echo $about_us_page; ?>
 

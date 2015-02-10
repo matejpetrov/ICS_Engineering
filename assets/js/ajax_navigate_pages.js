@@ -42,7 +42,8 @@ function about_us_ajax_page(page_id){
 
 var getSubpage = {
 	init: function() {
-		$('#content-container').on('click','a',this.requestPage);
+		$('#content-container.about_us').on('click','a',{func:'ajax_about_us_page_navigation'},this.requestPage);
+		$('#content-container.services').on('click','a',{func:'ajax_services_page_navigation'},this.requestPage);
 	},
 	requestPage:function(e) {
 		e.preventDefault();
@@ -51,7 +52,8 @@ var getSubpage = {
 		container = $('#content-container'),
 		base_url = $('#base_url').val(),
 		controller = "static_pages_controller/",
-		func = "ajax_about_us_page_navigation";
+		func = e.data.func;
+		// "ajax_about_us_page_navigation";
 
 		$.ajax({
 			url: base_url + controller + func,
@@ -105,6 +107,9 @@ function services_ajax_page(page_id){
 	}).done(function() {
 		$('.sidebar').find('#' + temp).addClass('active');
 		$('#services_' + temp).addClass('sub-selected');
+		if (temp == 0) {
+			$('.top-nav').find('#' + temp).addClass('active');
+		};
 		window.history.pushState("", "", window.location.href.replace(/[0-9]#/, page_id));
 	});
 

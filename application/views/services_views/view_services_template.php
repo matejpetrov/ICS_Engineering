@@ -33,7 +33,7 @@
 	
 	<div class="row">
 		
-		<div class="col-md-9" id="content-container">
+		<div class="col-md-9 services" id="content-container">
 
 			<?php echo $services_page; ?>
 

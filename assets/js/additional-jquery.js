@@ -20,10 +20,14 @@ $(document).ready(function(){
 				};
 			}
 			else if(prelast == 'services'){
+					getSubpage.init();
 				$('#services').addClass('selected');
 				$('#services_footer').addClass('selected');
 				$('.sidebar').find('#' + last).addClass('active');
 				$('#services_' + last).addClass('sub-selected');
+				if (last == 0) {
+					$('.top-nav').find('#' + last).addClass('active');
+				};
 			}
 			else if(prelast == 'show_news_homepage'){
 				$('#news').addClass('selected');

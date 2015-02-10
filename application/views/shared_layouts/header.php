@@ -50,7 +50,7 @@
 				loaderColor : "#CD5A01",
 				pagination : false,
 				thumbnails : false,
-				autoAdvance: false,
+				autoAdvance: true,
 				fx: 'simpleFade',
 				hover : true,
 				opacityOnGrid : false,
@@ -98,7 +98,7 @@
 							<span class="sr-only">Toggle navigation</span>
 							<i class="fa fa-bars fa-lg"></i>
 						</button>
-						<a href="<?php echo base_url();?>" class="navbar-brand brand-custom"><img class="logo" src="<?php echo base_url(); ?>assets/images/logo_new.svg" style="height:125px;" /></a>
+						<a href="<?php echo base_url();?>" class="navbar-brand brand-custom"><img class="logo" src="<?php echo base_url(); ?>assets/images/ics-logo-new-new.svg" style="height:75px;" /></a>
 					</div>
 
 					<div class="collapse navbar-collapse collapse-custom">

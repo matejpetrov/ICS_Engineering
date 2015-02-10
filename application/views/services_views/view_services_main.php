@@ -5,17 +5,17 @@
 			<a href="#" data-page="services"><?php echo $nav_services; ?></a>
 		</li>
 		<li id="1">
-			<a href="#" data-page="telecommunication"><?php echo $nav_consulting; ?></a>
+			<a href="#" data-page="consulting"><?php echo $nav_consulting; ?></a>
 		</li>
 
 		<li id="2">
-			<a href="#" data-page="power-supply"><?php echo $nav_engineering; ?></a>
+			<a href="#" data-page="engineering"><?php echo $nav_engineering; ?></a>
 		</li>
 
 		<li id="3">
-			<a href="#" data-page="audio-video"><?php echo $nav_system_integration; ?></a>
+			<a href="#" data-page="system_integration"><?php echo $nav_system_integration; ?></a>
 		</li>
-					
+			</ul>		
 </div>
 
 
