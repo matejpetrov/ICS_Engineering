@@ -30,7 +30,7 @@
 				</li>
 
 				<li id="3">
-					<a href="#" onclick="about_us_ajax_page(3)"><?php echo "$menus_corporate_info[0] $menus_corporate_info[1]"; ?></a>
+					<a href="#" onclick="about_us_ajax_page(3)"><?php echo $menus_corporate_info; ?></a>
 				</li>			
 			</ul>
 		</div>

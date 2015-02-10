@@ -1,3 +1,3 @@
 <h2><?php echo $services_consulting_title; ?></h2>
 
-<h3><?php echo $services_consulting_subtitle; ?></h3>
+<p><?php echo $services_consulting_page; ?></p>

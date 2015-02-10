@@ -1,8 +1,22 @@
 <?php 
 
-$lang["services_title"] = "Services";
 
-$lang["services_engineering_title"] = "Engineering";
+
+$lang["nav_services"] = "Products and Services";
+$lang["services_title"] = "Services";
+//subpages START
+$lang["nav_consulting"] = "Consulting";
+$lang["nav_engineering"] = "Engineering";
+$lang["nav_system_integration"] = "System Integration";
+//subpages END
+
+$lang["services_telecommunication"] = "Telecommunications";
+$lang["services_power_supply"] = "Power Supply";
+$lang["services_audio_video"] = "Audio/Video";
+$lang["services_defence_security"] = "Secure&nbsp;Communications";
+
+
+/*$lang["services_engineering_title"] = "Engineering";
 
 $lang["services_engineering_subtitle"] = "Something about our engineering";
 
@@ -12,7 +26,7 @@ $lang["services_system_integration_title"] = "System integration";
 
 $lang["services_consulting_title"] = "Consulting";
 
-$lang["services_consulting_subtitle"] = "Consulting";
+$lang["services_consulting_subtitle"] = "Consulting";*/
 
 
 

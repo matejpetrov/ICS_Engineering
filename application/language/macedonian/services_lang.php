@@ -1,6 +1,20 @@
 <?php 
 
-$lang["services_title"] = "Услуги";
+
+$lang["nav_services"] = "Производи и Услуги";
+//subpages START
+$lang["nav_consulting"] = "Консалтинг";
+$lang["nav_engineering"] = "Инженеринг";
+$lang["nav_system_integration"] = "Системска интеграција";
+//subpages END
+
+$lang["services_telecommunication"] = "Телекомуникации";
+$lang["services_power_supply"] = "Напојување";
+$lang["services_audio_video"] = "Аудио/Видео";
+$lang["services_defence_security"] = "Безбедни&nbsp;Комуникации";
+
+
+/*$lang["services_title"] = "Услуги";
 
 $lang["services_engineering_title"] = "Инженеринг";
 
@@ -14,7 +28,7 @@ $lang["services_system_integration_title"] = "Системска интегра�
 
 $lang["services_consulting_title"] = "Консалтинг";
 
-$lang["services_consulting_subtitle"] = "Консалтинг";
+$lang["services_consulting_subtitle"] = "Консалтинг";*/
 
 
 ?>

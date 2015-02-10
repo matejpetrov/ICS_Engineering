@@ -99,6 +99,11 @@ i {
 /* Header-Language Styles End */
 
 /* Header-Menu Styles Begin */
+
+.navbar-nav > li > .dropdown-menu{
+    width: 245px;
+}
+
 .header-menu{
     border: none ;
     border-radius: 0 ;

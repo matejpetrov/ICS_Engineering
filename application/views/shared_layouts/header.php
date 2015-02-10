@@ -128,10 +128,8 @@
 										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/2" id="about_2"><?php echo $menus_partners; ?></a>
 									</li>
 									<li>
-										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/3" id="about_3"><?php echo $menus_corporate_info[0]; ?>
-											<br />
-											<?php echo $menus_corporate_info[1]; ?></a>
-										</li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/3" id="about_3"><?php echo $menus_corporate_info ?></a>
+									</li>
 									</ul>
 								</li>								
 								<li class="dropdown">
@@ -144,17 +142,19 @@
 										<hr/>
 
 										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_engineering; ?></a>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_telecommunications; ?></a>
 										</li>
 										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_system_integration[0]; ?>
-												<br />
-												<?php echo $menus_system_integration[1]; ?></a>
-											</li>
-											<li>
-												<a href="<?php echo base_url(); ?>static_pages_controller/services/3" id="services_3"><?php echo $menus_consulting; ?></a>
-											</li>
-										</ul>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_power_supply; ?></a>
+										</li>
+										<li>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/3" id="services_3"><?php echo $menus_audio_video; ?></a>
+										</li>
+										<li>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/4" id="services_4"><?php echo $menus_defence_security; ?></a>
+										</li>
+										
+									</ul>
 									</li>
 									<li>
 										<a href="#" id="news"><?php echo $menus_news; ?></a>

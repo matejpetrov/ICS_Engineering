@@ -204,6 +204,45 @@ class Model_services_pages extends CI_Model {
 	}
 
 
+
+	//function that retreives value of the specific column in the specific language, both given as argument. 
+	//It either returns the result or false if something went wrong. 
+	public function get_services_page_content($column, $lang){
+
+		$this->db->select($column);
+		$this->db->from('services_translation');
+		
+		$lang_db = -1;
+		if($lang == 'english'){
+			$lang_db = 0;
+		}
+		else $lang_db = 1;
+
+		$this->db->where('lang', $lang_db);
+
+		$query = $this->db->get();
+
+
+		if (count($query->result () ) > 0) {
+			$result = (array)$query->row();
+			return $result;
+		}else{
+			return false;
+		}
+
+
+		/*foreach ($query->result() as $row){
+		    $result = (array)$row;
+		}
+
+		if($result){
+			return $result;
+		}
+		else return false;*/
+	
+	}
+
+
 }
 
 /* End of file model_services_pages.php */

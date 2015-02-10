@@ -14,7 +14,7 @@ $lang["about_us_mission_title"] = "Mission & Vision";
 
 $lang["about_us_partners_title"] = "Partners";
 
-$lang["about_us_corporate_title"] = "Company Information";
+$lang["about_us_corporate_title"] = "Company&nbsp;Information";
 
 
 

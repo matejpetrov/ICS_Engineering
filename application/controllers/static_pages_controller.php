@@ -224,52 +224,84 @@ class Static_pages_controller extends CI_Controller{
 
 		$data = $this->get_menus_language_values();
 		$data["additional_address"] = $this->lang->line("additional_address");
+
+		$this->load->model('model_services_pages', 'model_services_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
 		
 		$data_temp = array();
 
 		if($page == 0){
-			$data_temp["services_title"] = $this->lang->line("services_title");			
-			$data_temp["services_first_page"] = $this->lang->line("services_first_page");
+				
+			$data_temp["services_title"] = $this->lang->line("services_title");		
+
+			$data_temp["nav_services"] = $this->lang->line("nav_services");
+			$data_temp["nav_consulting"] = $this->lang->line("nav_consulting");
+			$data_temp["nav_engineering"] = $this->lang->line("nav_engineering");
+			$data_temp["nav_system_integration"] = $this->lang->line("nav_system_integration");				
+
+			$column = 'services';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_first_page"] = $result['services'];
+			
 
 			$data_services["services_page"] = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
 
 		}
 		else if($page == 1){
 
-			$data_temp["services_engineering_title"] = $this->lang->line("services_engineering_title");
-			$data_temp["services_engineering_subtitle"] = $this->lang->line("services_engineering_subtitle");
+			$data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
-			$services_engineering_text = $this->lang->line("services_engineering_content");
-			$services_engineering_array = explode("^", $services_engineering_text);
+			$column = 'telecommunication';
 
-			$data_temp["services_engineering_content"] = $services_engineering_array;
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_services["services_page"] = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
+			$data_temp["services_telecommunication_page"] = $result[$column];
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_telecommunication", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
-
-			$data_temp["services_system_integration_first_paragraph"] = $this->lang->line("services_system_integration_first_paragraph");
-			$data_temp["services_system_integration_second_paragraph"] = $this->lang->line("services_system_integration_second_paragraph");
-			$data_temp["services_system_integration_title"] = $this->lang->line("services_system_integration_title");
 			
+			$data_temp["services_power_supply_title"] = $this->lang->line("services_power_supply");
 
-			$services_system_integration_list_text = $this->lang->line("services_system_integration_list");
-			$services_system_integration_list_array = explode("^", $services_system_integration_list_text);
+			$column = 'power-supply';
 
-			$data_temp["services_system_integration_list"] = $services_system_integration_list_array;
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_services["services_page"] = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+			$data_temp["services_power_supply_page"] = $result[$column];			
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_power_supply", $data_temp, TRUE);
 
 		}
 
 		else if($page == 3){
 
-			$data_temp["services_consulting_title"] = $this->lang->line("services_consulting_title");
-			$data_temp["services_consulting_subtitle"] = $this->lang->line("services_consulting_subtitle");
+			$data_temp["services_audio_video_title"] = $this->lang->line("services_audio_video");
 
-			$data_services["services_page"] = $this->load->view('services_views/view_services_consulting', $data_temp, TRUE);
+			$column = 'audio-video';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_audio_video_page"] = $result[$column];			
+
+			$data_services["services_page"] = $this->load->view("services_views/view_services_audio_video", $data_temp, TRUE);
+
+		}
+
+		else if($page == 4){
+
+			$data_temp["services_secure_communication_title"] = $this->lang->line("services_defence_security");
+
+			$column = 'defence-security';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_secure_communication_page"] = $result[$column];			
+
+			$data_services["services_page"] = $this->load->view("services_views/view_secure_communication", $data_temp, TRUE);
 
 		}
 
@@ -304,17 +336,16 @@ class Static_pages_controller extends CI_Controller{
 		$data["menus_home"]	= $this->lang->line("menus_home");
 		
 		$data["menus_about_us"] = $this->lang->line("menus_about_us");
-		$data["menus_mission"] = $this->lang->line("menus_mission");
-		$data["menus_vision"] = $this->lang->line("menus_vision");
-		$data["menus_structure"] = $this->lang->line("menus_structure");
+		$data["menus_mission"] = $this->lang->line("menus_mission");		
 		$data["menus_partners"] = $this->lang->line("menus_partners");
 		
-		$data["menus_corporate_info"] = explode(" ", $this->lang->line("menus_corporate_info"));		
+		$data["menus_corporate_info"] = $this->lang->line("menus_corporate_info");
 		
 		$data["menus_services"]	= $this->lang->line("menus_services");
-		$data["menus_engineering"] = $this->lang->line("menus_engineering");
-		$data["menus_system_integration"] = explode(" ", $this->lang->line("menus_system_integration"));
-		$data["menus_consulting"] = $this->lang->line("menus_consulting");
+		$data["menus_telecommunications"] = $this->lang->line("menus_telecommunications");
+		$data["menus_power_supply"] = $this->lang->line("menus_power_supply");
+		$data["menus_audio_video"] = $this->lang->line("menus_audio_video");
+		$data["menus_defence_security"] = $this->lang->line("menus_defence_security");
 		
 		$data["menus_news"]	= $this->lang->line("menus_news");
 		$data["menus_web_mail"]	= $this->lang->line("menus_web_mail");
@@ -435,44 +466,83 @@ class Static_pages_controller extends CI_Controller{
 	public function ajax_services_page_navigation(){
 
 		$page = $_POST["page_id"];
+		$this->load->model('model_services_pages', 'model_services_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
 
 		if($page == 0){
-			$data_temp["services_title"] = $this->lang->line("services_title");
-			$data_temp["services_first_page"] = $this->lang->line("services_first_page");
+			$data_temp["services_title"] = $this->lang->line("services_title");		
 
-			$data = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
-		}
-		else if($page == 1){
+			$data_temp["nav_services"] = $this->lang->line("nav_services");
+			$data_temp["nav_consulting"] = $this->lang->line("nav_consulting");
+			$data_temp["nav_engineering"] = $this->lang->line("nav_engineering");
+			$data_temp["nav_system_integration"] = $this->lang->line("nav_system_integration");		
 
-			$data_temp["services_engineering_title"] = $this->lang->line("services_engineering_title");
-			$data_temp["services_engineering_subtitle"] = $this->lang->line("services_engineering_subtitle");
+			$column = 'services';
+			$top_nav = $this->input->post('top_nav');
 
-			$services_engineering_text = $this->lang->line("services_engineering_content");
-			$services_engineering_array = explode("^", $services_engineering_text);
-
-			$data_temp["services_engineering_content"] = $services_engineering_array;
-
-			$data = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
-		}
-		else if($page == 2){
-			$data_temp["services_system_integration_first_paragraph"] = $this->lang->line("services_system_integration_first_paragraph");
-			$data_temp["services_system_integration_second_paragraph"] = $this->lang->line("services_system_integration_second_paragraph");
-			$data_temp["services_system_integration_title"] = $this->lang->line("services_system_integration_title");
+			if (!empty($top_nav)) {
+				$column = $top_nav;
+				$nav_lang = preg_replace('/-/', '_', $top_nav);
+				$data_temp["services_title"] = $this->lang->line("nav_".$nav_lang);
+			}
 			
 
-			$services_system_integration_list_text = $this->lang->line("services_system_integration_list");
-			$services_system_integration_list_array = explode("^", $services_system_integration_list_text);
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_system_integration_list"] = $services_system_integration_list_array;
+			$data_temp["services_first_page"] = $result[$column];
 
-			$data = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+			$data = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
+
+		}
+
+		else if($page == 1){
+
+			$data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
+
+			$column = 'telecommunication';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_telecommunication_page"] = $result[$column];						
+
+			$data = $this->load->view("services_views/view_services_telecommunication", $data_temp, TRUE);
+		}
+		else if($page == 2){
+			$data_temp["services_power_supply_title"] = $this->lang->line("services_power_supply");
+
+			$column = 'power-supply';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_power_supply_page"] = $result[$column];						
+
+			$data = $this->load->view("services_views/view_services_power_supply", $data_temp, TRUE);
 		}
 		else if($page == 3){
 
-			$data_temp["services_consulting_title"] = $this->lang->line("services_consulting_title");
-			$data_temp["services_consulting_subtitle"] = $this->lang->line("services_consulting_subtitle");
+			$data_temp["services_audio_video_title"] = $this->lang->line("services_audio_video");
 
-			$data = $this->load->view('services_views/view_services_consulting', $data_temp, TRUE);
+			$column = 'audio-video';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_audio_video_page"] = $result[$column];						
+
+			$data = $this->load->view("services_views/view_services_audio_video", $data_temp, TRUE);
+
+		}
+
+		else if($page == 4){
+
+			$data_temp["services_secure_communication_title"] = $this->lang->line("services_defence_security");
+
+			$column = 'defence-security';
+
+			$result = $this->model_services_pages->get_services_page_content($column, $lang);
+
+			$data_temp["services_secure_communication_page"] = $result[$column];						
+
+			$data = $this->load->view("services_views/view_secure_communication", $data_temp, TRUE);
 
 		}
 
