@@ -77,13 +77,7 @@
 							</li>
 							<li>
 								<a href="<?php echo base_url(); ?>langSwitch/switchLanguage/macedonian" class="macedonian">MK</a>
-							</li>
-							<li>
-								<a href="http://youtube.com" target="_blank" class="i_header"> <i class="fa fa-youtube-play"></i> </a>
-							</li>
-							<li>
-								<a href="http://twitter.com" target="_blank" class="i_header"> <i class="fa fa-twitter"></i> </a>
-							</li>
+							</li>							
 							<li>
 								<a href="http://linkedin.com" target="_blank" class="i_header"><i class="fa fa-linkedin"></i></a>	
 							</li>
@@ -157,7 +151,7 @@
 									</ul>
 									</li>
 									<li>
-										<a href="#" id="news"><?php echo $menus_news; ?></a>
+										<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news"><?php echo $menus_news; ?></a>
 									</li>
 									<li>
 										<a href="<?php echo base_url(); ?>static_pages_controller/webMail" id="webMail"><?php echo $menus_web_mail; ?></a>

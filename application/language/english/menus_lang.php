@@ -7,7 +7,7 @@ $lang["menus_mission"] = "Mission & Vision";
 $lang["menus_partners"] = "Partners";
 $lang["menus_corporate_info"] = "Company&nbsp;Information";
 
-$lang["menus_services"] = "Producsts and Services";
+$lang["menus_services"] = "Services";
 $lang["menus_telecommunications"] = "Telecommunications";
 $lang["menus_power_supply"] = "Power Supply";
 $lang["menus_audio_video"] = "Audio/Video";

@@ -1,13 +1,17 @@
 <?php echo $header; ?>
+
+<!-- preview in detail a news that has been selected.  -->
+
 <script type="text/javascript">
-	$(window).load(function() {
+	$(window).ready(function() {
 		$('img:not([class])').css('padding-right', '20px');
 		$('img:not([class])').addClass('img-responsive');
 	});
 </script>
+
 <div class="container news-page">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<div style="text-align: center;">
 				<h1><?php echo $title; ?></h1>
 			</div>
@@ -17,8 +21,15 @@
 			</div>
 
 			<?php echo $content; ?>
+		</div>		
+
+		<div class="col-md-3 latest_news">
+			<h3><?php echo $latest_news_title; ?></h3>
+			<?php echo $latest_news; ?>
 		</div>
-	</div>
+
+	</div>	
+
 </div>
 
 

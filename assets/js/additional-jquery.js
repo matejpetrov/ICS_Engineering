@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var numEl=array.length-1;
 	var last = array[numEl];
 	var prelast = array[numEl-1];
+	var preprelast = array[numEl-2];
 	if (last != "") {
 
 		if($.isNumeric(last)){
@@ -27,7 +28,12 @@ $(document).ready(function(){
 			else if(prelast == 'show_news_homepage'){
 				$('#news').addClass('selected');
 				$('#news_footer').addClass('selected');				
-			}
+			}			
+		}
+		console.log(prelast);
+		if(prelast == "news"){
+			$('#news').addClass('selected');
+			$('#news_footer').addClass('selected');	
 		}
 
 

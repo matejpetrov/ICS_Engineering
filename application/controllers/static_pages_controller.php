@@ -21,16 +21,56 @@ class Static_pages_controller extends CI_Controller{
 		
 		$data_home_page["images"] = $this->model_homepage->getSliderImages();
 
-		$all_news = $this->get_all_news_homepage();
+		$all_news = $this->get_all_news_homepage(0);
 
 		$data_home_page['all_news'] = $all_news;
 
 		$this->load->view("homePage", $data_home_page);
 	}
 
-	//creates the news homepage slider
 
-	public function get_all_news_homepage(){
+	//function that loads all the views from the database and displays them. Invoked when we click
+	//on the news tab in the header. 
+	public function news(){
+
+		$data = $this->get_menus_language_values();
+
+		$data["additional_address"] = $this->lang->line("additional_address");		
+
+		$data_all_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_all_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
+
+		$all_news = $this->get_all_news_homepage(1);
+
+		$data_all_news['all_news'] = $all_news;		
+
+		$this->load->view('view_all_news', $data_all_news, FALSE);
+
+	}
+
+	//gets the four latest news and loads the content in the view_sidebar_news view. The result will be
+	//displayed in the preview of a specific news in the sidebar. Each row should be a link to that news
+	//and with click on it AJAX call will be sent and that news will be shown.
+	public function latest_news(){		
+
+		$session_lang = $this->session->userdata('site_lang');
+
+		$result = $this->model_homepage->get_latest_news($session_lang);
+
+		if($result){
+			$latest_news = $result;
+			$data['latest_news'] = $latest_news;
+			return $this->load->view('view_latest_news', $data, TRUE);
+		}
+		else{
+			return false;
+		}
+
+
+	}
+
+	//creates the news homepage slider
+	public function get_all_news_homepage($template){
 
 		$session_lang = $this->session->userdata('site_lang');
 
@@ -54,8 +94,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp['news_url'] = $news['news_url'];
 			$data_temp['news_image_url'] = $news['news_image_url'];
 			$title = $news['title'];
-			if (mb_strlen($title) > 45) {
-				preg_match('/^.{1,45}(\p{L}|\p{N})\b/u', $title, $temp);
+			if (mb_strlen($title) > 40) {
+				preg_match('/^.{1,40}(\p{L}|\p{N})\b/u', $title, $temp);
 				$short_title = $temp[0].'...';
 				$data_temp['title'] = $short_title;
 			} else {
@@ -64,7 +104,12 @@ class Static_pages_controller extends CI_Controller{
 			}
 			
 
-			$view_temp = $this->load->view('admin_views/view_news_homepage_template', $data_temp, TRUE);
+			if($template == 0){
+				$view_temp = $this->load->view('admin_views/view_news_homepage_template', $data_temp, TRUE);
+			}
+			else{
+				$view_temp = $this->load->view('news_template', $data_temp, TRUE);
+			}			
 
 			array_push($all_news_views, $view_temp);
 
@@ -88,7 +133,7 @@ class Static_pages_controller extends CI_Controller{
 	
 	//function that retrieves the data for a news with the id given as argument. It should then load the 
 	//view_news_preview view, that displays the retrieved news.
-	public function show_news_homepage($url){			
+	public function show_news_homepage($url){
 
 		$session_lang = $this->session->userdata('site_lang');
 
@@ -113,6 +158,17 @@ class Static_pages_controller extends CI_Controller{
 		$data_news['title'] = $news['title'];
 		$data_news['content'] = $news['content'];
 
+		$latest_news = $this->latest_news();
+
+		if($latest_news != false){
+			$data_news['latest_news'] = $latest_news;
+		}
+		else{
+			$data_news['latest_news'] = "There are no latest news";
+		}
+
+		$data_news['latest_news_title'] = $this->lang->line("latest_news_title");
+
 		$this->load->view('view_news_preview', $data_news, FALSE);
 
 	}
@@ -130,19 +186,6 @@ class Static_pages_controller extends CI_Controller{
 		$data_contact["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
 		$this->load->view("contact", $data_contact);
-	}
-
-
-	public function news_example(){
-
-		$data = $this->get_menus_language_values();
-		
-		$data["additional_address"] = $this->lang->line("additional_address");
-
-		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
-		$data_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
-
-		$this->load->view('news_example', $data_news);
 	}
 
 	public function about_us($page){
@@ -223,6 +266,7 @@ class Static_pages_controller extends CI_Controller{
 	public function services($page){
 
 		$data = $this->get_menus_language_values();
+		$data["nav_services"] = $this->lang->line("nav_services");
 		$data["additional_address"] = $this->lang->line("additional_address");
 
 		$this->load->model('model_services_pages', 'model_services_pages', TRUE);

@@ -634,7 +634,7 @@ div.contact > .input-group {
 
 div.news-page>.row>.col-md-12 {
     text-align: justify;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .tbtn{
     width: 130px;
@@ -920,6 +920,56 @@ div.static-pages-content{
 
 /* Edit static pages Styles End  */
 
+
+
+/* All news page Style Begin */
+
+
+.news_item {
+    background-color: #FFFFFF;
+    /*height: 435px;*/
+    border: 1px solid #CD5A01;
+    display: block;
+    padding: 30px 15px;
+    padding-bottom: 10px;
+    margin: 0px 10px;
+    box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
+    
+    margin-bottom: 25px;
+    text-align: center;
+    min-height: 350px;
+}
+
+div.news-item-container{
+    margin-top: 100px;
+}
+
+
+/* All news page Style End */
+
+
+/* News Preview Style Begin */
+
+
+/* News Preview Style End */
+    
+.latest_news{
+
+    margin-top: 81px;
+    margin-left: 97px;
+
+}
+
+.latest_news_image{
+    height: 120px;
+    width: 120px; 
+}
+
+.latest_news_table > tr {
+
+    border: 1px solid #CD5A01;     
+
+}
 
 /* Responsive media Begin */
 

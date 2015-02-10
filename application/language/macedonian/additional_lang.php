@@ -14,4 +14,6 @@ $lang["additional_address"] = "ИЦС Консалтинг Инженеринг
 
 $lang["additional_button_more"] = "Повеќе>>";
 
+$lang["latest_news_title"] = "Најнови вести";
+
 ?>

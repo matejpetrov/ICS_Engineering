@@ -7,7 +7,7 @@ $lang["menus_mission"] = "Мисија и Визија";
 $lang["menus_partners"] = "Партнери";
 $lang["menus_corporate_info"] = "Информации&nbsp;за&nbsp;компанијата";
 
-$lang["menus_services"] = "Производи и услуги";
+$lang["menus_services"] = "Услуги";
 $lang["menus_telecommunications"] = "Телекомуникации";
 $lang["menus_power_supply"] = "Напојување";
 $lang["menus_audio_video"] = "Аудио/Видео";

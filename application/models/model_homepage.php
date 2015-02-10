@@ -106,5 +106,37 @@ class Model_homepage extends CI_Model {
 		$array = array_combine($arrayID, $arrayWord);
 		return $array;
 	}
+
+
+	public function get_latest_news($lang){
+
+		$this->db->select('n.id, n.news_image_url, n.news_url, tc.title');
+		$this->db->from('news n');		
+		$this->db->join('translation_content tc', 'n.id = tc.news_id');
+		if($lang == 'english'){
+			$this->db->where('tc.lang = 0');
+		}
+		else if($lang == 'macedonian'){
+			$this->db->where('tc.lang = 1');
+		}
+
+		$this->db->order_by('n.created_at', 'desc');
+		$this->db->limit(4);
+		$query = $this->db->get();
+
+		$result = array();
+
+		if($query){
+			foreach($query->result() as $row){
+				array_push($result, (array)$row);
+			}
+
+			return $result;
+		}
+		else return false;
+
+	}
+
+
 }
 

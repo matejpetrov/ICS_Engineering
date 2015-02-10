@@ -43,7 +43,7 @@
 
 			<ul class="nav nav-pills nav-stacked sidebar">
 				<li id="0">
-					<a href="#" onclick="services_ajax_page(0);"><?php echo $menus_services; ?></a>
+					<a href="#" onclick="services_ajax_page(0);"><?php echo $nav_services; ?></a>
 				</li>
 				<li id="1">
 					<a href="#" onclick="services_ajax_page(1)"><?php echo $menus_telecommunications; ?></a>

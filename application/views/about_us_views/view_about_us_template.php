@@ -3,6 +3,13 @@
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_navigate_pages.js"></script>
 
+<script type="text/javascript">
+	$(window).load(function() {
+		$('img:not([class])').css('padding-right', '20px');
+		$('img:not([class])').addClass('img-responsive');
+	});
+</script>
+
 
 <input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
 
