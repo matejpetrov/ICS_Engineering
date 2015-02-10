@@ -62,24 +62,7 @@ class StaticPagesAdminController extends CI_Controller {
 
 		$data_subpages['about_us_english'] = $about_us_subpages_1;
 		$data_subpages['about_us_macedonian'] = $about_us_subpages_2;
-
-		/*foreach($about_us_pages as $aud){
-			if($aud['lang'] == 0){
-				$data_pages['about_us_english'] = $aud;
-			}
-			else{
-				$data_pages['about_us_macedonian'] = $aud;	
-			}
-		}
-
-		foreach($about_us_subpages as $aud){
-			if($aud['lang'] == 0){
-				$data_subpages['about_us_english'] = $aud;
-			}
-			else{
-				$data_subpages['about_us_macedonian'] = $aud;	
-			}
-		}*/
+		
 
 		$data_pages["about_us_subpages"] = $this->load->view('admin_views/view_about_us_subpages_forms', $data_subpages, TRUE);
 
@@ -97,7 +80,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_about_us_pages->update_about_us_content($about_us_english, $about_us_macedonian)){
-			$json = "{message:".$about_us_english."}";
+			$json = "{message: 'success'";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -119,7 +102,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_about_us_pages->update_mission_content($mission_english, $mission_macedonian)){
-			$json = "{message:".$mission_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -140,7 +123,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_about_us_pages->update_partners_content($partners_english, $partners_macedonian)){
-			$json = "{message:".$partners_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -161,7 +144,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_about_us_pages->update_corporate_info_content($corporate_info_english, $corporate_info_macedonian)){
-			$json = "{message:".$corporate_info_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -193,7 +176,7 @@ class StaticPagesAdminController extends CI_Controller {
 		}
 
 		if($result){
-			$json = "{message:".$telecommunication_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -221,7 +204,7 @@ class StaticPagesAdminController extends CI_Controller {
 		}
 
 		if($result){
-			$json = "{message:".$power_supply_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -248,7 +231,7 @@ class StaticPagesAdminController extends CI_Controller {
 		}
 
 		if($result){
-			$json = "{message:".$audio_video_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -276,7 +259,7 @@ class StaticPagesAdminController extends CI_Controller {
 		}
 
 		if($result){
-			$json = "{message:".$defence_security_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -342,7 +325,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_services_pages->update_services_content($services_english, $services_macedonian)){
-			$json = "{message:".$services_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -362,7 +345,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_services_pages->update_engineering_content($engineering_english, $engineering_macedonian)){
-			$json = "{message:".$engineering_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -382,7 +365,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_services_pages->update_system_integration_content($system_integration_english, $system_integration_macedonian)){
-			$json = "{message:".$system_integration_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}
@@ -403,7 +386,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$json_encode = "";
 
 		if($this->model_services_pages->update_consulting_content($consulting_english, $consulting_macedonian)){
-			$json = "{message:".$consulting_english."}";
+			$json = "{message: 'success'}";
 			$json_encode = json_encode($json);
 			echo $json_encode;
 		}

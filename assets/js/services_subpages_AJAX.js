@@ -40,8 +40,7 @@ function update_services_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitServices").prop("disabled", true);				
 				$("#edit-services-content").html("Edit services content");
 				CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
@@ -95,8 +94,7 @@ function update_engineering_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitEngineering").prop("disabled", true);             
                 $("#edit-engineering-content").html("Edit engineering content");
                 CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (true);
@@ -151,8 +149,7 @@ function update_system_integration_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitSystemIntegration").prop("disabled", true);             
                 $("#edit-system-integration-content").html("Edit system integration content");
                 CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (true);
@@ -206,8 +203,7 @@ function update_consulting_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitConsulting").prop("disabled", true);             
                 $("#edit-consulting-content").html("Edit consulting content");
                 CKEDITOR.instances.editorConsultingEnglish.setReadOnly (true);

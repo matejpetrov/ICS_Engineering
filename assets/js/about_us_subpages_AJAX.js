@@ -45,8 +45,7 @@ function update_telecommunication_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitTelecommunication").prop("disabled", true);              
                 $("#edit-telecommunication-content").html("Edit telecommunication content");
                 CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
@@ -102,8 +101,7 @@ function update_power_supply_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitPowerSupply").prop("disabled", true);              
                 $("#edit-power-supply-content").html("Edit power supply content");
                 CKEDITOR.instances.editorPowerSupplyEnglish.setReadOnly (true);
@@ -159,8 +157,7 @@ function update_audio_video_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitAudioVideo").prop("disabled", true);              
                 $("#edit-audio-video-content").html("Edit audio/video content");
                 CKEDITOR.instances.editorAudioVideoEnglish.setReadOnly (true);
@@ -216,8 +213,7 @@ function update_defence_security_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitDefenceSecurity").prop("disabled", true);              
                 $("#edit-defence-security-content").html("Edit security communication content");
                 CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);

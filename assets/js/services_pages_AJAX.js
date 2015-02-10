@@ -36,8 +36,7 @@ function update_telecommunication_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitTelecommunication").prop("disabled", true);              
                 $("#edit-telecommunication-content").html("Edit telecommunication content");
                 CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);

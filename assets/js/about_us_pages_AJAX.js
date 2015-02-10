@@ -40,8 +40,7 @@ function update_about_us_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitAboutUs").prop("disabled", true);              
                 $("#edit-about-us-content").html("Edit about us content");
                 CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
@@ -95,8 +94,7 @@ function update_mission_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitMission").prop("disabled", true);				
 				$("#edit-mission-content").html("Edit mission/vision content");
 				CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
@@ -151,8 +149,7 @@ function update_partners_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitPartners").prop("disabled", true);				
 				$("#edit-partners-content").html("Edit partners content");
 				CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
@@ -206,8 +203,7 @@ function update_corporate_info_AJAX(){
         },
         
         success: function(data) {
-            if (data) {
-                $('.success').html(data);
+            if (data) {                
                 $("#btnSubmitCorporateInfo").prop("disabled", true);				
 				$("#edit-corporate-info-content").html("Edit company information content");
 				CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
