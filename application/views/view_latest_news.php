@@ -5,7 +5,7 @@
 	<?php foreach($latest_news as $key => $value){
 		?>
 
-		<tr id="<?php echo $key; ?>">														
+		<tr id="<?php echo $value['news_url']; ?>">														
 			<td>
 				<img src="<?php echo base_url().$value['news_image_url']; ?>" class="latest_news_image" />
 			</td>

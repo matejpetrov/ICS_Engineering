@@ -68,7 +68,7 @@ class Static_pages_controller extends CI_Controller{
 	//gets the four latest news and loads the content in the view_sidebar_news view. The result will be
 	//displayed in the preview of a specific news in the sidebar. Each row should be a link to that news
 	//and with click on it AJAX call will be sent and that news will be shown.
-	public function latest_news(){		
+	public function latest_news(){
 
 		$session_lang = $this->session->userdata('site_lang');
 
@@ -187,6 +187,32 @@ class Static_pages_controller extends CI_Controller{
 		$data_news['latest_news_title'] = $this->lang->line("latest_news_title");
 
 		$this->load->view('view_news_preview', $data_news, FALSE);
+
+	}
+
+	//function that retreives the information for a specific news and retreives its content. The function is invoked 
+	//from an AJAX call to the server. 
+	public function show_news_homepage_AJAX(){		
+
+		$news_url = $_POST["news_url"];
+
+		$session_lang = $this->session->userdata('site_lang');
+
+		if($session_lang != ''){
+			$lang = $session_lang;
+		}		
+		else $lang = 'english';
+
+		$news = $this->model_homepage->get_news_homepage($news_url, $lang);
+
+		$news["news_url"] = $news_url;
+
+	
+		if($news){
+			echo json_encode($news);
+		}
+
+		else return false;
 
 	}
 	

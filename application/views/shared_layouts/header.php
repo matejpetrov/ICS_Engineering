@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/words_slider.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/map.js"></script>
 	<?php } ?>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>		
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/additional-jquery.js"></script>
 	
 
 	<?php if (current_url() == base_url()) {?> 

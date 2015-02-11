@@ -1,7 +1,7 @@
 var word = {
 	wordShow:function(){
 		var fx = Math.floor(Math.random() * 5) + 0;
-		console.log(fx);
+		//console.log(fx);
 		switch(fx){
 			case 0:
 			this.moveFromRight();

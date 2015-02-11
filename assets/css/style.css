@@ -965,10 +965,13 @@ div.news-item-container{
     width: 120px; 
 }
 
-.latest_news_table > tr {
+.latest_news_table > tr {    
+    border: 1px solid #CD5A01;
+}
 
-    border: 1px solid #CD5A01;     
-
+.latest_news_table > tbody > tr:hover{
+    cursor: pointer;
+    /*background-color: #5a5a5a;*/
 }
 
 /* Responsive media Begin */

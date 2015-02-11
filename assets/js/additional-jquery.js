@@ -33,8 +33,7 @@ $(document).ready(function(){
 				$('#news').addClass('selected');
 				$('#news_footer').addClass('selected');				
 			}			
-		}
-		console.log(prelast);
+		}		
 		if(prelast == "news"){
 			$('#news').addClass('selected');
 			$('#news_footer').addClass('selected');	

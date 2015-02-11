@@ -29,11 +29,15 @@ class Model_homepage extends CI_Model {
 
 		$query = $this->db->get();
 
-		foreach($query->result() as $row){
-			$result = (array)$row;
-		}
+		
+		if($query->result()){
+			foreach($query->result() as $row){
+				$result = (array)$row;
+			}
 
-		return $result;
+			return $result;
+		}		
+		else return false;
 
 	}
 
