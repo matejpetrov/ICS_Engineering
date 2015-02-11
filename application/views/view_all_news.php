@@ -21,3 +21,4 @@
 
 </div>
 
+<?php echo $footer; ?>

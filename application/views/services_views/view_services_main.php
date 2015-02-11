@@ -2,18 +2,18 @@
 	<ul class="nav nav-pills nav-justified top-nav">	
 
 		<li id="0">
-			<a href="#" data-page="services"><?php echo $nav_services; ?></a>
+			<a href="#" class="sub" data-page="services"><?php echo $nav_services; ?></a>
 		</li>
 		<li id="1">
-			<a href="#" data-page="consulting"><?php echo $nav_consulting; ?></a>
+			<a href="#" class="sub" data-page="consulting"><?php echo $nav_consulting; ?></a>
 		</li>
 
 		<li id="2">
-			<a href="#" data-page="engineering"><?php echo $nav_engineering; ?></a>
+			<a href="#" class="sub" data-page="engineering"><?php echo $nav_engineering; ?></a>
 		</li>
 
 		<li id="3">
-			<a href="#" data-page="system_integration"><?php echo $nav_system_integration; ?></a>
+			<a href="#" class="sub" data-page="system_integration"><?php echo $nav_system_integration; ?></a>
 		</li>
 			</ul>		
 </div>

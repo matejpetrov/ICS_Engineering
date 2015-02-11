@@ -42,8 +42,8 @@ function about_us_ajax_page(page_id){
 
 var getSubpage = {
 	init: function() {
-		$('#content-container.about_us').on('click','a',{func:'ajax_about_us_page_navigation'},this.requestPage);
-		$('#content-container.services').on('click','a',{func:'ajax_services_page_navigation'},this.requestPage);
+		$('#content-container.about_us').on('click','.sub',{func:'ajax_about_us_page_navigation'},this.requestPage);
+		$('#content-container.services').on('click','.sub',{func:'ajax_services_page_navigation'},this.requestPage);
 	},
 	requestPage:function(e) {
 		e.preventDefault();
