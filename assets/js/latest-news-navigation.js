@@ -26,14 +26,12 @@ $(document).ready(function() {
 
 				var pathname = window.location.pathname;
 
-				var pathname_array = pathname.split('/');
+				var pathname_array = pathname.split('/');								
 
-				pathname_array[pathname_array.length - 1] = data.news_url;
-				pathname = pathname_array.join('/');
+				window.history.pushState("", "", window.location.href.replace(pathname_array[pathname_array.length - 1], data.news_url));
 
-				//window.location.pathname = pathname;
+				put_padding();
 
-				//console.log("The new pathname is " + pathname);
 			}			
 		})
 		.fail(function() {
@@ -44,5 +42,12 @@ $(document).ready(function() {
 		//console.log("The url is " + url);
 
 	});
+
+	function put_padding(){
+
+		$('img:not([class])').css('padding-right', '20px');
+		$('img:not([class])').addClass('img-responsive');
+
+	}	
 
 });

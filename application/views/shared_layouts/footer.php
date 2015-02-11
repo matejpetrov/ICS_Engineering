@@ -8,17 +8,17 @@
 									<a href="<?php echo base_url();?>" id="home-footer" ><?php echo $menus_home; ?></a>
 								</li>
 								<li>
-									<a href="#" id="about_us_footer"><?php echo $menus_about_us; ?></a>
+									<a href="<?php echo base_url(); ?>static_pages_controller/about_us/0" id="about_us_footer"><?php echo $menus_about_us; ?></a>
 								</li>
 								<li class="last">
-									<a href="#" id="services_footer"><?php echo $menus_services; ?></a>
+									<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_footer"><?php echo $menus_services; ?></a>
 								</li>
 							</ul>
 						</div>
 						<div class="col-md-6 col-sm-12 footer">
 							<ul class="footer-nav">
 								<li>
-									<a href="#" id="news_footer"><?php echo $menus_news; ?></a>
+									<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news_footer"><?php echo $menus_news; ?></a>
 								</li>
 								<li>
 									<a href="<?php echo base_url(); ?>static_pages_controller/webMail" id="webMail-footer" ><?php echo $menus_web_mail; ?></a>

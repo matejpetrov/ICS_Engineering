@@ -33,8 +33,18 @@
 		</div>		
 
 		<div class="col-md-3 latest_news">
-			<h3><?php echo $latest_news_title; ?></h3>
-			<?php echo $latest_news; ?>
+			
+			<div class="row">
+				<h3><?php echo $latest_news_title; ?></h3>
+				<?php echo $latest_news; ?>
+			</div>
+
+			<div class="row all_news_btn" style="text-align:center;">
+				<a href="<?php echo base_url(); ?>static_pages_controller/news">
+					<button class="btn btn-warning">All news</button>
+				</a>
+			</div>
+
 		</div>
 
 	</div>	

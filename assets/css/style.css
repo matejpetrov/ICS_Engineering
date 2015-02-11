@@ -374,6 +374,17 @@ img.img-rounded {
 }
 div.news-row {
     background-color: #F8F8F8;
+    /*height: auto;*/
+}
+div#owl-logo{
+    /*margin-bottom: 10px;
+    height: 50px;   */
+}
+
+div.owl-wrapper-outer > div.owl-wrapper > div.owl-item{
+
+    /* TODO */
+
 }
 
 
@@ -965,13 +976,27 @@ div.news-item-container{
     width: 120px; 
 }
 
-.latest_news_table > tr {    
-    border: 1px solid #CD5A01;
+.latest_news_table > tbody > tr{
+
+    border-top: 3px solid #CD5A01;
+    border-bottom: 3px solid #CD5A01;
+
 }
 
 .latest_news_table > tbody > tr:hover{
     cursor: pointer;
     /*background-color: #5a5a5a;*/
+}
+
+.all_news_btn > a > button {
+
+    position: relative;
+    top: -30px;
+    left: 0px;
+    margin-top: 25px;
+    height: 55px;
+    width: 140px;
+
 }
 
 /* Responsive media Begin */
