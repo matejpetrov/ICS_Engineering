@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="form-group">														
-				<textarea name="editorAboutUsEnglish" id="editorAboutUsEnglish"><?php echo $about_us_english['about_us']; ?></textarea>
+				<textarea name="editorAboutUsEnglish"  id="editorAboutUsEnglish"><?php echo $about_us_english['about_us']; ?></textarea>
 			</div>							  					        					       					       
 			<?php echo "<script>
 

@@ -776,6 +776,26 @@ div.admin-holder {
 div.admin{
 }
 
+
+#cke_editorEnglish > div.cke_maximized.ckeditor-static{
+    width: 839px !important;
+    left: 850px  !important;
+    color:black;
+}
+
+#cke_editorMacedonian > div.cke_maximized.ckeditor-static{
+    width: 839px !important;
+    left: 850px  !important;
+    color:black;
+}
+
+.cke_maximized.ckeditor-static{
+    width: 878px !important;
+    left: 850px  !important;
+    color:black;
+}
+
+
 /* Admin Page Styles End */
 
 /* Manage Slider Styles */
