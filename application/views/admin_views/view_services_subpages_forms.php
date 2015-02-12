@@ -27,7 +27,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorServicesEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -49,7 +48,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorServicesMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -87,7 +85,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorEngineeringEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -109,7 +106,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorEngineeringMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -147,7 +143,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorSystemIntegrationEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -169,7 +164,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorSystemIntegrationMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -207,7 +201,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorConsultingEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -229,7 +222,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorConsultingMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 

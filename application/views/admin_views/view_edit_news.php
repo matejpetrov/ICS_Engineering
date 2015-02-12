@@ -101,7 +101,6 @@
 
 								var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 								CKEDITOR.replace( 'editorEnglish', {
-									skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 									filebrowserBrowseUrl:roxyFileman,
 									filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 									removeDialogTabs: 'link:upload;image:upload' 
@@ -139,7 +138,6 @@
 
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorMacedonian', {
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 

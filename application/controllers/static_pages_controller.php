@@ -89,12 +89,9 @@ class Static_pages_controller extends CI_Controller{
 	//creates the news homepage slider
 	public function get_all_news_homepage($template){
 
-		$session_lang = $this->session->userdata('site_lang');
+		$lang = $this->session->userdata('site_lang');
 
-		if($session_lang != ''){
-			$lang = $session_lang;
-		}		
-		else $lang = 'english';
+		
 
 		$offset = $this->input->post('offset');
 		if ($offset == false) {
@@ -110,6 +107,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp['id'] = $news['id'];
 			$data_temp['news_url'] = $news['news_url'];
 			$data_temp['news_image_url'] = $news['news_image_url'];
+
+
 			$title = $news['title'];
 			if (mb_strlen($title) > 40) {
 				preg_match('/^.{1,40}(\p{L}|\p{N})\b/u', $title, $temp);
@@ -174,6 +173,14 @@ class Static_pages_controller extends CI_Controller{
 		$data_news['news_image_url'] = $news['news_image_url'];
 		$data_news['title'] = $news['title'];
 		$data_news['content'] = $news['content'];
+		if($lang == 'macedonian'){
+			setlocale(LC_TIME, 'mk_MK.utf8');
+			$date_new =strftime("%#d %B %Y",strtotime($news['created_at']));
+		}else{
+			setlocale(LC_TIME, 'en_US.utf8');
+			$date_new =strftime("%#d %B %Y",strtotime($news['created_at']));
+		}
+		$data_news['date'] = $date_new;
 
 		$latest_news = $this->latest_news();
 
@@ -207,7 +214,7 @@ class Static_pages_controller extends CI_Controller{
 
 		$news["news_url"] = $news_url;
 
-	
+
 		if($news){
 			echo json_encode($news);
 		}

@@ -16,7 +16,7 @@ class Model_homepage extends CI_Model {
 	//the language given as argument. 
 	public function get_news_homepage($url, $lang){
 
-		$this->db->select('n.id, n.news_image_url, tc.title, tc.content');
+		$this->db->select('n.id, n.news_image_url,n.created_at, tc.title, tc.content');
 		$this->db->from('news n');
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
 		$this->db->where('n.news_url', $url);

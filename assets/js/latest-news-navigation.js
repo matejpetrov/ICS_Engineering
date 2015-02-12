@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	$(".latest_news_table").on('click', 'tr', function() {
+	$(".latest_news_table").on('click', 'tr', function(event) {
 		event.preventDefault();
 		
 		var base_url = $("#base_url").val();
@@ -13,6 +13,9 @@ $(document).ready(function() {
 			type: 'POST',
 			dataType: 'json',
 			cache: false,
+			beforeSend:function(){
+				$('.news-container').find('#loading').addClass('loading-news');
+			},
 			data: {
 				news_url: news_url
 			},
@@ -22,7 +25,7 @@ $(document).ready(function() {
 				//change the content and change the url, to represent the currently displayed news. 				 
 				$(".current_news_title").find("h1").html(data.title);
 				$(".current_news_image").attr({src: base_url + data.news_image_url});								
-				$(".current_news_content").html(data.content);		
+				$(".current_news_content").html(data.content).append('<div style="height: 50px;"></div>');		
 
 				var pathname = window.location.pathname;
 
@@ -31,6 +34,7 @@ $(document).ready(function() {
 				window.history.pushState("", "", window.location.href.replace(pathname_array[pathname_array.length - 1], data.news_url));
 
 				put_padding();
+				$('.news-container').find('#loading').removeClass('loading-news');
 
 			}			
 		})

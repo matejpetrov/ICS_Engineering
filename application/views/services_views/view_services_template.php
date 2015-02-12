@@ -23,6 +23,12 @@
 		color: #CD5A01 !important; 
 		text-decoration: none;
 	}	
+	.loading > div{
+		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
+	}
+	.loading-topnav > div{
+		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
+	}
 
 </style>
 
@@ -34,7 +40,9 @@
 	<div class="row">
 		
 		<div class="col-md-9 services" id="content-container">
-
+			<div id="loading">
+				<div></div>
+			</div>
 			<?php echo $services_page; ?>
 
 		</div>
@@ -64,5 +72,5 @@
 
 </div>
 
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_navigate_pages.js"></script>
-	<?php echo $footer; ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_navigate_pages.js"></script>
+<?php echo $footer; ?>

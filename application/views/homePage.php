@@ -28,7 +28,7 @@
 	</div>
 </div>
 
-<div class="container marketing">
+<div class="container marketing slider-news">
 	<div class="row news-row">
 		<div id="owl-news"  class="owl-carousel owl-theme">
 			<?php foreach($all_news as $news){

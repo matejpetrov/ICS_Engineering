@@ -9,7 +9,14 @@
 		$('img:not([class])').addClass('img-responsive');
 	});
 </script>
-
+<style type="text/css">
+	.loading > div{
+		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
+	}
+	.loading-topnav > div{
+		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
+	}
+</style>
 
 <input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
 
@@ -18,7 +25,11 @@
 	<div class="row">
 		
 		<div class="col-md-9 about_us" id="content-container">				
-
+			<div id="loading">
+				<div></div>
+			</div>
+			
+			
 			<?php echo $about_us_page; ?>
 
 		</div>

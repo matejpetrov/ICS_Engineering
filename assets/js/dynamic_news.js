@@ -6,7 +6,7 @@ $(document).ready(function() {
 	lock = false,
 	tempLength = 6,
 	base_url = $('#base_url').val(),
-	loading = "<div class=\"loading\"><img src=\"" + base_url + "assets/images/camera-loader.gif\" /></div>";
+	loading = "<div class=\"loading-news-slider\"><img src=\"" + base_url + "assets/images/camera-loader.gif\" /></div>";
 	owl.owlCarousel({
 		items : 3,
 		navigation : true,
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 		if (current == (length) && !(allLoaded) && (done) && (lock)) {					
 			$.ajax({
-				url: base_url + 'static_pages_controller/get_all_news_homepage',
+				url: base_url + 'static_pages_controller/get_all_news_homepage/0',
 				cache:false,
 				type: 'post',
 				dataType: 'json',

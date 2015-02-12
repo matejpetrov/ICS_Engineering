@@ -18,6 +18,7 @@ function about_us_ajax_page(page_id){
 
 		'dataType' : 'html',
 		beforeSend:function(){
+			$('#content-container').find('#loading').addClass('loading');
 			$('li').removeClass('active');
 			$('a').removeClass('sub-selected');
 
@@ -29,6 +30,7 @@ function about_us_ajax_page(page_id){
 			}
 		}
 	}).done(function() {
+		$('#content-container').prepend('<div id="loading"><div></div></div>');
 		$('.sidebar').find('#' + temp).addClass('active');
 		$('#about_' + temp).addClass('sub-selected');
 		if (temp == 0) {
@@ -60,6 +62,7 @@ var getSubpage = {
 			type: 'post',
 			dataType: 'html',
 			beforeSend:function() {
+				$('#content-container').find('#loading').addClass('loading-topnav');
 				$('#' + parent).removeClass('active');
 			},
 			data: {
@@ -72,6 +75,8 @@ var getSubpage = {
 		})
 		.done(function() {
 			container.find('#' + parent).addClass('active');
+			$('#content-container').find('#loading').removeClass('loading-topnav');
+			$('#content-container').prepend('<div id="loading"><div></div></div>');
 		});
 	}
 };
@@ -94,9 +99,9 @@ function services_ajax_page(page_id){
 		'data' : {'page_id':temp},
 		'dataType' : 'html',
 		beforeSend:function(){
+			$('#content-container').find('#loading').addClass('loading');
 			$('li').removeClass('active');
 			$('a').removeClass('sub-selected');
-
 		},
 		'success' : function(data){ 
 			var container = $('#content-container');
@@ -105,6 +110,7 @@ function services_ajax_page(page_id){
 			}
 		}
 	}).done(function() {
+		$('#content-container').prepend('<div id="loading"><div></div></div>');
 		$('.sidebar').find('#' + temp).addClass('active');
 		$('#services_' + temp).addClass('sub-selected');
 		if (temp == 0) {

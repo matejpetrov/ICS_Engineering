@@ -29,7 +29,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorAboutUsEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -51,7 +50,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorAboutUsMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -90,7 +88,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorTelecommunicationEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -112,7 +109,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorTelecommunicationMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -150,7 +146,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorPowerSupplyEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -172,7 +167,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorPowerSupplyMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -210,7 +204,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorAudioVideoEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -232,7 +225,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorAudioVideoMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -270,7 +262,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorDefenceSecurityEnglish', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 
@@ -292,7 +283,6 @@
 			var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 			CKEDITOR.replace( 'editorDefenceSecurityMacedonian', {
 				readOnly: true,
-				skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 				filebrowserBrowseUrl:roxyFileman,
 				filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 				removeDialogTabs: 'link:upload;image:upload' 

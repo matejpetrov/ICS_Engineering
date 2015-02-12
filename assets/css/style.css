@@ -5,7 +5,7 @@
 body {
     background-color: #F8F8F8;
     padding: 0;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .list-body{
@@ -170,11 +170,11 @@ div.collapse-custom > ul > li > a.selected {
     background-color: #FFFFFF !important;
 }
 .sub-selected{
-   color: #CD5A01 !important;
-   background-color: #ffffff;
-   background-image: none;    
-   border-left: 3px solid #CD5A01;
-   border-right: 3px solid #CD5A01;
+ color: #CD5A01 !important;
+ background-color: #ffffff;
+ background-image: none;    
+ border-left: 3px solid #CD5A01;
+ border-right: 3px solid #CD5A01;
     /*background-color: #cd5a01;
     color: #ffffff !important;
     border-left: 3px solid #ffffff;
@@ -203,10 +203,11 @@ div.collapse-custom > ul > li > a.selected {
 }
 #owl-news {
     margin-top: -70px;
+    position: absolute;
 }
 #owl-news .item {
     background-color: #FFFFFF;
-    /*height: 435px;*/
+    height: 330px;
     border: 1px solid #CD5A01;
     display: block;
     padding: 30px 15px;
@@ -214,6 +215,13 @@ div.collapse-custom > ul > li > a.selected {
     margin: 0px 10px;
     box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
 }
+
+#owl-news .item > p > a >button{
+    position: absolute;
+    left: 150px;
+    bottom: 15px;
+}
+
 .owl-theme .owl-controls .owl-buttons div {
     padding: 5px 9px;
     -webkit-border-radius: 0px !important;
@@ -250,22 +258,22 @@ div.collapse-custom > ul > li > a.selected {
 
 /* Owl Carousel Logos Styles Begin */
 .partners-logo {
-   width: 260px;
-   height: 80px;
-   -webkit-filter: grayscale(100%);
-   -moz-filter: grayscale(100%);
-   filter: grayscale(100%);
-   filter: grayscale(1);
-   -webkit-filter: grayscale(1);
-   transition: 0.4s ease-in-out;
+ width: 260px;
+ height: 80px;
+ -webkit-filter: grayscale(100%);
+ -moz-filter: grayscale(100%);
+ filter: grayscale(100%);
+ filter: grayscale(1);
+ -webkit-filter: grayscale(1);
+ transition: 0.4s ease-in-out;
 
 }
 .partners-logo:hover {
-   -webkit-filter: grayscale(0%);
-   -moz-filter: grayscale(0%);
-   filter: grayscale(0%);
-   filter: grayscale(0);
-   -webkit-filter: grayscale(0);
+ -webkit-filter: grayscale(0%);
+ -moz-filter: grayscale(0%);
+ filter: grayscale(0%);
+ filter: grayscale(0);
+ -webkit-filter: grayscale(0);
 }
 /* Owl Carousel Logos Styles End */
 
@@ -341,10 +349,66 @@ div.collapse-custom > ul > li > a.selected {
     opacity: 0;
 }
 /* Camera Slider Styles End */
+.loading-news{
+  position: absolute;
+  background-color: #ffffff;
+  height: 92%;
+  width: 72%;
+  opacity: 0.9;
+  margin-top: 79px;
+  z-index: 99999;
+  transition: background-color 0.4s ease-in-out;
+}
 
-.loading {
+.loading-news > div{
+   width: 50px;
+   height: 50px;
+   top: 35%;
+   left: 50%;
+   position: absolute;
+}
+
+.loading{
+    position: absolute;
+    background-color: #ffffff;
+    height: 100%;
+    width: 96.6%;
+    opacity: 0.9;
+    margin-top: 25px;
+    z-index: 99999;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.loading > div{
+    width: 50px;
+    height: 50px;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+}
+
+.loading-topnav{
+    position: absolute;
+    background-color: #ffffff;
+    height: 90%;
+    width: 96.6%;
+    opacity: 0.9;
+    margin-top: 75px;
+    z-index: 99999;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.loading-topnav > div{
+    width: 50px;
+    height: 50px;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+}
+
+.loading-news-slider {
     background-color: #FFFFFF;
-    height: 250px;
+    height: 308px;
     display: block;
     padding: 30px 15px;
     margin: 0px 10px;
@@ -353,10 +417,10 @@ div.collapse-custom > ul > li > a.selected {
     /*box-shadow: none;*/
 }
 
-.loading > img{
+.loading-news-slider > img{
     position: absolute;
-    top: 200px;
-    left: 185px;
+    top: 50%;
+    left: 46%;
 }
 
 
@@ -374,7 +438,7 @@ img.img-rounded {
 }
 div.news-row {
     background-color: #F8F8F8;
-    /*height: auto;*/
+    /*height: 250px;*/
 }
 div#owl-logo{
     /*margin-bottom: 10px;
@@ -391,6 +455,14 @@ div.owl-wrapper-outer > div.owl-wrapper > div.owl-item{
 .marketing {
     text-align: center;
     margin-bottom: 40px;
+}
+
+.slider-news{
+    position: relative;
+}
+
+.slider-news > .news-row{
+    height: 250px;
 }
 
 /* About us and Services styles Begin */
@@ -549,6 +621,7 @@ ul.footer-nav > li > a {
     text-transform: uppercase;
     color: #FFFFFF;
     transition: 0.4s ease-in-out;
+
 }
 ul.footer-nav >li> a.selected {
     color: #CD5A01 !important;
@@ -643,10 +716,7 @@ div.contact > .input-group {
 
 /* News Page Styles */
 
-div.news-page>.row>.col-md-12 {
-    text-align: justify;
-    margin-bottom: 50px;
-}
+
 .tbtn{
     width: 130px;
 }
@@ -823,8 +893,8 @@ span.image-add {
     padding: 0;
 }
 .words > li{
-   display: flex;
-   padding-left: 220px;
+ display: flex;
+ padding-left: 220px;
 }
 
 .modal-content{
@@ -951,6 +1021,12 @@ div.static-pages-content{
     min-height: 350px;
 }
 
+.news_item > p > a > button{
+    position: absolute;
+    left: 150px;
+    bottom: 45px;
+}
+
 div.news-item-container{
     margin-top: 100px;
 }
@@ -961,18 +1037,40 @@ div.news-item-container{
 
 /* News Preview Style Begin */
 
+.news-container{
+    background-color: #ffffff;
+    margin-top: 30px;
+    border: 1px solid #cd5a01;
+    box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
+    padding: 0;
+}
+.date{
+    padding: 5px 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.news-article{
+    padding-left: 0;
+}
+.current_news_image{
+    padding:0;
+    /*display:initial;*/
+    width: 100%;
+}
 
-/* News Preview Style End */
-    
 .latest_news{
+    padding: 0;
+}
 
-    margin-top: 81px;
-    margin-left: 97px;
+.latest_news > h3{
+    margin-top: 0;
+    /*margin-top: 81px;*/
+    /*margin-left: 97px;*/
 
 }
 
 .latest_news_image{
-    height: 120px;
+    height: 100px;
     width: 120px; 
 }
 
@@ -999,9 +1097,22 @@ div.news-item-container{
 
 }
 
+.row_title{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.current_news_title{
+    margin-bottom: 10px !important;
+    padding: 0;
+}
+
+/* News Preview Style End */
+
+
 /* Responsive media Begin */
 
-@media screen and (max-width: 991px) {} 
+@media screen and (max-width: 761px) {} 
 @media screen and (max-width: 751px) {
     ul.footer-nav > li > a {
         padding-right: 30px;

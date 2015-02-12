@@ -22,36 +22,34 @@
 
 	<?php echo $header; ?>
 
-	<div class="static-pages-content">
-		<div class="container">
-			
-			<div class="row admin-holder">
-				
-				<a href="<?php echo base_url(); ?>staticPagesAdminController/show_about_us_pages" class="items" >
-					<div class="col-md-3 control-pannel-item">
-						<div class="tumbnail">
-							<i class="fa fa-pencil-square-o fa-custom" ></i></br>
-							<span class="text">About us pages</span>
-						</div>
+	<div class="container">
+		<div class="row admin-holder">
+		<div class="col-md-12"><h2>Edit Static Pages Info</h2></div>
+		</div>
+		<div class="row admin-holder">
+
+			<a href="<?php echo base_url(); ?>staticPagesAdminController/show_about_us_pages" class="items" >
+				<div class="col-md-3 col-md-offset-2 control-pannel-item" style="margin-left: 15%;">
+					<div class="tumbnail">
+						<i class="fa fa-pencil-square-o fa-custom" ></i></br>
+						<span class="text">About us pages</span>
 					</div>
-				</a>
+				</div>
+			</a>
 
-<!--<?php //echo base_url(); ?>staticPagesAdminController/show_services_pages-->
-				<a href="<?php echo base_url(); ?>staticPagesAdminController/show_services_pages" class="items" >
-					<div class="col-md-3 control-pannel-item">
-						<div class="tumbnail">
-							<i class="fa fa-pencil-square-o fa-custom" ></i></br>
-							<span class="text">Services pages</span>
-						</div>
+
+			<a href="<?php echo base_url(); ?>staticPagesAdminController/show_services_pages" class="items" >
+				<div class="col-md-3 col-md-offset-2 control-pannel-item" style="margin-left: 15%;">
+					<div class="tumbnail">
+						<i class="fa fa-pencil-square-o fa-custom" ></i></br>
+						<span class="text">Services pages</span>
 					</div>
-				</a>
-
-			</div>
-
+				</div>
+			</a>
 		</div>
 
 	</div>
 
-
 </body>
 </html>
+

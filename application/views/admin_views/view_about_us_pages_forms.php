@@ -111,7 +111,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorMissionEnglish', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
@@ -133,7 +132,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorMissionMacedonian', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
@@ -170,7 +168,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorPartnersEnglish', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
@@ -192,7 +189,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorPartnersMacedonian', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
@@ -228,7 +224,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorCorporateInfoEnglish', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
@@ -250,7 +245,6 @@
 							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
 							CKEDITOR.replace( 'editorCorporateInfoMacedonian', {
 								readOnly: true,
-								skin : 'bootstrapck," . base_url() . "assets/skins/bootstrapck/',
 								filebrowserBrowseUrl:roxyFileman,
 								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
 								removeDialogTabs: 'link:upload;image:upload' 
