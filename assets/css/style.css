@@ -1076,6 +1076,11 @@ div.news-item-container{
     padding:0;
     /*display:initial;*/
     width: 100%;
+
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+
 }
 
 .latest_news{
