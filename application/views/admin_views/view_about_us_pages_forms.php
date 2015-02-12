@@ -51,19 +51,6 @@
 		}
 
 	</style>	
-<script type="text/javascript">
-	// $(document).ready(function() {
-	// 	console.log('ready');
-	// 	console.log($('.cke_inner.cke_reset').text('BORKA'));
-	// 	$('body').find('.cke_inner.cke_reset').addClass('ckeditor-static');
-	// });
-	$(window).load(function () {
-		console.log('load');
-		// $('.cke_inner.cke_reset').addClass('ckeditor-static');
-		$('#cke_editorAboutUsMacedonian').find('.cke_inner.cke_reset').addClass('ckeditor-static');
-
-        });
-	</script>
 
 </head>
 <body>

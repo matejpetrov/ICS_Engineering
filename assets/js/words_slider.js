@@ -49,7 +49,7 @@ var word = {
 	moveFromLeft:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		right = Math.floor(Math.random() * (90-15+1) + 15),
+		right = Math.floor(Math.random() * (80-15+1) + 15),
 		div=$('<div class=\'wordLeft\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
