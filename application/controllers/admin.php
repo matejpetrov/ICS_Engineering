@@ -25,8 +25,12 @@ class Admin extends CI_Controller {
 
 	public function post_create_new_news(){
 		
+		$tag_upload = true;
 
 		$image = $_FILES['file-input'];
+
+		//['name']		
+
 		$config['upload_path'] = 'assets/images/news_main_images';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = 8000;
@@ -38,7 +42,12 @@ class Admin extends CI_Controller {
 		}
 
 		$created_at = date("Y-m-d");
-		// $homepage_image_url = $upload_options['upload_path'].'/'.$_FILES['file-input']['name'];
+		
+		if($image['name'] == ""){
+			$image['name'] = "jack-daniels-logo3.jpg";
+			$tag_upload = false;
+		}		
+
 		$news_image_url = $config['upload_path'].'/'.$image['name'];
 
 		$news_title_english = $post["news_title_english"];
@@ -64,18 +73,44 @@ class Admin extends CI_Controller {
 
 			);
 		
-		//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
-		//translation_content		
-		if ( ! $this->upload->do_upload('file-input'))
-		{
-			$data['image'] = $image;
-			$data['errors'] = $this->upload->display_errors();
-			$data['upload_path'] = $config['upload_path'];
+		//if an image is chosen to be uploaded i should use the do_upload function, otherwise i should only insert row in the database.
+		if($tag_upload == true){
 
-			$this->load->view('temp', $data);
+			//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
+			//translation_content		
+			if ( ! $this->upload->do_upload('file-input'))
+			{
+				$data['image'] = $image;
+				$data['errors'] = $this->upload->display_errors();
+				$data['upload_path'] = $config['upload_path'];
+
+				$this->load->view('temp_to_delete/view_temp', $data);
+			}
+			else
+			{
+				$id = $this->model_admin->add_new_news($news);	
+
+				$translations[0]['news_id'] = $id;
+				$translations[1]['news_id'] = $id;
+
+				$data['id'] = $id;
+
+				if($id != false){
+
+					if($this->model_admin->add_new_translation($translations)){
+						$json = json_encode('{error:}');
+						$this->show_news($id, $json);				
+					}
+
+				}
+				
+			}
+
 		}
-		else
-		{
+
+		//if no image is chosen to be uploaded, i only do an insert in the database. 
+		else{
+			
 			$id = $this->model_admin->add_new_news($news);	
 
 			$translations[0]['news_id'] = $id;
@@ -90,8 +125,8 @@ class Admin extends CI_Controller {
 					$this->show_news($id, $json);				
 				}
 
-			}
-			
+			}			
+
 		}										
 
 	}
@@ -234,14 +269,20 @@ class Admin extends CI_Controller {
 
 		if($this->model_admin->delete_news($id)){			
 
-			if(file_exists($news_image_url)){
-				unlink($news_image_url);
-				$json = "{success:}";
-			}
+			if($news_image_url != "assets/images/news_main_images/jack-daniels-logo3.jpg"){
+				if(file_exists($news_image_url)){
+					unlink($news_image_url);
+					$json = "{success:}";
+				}
 
+				else{
+					$json = "{success:not deleted ".$news_image_url."}";
+				}	
+
+			}	
 			else{
-				$json = "{success:not deleted ".$news_image_url."}";
-			}			
+				$json = "{success:}";
+			}	
 			
 			$json_encode = json_encode($json);
 

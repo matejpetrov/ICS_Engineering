@@ -28,7 +28,7 @@
 			{
 				'showUpload':false, 
 				'previewFileType':'image',
-				'allowedFileExtensions':['jpg','png','gif']							
+				'allowedFileExtensions':['jpg','png','gif']						
 			});
 		});	
 	</script>
