@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
 
 	<script src="<?php echo base_url(); ?>assets/js/fileUploader/fileinput.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url(); ?>assets/js/add_edit_news_validation.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$( document ).ready(function() {			    
