@@ -1135,6 +1135,13 @@ div.news-item-container{
 /* News Preview Style End */
 
 
+
+#basic-addon1, #basic-addon2{
+    
+    width: 300px;    
+}
+
+
 /* Responsive media Begin */
 
 @media screen and (max-width: 761px) {} 

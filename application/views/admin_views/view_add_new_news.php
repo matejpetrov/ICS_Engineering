@@ -57,9 +57,10 @@
 								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 
-										<div class="form-group">
+										<div class="form-group has-feedback">
 											<label for="news_title_english">Title</label>
-											<input class="form-control" name="news_title_english" placeholder="Enter news title..." />								
+											<input class="form-control" name="news_title_english" id="news_title_english" placeholder="Enter news title..." aria-describedby="basic-addon1" />			
+											<span class="form-control-feedback"><i id="news-title-english-notification" class='fa'></i></span>											
 										</div>	
 
 										<div class="form-group">
@@ -93,9 +94,10 @@
 							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 								<div class="panel-body">
 
-									<div class="form-group">
+									<div class="form-group has-feedback">
 										<label for="news_title_macedonian">Title</label>
-										<input class="form-control" name="news_title_macedonian" placeholder="Enter news title..." />								
+										<input class="form-control" name="news_title_macedonian" id="news_title_macedonian" placeholder="Внесете наслов..." aria-describedby="basic-addon2" />
+										<span class="form-control-feedback"><i id="news-title-macedonian-notification" class='fa'></i></span>	
 									</div>
 
 									<div class="form-group">
@@ -120,7 +122,10 @@
 				<input type="file" name="file-input" size="20" id="file-input" />
 
 				<br/>
-
+				<div id="basic-addon1" role="alert" class="sr-only alert alert-danger">Title (English) must not be empty</div>
+				<div id="basic-addon2" role="alert" class="sr-only alert alert-danger">Title (Macedonian) must not be empty</div>
+				<div id="basic-addon3" role="alert" class="sr-only alert alert-danger">Content (English) must not be empty</div>
+				<div id="basic-addon4" role="alert" class="sr-only alert alert-danger">Content (Macedonian) must not be empty</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
