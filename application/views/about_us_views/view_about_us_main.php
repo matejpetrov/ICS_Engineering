@@ -22,5 +22,7 @@
 </div>
 <h2><?php echo $about_us_title; ?></h2>
 
+<div class="text-content">
 <p><?php echo $about_us_first_page; ?></p>
-
+	
+</div>

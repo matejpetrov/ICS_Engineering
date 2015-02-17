@@ -18,9 +18,9 @@ class SendEmailController extends CI_Controller
 		
 		$this->load->library('mail_sender');
 
-		$this->mail_sender->setFrom($email,$nameSurname);
+		$this->mail_sender->setFrom('info@ics.net.mk',$nameSurname);
 		$this->mail_sender->setSubject($subject);
-		$this->mail_sender->setAddress("borka@ekoplast.com.mk");
+		$this->mail_sender->setAddress("info@ics.net.mk");
 		if ($toSelf) {
 			$this->mail_sender->setAddress($email);
 		}

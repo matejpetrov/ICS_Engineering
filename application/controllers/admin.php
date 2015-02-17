@@ -373,14 +373,15 @@ class Admin extends CI_Controller {
 		if ($result) {
 			$this->load->library('mail_sender');
 			$this->mail_sender->setAddress($email);
-			$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
+			$this->mail_sender->setFrom('info@ics.net.mk','ICS Engineering');
 			$this->mail_sender->setSubject('New User Created');
-			$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
+			$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Username: ".$username."</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
 			$this->mail_sender->setBody($message);
 
-			$this->mail_sender->sendMail();
+			if($this->mail_sender->sendMail()){
+				redirect('admin/showAllUsers', 'refresh');
+			}
 		}
-		redirect('admin/showAllUsers', 'refresh');
 	}
 
 	public function auth($code){
@@ -395,9 +396,9 @@ class Admin extends CI_Controller {
 
 	public function completeUser(){
 		$password = $this->input->post('password');
-		$hash = password_hash($password, PASSWORD_BCRYPT);
+		// $hash = password_hash($password, PASSWORD_BCRYPT);
 		$id = $this->input->post('id');
-		$result = $this->model_admin->complete($id,$hash,array('cost'=>14));
+		$result = $this->model_admin->complete($id,$password);
 		if ($result) {
 			redirect('admin', 'refresh');
 		} else {
@@ -438,7 +439,7 @@ class Admin extends CI_Controller {
 		if (empty($old) || empty($new) || empty($conf)) {
 			$this->output->set_output(json_encode(array('error'=>'All fields are required')));
 		} else if (!$this->compareOldPassword($old)) {
-			$this->output->set_output(json_encode(array('error'=>'Incorrect password','id'=>'pass-old')));
+			$this->output->set_output(json_encode(array('error'=>$old,'id'=>'pass-old')));
 		} else if (!$this->compareNewPassword($new,$conf)) {
 			$this->output->set_output(json_encode(array('error'=>'Passwords don\'t match','id'=>'pass-conf')));
 		} else if ($this->model_admin->changePassword($user_id,$new)) {
@@ -530,7 +531,8 @@ class Admin extends CI_Controller {
 	private function compareOldPassword($formPassword){
 		$userID = $this->session->userdata('user_id');
 		$dbPassword = $this->model_admin->getOldPassword($userID);
-		if (password_verify($formPassword,$dbPassword)) {
+		// password_verify($formPassword,$dbPassword)
+		if ($formPassword == $dbPassword) {
 			return true;
 		} else {
 			return false;

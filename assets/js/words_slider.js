@@ -36,7 +36,7 @@ var word = {
 	moveFromRight:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		left = Math.floor(Math.random() * (90-15+1) + 15),
+		left = Math.floor(Math.random() * (50-15+1) + 15),
 		div=$('<div class=\'wordRight\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
@@ -49,7 +49,7 @@ var word = {
 	moveFromLeft:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		right = Math.floor(Math.random() * (80-15+1) + 15),
+		right = Math.floor(Math.random() * (58-15+1) + 15),
 		div=$('<div class=\'wordLeft\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
@@ -61,8 +61,8 @@ var word = {
 	},
 	moveFromTop:function(){
 		var recievedWord,
-		bottom = Math.floor(Math.random() * (91-23+1) + 23),
-		right = Math.floor(Math.random() * (90-15+1) + 15),
+		bottom = Math.floor(Math.random() * (85-23+1) + 23),
+		right = Math.floor(Math.random() * (58-15+1) + 15),
 		div=$('<div class=\'wordTop\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
@@ -75,7 +75,7 @@ var word = {
 	moveFromBottom:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		right = Math.floor(Math.random() * (90-15+1) + 15),
+		right = Math.floor(Math.random() * (58-15+1) + 15),
 		div=$('<div class=\'wordBottom\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;
@@ -88,7 +88,7 @@ var word = {
 	fadeIn:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		right = Math.floor(Math.random() * (90-15+1) + 15),
+		right = Math.floor(Math.random() * (58-15+1) + 15),
 		div=$('<div class=\'wordFade\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;

@@ -118,7 +118,7 @@ class Static_pages_controller extends CI_Controller{
 				$data_temp['title'] = $title;
 				
 			}
-			
+			$data_temp['more'] = $this->lang->line('additional_button_more');			
 
 			if($template == 0){
 				$view_temp = $this->load->view('admin_views/view_news_homepage_template', $data_temp, TRUE);

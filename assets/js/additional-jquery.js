@@ -58,6 +58,13 @@ $(document).ready(function(){
 
 	});
 	
+	$('.dropdown').on('mouseenter', function(){
+		$(this).addClass('open');
+	});
+
+	$('.dropdown').on('mouseleave', function(){
+		$(this).removeClass('open');
+	});
 
 	function resetForm($form) {
 		$form.find('input:text, input:password, input:file, select, textarea').val('');

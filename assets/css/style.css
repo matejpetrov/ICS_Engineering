@@ -152,9 +152,20 @@ div.collapse-custom > ul > li > a {
     padding-bottom: 26px;
     font-weight: bold;
     color: #626262 !important;
-    border-bottom: 2px solid #FFFFFF;
     border-top: 2px solid #FFFFFF;
-    transition: 0.4s ease-in-out;
+    border-bottom: 2px solid #FFFFFF;
+    transition: 0.4s color ease-in-out;
+}
+div.collapse-custom > ul > li.open > a {
+    text-transform: uppercase;
+    font-family: 'Oswald', Arial, helvetica, sans-serif;
+    padding-top: 25px;
+    padding-bottom: 26px;
+    font-weight: bold;
+    color: #626262 !important;
+    border-top: 2px solid #d0d0d0;
+    border-bottom: 2px solid #e2e2e2;
+    /*transition: 0.4s ease-in-out;*/
 }
 div.collapse-custom > ul > li > a:hover {
     color: #CD5A01 !important;
@@ -217,9 +228,9 @@ div.collapse-custom > ul > li > a.selected {
 }
 
 #owl-news .item > p > a >button{
-    position: absolute;
-    left: 150px;
-    bottom: 15px;
+    position: relative;
+    left: 1px;
+    bottom: -25px;
 }
 
 .owl-theme .owl-controls .owl-buttons div {
@@ -260,21 +271,8 @@ div.collapse-custom > ul > li > a.selected {
 .partners-logo {
  width: 260px;
  height: 80px;
- -webkit-filter: grayscale(100%);
- -moz-filter: grayscale(100%);
- filter: grayscale(100%);
- filter: grayscale(1);
- -webkit-filter: grayscale(1);
- transition: 0.4s ease-in-out;
+}
 
-}
-.partners-logo:hover {
- -webkit-filter: grayscale(0%);
- -moz-filter: grayscale(0%);
- filter: grayscale(0%);
- filter: grayscale(0);
- -webkit-filter: grayscale(0);
-}
 /* Owl Carousel Logos Styles End */
 
 /* Camera Slider Styles Begin */
@@ -318,35 +316,44 @@ div.collapse-custom > ul > li > a.selected {
 
 .wordRight{
     position: absolute;
-    font-size:30px;
+    font-size:35px;
     color:#ffffff;
     left: 100%;
+    white-space: nowrap;
     /*top:5%;*/
 }
 .wordLeft{
     position: absolute;
-    font-size:30px;
+    font-size:35px;
     color:#ffffff;
     right: 100%;
     /*top:5%;*/
+    white-space: nowrap;
+    
 }
 .wordTop{
     position: absolute;
-    font-size:30px;
+    font-size:35px;
     color:#ffffff;
     bottom: 100%;
+    white-space: nowrap;
+    
 }
 .wordBottom{
     position: absolute;
-    font-size:30px;
+    font-size:35px;
     color:#ffffff;
     top: 100%;
+    white-space: nowrap;
+    
 }
 .wordFade{
     position: absolute;
-    font-size:30px;
+    font-size:35px;
     color:#ffffff;
     opacity: 0;
+    white-space: nowrap;
+    
 }
 /* Camera Slider Styles End */
 .loading-news{
@@ -574,10 +581,21 @@ div.owl-wrapper-outer > div.owl-wrapper > div.owl-item{
 }
 div#content-container {
     margin-bottom: 60px;
-    min-height: 250px;
+    min-height: 500px;
+}
+div#content-container > h2{
+    color: #CD5A01;
+    margin-bottom: 40px;
+    text-decoration: underline;
 }
 
-
+.text-content{
+    border: 1px solid #CD5A01;
+    border-top: none;
+    border-bottom: none; 
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
 
 /* About us and Services styles End */
 
@@ -588,6 +606,17 @@ div#content-container {
 
 
 /* Footer Styles Begin */
+.copyright{
+    background-color: #1B1611 !important;
+    border-top: 1px solid #CD5A01;
+}
+.copyright-holder{
+    color: #ffffff;
+    padding: 0;
+}
+.copyright-holder > div{
+    padding: 5px;
+}
 
 div.footer-navigation > .container-fluid {
     background-color: black;
@@ -775,26 +804,6 @@ div.admin-holder {
 }
 div.admin{
 }
-
-
-#cke_editorEnglish > div.cke_maximized.ckeditor-static{
-    width: 839px !important;
-    left: 850px  !important;
-    color:black;
-}
-
-#cke_editorMacedonian > div.cke_maximized.ckeditor-static{
-    width: 839px !important;
-    left: 850px  !important;
-    color:black;
-}
-
-.cke_maximized.ckeditor-static{
-    width: 878px !important;
-    left: 850px  !important;
-    color:black;
-}
-
 
 /* Admin Page Styles End */
 
@@ -1076,11 +1085,6 @@ div.news-item-container{
     padding:0;
     /*display:initial;*/
     width: 100%;
-
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-
 }
 
 .latest_news{
@@ -1131,15 +1135,25 @@ div.news-item-container{
     margin-bottom: 10px !important;
     padding: 0;
 }
+#cke_editorEnglish > div.cke_maximized.ckeditor-static{
+    width: 839px !important;
+    left: 850px  !important;
+    color:black;
+}
+
+#cke_editorMacedonian > div.cke_maximized.ckeditor-static{
+    width: 839px !important;
+    left: 850px  !important;
+    color:black;
+}
+
+.cke_maximized.ckeditor-static{
+    width: 878px !important;
+    left: 850px  !important;
+    color:black;
+}
 
 /* News Preview Style End */
-
-
-
-#basic-addon1, #basic-addon2{
-    
-    width: 300px;    
-}
 
 
 /* Responsive media Begin */

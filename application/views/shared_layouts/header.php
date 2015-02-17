@@ -154,7 +154,7 @@
 										<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news"><?php echo $menus_news; ?></a>
 									</li>
 									<li>
-										<a href="<?php echo base_url(); ?>static_pages_controller/webMail" id="webMail"><?php echo $menus_web_mail; ?></a>
+										<a href="http://mail.ics.net.mk:81/redmine/" target="_blank" id="support"><?php echo $menus_web_mail; ?></a>
 									</li>
 
 									<li class="last">

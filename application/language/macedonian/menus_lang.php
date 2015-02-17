@@ -15,7 +15,7 @@ $lang["menus_defence_security"] = "Безбедни&nbsp;Комуникации"
 
 
 $lang["menus_news"] = "Вести";
-$lang["menus_web_mail"] = "Биро за помош";
+$lang["menus_web_mail"] = "Поддршка";
 $lang["menus_contact"] = "Контакт";
 
 

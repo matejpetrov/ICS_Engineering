@@ -15,7 +15,7 @@ $lang["menus_defence_security"] = "Secure&nbsp;Communications";
 
 $lang["menus_news"] = "News";
 
-$lang["menus_web_mail"] = "Help Desk";
+$lang["menus_web_mail"] = "Support";
 
 $lang["menus_contact"] = "Contact";
 

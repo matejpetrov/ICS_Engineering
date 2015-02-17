@@ -5,7 +5,7 @@
 	<p>
 		<a href="<?php echo base_url(); ?>news/<?php echo $news_url; ?>">
 			<button type="button" class="btn btn-default">
-				Повеќе>>
+				<?php echo $more; ?>
 			</button>
 		</a>
 	</p>

@@ -15,11 +15,12 @@
 		<li id="3">
 			<a href="#" class="sub" data-page="system_integration"><?php echo $nav_system_integration; ?></a>
 		</li>
-			</ul>		
+	</ul>		
 </div>
 
 
 
 <h2><?php echo $services_title; ?></h2>
-
-<p><?php echo $services_first_page; ?></p>		
+<div class="text-content">
+	<p><?php echo $services_first_page; ?></p>		
+</div>
