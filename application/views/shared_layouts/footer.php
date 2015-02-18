@@ -55,7 +55,7 @@
 				<div class="row">
 				<div class="col-md-12 copyright-holder">
 						<div>
-							&copy; ICS Engineering <?php echo date('Y'); ?>
+							&copy; ICS Consulting Engineering <?php echo date('Y'); ?>
 						</div>
 					</div>
 				</div>

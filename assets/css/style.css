@@ -613,6 +613,7 @@ div#content-container > h2{
 .copyright-holder{
     color: #ffffff;
     padding: 0;
+    text-align: center;
 }
 .copyright-holder > div{
     padding: 5px;

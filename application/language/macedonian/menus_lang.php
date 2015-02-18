@@ -11,7 +11,7 @@ $lang["menus_services"] = "Услуги";
 $lang["menus_telecommunications"] = "Телекомуникации";
 $lang["menus_power_supply"] = "Напојување";
 $lang["menus_audio_video"] = "Аудио/Видео";
-$lang["menus_defence_security"] = "Безбедни&nbsp;Комуникации";
+$lang["menus_defence_security"] = "Безбедни&nbsp;комуникации";
 
 
 $lang["menus_news"] = "Вести";
