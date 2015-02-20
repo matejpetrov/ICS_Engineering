@@ -110,8 +110,8 @@ class Static_pages_controller extends CI_Controller{
 
 
 			$title = $news['title'];
-			if (mb_strlen($title) > 40) {
-				preg_match('/^.{1,40}(\p{L}|\p{N})\b/u', $title, $temp);
+			if (mb_strlen($title) > 35) {
+				preg_match('/^.{1,35}(\p{L}|\p{N})/u', $title, $temp);
 				$short_title = $temp[0].'...';
 				$data_temp['title'] = $short_title;
 			} else {

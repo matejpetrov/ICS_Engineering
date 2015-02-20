@@ -45,7 +45,7 @@
 				</div>
 			</a>
 
-			<a href="<?php echo base_url(); ?>staticPagesAdminController/show_services_pages" class="items" >
+			<a href="#" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
 						<i class="fa fa-picture-o fa-custom" ></i></br>
