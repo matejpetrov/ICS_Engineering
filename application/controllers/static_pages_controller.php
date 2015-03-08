@@ -397,15 +397,98 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_services["services_page"] = $this->load->view("services_views/view_secure_communication", $data_temp, TRUE);
 
-		}
-
-		
+		}		
 		
 
 		$data_services["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_services["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);	
 
 		$this->load->view('services_views/view_services_template', $data_services);		
+	}
+
+	#TODO
+	public function products($page){
+
+		$data = $this->get_menus_language_values();		
+		$data["additional_address"] = $this->lang->line("additional_address");
+
+		$this->load->model('model_products_pages', 'model_products_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
+
+		$data_temp = array();
+
+		if($page == 0){		
+
+			$data_temp["products_telecommunication"] = $this->lang->line("products_telecommunication");
+			$data_temp["products_telecommunication_fixed_access"] = $this->lang->line("products_telecommunication_fixed_access");
+			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
+			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");
+
+			$column = 'fixed_access';
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_first_page"] = $result['fixed_access'];
+			
+
+			$data_products["products_page"] = $this->load->view("products_views/view_products_main", $data_temp, TRUE);
+
+		}
+
+		else if($page == 1){
+
+			$data_temp["products_power_supply_dc_power_systems"] = $this->lang->line("products_power_supply_dc_power_systems");
+			$data_temp["products_power_supply_ups"] = $this->lang->line("products_power_supply_ups");
+			$data_temp["products_power_supply_monitoring"] = $this->lang->line("products_power_supply_monitoring");
+			$data_temp["products_power_supply_data_center"] = $this->lang->line("products_power_supply_data_center");
+
+			$data_temp["products_power_supply"] = $this->lang->line("products_power_supply");
+
+			$column = 'dc_power_systems';
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_power_supply_dc_power_systems_page"] = $result[$column];
+
+			$data_products["products_page"] = $this->load->view("products_views/view_products_dc_power_systems", $data_temp, TRUE);
+
+		}
+
+		else if($page == 2){
+			
+			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
+			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
+
+			$column = 'audio_conference';
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_audio_video_audio_conference_page"] = $result[$column];			
+
+			$data_products["products_page"] = $this->load->view("products_views/view_products_audio_conference", $data_temp, TRUE);
+
+		}
+
+		else if($page == 3){
+
+			$data_temp["products_secure_communications_title"] = $this->lang->line("products_secure_communications");
+
+			$column = 'secure_communication';
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_secure_communications_page"] = $result[$column];			
+
+			$data_products["products_page"] = $this->load->view("products_views/view_products_secure_communications", $data_temp, TRUE);
+
+		}	
+
+
+		$data_products["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_products["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);		
+
+		$this->load->view('products_views/view_products_template', $data_products);
+
 	}
 
 	public function webMail(){
@@ -436,6 +519,7 @@ class Static_pages_controller extends CI_Controller{
 		$data["menus_corporate_info"] = $this->lang->line("menus_corporate_info");
 		
 		$data["menus_services"]	= $this->lang->line("menus_services");
+		$data["menus_products"]	= $this->lang->line("menus_products");
 		$data["menus_telecommunications"] = $this->lang->line("menus_telecommunications");
 		$data["menus_power_supply"] = $this->lang->line("menus_power_supply");
 		$data["menus_audio_video"] = $this->lang->line("menus_audio_video");
@@ -641,6 +725,41 @@ class Static_pages_controller extends CI_Controller{
 		}
 
 		echo $data;
+
+	}
+	
+	public function ajax_products_telecommunication_page_navigation(){
+
+		$page = $_POST["page_id"];
+		$this->load->model('model_products_pages', 'model_products_pages', TRUE);
+		$lang = $this->session->userdata('site_lang');
+
+
+		if($page == 0){
+
+			$data_temp["products_telecommunication"] = $this->lang->line("products_telecommunication");
+			$data_temp["products_telecommunication_fixed_access"] = $this->lang->line("products_telecommunication_fixed_access");
+			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
+			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");	
+
+			$column = 'fixed_access';
+			$top_nav = $this->input->post('top_nav');
+
+			if (!empty($top_nav)) {
+				$column = $top_nav;
+				$nav_lang = preg_replace('/-/', '_', $top_nav);				
+			}
+			
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_first_page"] = $result[$column];
+
+			$data = $this->load->view("products_views/view_products_main", $data_temp, TRUE);
+
+		}
+
+
 
 	}
 

@@ -10,10 +10,6 @@ $lang["nav_engineering"] = "Engineering";
 $lang["nav_system_integration"] = "System Integration";
 //subpages END
 
-$lang["services_telecommunication"] = "Telecommunications";
-$lang["services_power_supply"] = "Power Supply";
-$lang["services_audio_video"] = "Audio/Video";
-$lang["services_defence_security"] = "Secure&nbsp;Communications";
 
 
 /*$lang["services_engineering_title"] = "Engineering";

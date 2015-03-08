@@ -659,6 +659,11 @@ ul.footer-nav >li> a.selected {
 ul.footer-nav > li > a:hover {
     color: #CD5A01;
 }
+ul.footer-nav > .first > a {
+    /* TODO, change the style to be responsive */
+    padding-right: 67px;
+    margin-left: -129px;
+}
 ul.footer-nav > .last > a {
     padding: 0;
 }

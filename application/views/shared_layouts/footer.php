@@ -10,13 +10,18 @@
 							<li>
 								<a href="<?php echo base_url(); ?>static_pages_controller/about_us/0" id="about_us_footer"><?php echo $menus_about_us; ?></a>
 							</li>
-							<li class="last">
+							<li>
 								<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_footer"><?php echo $menus_services; ?></a>
 							</li>
+							
 						</ul>
 					</div>
 					<div class="col-md-6 col-sm-12 footer">
 						<ul class="footer-nav">
+							<li class="first">
+								<!-- <?php //echo base_url(); ?>static_pages_controller/services/0 -->
+								<a href="#" id="products_footer"><?php echo $menus_products; ?></a>
+							</li>
 							<li>
 								<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news_footer"><?php echo $menus_news; ?></a>
 							</li>

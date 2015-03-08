@@ -17,6 +17,7 @@ class LanguageLoader
 			$ci->lang->load('contact', $ci->session->userdata('site_lang'));
 			$ci->lang->load('about_us', $ci->session->userdata('site_lang'));
 			$ci->lang->load('services', $ci->session->userdata('site_lang'));
+			$ci->lang->load('products', $ci->session->userdata('site_lang'));
 		} 
 		else {
 			$ci->lang->load('menus', 'english');
@@ -24,6 +25,7 @@ class LanguageLoader
 			$ci->lang->load('contact', 'english');
 			$ci->lang->load('about_us', 'english');
 			$ci->lang->load('services', 'english');
+			$ci->lang->load('products', 'english');
 		}
 		
 	}
