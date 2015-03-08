@@ -8,6 +8,11 @@ $lang["menus_partners"] = "Partners";
 $lang["menus_corporate_info"] = "Company&nbsp;Information";
 
 $lang["menus_services"] = "Services";
+$lang["menus_consulting"] = "Consulting";
+$lang["menus_engineering"] = "Engineering";
+$lang["menus_system_integration"] = "System integration";
+
+
 $lang["menus_products"] = "Products";
 $lang["menus_telecommunications"] = "Telecommunications";
 $lang["menus_power_supply"] = "Power Supply";

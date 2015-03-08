@@ -12,8 +12,8 @@ $lang["additional_address"] = "ICS Consulting Engineering
 								<br />
 								info [at] ics.net.mk";
 
-
 $lang["additional_button_more"] = "More>>";
+$lang["all_news"]="All news";
 
 $lang["latest_news_title"] = "Latest News";
 

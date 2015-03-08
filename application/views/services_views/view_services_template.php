@@ -51,19 +51,13 @@
 
 			<ul class="nav nav-pills nav-stacked sidebar">
 				<li id="0">
-					<a href="#" onclick="services_ajax_page(0);"><?php echo $nav_services; ?></a>
+					<a href="#" onclick="services_ajax_page(0);"><?php echo $menus_consulting; ?></a>
 				</li>
 				<li id="1">
-					<a href="#" onclick="services_ajax_page(1)"><?php echo $menus_telecommunications; ?></a>
+					<a href="#" onclick="services_ajax_page(1)"><?php echo $menus_engineering; ?></a>
 				</li>
 				<li id="2">
-					<a href="#" onclick="services_ajax_page(2)"><?php echo $menus_power_supply; ?></a>
-				</li>
-				<li id="3">
-					<a href="#" onclick="services_ajax_page(3)"><?php echo $menus_audio_video; ?></a>
-				</li>
-				<li id="4">
-					<a href="#" onclick="services_ajax_page(4)"><?php echo $menus_defence_security; ?></a>
+					<a href="#" onclick="services_ajax_page(2)"><?php echo $menus_system_integration; ?></a>
 				</li>
 			</ul>
 		</div>

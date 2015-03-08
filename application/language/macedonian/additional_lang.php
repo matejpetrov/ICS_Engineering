@@ -13,6 +13,7 @@ $lang["additional_address"] = "ИЦС Консалтинг Инженеринг
 								info [at] ics.net.mk";
 
 $lang["additional_button_more"] = "Повеќе>>";
+$lang["all_news"]="Сите вести";
 
 $lang["latest_news_title"] = "Најнови вести";
 

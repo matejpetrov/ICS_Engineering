@@ -192,7 +192,7 @@ class Static_pages_controller extends CI_Controller{
 		}
 
 		$data_news['latest_news_title'] = $this->lang->line("latest_news_title");
-
+		$data_news['all_news_btn'] = $this->lang->line("all_news");
 		$this->load->view('view_news_preview', $data_news, FALSE);
 
 	}
@@ -326,78 +326,49 @@ class Static_pages_controller extends CI_Controller{
 
 		if($page == 0){
 
-			$data_temp["services_title"] = $this->lang->line("services_title");		
+			$data_temp["services_consulting_title"] = $this->lang->line("nav_consulting");
+			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
-			$data_temp["nav_services"] = $this->lang->line("nav_services");
-			$data_temp["nav_consulting"] = $this->lang->line("nav_consulting");
-			$data_temp["nav_engineering"] = $this->lang->line("nav_engineering");
-			$data_temp["nav_system_integration"] = $this->lang->line("nav_system_integration");				
-
-			$column = 'services';
+			$column = 'consulting';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_first_page"] = $result['services'];
-			
+			$data_temp["services_consulting_page"] = $result[$column];
 
-			$data_services["services_page"] = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
+			$data_services["services_page"] = $this->load->view("services_views/view_services_consulting", $data_temp, TRUE);
+
 
 		}
 		else if($page == 1){
+			$data_temp["services_engineering_title"] = $this->lang->line("nav_engineering");
+			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
-			$data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
-
-			$column = 'telecommunication';
+			$column = 'engineering';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_telecommunication_page"] = $result[$column];
+			$data_temp["services_engineering_page"] = $result[$column];
 
-			$data_services["services_page"] = $this->load->view("services_views/view_services_telecommunication", $data_temp, TRUE);
+			$data_services["services_page"] = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
 
 		}
 
 		else if($page == 2){
 			
-			$data_temp["services_power_supply_title"] = $this->lang->line("services_power_supply");
+			// $data_temp["services_system_title"] = $this->lang->line("services_power_supply");
+			$data_temp["services_system_integration_title"] = $this->lang->line("nav_system_integration");				
 
-			$column = 'power-supply';
+			$column = 'system_integration';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_power_supply_page"] = $result[$column];			
+			$data_temp["services_system_integration_page"] = $result[$column];			
 
-			$data_services["services_page"] = $this->load->view("services_views/view_services_power_supply", $data_temp, TRUE);
+			$data_services["services_page"] = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
 
 		}
 
-		else if($page == 3){
-
-			$data_temp["services_audio_video_title"] = $this->lang->line("services_audio_video");
-
-			$column = 'audio-video';
-
-			$result = $this->model_services_pages->get_services_page_content($column, $lang);
-
-			$data_temp["services_audio_video_page"] = $result[$column];			
-
-			$data_services["services_page"] = $this->load->view("services_views/view_services_audio_video", $data_temp, TRUE);
-
-		}
-
-		else if($page == 4){
-
-			$data_temp["services_secure_communication_title"] = $this->lang->line("services_defence_security");
-
-			$column = 'defence-security';
-
-			$result = $this->model_services_pages->get_services_page_content($column, $lang);
-
-			$data_temp["services_secure_communication_page"] = $result[$column];			
-
-			$data_services["services_page"] = $this->load->view("services_views/view_secure_communication", $data_temp, TRUE);
-
-		}		
+		
 		
 
 		$data_services["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
@@ -419,7 +390,7 @@ class Static_pages_controller extends CI_Controller{
 
 		if($page == 0){		
 
-			$data_temp["products_telecommunication"] = $this->lang->line("products_telecommunication");
+			$data_temp["products_telecommunication_title"] = $this->lang->line("products_telecommunication_fixed_access");
 			$data_temp["products_telecommunication_fixed_access"] = $this->lang->line("products_telecommunication_fixed_access");
 			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
 			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");
@@ -437,6 +408,7 @@ class Static_pages_controller extends CI_Controller{
 
 		else if($page == 1){
 
+			$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_dc_power_systems");
 			$data_temp["products_power_supply_dc_power_systems"] = $this->lang->line("products_power_supply_dc_power_systems");
 			$data_temp["products_power_supply_ups"] = $this->lang->line("products_power_supply_ups");
 			$data_temp["products_power_supply_monitoring"] = $this->lang->line("products_power_supply_monitoring");
@@ -455,6 +427,7 @@ class Static_pages_controller extends CI_Controller{
 		}
 
 		else if($page == 2){
+			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_audio_conference");
 			
 			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
@@ -519,6 +492,12 @@ class Static_pages_controller extends CI_Controller{
 		$data["menus_corporate_info"] = $this->lang->line("menus_corporate_info");
 		
 		$data["menus_services"]	= $this->lang->line("menus_services");
+		$data["menus_consulting"] = $this->lang->line("menus_consulting");
+		$data["menus_engineering"] = $this->lang->line("menus_engineering");
+		$data["menus_system_integration"] = $this->lang->line("menus_system_integration");
+
+
+
 		$data["menus_products"]	= $this->lang->line("menus_products");
 		$data["menus_telecommunications"] = $this->lang->line("menus_telecommunications");
 		$data["menus_power_supply"] = $this->lang->line("menus_power_supply");
@@ -648,87 +627,48 @@ class Static_pages_controller extends CI_Controller{
 		$lang = $this->session->userdata('site_lang');
 
 		if($page == 0){
-			$data_temp["services_title"] = $this->lang->line("services_title");		
+			$data_temp["services_consulting_title"] = $this->lang->line("nav_consulting");
+			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
-			$data_temp["nav_services"] = $this->lang->line("nav_services");
-			$data_temp["nav_consulting"] = $this->lang->line("nav_consulting");
-			$data_temp["nav_engineering"] = $this->lang->line("nav_engineering");
-			$data_temp["nav_system_integration"] = $this->lang->line("nav_system_integration");		
-
-			$column = 'services';
-			$top_nav = $this->input->post('top_nav');
-
-			if (!empty($top_nav)) {
-				$column = $top_nav;
-				$nav_lang = preg_replace('/-/', '_', $top_nav);
-				$data_temp["services_title"] = $this->lang->line("nav_".$nav_lang);
-			}
-			
+			$column = 'consulting';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_first_page"] = $result[$column];
-
-			$data = $this->load->view("services_views/view_services_main", $data_temp, TRUE);
+			$data_temp["services_consulting_page"] = $result[$column];
+			$data = $this->load->view("services_views/view_services_consulting", $data_temp, TRUE);
 
 		}
 
 		else if($page == 1){
+			$data_temp["services_engineering_title"] = $this->lang->line("nav_engineering");
+			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
-			$data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
-
-			$column = 'telecommunication';
+			$column = 'engineering';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_telecommunication_page"] = $result[$column];						
+			$data_temp["services_engineering_page"] = $result[$column];				
 
-			$data = $this->load->view("services_views/view_services_telecommunication", $data_temp, TRUE);
+			$data = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
 		}
 		else if($page == 2){
-			$data_temp["services_power_supply_title"] = $this->lang->line("services_power_supply");
+			$data_temp["services_system_integration_title"] = $this->lang->line("nav_system_integration");				
 
-			$column = 'power-supply';
-
-			$result = $this->model_services_pages->get_services_page_content($column, $lang);
-
-			$data_temp["services_power_supply_page"] = $result[$column];						
-
-			$data = $this->load->view("services_views/view_services_power_supply", $data_temp, TRUE);
-		}
-		else if($page == 3){
-
-			$data_temp["services_audio_video_title"] = $this->lang->line("services_audio_video");
-
-			$column = 'audio-video';
+			$column = 'system_integration';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
-			$data_temp["services_audio_video_page"] = $result[$column];						
+			$data_temp["services_system_integration_page"] = $result[$column];			
+				
 
-			$data = $this->load->view("services_views/view_services_audio_video", $data_temp, TRUE);
-
+			$data = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
 		}
-
-		else if($page == 4){
-
-			$data_temp["services_secure_communication_title"] = $this->lang->line("services_defence_security");
-
-			$column = 'defence-security';
-
-			$result = $this->model_services_pages->get_services_page_content($column, $lang);
-
-			$data_temp["services_secure_communication_page"] = $result[$column];						
-
-			$data = $this->load->view("services_views/view_secure_communication", $data_temp, TRUE);
-
-		}
-
+		
 		echo $data;
 
 	}
 	
-	public function ajax_products_telecommunication_page_navigation(){
+	public function ajax_products_page_navigation(){
 
 		$page = $_POST["page_id"];
 		$this->load->model('model_products_pages', 'model_products_pages', TRUE);
@@ -737,7 +677,7 @@ class Static_pages_controller extends CI_Controller{
 
 		if($page == 0){
 
-			$data_temp["products_telecommunication"] = $this->lang->line("products_telecommunication");
+			$data_temp["products_telecommunication_title"] = $this->lang->line("products_telecommunication");
 			$data_temp["products_telecommunication_fixed_access"] = $this->lang->line("products_telecommunication_fixed_access");
 			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
 			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");	
@@ -748,6 +688,7 @@ class Static_pages_controller extends CI_Controller{
 			if (!empty($top_nav)) {
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);				
+				$data_temp["products_telecommunication_title"] = $this->lang->line("products_telecommunication_".$nav_lang);
 			}
 			
 
@@ -758,6 +699,72 @@ class Static_pages_controller extends CI_Controller{
 			$data = $this->load->view("products_views/view_products_main", $data_temp, TRUE);
 
 		}
+		elseif ($page == 1) {
+			$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_dc_power_systems");
+			$data_temp["products_power_supply_dc_power_systems"] = $this->lang->line("products_power_supply_dc_power_systems");
+			$data_temp["products_power_supply_ups"] = $this->lang->line("products_power_supply_ups");
+			$data_temp["products_power_supply_monitoring"] = $this->lang->line("products_power_supply_monitoring");
+			$data_temp["products_power_supply_data_center"] = $this->lang->line("products_power_supply_data_center");
+
+			$data_temp["products_power_supply"] = $this->lang->line("products_power_supply");
+
+			$column = 'dc_power_systems';
+			$top_nav = $this->input->post('top_nav');
+
+			if (!empty($top_nav)) {
+				$column = $top_nav;
+				$nav_lang = preg_replace('/-/', '_', $top_nav);				
+				$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_".$nav_lang);
+			}
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_power_supply_dc_power_systems_page"] = $result[$column];
+
+			$data = $this->load->view("products_views/view_products_dc_power_systems", $data_temp, TRUE);
+		}
+		else if($page == 2){
+			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_audio_conference");
+			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
+			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
+
+			$column = 'audio_conference';
+			$top_nav = $this->input->post('top_nav');
+
+			if (!empty($top_nav)) {
+				$column = $top_nav;
+				$nav_lang = preg_replace('/-/', '_', $top_nav);				
+				$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_".$nav_lang);
+			}
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_audio_video_audio_conference_page"] = $result[$column];
+
+			$data = $this->load->view("products_views/view_products_audio_conference", $data_temp, TRUE);
+
+
+		}
+
+		else if($page == 3){
+
+			$data_temp["products_secure_communications_title"] = $this->lang->line("products_secure_communications");
+
+			$column = 'secure_communication';
+
+			$result = $this->model_products_pages->get_products_page_content($column, $lang);
+
+			$data_temp["products_secure_communications_page"] = $result[$column];
+
+			$data = $this->load->view("products_views/view_products_secure_communications", $data_temp, TRUE);
+
+
+		}	
+
+
+
+
+		echo $data;
 
 
 

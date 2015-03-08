@@ -8,7 +8,7 @@ class Model_admin extends CI_Model {
 			);
 		$query = $this->db->get_where('users', $data);
 		// && password_verify($password,$query->row()->password)
-		if (count($query->result () ) > 0 ) {
+		if (count($query->result () ) > 0 &&($query->row()->password == $password)  ) {
 			$id = $query->row()->id;
 			return $id;
 		}else{

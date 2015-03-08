@@ -51,19 +51,16 @@
 
 			<ul class="nav nav-pills nav-stacked sidebar">
 				<li id="0">
-					<a href="#" onclick="products_ajax_page(0);"><?php echo $nav_services; ?></a>
+					<a href="#" onclick="products_ajax_page(0)"><?php echo $menus_telecommunications; ?></a>
 				</li>
 				<li id="1">
-					<a href="#" onclick="products_ajax_page(1)"><?php echo $menus_telecommunications; ?></a>
+					<a href="#" onclick="products_ajax_page(1)"><?php echo $menus_power_supply; ?></a>
 				</li>
 				<li id="2">
-					<a href="#" onclick="products_ajax_page(2)"><?php echo $menus_power_supply; ?></a>
+					<a href="#" onclick="products_ajax_page(2)"><?php echo $menus_audio_video; ?></a>
 				</li>
 				<li id="3">
-					<a href="#" onclick="products_ajax_page(3)"><?php echo $menus_audio_video; ?></a>
-				</li>
-				<li id="4">
-					<a href="#" onclick="products_ajax_page(4)"><?php echo $menus_defence_security; ?></a>
+					<a href="#" onclick="products_ajax_page(3)"><?php echo $menus_defence_security; ?></a>
 				</li>
 			</ul>
 		</div>
@@ -71,6 +68,10 @@
 	</div>
 
 </div>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		getSubpage.init();
+	});
+</script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_navigate_pages.js"></script>
 <?php echo $footer; ?>

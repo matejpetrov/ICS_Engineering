@@ -10,7 +10,6 @@ $(document).ready(function(){
 		if($.isNumeric(last)){
 
 			if(prelast == 'about_us'){
-					getSubpage.init();
 				$('#about_us').addClass('selected');
 				$('#about_us_footer').addClass('selected');
 				$('.sidebar').find('#' + last).addClass('active');
@@ -20,7 +19,6 @@ $(document).ready(function(){
 				};
 			}
 			else if(prelast == 'services'){
-					getSubpage.init();
 				$('#services').addClass('selected');
 				$('#services_footer').addClass('selected');
 				$('.sidebar').find('#' + last).addClass('active');
@@ -28,6 +26,17 @@ $(document).ready(function(){
 				if (last == 0) {
 					$('.top-nav').find('#' + last).addClass('active');
 				};
+			}
+			else if(prelast == 'products'){
+				$('#products').addClass('selected');
+				$('#products_footer').addClass('selected');
+				$('.sidebar').find('#' + last).addClass('active');
+				$('#products_' + last).addClass('sub-selected');
+				$('.top-nav').find('#0').addClass('active');
+
+				/*if (last == 0) {
+					$('.top-nav').find('#' + last).addClass('active');
+				};*/
 			}
 			else if(prelast == 'show_news_homepage'){
 				$('#news').addClass('selected');

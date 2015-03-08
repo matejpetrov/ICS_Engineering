@@ -59,7 +59,7 @@
 
 					<div class="row all_news_btn" style="text-align:center;">
 						<a href="<?php echo base_url(); ?>static_pages_controller/news">
-							<button class="btn btn-default">All news</button>
+							<button class="btn btn-default"><?php echo $all_news_btn; ?></button>
 						</a>
 					</div>
 

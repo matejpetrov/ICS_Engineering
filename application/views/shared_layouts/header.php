@@ -131,22 +131,15 @@
 									role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
 									<ul class="dropdown-menu header-menu" role="menu">										
 										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_0"><?php echo $menus_services; ?></a>
-										</li>
-										<hr/>
-
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_telecommunications; ?></a>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_0"><?php echo $menus_consulting; ?></a>
 										</li>
 										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_power_supply; ?></a>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_engineering; ?></a>
 										</li>
 										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/3" id="services_3"><?php echo $menus_audio_video; ?></a>
+											<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_system_integration; ?></a>
 										</li>
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/4" id="services_4"><?php echo $menus_defence_security; ?></a>
-										</li>
+	
 										
 									</ul>
 
@@ -158,11 +151,6 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 									role="button" aria-expanded="false" id="products"><?php echo $menus_products; ?> <span class="caret"></span></a>
 									<ul class="dropdown-menu header-menu" role="menu">										
-										<li>
-											<a href="#" id="products_0"><?php echo $menus_products; ?></a>
-										</li>
-										<hr/>
-
 										<li>
 											<a href="<?php echo base_url(); ?>static_pages_controller/products/0" id="products_0"><?php echo $menus_telecommunications; ?></a>
 										</li>
