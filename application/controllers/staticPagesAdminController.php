@@ -172,6 +172,7 @@ class StaticPagesAdminController extends CI_Controller {
 			$result = $this->model_about_us_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian);
 		}
 		else{
+			#TODO REMOVE THIS
 			$result = $this->model_services_pages->update_telecommunication_content($telecommunication_english, $telecommunication_macedonian);
 		}
 
@@ -312,6 +313,11 @@ class StaticPagesAdminController extends CI_Controller {
 		$data_pages["services_subpages"] = $this->load->view('admin_views/view_services_subpages_forms', $data_subpages, TRUE);
 
 		$this->load->view('admin_views/view_services_pages_forms', $data_pages, FALSE);
+	}
+
+	#TODO
+	public function show_services_pages_final(){				
+
 	}
 
 	//function that is invoked from the services tab in the services_page and here we should update the content of the 
