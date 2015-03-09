@@ -48,7 +48,7 @@ class Static_pages_controller extends CI_Controller{
 
 	//function that loads all the views from the database and displays them. Invoked when we click
 	//on the news tab in the header. 
-	public function news(){
+	public function news($page=1){
 
 		$data = $this->get_menus_language_values();
 
@@ -57,7 +57,12 @@ class Static_pages_controller extends CI_Controller{
 		$data_all_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_all_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 
-		$all_news = $this->get_all_news_homepage(1);
+		$pages = $this->model_homepage->news_count(); 
+		$data_all_news['pages'] = ceil($pages/6);
+		$data_all_news['active'] = $page;
+
+			$offset = 6*($page - 1);
+			$all_news = $this->get_all_news_homepage(1,$offset);
 
 		$data_all_news['all_news'] = $all_news;		
 
@@ -87,18 +92,17 @@ class Static_pages_controller extends CI_Controller{
 	}
 
 	//creates the news homepage slider
-	public function get_all_news_homepage($template){
+	public function get_all_news_homepage($template,$offset=0){
 
 		$lang = $this->session->userdata('site_lang');
 
+		$post_offset = $this->input->post('offset');
 		
-
-		$offset = $this->input->post('offset');
-		if ($offset == false) {
-			$all_news = $this->model_homepage->get_all_news_homepage($lang, 0);
-		}else{
-			$all_news = $this->model_homepage->get_all_news_homepage($lang,$offset);
+		if ($post_offset != false) {
+			$offset = $post_offset;
 		}
+
+			$all_news = $this->model_homepage->get_all_news_homepage($lang, $offset);
 
 		$all_news_views = array();
 
@@ -132,7 +136,7 @@ class Static_pages_controller extends CI_Controller{
 
 		}
 		$outputArray = array();
-		if (empty($offset)) {
+		if (empty($post_offset)) {
 			return $all_news_views;
 		}else{ 
 			$outputArray['data'] = $all_news_views;

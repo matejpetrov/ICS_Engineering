@@ -1110,7 +1110,25 @@ div.static-pages-content{
 div.news-item-container{
     margin-top: 100px;
 }
+.clearfix{
+    clear: both;
+}
+/*.news-item-container::after{
+    content: "";
+    clear: both;
+}*/
 
+.page {
+    text-align: center;
+}
+.page > nav > .pagination > li > a{
+    color: #CD5A01;
+}
+.page > nav > .pagination > li.active > a{
+    color: #ffffff;
+    background-color: #CD5A01;
+    border-color: #CD5A01;
+}
 
 /* All news page Style End */
 

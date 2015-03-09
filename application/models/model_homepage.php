@@ -70,6 +70,12 @@ class Model_homepage extends CI_Model {
 
 	}
 
+	public function news_count()
+	{
+		$result = $this->db->get('news');
+		return $result->num_rows();
+	}
+
 	public function getWord($lang){
 		$this->db->select('word');
 		if ($lang == 'english') {
