@@ -14,6 +14,7 @@ class StaticPagesAdminController extends CI_Controller {
 		$this->load->model('model_admin', 'model_admin', TRUE);
 		$this->load->model('model_about_us_pages', 'model_about_us_pages', TRUE);
 		$this->load->model('model_services_pages', 'model_services_pages', TRUE);
+		$this->load->model('model_products_pages', 'model_products_pages', TRUE);
 
 	}
 
@@ -315,8 +316,283 @@ class StaticPagesAdminController extends CI_Controller {
 		$this->load->view('admin_views/view_services_pages_forms', $data_pages, FALSE);
 	}
 
+
+	//========================================================================================================
+	//admin products pages
+
+
+	public function show_products_pages(){
+
+		$data_pages['header'] = $this->checkIfLoggedIn();
+
+		//separate functions for getting all the subpages in different variables. 
+		//Each variable will be given as data to the separate views for all the subpages. 
+
+
+		$products_db = $this->model_products_pages->get_all_products_content();
+
+		$data_telecommunication['fixed_access_en'] = $products_db[0]['fixed_access'];
+		$data_telecommunication['fixed_access_mk'] = $products_db[1]['fixed_access'];
+
+		$data_telecommunication['transport_en'] = $products_db[0]['transport'];
+		$data_telecommunication['transport_mk'] = $products_db[1]['transport'];
+
+		$data_telecommunication['solutions_en'] = $products_db[0]['solutions'];
+		$data_telecommunication['solutions_mk'] = $products_db[1]['solutions'];
+
+		$telecommunication_subpage = $this->load->view('admin_views/views_products/view_telecommunication_subpages', $data_telecommunication, TRUE);
+
+
+		$data_power_supply['dc_power_systems_en'] = $products_db[0]['dc_power_systems'];
+		$data_power_supply['dc_power_systems_mk'] = $products_db[1]['dc_power_systems'];
+
+		$data_power_supply['ups_en'] = $products_db[0]['ups'];
+		$data_power_supply['ups_mk'] = $products_db[1]['ups'];
+
+		$data_power_supply['monitoring_en'] = $products_db[0]['monitoring'];
+		$data_power_supply['monitoring_mk'] = $products_db[1]['monitoring'];
+
+		$data_power_supply['data_center_en'] = $products_db[0]['data_center'];
+		$data_power_supply['data_center_mk'] = $products_db[1]['data_center'];
+
+		$power_supply_subpages = $this->load->view('admin_views/views_products/view_power_supply_subpages', $data_power_supply, TRUE);
+
+		$data_audio_video['audio_conference_en'] = $products_db[0]['audio_conference'];
+		$data_audio_video['audio_conference_mk'] = $products_db[1]['audio_conference'];
+
+		$data_audio_video['court_recording_systems_en'] = $products_db[0]['court_recording_systems'];
+		$data_audio_video['court_recording_systems_mk'] = $products_db[1]['court_recording_systems'];
+
+		$audio_video_subpages = $this->load->view('admin_views/views_products/view_audio_video_subpages', $data_audio_video, TRUE);
+
+		$data_pages['telecommunication_subpage'] = $telecommunication_subpage;
+		$data_pages['power_supply_subpages'] = $power_supply_subpages;
+		$data_pages['audio_video_subpages'] = $audio_video_subpages;
+
+		$data_pages['secure_communication_en'] = $products_db[0]['secure_communication'];
+		$data_pages['secure_communication_mk'] = $products_db[1]['secure_communication'];
+		
+
+		$this->load->view('admin_views/views_products/view_products_pages_forms', $data_pages, FALSE);
+
+		
+	}
+
+	//========================================================================================================
+	//telecommunication subpages BEGIN	
+
+	public function update_fixed_access_content(){
+
+		$fixed_access_english = $_POST['editorFixedAccessEnglish'];
+		$fixed_access_macedonian = $_POST['editorFixedAccessMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_fixed_access_content($fixed_access_english, $fixed_access_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_transport_content(){
+		$transport_english = $_POST['editorTransportEnglish'];
+		$transport_macedonian = $_POST['editorTransportMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_transport_content($transport_english, $transport_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_solutions_content(){
+		$solutions_english = $_POST['editorSolutionsEnglish'];
+		$solutions_macedonian = $_POST['editorSolutionsMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_solutions_content($solutions_english, $solutions_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+	//telecommunication subpages END
+	//========================================================================================================
+		
+	
+
+	//========================================================================================================
+	//power supply subpages BEGIN
+	public function update_dc_power_systems_content(){
+		$dc_power_systems_english = $_POST['editorDcPowerSystemsEnglish'];
+		$dc_power_systems_macedonian = $_POST['editorDcPowerSystemsMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_dc_power_systems_content($dc_power_systems_english, $dc_power_systems_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_ups_content(){
+		$ups_english = $_POST['editorUpsEnglish'];
+		$ups_macedonian = $_POST['editorUpsMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_ups_content($ups_english, $ups_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_monitoring_content(){
+		$monitoring_english = $_POST['editorMonitoringEnglish'];
+		$monitoring_macedonian = $_POST['editorMonitoringMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_monitoring_content($monitoring_english, $monitoring_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_data_center_content(){
+		$data_center_english = $_POST['editorDataCenterEnglish'];
+		$data_center_macedonian = $_POST['editorDataCenterMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_data_center_content($data_center_english, $data_center_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	//power supply subpages END
+	//========================================================================================================
+
+
+	//========================================================================================================
+	//audio/video subpages BEGIN
+
+	public function update_audio_conference_content(){
+		$audio_conference_english = $_POST['editorAudioConferenceEnglish'];
+		$audio_conference_macedonian = $_POST['editorAudioConferenceMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_audio_conference_content($audio_conference_english, $audio_conference_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	public function update_court_recording_systems_content(){
+		$court_recording_systems_english = $_POST['editorCourtRecordingSystemsEnglish'];
+		$court_recording_systems_macedonian = $_POST['editorCourtRecordingSystemsMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_court_recording_systems_content($court_recording_systems_english, $court_recording_systems_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+	//audio/video subpages BEGIN
+	//========================================================================================================
+
+
+	public function update_secure_communications_content(){
+		$secure_communications_english = $_POST['editorSecureCommunicationsEnglish'];
+		$secure_communications_macedonian = $_POST['editorSecureCommunicationsMacedonian'];				
+
+		$json = "";
+		$json_encode = "";
+
+		if($this->model_products_pages->update_secure_communications_content($secure_communications_english, $secure_communications_macedonian)){
+			$json = "{message: 'success'}";
+			$json_encode = json_encode($json);
+			echo $json_encode;
+		}
+
+		else{
+			return false;
+		}
+	}
+	
+
+	//========================================================================================================
+
 	#TODO
 	public function show_services_pages_final(){				
+
+		$data_pages['header'] = $this->checkIfLoggedIn();
+
+		$services_db = $this->model_services_pages->get_all_services_content();
+
+		$data_pages['services_english'] = $services_db[0];
+		$data_pages['services_macedonian'] = $services_db[1];
+
+		$this->load->view('admin_views/view_services_pages_forms_final', $data_pages, FALSE);
 
 	}
 

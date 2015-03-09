@@ -85,7 +85,7 @@
 
 
 					<!-- Consulting CKEditor form begin -->
-				    <div role="tabpanel" class="tab-pane fade in tab-container" id="consulting">
+				    <div role="tabpanel" class="tab-pane fade in active tab-container" id="consulting">
 				    	<h3>Enter the content of the consulting page</h3>
 
 				    	<form action="" method="POST">

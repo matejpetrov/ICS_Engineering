@@ -4,6 +4,19 @@ class Model_products_pages extends CI_Model {
 
 	public function get_all_products_content(){
 
+		$this->db->select("*");
+		$this->db->from("products_translation");
+
+		$query = $this->db->get();
+
+		$result = array();
+
+		foreach($query->result() as $row){
+			array_push($result, (array)$row);
+		}
+		
+		return $result;
+
 	}
 
 
@@ -222,7 +235,7 @@ class Model_products_pages extends CI_Model {
 	#===============================================================
 	#SECURE COMMUNICATION START
 
-	public function update_secure_communication_content($secure_communication_english, $secure_communication_macedonian){
+	public function update_secure_communications_content($secure_communication_english, $secure_communication_macedonian){
 		$english = array('secure_communication' => $secure_communication_english);
 		$macedonian = array('secure_communication' => $secure_communication_macedonian);
 

@@ -11,7 +11,8 @@ class Model_services_pages extends CI_Model {
 	//function that will access to the database and retrieve all the content (English and Macedonian) from the services_translation table.
 	public function get_all_services_content(){
 
-		$this->db->select("*");
+		#TODO
+		$this->db->select("engineering, consulting, system_integration");
 		$this->db->from("services_translation");
 
 		$query = $this->db->get();

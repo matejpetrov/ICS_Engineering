@@ -1,4 +1,5 @@
 
 
-<?php var_dump($temp); ?>
-<?php var_dump($default_image); ?>
+<?php echo $header; ?>
+<?php var_dump($db_result_en); ?>
+<?php var_dump($db_result_mk); ?>
