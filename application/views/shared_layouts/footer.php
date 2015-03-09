@@ -20,7 +20,7 @@
 						<ul class="footer-nav">
 							<li class="first">
 								<!-- <?php //echo base_url(); ?>static_pages_controller/services/0 -->
-								<a href="#" id="products_footer"><?php echo $menus_products; ?></a>
+								<a href="<?php echo base_url(); ?>static_pages_controller/products/0" id="products_footer"><?php echo $menus_products; ?></a>
 							</li>
 							<li>
 								<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news_footer"><?php echo $menus_news; ?></a>

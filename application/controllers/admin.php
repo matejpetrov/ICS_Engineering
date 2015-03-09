@@ -2,8 +2,8 @@
 
 class Admin extends CI_Controller {
 	public function __construct(){
-		parent::__construct();				
-		
+		parent::__construct();
+
 		$this->load->model('model_admin', 'model_admin', TRUE);
 	}
 
@@ -355,6 +355,10 @@ class Admin extends CI_Controller {
 		$data_addUser['header'] = $this->checkIfLogedIn();
 
 		if ($this->checkSuperUser()) {
+			$data_addUser['userError'] = false;
+			$data_addUser['emailError'] = false;
+			$data_addUser['nameError'] = false;
+			$data_addUser['surnameError'] = false;
 			$this->load->view('admin_views/addUser',$data_addUser);	
 		} else {
 			$this->show_error_user_role();
@@ -369,18 +373,89 @@ class Admin extends CI_Controller {
 		$email = $this->input->post('email');
 		$username = $this->input->post('username');
 		$role = $this->input->post('user_type');
-		$result = $this->model_admin->createUser($name, $surname, $email, $username, $temp_password, $auth_link, $role);
-		if ($result) {
-			$this->load->library('mail_sender');
-			$this->mail_sender->setAddress($email);
-			$this->mail_sender->setFrom('info@ics.net.mk','ICS Engineering');
-			$this->mail_sender->setSubject('New User Created');
-			$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Username: ".$username."</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
-			$this->mail_sender->setBody($message);
+		
+		$userMsg = $this->checkUser($username);
+		$emailMsg = $this->checkEmail($email);
+		$nameMsg = $this->checkName($name);
+		$surnameMsg = $this->checkSurname($surname);
 
-			if($this->mail_sender->sendMail()){
-				redirect('admin/showAllUsers', 'refresh');
+		if (!$userMsg && !$emailMsg && !$nameMsg && !$surnameMsg) {
+			$result = $this->model_admin->createUser($name, $surname, $email, $username, $temp_password, $auth_link, $role);
+			if ($result) {
+				$this->load->library('mail_sender');
+				$this->mail_sender->setAddress($email);
+				$this->mail_sender->setFrom('info@ics.net.mk','ICS Engineering');
+				$this->mail_sender->setSubject('New User Created');
+				$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Username: ".$username."</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
+				$this->mail_sender->setBody($message);
+
+				if($this->mail_sender->sendMail()){
+					redirect('admin/showAllUsers', 'refresh');
+				}
 			}
+		} else {
+			$errors['header'] = $this->checkIfLogedIn();
+			$errors['userError'] = $userMsg;
+			$errors['emailError'] = $emailMsg;
+			$errors['nameError'] = $nameMsg;
+			$errors['surnameError'] = $surnameMsg;
+			$this->load->view('admin_views/addUser', $errors, FALSE);
+		}
+		
+
+		
+	}
+
+	private function checkUser($username){
+		if (empty($username)) {
+			return 'Username required';
+		}else{
+			if (preg_match("/^[0-9A-Za-z_\.-]+$/", $username) == 0) {
+				return 'Username contains invalid character(s)';
+			} else {
+				$result = $this->model_admin->checkUsername($username);
+				if ($result) {
+					return false;
+				} else {
+					return 'Username already in use';
+				}
+			}
+			
+		}
+	}
+
+	private function checkEmail($email){
+		if(empty($email)){
+			return 'Email required';
+		}else{
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				return 'Please enter valid e-mail address';
+			} else {
+				$result = $this->model_admin->checkEmail($email);
+				if ($result) {
+					return false;
+				} else {
+					return 'E-mail already in use';
+				}
+			}
+			
+			
+		}
+	}
+
+	private function checkName($name){
+		if ($name == '') {
+			return 'Name Required';
+		}else{
+			return false;
+		}
+	}
+
+	private function checkSurname($surname){
+		if ($surname == '') {
+			return 'Surname Required';
+		}else{
+			return false;
 		}
 	}
 
@@ -416,6 +491,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function changeName(){
+		$this->checkIfLogedIn();
 		$user_id = $this->session->userdata('user_id');
 		$name = $this->input->post('name');
 		$surname = $this->input->post('surname');
@@ -431,6 +507,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function changePassword(){
+		$this->checkIfLogedIn();
 		$user_id = $this->session->userdata('user_id');
 		$old = $this->input->post('pass-old');
 		$new = $this->input->post('pass-new');
@@ -447,41 +524,59 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function checkMail(){
+	public function checkMailAjax(){
+		$this->checkIfLogedIn();
 		$email = $this->input->post('email');
 		if(empty($email)){
-			$return = array('result' => 'error' );
+			$return = array('result' => 'Email required' );
 			$this->output->set_output(json_encode($return));
 		}else{
-			$result = $this->model_admin->checkEmail($email);
-			if ($result) {
-				$return = array('result' => 'ok' );
+			// filter_var('bob@example.com', FILTER_VALIDATE_EMAIL)
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$return = array('result' => 'Please enter valid e-mail address' );
 				$this->output->set_output(json_encode($return));
 			} else {
-				$return = array('result' => 'error' );
-				$this->output->set_output(json_encode($return));
+				$result = $this->model_admin->checkEmail($email);
+				if ($result) {
+					$return = array('result' => 'ok' );
+					$this->output->set_output(json_encode($return));
+				} else {
+					$return = array('result' => 'E-mail already in use' );
+					$this->output->set_output(json_encode($return));
+				}
 			}
+			
+			
 		}
 	}
 
-	public function checkUsername(){
+	public function checkUsernameAjax(){
+		$this->checkIfLogedIn();
 		$username = $this->input->post('username');
 		if (empty($username)) {
-			$return = array('result' => 'error' );
+			$return = array('result' => 'Username required' );
 			$this->output->set_output(json_encode($return));
 		}else{
-			$result = $this->model_admin->checkUsername($username);
-			if ($result) {
-				$return = array('result' => 'ok' );
+			// preg_match("^[0-9A-Za-z_]+$", username) == 0
+			if (preg_match("/^[0-9A-Za-z_\.-]+$/", $username) == 0) {
+				$return = array('result' => 'Username contains invalid character(s)' );
 				$this->output->set_output(json_encode($return));
 			} else {
-				$return = array('result' => 'error' );
-				$this->output->set_output(json_encode($return));
+				$result = $this->model_admin->checkUsername($username);
+				if ($result) {
+					$return = array('result' => 'ok' );
+					$this->output->set_output(json_encode($return));
+				} else {
+					$return = array('result' => 'Username already in use' );
+					$this->output->set_output(json_encode($return));
+				}
 			}
+			
 		}
 	}
 
 	public function changeRole(){
+		$this->checkIfLogedIn();
 		$id = $this->input->post('id');
 		$result = $this->model_admin->changeRole($id);
 		if ($result == 2) {
