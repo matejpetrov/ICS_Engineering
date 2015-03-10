@@ -30,23 +30,23 @@
 						<label for="username">Username</label>
 						<input name="username" id="username" type="text" class="form-control" aria-describedby="basic-addon1" value="<?php echo $this->input->post('username'); ?>"/>
 						<span class="form-control-feedback"><i id="user-notification" class='fa'></i></span>
-						<p class="message <?php if($userError)echo 'message-error';  ?> "><?php if($userError) echo $userError; ?></p>
+						<p class="message<?php if($userError)echo 'message-error';  ?>"><?php if($userError) echo $userError; ?></p>
 					</div>
 					<div class="form-group has-feedback">
 						<label for="email">Email</label>
 						<input name="email" id="email" type="email" class="form-control" aria-describedby="basic-addon1" value="<?php echo $this->input->post('email'); ?>"/>
 						<span class="form-control-feedback"><i id="email-notification" class='fa'></i></span>
-						<p class="message <?php if($emailError)echo 'message-error';  ?> "><?php if($emailError) echo $emailError; ?></p>
+						<p class="message<?php if($emailError)echo 'message-error';  ?>"><?php if($emailError) echo $emailError; ?></p>
 					</div>
 					<div class="form-group has-feedback">
 						<label for="name">Name</label>
 						<input name="name" id="name" type="text" class="form-control" aria-describedby="basic-addon1" value="<?php echo $this->input->post('name'); ?>"/>
-						<p class="message <?php if($nameError)echo 'message-error';  ?> "><?php if($nameError) echo $nameError; ?></p>
+						<p class="message<?php if($nameError)echo 'message-error';  ?>"><?php if($nameError) echo $nameError; ?></p>
 					</div>
 					<div class="form-group has-feedback">
 						<label for="surname">Surname</label>
 						<input name="surname" id="surname" type="text" class="form-control" aria-describedby="basic-addon1" value="<?php echo $this->input->post('surname'); ?>"/>
-						<p class="message <?php if($surnameError)echo 'message-error';  ?> "><?php if($surnameError) echo $surnameError; ?></p>
+						<p class="message<?php if($surnameError)echo 'message-error';  ?>"><?php if($surnameError) echo $surnameError; ?></p>
 					</div>
 					<div class="form-group">
 						<label>User Type</label>

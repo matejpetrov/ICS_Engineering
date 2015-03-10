@@ -384,7 +384,7 @@ class Admin extends CI_Controller {
 			if ($result) {
 				$this->load->library('mail_sender');
 				$this->mail_sender->setAddress($email);
-				$this->mail_sender->setFrom('info@ics.net.mk','ICS Engineering');
+				$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
 				$this->mail_sender->setSubject('New User Created');
 				$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Username: ".$username."</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
 				$this->mail_sender->setBody($message);
@@ -459,25 +459,69 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function auth($code){
+	public function auth($code=0){
 		$id = $this->model_admin->checkLink($code);
 		if ($id) {
 			$data['id'] = $id;
 			$this->load->view('admin_views/changePassword',$data);
 		} else {
-			redirect('static_pages_controller', 'refresh');
+			redirect(base_url(), 'refresh');
 		}
 	}
 
 	public function completeUser(){
-		$password = $this->input->post('password');
-		// $hash = password_hash($password, PASSWORD_BCRYPT);
-		$id = $this->input->post('id');
-		$result = $this->model_admin->complete($id,$password);
-		if ($result) {
-			redirect('admin', 'refresh');
+			$id = $this->input->post('id');
+			$password = $this->input->post('password');
+
+			$result = $this->model_admin->complete($id,$password);
+			if ($result) {
+				redirect('admin', 'refresh');
+			} else {
+				echo "error";	
+			}		
+
+	}
+
+	public function forgotPassword(){
+		$data['message'] = false;
+		$this->load->view('admin_views/resetPassword',$data);
+	}
+
+	public function resetPassword(){
+		$email = $this->input->post('email');
+		$id = $this->model_admin->get_id_with_mail($email);
+		if ($id) {
+			$temp_password = $this->generateAuthCode(10);
+			$auth_link = $this->generateAuthCode(30);
+			$result = $this->model_admin->resetPassword($id,$temp_password,$auth_link);
+			if ($result) {
+				$this->load->library('mail_sender');
+				$this->mail_sender->setAddress($email);
+				$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
+				$this->mail_sender->setSubject('Password reset');
+				$message="<h3>Password resset</h3></br><p>Hello,<br><br>You requested password reset for your administrator account for ICS Engineering website.</p><br><p>Please click the link below to reset your password.</p></br><p><a href=\"" .base_url()."admin/reset/" . $auth_link . "\">".base_url()."admin/reset/" . $auth_link . "</a></p><br><p>If you didn't request this please ignore this message.</p><p>The link will become unusable in 24 hours.</p><p>From ICS Engineering</p><br>";
+				$this->mail_sender->setBody($message);
+
+				if($this->mail_sender->sendMail()){
+					$data['message'] = 2;
+					$this->load->view('admin_views/resetPassword',$data);
+				}
+			}
 		} else {
-			echo "error";
+			$data['message'] = 1;
+			$this->load->view('admin_views/resetPassword',$data);
+		}
+		
+	}
+	public function reset($code=0){
+		$id = $this->model_admin->checkLinkReset($code);
+		if ($id) {
+			$data['id'] = $id;
+			// $data['password'] = false;
+			// $data['confirmPassword'] = false;
+			$this->load->view('admin_views/changePassword',$data);
+		} else {
+			redirect(base_url(), 'refresh');
 		}	
 	}
 
@@ -516,7 +560,9 @@ class Admin extends CI_Controller {
 		if (empty($old) || empty($new) || empty($conf)) {
 			$this->output->set_output(json_encode(array('error'=>'All fields are required')));
 		} else if (!$this->compareOldPassword($old)) {
-			$this->output->set_output(json_encode(array('error'=>$old,'id'=>'pass-old')));
+			$this->output->set_output(json_encode(array('error'=>'Incorrect password','id'=>'pass-old')));
+		} else if(strlen($new)<=6 || strlen($new)>=32 ) {
+			$this->output->set_output(json_encode(array('error'=>'Password must be between 6 and 32 characters','id'=>'pass-new')));
 		} else if (!$this->compareNewPassword($new,$conf)) {
 			$this->output->set_output(json_encode(array('error'=>'Passwords don\'t match','id'=>'pass-conf')));
 		} else if ($this->model_admin->changePassword($user_id,$new)) {

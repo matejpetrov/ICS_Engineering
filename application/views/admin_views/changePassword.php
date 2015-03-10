@@ -16,10 +16,7 @@
 	<!--///////////////////////////   Scripts   ///////////////////////////-->
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/fileUploader/fileinput.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/slider_manage.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui-min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/password_verify.js"></script>
 
 </head>
 <body>
@@ -29,22 +26,22 @@
 			<h2>Enter Password to complete registration</h2>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<form action="<?php echo base_url(); ?>admin/completeUser" method="post" id="form-mail" name="form-mail">
-				<input name="id" type="hidden" id="base_url" value="<?php echo $id; ?>" />
-				<div class="form-group has-feedback">
-					<label for="password">Password</label>
-					<input name="password" id="password" type="password" class="form-control" aria-describedby="basic-addon1"/>
-					<span class="form-control-feedback"><i id="user-notification" class='fa'></i></span>
-				</div>
-				<div class="form-group has-feedback">
-					<label for="confirm-password">Confirm Password</label>
-					<input name="confirm-password" id="confirm-password" type="password" class="form-control" aria-describedby="basic-addon1"/>
-					<span class="form-control-feedback"><i id="email-notification" class='fa'></i></span>
-				</div>
-				<input id="addUser" name="addUser" type="submit" class="btn btn-default" value="Submit"/>					
-			</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<form action="<?php echo base_url(); ?>admin/completeUser" method="post" id="form-complete" name="form-complete">
+					<input name="id" type="hidden" id="base_url" value="<?php echo $id; ?>" />
+					<div class="form-group has-feedback">
+						<label for="password">Password</label>
+						<input name="password" id="password" type="password" class="form-control" aria-describedby="basic-addon1"/>
+					</div>
+					<div class="form-group has-feedback">
+						<label for="confirm-password">Confirm Password</label>
+						<input name="confirm-password" id="confirm-password" type="password" class="form-control" aria-describedby="basic-addon1"/>
+					</div>
+					<input id="confirmUser" name="confirmUser" type="submit" class="btn btn-default" value="Submit"/>					
+				</form>
+			</div>
 		</div>
 	</div>
 </body>

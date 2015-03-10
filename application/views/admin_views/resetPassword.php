@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 
-	<title>Admin Login CMS</title>
+	<title>Password reset</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 	<!--///////////////////////////   Styles   ///////////////////////////-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.css" />
@@ -14,32 +14,31 @@
 	<!--///////////////////////////   Scripts   ///////////////////////////-->
 	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/jquery_1.11.0.min.js'></script>		
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_login.js"></script>
 </head>
 <body>
 	<input id="base_url" type="hidden" value="<?php echo base_url(); ?>">
 	<div class="container">
 		<div class="row">
 			<div class="" style="width:300px;margin: auto; padding: 10% 0 0;">
-				<img src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" style="height: 75px;" /> <h3>Admin Login</h3>
-				<form method="post" id="form-login" name="form-login">
+				<img src="<?php echo base_url(); ?>assets/images/ics_logo_new.svg" style="height: 75px;" /> 
+				<h3>Password Reset</h3>
+				<div class="callout">
+					Please enter your email address. You will receive a link to create a new password via email.  
+				</div>
+				<form method="post" action="<?php echo base_url(); ?>admin/resetPassword" id="form-reset" name="form-reset">
 					<div id="user" class="form-group">
-						<label for="username">Username</label>
-						<input  name="username" id="username" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+						<label for="email">E-mail</label>
+						<input  name="email" id="email" type="text" class="form-control"  aria-describedby="basic-addon1">
 					</div>
-					<div id="pass" class="form-group">
-						<label for="password">Password</label>
-						<input name="password" id="password" type="password" class="form-control" placeholder="" aria-describedby="basic-addon1">
+					<div id="error" class="<?php if($message == 1) echo "alert alert-danger";elseif($message == 2) echo "alert alert-success"?>" role="alert">
+					<?php if($message == 1) echo "Email address does not exists";elseif($message == 2) echo "Email sent successfuly!<br>Please check your email for password reset link" ?>
 					</div>
-					<div id="error" class="" role="alert"></div>
-					<input id="loginBtn" name="loginBtn" type="submit" class="btn btn-default" value="Login">
+					<input id="loginBtn" name="loginBtn" type="submit" class="btn btn-default" value="Submit">
 				</form>
-				<p style="margin-top: 10px;padding-left: 10px;">
-					<a href="<?php echo base_url(); ?>admin/forgotPassword">Forgot Password?</a>
+				<p style="margin-top: 10px;">
+					<a href="<?php echo base_url(); ?>admin">Login</a>
 				</p>
-				<p style="margin-top: 10px;padding-left: 10px;">
-					<a href="<?php echo base_url(); ?>">← Back to ICS Engineering</a>
-				</p>
+				
 			</div>			
 		</div>
 	</div>

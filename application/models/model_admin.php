@@ -10,6 +10,11 @@ class Model_admin extends CI_Model {
 		// && password_verify($password,$query->row()->password)
 		if (count($query->result () ) > 0 &&($query->row()->password == $password)  ) {
 			$id = $query->row()->id;
+			$query_auth = $this->db->get_where('authentication', array('user_id'=>$id));
+			if ($query_auth->row()->reset_request == 1) {
+				$this->db->where('user_id', $id);
+				$this->db->update('authentication', array('reset_request'=>0));
+			}
 			return $id;
 		}else{
 			return false;
@@ -51,6 +56,48 @@ class Model_admin extends CI_Model {
 		}
 		
 	}
+	public function get_id_with_mail($email){
+		$this->db->where('email',$email);
+		$query=$this->db->get('authentication');
+		if (count($query->result()) > 0) {
+			return $query->row()->user_id;
+		} else {
+			return false;
+		}
+	}
+
+	public function checkLinkReset($auth_link){
+		$this->db->where('auth_link',$auth_link);
+		$query = $this->db->get('authentication');
+		if (count($query->result()) > 0) {
+			$dateNow = date('Y/m/d H:i:s', time());
+			$resetDate = $query->row()->reset_request_time;
+			$timediff = strtotime($dateNow) - strtotime($resetDate);
+			$reset_request = $query->row()->reset_request;
+			if (($timediff < 86400) && $reset_request) {
+				return $query->row()->user_id;
+			} else {
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+
+	public function resetPassword($id, $password, $link){
+		$data = array(
+			'auth_link' =>$link ,
+			'reset_request_time' => date('Y/m/d H:i:s', time()),
+			'reset_request' => 1 
+			);
+		$this->db->where('user_id', $id);
+		$this->db->update('authentication', $data);
+		if ($this->db->affected_rows()>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public function createUser($name, $surname, $email, $username, $password, $auth_link, $role){
 		$user_data = array(
@@ -83,6 +130,8 @@ class Model_admin extends CI_Model {
 			} else {
 				return false;
 			}
+		}else{
+			return false;
 		}
 	}
 
@@ -98,6 +147,7 @@ class Model_admin extends CI_Model {
 
 	public function deleteUser($id){
 		$this->db->where('id', $id);
+		$this->db->where('protected', 0);
 		$this->db->delete('users');
 	}
 
@@ -127,8 +177,16 @@ class Model_admin extends CI_Model {
 		// password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 		$this->db->update('users', array('password'=>$password));
 		$this->db->where('user_id', $id);
-		$this->db->update('authentication', array('authenticated'=> '1'));
 		if ($this->db->affected_rows()>0) {
+			$query_auth = $this->db->get_where('authentication', array('user_id'=>$id));
+			$this->db->where('user_id', $id);
+			if ($query_auth->row()->authenticated == 0) {
+				$this->db->update('authentication', array('authenticated'=> '1'));
+
+			}
+			if ($query_auth->row()->reset_request == 1) {
+				$this->db->update('authentication', array('reset_request'=>0));
+			}
 			return true;
 		} else {
 			return false;
