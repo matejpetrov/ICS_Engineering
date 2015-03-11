@@ -21,7 +21,9 @@
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
 function checkAccess($action){
-  if(!session_id())
-    session_start();
+$sess = unserialize($_COOKIE['ci_session']);
+  if (empty($sess['user_id'])) {
+    exit;
+  }
 }
 ?>
