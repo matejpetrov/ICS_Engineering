@@ -602,7 +602,7 @@ class Admin extends CI_Controller {
 			$this->output->set_output(json_encode(array('error'=>'All fields are required')));
 		} else if (!$this->compareOldPassword($old)) {
 			$this->output->set_output(json_encode(array('error'=>'Incorrect password','id'=>'pass-old')));
-		} else if(strlen($new)<=6 || strlen($new)>=32 ) {
+		} else if(strlen($new)<6 || strlen($new)>32 ) {
 			$this->output->set_output(json_encode(array('error'=>'Password must be between 6 and 32 characters','id'=>'pass-new')));
 		} else if (!$this->compareNewPassword($new,$conf)) {
 			$this->output->set_output(json_encode(array('error'=>'Passwords don\'t match','id'=>'pass-conf')));
