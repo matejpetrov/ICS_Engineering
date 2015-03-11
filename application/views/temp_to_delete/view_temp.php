@@ -1,5 +1,5 @@
 
 
-<?php echo $header; ?>
-<?php var_dump($db_result_en); ?>
-<?php var_dump($db_result_mk); ?>
+<?php var_dump($image); ?>
+<?php var_dump($errors); ?>
+<?php var_dump($upload_path); ?>

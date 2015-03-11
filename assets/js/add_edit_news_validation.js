@@ -30,38 +30,58 @@ $(document).ready(function() {
 		else{
 			$(this).parent().removeClass("has-error");
 			$("#news-title-macedonian-notification").removeClass("fa-times");
-			$("#basic-addon2").addClass("sr-only");			
+			$("#basic-addon2").addClass("sr-only");
 		}
 
 	});
 
-	var ckeditor_english = CKEDITOR.instances['editorEnglish'];
 
-	ckeditor_english.on("focusout", function() {
+	$("#save-news-btn").on("click", function(event){
 
-		console.log("Focus out editor english");
+		if($("#news_title_english").val() == ""){
 
-		if($(this).html() == ""){			
-			$("#basic-addon3").removeClass("sr-only");			
+			if($("#news_title_english").parent().hasClass("has-error") == false){
+				$("#news_title_english").parent().addClass("has-error");
+				$("#news-title-english-notification").addClass("fa-times");
+				$("#basic-addon1").removeClass("sr-only");
+			}			
+
+			event.preventDefault();
+			console.log("The button is clicked, but nothing happens");
+
+			console.log("Content of English Editor: " + "Matej");
+
 		}
 
-		else{				
-			$("#basic-addon3").addClass("sr-only");			
+		if($("#news_title_macedonian").val() == ""){
+
+			if($("#news_title_macedonian").parent().hasClass("has-error") == false){
+				$("#news_title_macedonian").parent().addClass("has-error");
+				$("#news-title-macedonian-notification").addClass("fa-times");
+				$("#basic-addon2").removeClass("sr-only");
+			}			
+
+			var ckeditor_english = CKEDITOR.instances['editorEnglish'].getData();
+
+			event.preventDefault();			
+
 		}
 
-	});
+		var ckeditor_english = CKEDITOR.instances['editorEnglish'].getData();		
+		var ckeditor_macedonian = CKEDITOR.instances['editorMacedonian'].getData();		
 
-	$("#editorMacedonian").focusout(function() {
-
-		console.log("Focus out editor macedonian");
-
-		if($(this).html() == ""){			
-			$("#basic-addon4").removeClass("sr-only");			
+		if( !(ckeditor_english.length > 0) ){
+			$("#basic-addon3").removeClass("sr-only");
+			console.log("Content of english editor must not be empty");
+			event.preventDefault();	
 		}
 
-		else{				
-			$("#basic-addon4").addClass("sr-only");			
+		if( !(ckeditor_macedonian.length > 0) ){
+			$("#basic-addon4").removeClass("sr-only");
+			console.log("Content of macedonian editor must not be empty");
+			event.preventDefault();	
 		}
+
 
 	});
 

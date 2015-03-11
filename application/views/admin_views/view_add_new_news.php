@@ -66,7 +66,7 @@
 										<div class="form-group">
 											<label for="editorEnglish">News Content</label>
 											<!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> -->
-											<textarea name="editorEnglish" id="editorEnglish"></textarea>
+											<textarea name="editorEnglish" class="editorEnglish" id="editorEnglish"></textarea>
 										</div>							  					        					       					       
 										<?php echo "<script>
 
@@ -126,7 +126,7 @@
 				<div id="basic-addon2" role="alert" class="sr-only alert alert-danger">Title (Macedonian) must not be empty</div>
 				<div id="basic-addon3" role="alert" class="sr-only alert alert-danger">Content (English) must not be empty</div>
 				<div id="basic-addon4" role="alert" class="sr-only alert alert-danger">Content (Macedonian) must not be empty</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-default" id="save-news-btn">Submit</button>
 			</form>
 		</div>
 	</div>

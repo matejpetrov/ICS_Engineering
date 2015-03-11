@@ -28,8 +28,7 @@ class Admin extends CI_Controller {
 		$tag_upload = true;
 
 		$image = $_FILES['file-input'];
-
-		//['name']		
+		
 
 		$config['upload_path'] = 'assets/images/news_main_images';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -44,7 +43,7 @@ class Admin extends CI_Controller {
 		$created_at = date("Y-m-d");
 		
 		if($image['name'] == ""){
-			$image['name'] = "jack-daniels-logo3.jpg";
+			$image['name'] = "default-image.jpg";
 			$tag_upload = false;
 		}		
 
@@ -215,31 +214,67 @@ class Admin extends CI_Controller {
 	//function invoked from the popup for changin image, located on the edit news page.
 	public function edit_news_image($id){
 
+		$tag_upload = true;
+
 		$image = $_FILES['file-input'];
 		$config['upload_path'] = 'assets/images/news_main_images';
 		$config['allowed_types'] = 'gif|jpg|png';
 
 		$this->load->library('upload', $config);
 
-		$news_image_url = base_url().$config['upload_path'].'/'.$image['name'];
+		if($image['name'] == ""){
+			$image['name'] = "default-image.jpg";
+			$tag_upload = false;
+		}
+
+		#base_url().
+		#removed the base_url, in the database we should not save the base_url
+		$news_image_url = $config['upload_path'].'/'.$image['name'];
 
 		$news = array(
 			'news_image_url' => $news_image_url
-			);
+		);
 
 
-		if ( ! $this->upload->do_upload('file-input'))
-		{
-			$data['image'] = $image;
-			$data['errors'] = $this->upload->display_errors();
-			$data['upload_path'] = $config['upload_path'];
+		#=====================================================================
 
-			$this->load->view('temp', $data);
+		if($tag_upload == true){
+
+			//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
+			//translation_content		
+			if ( ! $this->upload->do_upload('file-input'))
+			{
+				$data['image'] = $image;
+				$data['errors'] = $this->upload->display_errors();
+				$data['upload_path'] = $config['upload_path'];
+
+				$this->load->view('temp', $data);
+			}
+			else
+			{						
+				if($this->model_admin->edit_news_image($id, $news)){
+					
+					$json = array(
+						'news_image_url' => $news['news_image_url'],
+						'temp' => 'matej'
+						);
+
+					$json_encode = json_encode($json);
+
+					echo $json_encode;
+				}
+				else{
+					$data['image_path'] = "temp";
+					#TODO
+					$this->load->view('temp_to_delete/view_temp', $data, FALSE);
+				}
+			}
+
 		}
-		else
-		{						
+
+		else{
 			if($this->model_admin->edit_news_image($id, $news)){
-				
+					
 				$json = array(
 					'news_image_url' => $news['news_image_url'],
 					'temp' => 'matej'
@@ -251,9 +286,15 @@ class Admin extends CI_Controller {
 			}
 			else{
 				$data['image_path'] = "temp";
-				$this->load->view('temp_p', $data, FALSE);
+				#TODO
+				$this->load->view('temp_to_delete/view_temp', $data, FALSE);
 			}
 		}
+
+
+		#=====================================================================
+
+		
 		
 	}
 
@@ -269,7 +310,7 @@ class Admin extends CI_Controller {
 
 		if($this->model_admin->delete_news($id)){			
 
-			if($news_image_url != "assets/images/news_main_images/jack-daniels-logo3.jpg"){
+			if($news_image_url != "assets/images/news_main_images/default-image.jpg"){
 				if(file_exists($news_image_url)){
 					unlink($news_image_url);
 					$json = "{success:}";
