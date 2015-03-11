@@ -25,30 +25,7 @@ class Model_services_pages extends CI_Model {
 
 		return $result;
 
-	}	
-
-
-
-	public function update_services_content($services_english, $services_macedonian){
-
-		$english = array('services' => $services_english);
-		$macedonian = array('services' => $services_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('services_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('services_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-	}
+	}		
 
 	public function update_engineering_content($engineering_english, $engineering_macedonian){
 
@@ -114,95 +91,7 @@ class Model_services_pages extends CI_Model {
 		}
 		else return true;
 
-	}
-
-
-	public function update_telecommunication_content($telecommunication_english, $telecommunication_macedonian){
-		$english = array('telecommunication' => $telecommunication_english);
-		$macedonian = array('telecommunication' => $telecommunication_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('services_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('services_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-	
-	}
-
-	public function update_power_supply_content($power_supply_english, $power_supply_macedonian){
-		$english = array('power-supply' => $power_supply_english);
-		$macedonian = array('power-supply' => $power_supply_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('services_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('services_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-	
-	}
-
-	public function update_audio_video_content($audio_video_english, $audio_video_macedonian){
-
-		$english = array('audio-video' => $audio_video_english);
-		$macedonian = array('audio-video' => $audio_video_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('services_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('services_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-
-	}
-
-
-	public function update_defence_security_content($defence_security_english, $defence_security_macedonian){
-
-		$english = array('defence-security' => $defence_security_english);
-		$macedonian = array('defence-security' => $defence_security_macedonian);
-
-		$this->db->trans_start();
-
-		$this->db->where('lang', 0);
-		$this->db->update('services_translation', $english);
-
-		$this->db->where('lang', 1);
-		$this->db->update('services_translation', $macedonian);
-
-		$this->db->trans_complete();
-
-		if($this->db->trans_status() === FALSE){
-			return false;
-		}
-		else return true;
-
-	}
+	}	
 
 
 

@@ -581,9 +581,8 @@ class StaticPagesAdminController extends CI_Controller {
 	
 
 	//========================================================================================================
-
-	#TODO
-	public function show_services_pages_final(){				
+	//services pages	
+	public function show_services_pages_final(){
 
 		$data_pages['header'] = $this->checkIfLoggedIn();
 
@@ -593,28 +592,6 @@ class StaticPagesAdminController extends CI_Controller {
 		$data_pages['services_macedonian'] = $services_db[1];
 
 		$this->load->view('admin_views/view_services_pages_forms_final', $data_pages, FALSE);
-
-	}
-
-	//function that is invoked from the services tab in the services_page and here we should update the content of the 
-	//services page
-	public function update_services_content(){
-
-		$services_english = $_POST['editorServicesEnglish'];
-		$services_macedonian = $_POST['editorServicesMacedonian'];				
-
-		$json = "";
-		$json_encode = "";
-
-		if($this->model_services_pages->update_services_content($services_english, $services_macedonian)){
-			$json = "{message: 'success'}";
-			$json_encode = json_encode($json);
-			echo $json_encode;
-		}
-
-		else{
-			return false;
-		}
 
 	}
 
