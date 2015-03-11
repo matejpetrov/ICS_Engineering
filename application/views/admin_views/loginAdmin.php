@@ -17,6 +17,11 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajax_login.js"></script>
 </head>
 <body>
+	<noscript>				
+		<div id="warning" class="noscript">
+			This website will not work if Javascript is disabled. Please turn on back Javascript.
+		</div>	
+	</noscript>
 	<input id="base_url" type="hidden" value="<?php echo base_url(); ?>">
 	<div class="container">
 		<div class="row">

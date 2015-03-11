@@ -45,7 +45,16 @@ body {
 }
 
 /* Header-Language Styles Begin */
-
+.noscript{
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ae0000;
+    border-bottom: 1px solid #9B0101;
+    border-top: 1px solid #9B0101;
+    -webkit-font-smoothing: antialiased;
+}
 .header {
     text-align: right;
     color: white;

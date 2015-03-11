@@ -65,7 +65,12 @@
 </head>
 
 <body>	
-	<input type="hidden" id="base_url" name="base_url" value="<?php echo base_url(); ?>" />		
+	<input type="hidden" id="base_url" name="base_url" value="<?php echo base_url(); ?>" />	
+	<noscript>
+		<div id="warning" class="noscript">
+			This website will not work if Javascript is disabled. Please turn on back Javascript.
+		</div>	
+	</noscript>
 	<div id="header" style="border: none;" >
 		<div class="container-fluid" style="background-color: #CD5A01;">
 			<div class="container header">
@@ -124,63 +129,63 @@
 									<li>
 										<a href="<?php echo base_url(); ?>static_pages_controller/about_us/3" id="about_3"><?php echo $menus_corporate_info ?></a>
 									</li>
-									</ul>
-								</li>								
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-									role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
-									<ul class="dropdown-menu header-menu" role="menu">										
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_0"><?php echo $menus_consulting; ?></a>
-										</li>
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_engineering; ?></a>
-										</li>
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_system_integration; ?></a>
-										</li>
-	
-										
-									</ul>
-
-									</li>
-
-									<!-- products -->
-									<!-- <?php //echo base_url(); ?>static_pages_controller/services/2 -->
-									<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-									role="button" aria-expanded="false" id="products"><?php echo $menus_products; ?> <span class="caret"></span></a>
-									<ul class="dropdown-menu header-menu" role="menu">										
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/products/0" id="products_0"><?php echo $menus_telecommunications; ?></a>
-										</li>
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/products/1" id="products_1"><?php echo $menus_power_supply; ?></a>
-										</li>
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/products/2" id="products_2"><?php echo $menus_audio_video; ?></a>
-										</li>	
-										<li>
-											<a href="<?php echo base_url(); ?>static_pages_controller/products/3" id="products_3"><?php echo $menus_defence_security; ?></a>
-										</li>										
-									</ul>
-									
-									</li>
-									<!-- products -->
-
-									<li>
-										<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news"><?php echo $menus_news; ?></a>
-									</li>
-									<li>
-										<a href="http://mail.ics.net.mk:81/redmine/" target="_blank" id="support"><?php echo $menus_web_mail; ?></a>
-									</li>
-
-									<li class="last">
-										<a href="<?php echo base_url(); ?>static_pages_controller/contact" id="contact"><?php echo $menus_contact; ?></a>
-									</li>
 								</ul>
-							</div>
-						</div>
-					</nav>
+							</li>								
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-expanded="false" id="services"><?php echo $menus_services; ?> <span class="caret"></span></a>
+								<ul class="dropdown-menu header-menu" role="menu">										
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/services/0" id="services_0"><?php echo $menus_consulting; ?></a>
+									</li>
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/services/1" id="services_1"><?php echo $menus_engineering; ?></a>
+									</li>
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/services/2" id="services_2"><?php echo $menus_system_integration; ?></a>
+									</li>
+
+
+								</ul>
+
+							</li>
+
+							<!-- products -->
+							<!-- <?php //echo base_url(); ?>static_pages_controller/services/2 -->
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-expanded="false" id="products"><?php echo $menus_products; ?> <span class="caret"></span></a>
+								<ul class="dropdown-menu header-menu" role="menu">										
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/products/0" id="products_0"><?php echo $menus_telecommunications; ?></a>
+									</li>
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/products/1" id="products_1"><?php echo $menus_power_supply; ?></a>
+									</li>
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/products/2" id="products_2"><?php echo $menus_audio_video; ?></a>
+									</li>	
+									<li>
+										<a href="<?php echo base_url(); ?>static_pages_controller/products/3" id="products_3"><?php echo $menus_defence_security; ?></a>
+									</li>										
+								</ul>
+
+							</li>
+							<!-- products -->
+
+							<li>
+								<a href="<?php echo base_url(); ?>static_pages_controller/news" id="news"><?php echo $menus_news; ?></a>
+							</li>
+							<li>
+								<a href="http://mail.ics.net.mk:81/redmine/" target="_blank" id="support"><?php echo $menus_web_mail; ?></a>
+							</li>
+
+							<li class="last">
+								<a href="<?php echo base_url(); ?>static_pages_controller/contact" id="contact"><?php echo $menus_contact; ?></a>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
+			</nav>
+		</div>
+	</div>

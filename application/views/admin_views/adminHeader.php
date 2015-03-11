@@ -1,8 +1,13 @@
+<noscript>
+	<div id="warning" class="noscript">
+		This website will not work if Javascript is disabled. Please turn on back Javascript.
+	</div>	
+</noscript>
 <div class="container-fluid" style="background-color: #CD5A01;">
 	<div class="container header">
 		<div class="row">
 			<div class="col-md-12 lang">
-			<a href="<?php echo base_url(); ?>admin" class="i_header home"><i class="fa fa-home"></i></a>
+				<a href="<?php echo base_url(); ?>admin" class="i_header home"><i class="fa fa-home"></i></a>
 				<ul class="user-info-list">
 					<li class="user-info first" >
 						<?php echo $name; ?>
