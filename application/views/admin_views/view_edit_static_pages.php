@@ -1,10 +1,7 @@
-<!-- Page where there are only two buttons, Edit about us pages, and Edit services pages.  -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin</title>
+	<title>Edit Static Pages Info</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<!--///////////////////////////   Styles   ///////////////////////////-->

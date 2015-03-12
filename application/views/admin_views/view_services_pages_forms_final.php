@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Admin</title>
+	<title>Edit services static pages</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<!--///////////////////////////   Styles   ///////////////////////////-->
@@ -134,7 +134,7 @@
 																			
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitConsulting" id="btnSubmitConsulting" onclick="update_consulting_AJAX();" disabled="disabled">Save Consulting</button>
+				    	<button class="btn btn-primary" name="btnSubmitConsulting" data-loading-text="Saving..." id="btnSubmitConsulting" onclick="update_consulting_AJAX();" disabled="disabled">Save Consulting</button>
 				    	
 				    	<button class="btn btn-default" id="edit-consulting-content" onclick="enableConsultingEdit();">Edit consulting content</button>
 
@@ -191,7 +191,7 @@
 																			
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitEngineering" id="btnSubmitEngineering" onclick="update_engineering_AJAX();" disabled="disabled">Save Engineering</button>
+				    	<button class="btn btn-primary" name="btnSubmitEngineering" data-loading-text="Saving..." id="btnSubmitEngineering" onclick="update_engineering_AJAX();" disabled="disabled">Save Engineering</button>
 				    	
 				    	<button class="btn btn-default" id="edit-engineering-content" onclick="enableEngineeringEdit();">Edit engineering content</button>
 
@@ -248,7 +248,7 @@
 																			
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitSystemIntegration" id="btnSubmitSystemIntegration" onclick="update_system_integration_AJAX();" disabled="disabled">Save System Integration</button>
+				    	<button class="btn btn-primary" name="btnSubmitSystemIntegration" data-loading-text="Saving..." id="btnSubmitSystemIntegration" onclick="update_system_integration_AJAX();" disabled="disabled">Save System Integration</button>
 				    	
 				    	<button class="btn btn-default" id="edit-system-integration-content" onclick="enableSystemIntegrationEdit();">Edit system integration content</button>
 
@@ -263,7 +263,6 @@
 		</div>
 
 	</div>
-
+<div style="height:100px;"></div>
 </body>
-
 </html>

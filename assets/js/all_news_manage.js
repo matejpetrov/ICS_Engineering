@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {  
+$(document).ready(function() {  
 
 	$('a.delete-link').on('click', function(){
 		$(this).parent().parent().addClass('toDelete');

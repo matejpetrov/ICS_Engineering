@@ -15,7 +15,7 @@ function about_us_ajax_page(page_id){
 
 		'data' : {'page_id':temp},
 
-		'dataType' : 'html',
+		'dataType' : 'json',
 		beforeSend:function(){
 			$('#content-container').find('#loading').addClass('loading');
 			$('li').removeClass('active');
@@ -25,7 +25,8 @@ function about_us_ajax_page(page_id){
 		'success' : function(data){ 
 			var container = $('#content-container');
 			if(data){
-				container.html(data);
+				$('title').text(data.title);
+				container.html(data.data);
 			}
 		}
 	}).done(function() {
@@ -55,7 +56,7 @@ function services_ajax_page(page_id){
 		'url' : url,        
 		'type' : 'POST', 
 		'data' : {'page_id':temp},
-		'dataType' : 'html',
+		'dataType' : 'json',
 		beforeSend:function(){
 			$('#content-container').find('#loading').addClass('loading');
 			$('li').removeClass('active');
@@ -64,7 +65,8 @@ function services_ajax_page(page_id){
 		'success' : function(data){ 
 			var container = $('#content-container');
 			if(data){
-				container.html(data);
+				$('title').text(data.title);
+				container.html(data.data);
 			}
 		}
 	}).done(function() {
@@ -93,7 +95,7 @@ function products_ajax_page(page_id){
 		'url' : url,        
 		'type' : 'POST', 
 		'data' : {'page_id':temp},
-		'dataType' : 'html',
+		'dataType' : 'json',
 		beforeSend:function(){
 			$('#content-container').find('#loading').addClass('loading');
 			$('li').removeClass('active');
@@ -102,7 +104,8 @@ function products_ajax_page(page_id){
 		'success' : function(data){ 
 			var container = $('#content-container');
 			if(data){
-				container.html(data);
+				$('title').text(data.title);
+				container.html(data.data);
 			}
 		}
 	}).done(function() {
@@ -141,7 +144,7 @@ var getSubpage = {
 		$.ajax({
 			url: base_url + controller + func,
 			type: 'post',
-			dataType: 'html',
+			dataType: 'json',
 			beforeSend:function() {
 				$('#content-container').find('#loading').addClass('loading-topnav');
 				$('#' + parent).removeClass('active');
@@ -151,7 +154,8 @@ var getSubpage = {
 				'top_nav':clicked.data('page')
 			},
 			success:function(data) {
-				container.html(data);
+				$('title').text(data.title);
+				container.html(data.data);
 			}
 		})
 		.done(function() {

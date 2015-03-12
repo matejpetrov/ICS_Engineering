@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-	<title>Manage Homepage Slider</title>
+	<title>Manage Homepage Slider Words</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 	
 	<!--///////////////////////////   Styles   ///////////////////////////-->

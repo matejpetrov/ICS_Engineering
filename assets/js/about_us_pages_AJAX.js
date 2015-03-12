@@ -27,21 +27,24 @@ function update_about_us_AJAX(){
     var base_url = $("#base_url").val();    
     var about_us_english = CKEDITOR.instances.editorAboutUsEnglish.getData();
     var about_us_macedonian = CKEDITOR.instances.editorAboutUsMacedonian.getData();
-
+    var text = $("#btnSubmitAboutUs").text();
 
     $.ajax({
         url: base_url + "staticPagesAdminController/update_about_us_content",
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitAboutUs").button('loading');
+        },
         data: {
             editorAboutUsEnglish: about_us_english,
             editorAboutUsMacedonian: about_us_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitAboutUs").prop("disabled", true);              
+                $("#btnSubmitAboutUs").button('reset');
+                setTimeout(function(){$("#btnSubmitAboutUs").prop("disabled", true);},1);
                 $("#edit-about-us-content").html("Edit about us content");
                 CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
@@ -88,17 +91,20 @@ function update_mission_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitMission").button('loading');
+        },
         data: {
             editorMissionEnglish: mission_english,
             editorMissionMacedonian: mission_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitMission").prop("disabled", true);				
-				$("#edit-mission-content").html("Edit mission/vision content");
-				CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
+                $("#btnSubmitMission").button('reset');
+                setTimeout(function(){$("#btnSubmitMission").prop("disabled", true);},1);
+                $("#edit-mission-content").html("Edit mission/vision content");
+                CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
@@ -143,17 +149,20 @@ function update_partners_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitPartners").button('loading');
+        },
         data: {
             editorPartnersEnglish: partners_english,
             editorPartnersMacedonian: partners_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitPartners").prop("disabled", true);				
-				$("#edit-partners-content").html("Edit partners content");
-				CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (true);
+                $("#btnSubmitPartners").button('reset');
+                setTimeout(function(){$("#btnSubmitPartners").prop("disabled", true);},1);
+                $("#edit-partners-content").html("Edit partners content");
+                CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
@@ -197,23 +206,26 @@ function update_corporate_info_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitCorporateInfo").button('loading');
+        },
         data: {
             editorCorporateInfoEnglish: corporate_info_english,
             editorCorporateInfoMacedonian: corporate_info_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitCorporateInfo").prop("disabled", true);				
-				$("#edit-corporate-info-content").html("Edit company information content");
-				CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
+                $("#btnSubmitCorporateInfo").button('reset');
+                setTimeout(function(){$("#btnSubmitCorporateInfo").prop("disabled", true);},1);
+                $("#edit-corporate-info-content").html("Edit company information content");
+                CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
         	$('.success').html('There was an error');        	
         }
     });
-    return false;
+return false;
 
 }

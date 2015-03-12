@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Add new news</title>
+	<title>Create new news article</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.css" />
@@ -123,8 +123,8 @@
 
 				<br/>
 				<div id="basic-addon1" role="alert" class="sr-only alert alert-danger">Title (English) must not be empty</div>
-				<div id="basic-addon2" role="alert" class="sr-only alert alert-danger">Title (Macedonian) must not be empty</div>
 				<div id="basic-addon3" role="alert" class="sr-only alert alert-danger">Content (English) must not be empty</div>
+				<div id="basic-addon2" role="alert" class="sr-only alert alert-danger">Title (Macedonian) must not be empty</div>
 				<div id="basic-addon4" role="alert" class="sr-only alert alert-danger">Content (Macedonian) must not be empty</div>
 				<button type="submit" class="btn btn-default" id="save-news-btn">Submit</button>
 			</form>

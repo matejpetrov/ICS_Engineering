@@ -3,7 +3,6 @@
 class Admin extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-
 		$this->load->model('model_admin', 'model_admin', TRUE);
 	}
 
@@ -43,11 +42,15 @@ class Admin extends CI_Controller {
 		$created_at = date("Y-m-d");
 		
 		if($image['name'] == ""){
-			$image['name'] = "default-image.jpg";
+			$image['name'] = "ics_default_image.png";
 			$tag_upload = false;
 		}		
 
 		$news_image_url = $config['upload_path'].'/'.$image['name'];
+		
+		$thumb = explode('.',$image['name']);
+
+		$thumb_image_url = $config['upload_path'].'/img_thumb/'.$thumb[0].'_thumb'.'.'.$thumb[1];
 
 		$news_title_english = $post["news_title_english"];
 		$news_content_english = $post["editorEnglish"];
@@ -57,11 +60,11 @@ class Admin extends CI_Controller {
 		$news_title_macedonian = $post["news_title_macedonian"];
 		$news_content_macedonian = $post["editorMacedonian"];
 
-
 		$news = array(
 			'created_at' => $created_at,
 			'news_url' => $news_url_english,
-			'news_image_url' => $news_image_url
+			'news_image_url' => $news_image_url,
+			'news_thumb_url' => $thumb_image_url
 			);
 
 		$translations = array(
@@ -72,7 +75,8 @@ class Admin extends CI_Controller {
 
 			);
 		
-		//if an image is chosen to be uploaded i should use the do_upload function, otherwise i should only insert row in the database.
+		//if an image is chosen to be uploaded i should use the do_upload function,
+		// otherwise i should only insert row in the database.
 		if($tag_upload == true){
 
 			//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
@@ -86,7 +90,18 @@ class Admin extends CI_Controller {
 				$this->load->view('temp_to_delete/view_temp', $data);
 			}
 			else
-			{
+			{	
+				$config_img_lib['image_library'] = 'gd2';
+				$config_img_lib['source_image']	= $news_image_url;
+				$config_img_lib['new_image'] = $config['upload_path'].'/img_thumb';
+				$config_img_lib['create_thumb'] = TRUE;
+				$config_img_lib['maintain_ratio'] = false;
+				$config_img_lib['width']	= 338;
+				$config_img_lib['height']	= 140;
+
+				$this->load->library('image_lib', $config_img_lib); 
+				$this->image_lib->resize();
+
 				$id = $this->model_admin->add_new_news($news);	
 
 				$translations[0]['news_id'] = $id;
@@ -223,7 +238,7 @@ class Admin extends CI_Controller {
 		$this->load->library('upload', $config);
 
 		if($image['name'] == ""){
-			$image['name'] = "default-image.jpg";
+			$image['name'] = "ics_default_image.png";
 			$tag_upload = false;
 		}
 
@@ -233,7 +248,7 @@ class Admin extends CI_Controller {
 
 		$news = array(
 			'news_image_url' => $news_image_url
-		);
+			);
 
 
 		#=====================================================================
@@ -274,7 +289,7 @@ class Admin extends CI_Controller {
 
 		else{
 			if($this->model_admin->edit_news_image($id, $news)){
-					
+
 				$json = array(
 					'news_image_url' => $news['news_image_url'],
 					'temp' => 'matej'
@@ -304,15 +319,21 @@ class Admin extends CI_Controller {
 		$news_image_url = $_POST['news_image_url'];
 		$base_url = base_url();
 		$start = strlen($base_url);
-
+		$start_img = strlen('assets/images/news_main_images/');
+		
 		$news_image_url = substr($news_image_url, $start);
 
+		$img_name = substr($news_image_url, $start_img);
+		$thumb = explode('.',$img_name);
+
+		$thumb_image_url = 'assets/images/news_main_images/img_thumb/'.$thumb[0].'_thumb'.'.'.$thumb[1];
 
 		if($this->model_admin->delete_news($id)){			
 
-			if($news_image_url != "assets/images/news_main_images/default-image.jpg"){
-				if(file_exists($news_image_url)){
+			if($news_image_url != "assets/images/news_main_images/ics_default_image.png"){
+				if(file_exists($news_image_url) && file_exists($thumb_image_url)){
 					unlink($news_image_url);
+					unlink($thumb_image_url);
 					$json = "{success:}";
 				}
 
@@ -511,15 +532,15 @@ class Admin extends CI_Controller {
 	}
 
 	public function completeUser(){
-			$id = $this->input->post('id');
-			$password = $this->input->post('password');
+		$id = $this->input->post('id');
+		$password = $this->input->post('password');
 
-			$result = $this->model_admin->complete($id,$password);
-			if ($result) {
-				redirect('admin', 'refresh');
-			} else {
-				echo "error";	
-			}		
+		$result = $this->model_admin->complete($id,$password);
+		if ($result) {
+			redirect('admin', 'refresh');
+		} else {
+			echo "error";	
+		}		
 
 	}
 
@@ -786,14 +807,14 @@ class Admin extends CI_Controller {
 				if($news['lang'] == 0){
 					$temp = array(					
 						'created_at' => $news['created_at'],
-						'news_image_url' => $news['news_image_url'],
+						'news_thumb_url' => $news['news_thumb_url'],
 						'title_english' => $news['title'],
 						);
 				}
 				else {
 					$temp = array(					
 						'created_at' => $news['created_at'],
-						'news_image_url' => $news['news_image_url'],
+						'news_thumb_url' => $news['news_thumb_url'],
 						'title_macedonian' => $news['title'],
 						);
 				}
@@ -807,13 +828,8 @@ class Admin extends CI_Controller {
 				else {
 					$all_news_better[$news['id']]['title_macedonian'] = $news['title'];
 				}				
-
-
 			}			
-
 		}
-
 		return $all_news_better;
 	}
-
 }

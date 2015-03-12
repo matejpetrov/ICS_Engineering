@@ -31,14 +31,18 @@ function update_audio_conference_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitAudioConference").button('loading');             
+
+        },
         data: {
             editorAudioConferenceEnglish: audio_conference_english,
             editorAudioConferenceMacedonian: audio_conference_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitAudioConference").prop("disabled", true);             
+                $("#btnSubmitAudioConference").button('reset');             
+                setTimeout(function(){$("#btnSubmitAudioConference").prop("disabled", true);},1);
                 $("#edit-audio-conference-content").html("Edit audio conference content");
                 CKEDITOR.instances.editorAudioConferenceEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorAudioConferenceMacedonian.setReadOnly (true);
@@ -48,7 +52,7 @@ function update_audio_conference_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -80,20 +84,23 @@ function update_court_recording_system_AJAX(){
     var court_recording_systems_english = CKEDITOR.instances.editorCourtRecordingSystemsEnglish.getData();
     var court_recording_systems_macedonian = CKEDITOR.instances.editorCourtRecordingSystemsMacedonian.getData();
 
-
     $.ajax({
         url: base_url + "staticPagesAdminController/update_court_recording_systems_content",
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitCourtRecordingSystems").button('loading');             
+
+        },
         data: {
             editorCourtRecordingSystemsEnglish: court_recording_systems_english,
             editorCourtRecordingSystemsMacedonian: court_recording_systems_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitCourtRecordingSystems").prop("disabled", true);             
+                $("#btnSubmitCourtRecordingSystems").button('reset');             
+                setTimeout(function(){$("#btnSubmitCourtRecordingSystems").prop("disabled", true);},1);
                 $("#edit-court-recording-systems-content").html("Edit court recording systems content");
                 CKEDITOR.instances.editorCourtRecordingSystemsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorCourtRecordingSystemsMacedonian.setReadOnly (true);
@@ -103,10 +110,8 @@ function update_court_recording_system_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
-
+return false;
 }
-
 
 function enableSecureCommunicationsEdit(){
 
@@ -125,9 +130,7 @@ function enableSecureCommunicationsEdit(){
         CKEDITOR.instances.editorSecureCommunicationsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorSecureCommunicationsMacedonian.setReadOnly (true);
     }
-
 }
-
 
 function update_secure_communications_AJAX(){
 
@@ -135,12 +138,15 @@ function update_secure_communications_AJAX(){
     var secure_communications_english = CKEDITOR.instances.editorSecureCommunicationsEnglish.getData();
     var secure_communications_macedonian = CKEDITOR.instances.editorSecureCommunicationsMacedonian.getData();
 
-
     $.ajax({
         url: base_url + "staticPagesAdminController/update_secure_communications_content",
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitSecureCommunications").button('loading');             
+
+        },
         data: {
             editorSecureCommunicationsEnglish: secure_communications_english,
             editorSecureCommunicationsMacedonian: secure_communications_macedonian
@@ -148,7 +154,8 @@ function update_secure_communications_AJAX(){
         
         success: function(data) {
             if (data) {                
-                $("#btnSubmitSecureCommunications").prop("disabled", true);             
+                $("#btnSubmitSecureCommunications").button('reset');             
+                setTimeout(function(){$("#btnSubmitSecureCommunications").prop("disabled", true);},1);
                 $("#edit-secure-communications-content").html("Edit secure communications content");
                 CKEDITOR.instances.editorSecureCommunicationsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorSecureCommunicationsMacedonian.setReadOnly (true);
@@ -158,6 +165,5 @@ function update_secure_communications_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
-
+return false;
 }

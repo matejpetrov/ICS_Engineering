@@ -38,15 +38,18 @@ function update_telecommunication_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitTelecommunication").button('loading');
+        },
         data: {
             editorTelecommunicationEnglish: telecommunication_english,
             editorTelecommunicationMacedonian: telecommunication_macedonian,
             page: global
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitTelecommunication").prop("disabled", true);              
+                $("#btnSubmitTelecommunication").button('reset');
+                setTimeout(function(){$("#btnSubmitTelecommunication").prop("disabled", true);},1);
                 $("#edit-telecommunication-content").html("Edit telecommunication content");
                 CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (true);
@@ -56,7 +59,7 @@ function update_telecommunication_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -94,15 +97,18 @@ function update_power_supply_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitPowerSupply").button('loading');
+        },
         data: {
             editorPowerSupplyEnglish: power_supply_english,
             editorPowerSupplyMacedonian: power_supply_macedonian,
             page: global
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitPowerSupply").prop("disabled", true);              
+                $("#btnSubmitPowerSupply").button('reset');
+                setTimeout(function(){$("#btnSubmitPowerSupply").prop("disabled", true);},1);
                 $("#edit-power-supply-content").html("Edit power supply content");
                 CKEDITOR.instances.editorPowerSupplyEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorPowerSupplyMacedonian.setReadOnly (true);
@@ -112,7 +118,7 @@ function update_power_supply_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -150,15 +156,18 @@ function update_audio_video_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitAudioVideo").button('loading');
+        },
         data: {
             editorAudioVideoEnglish: audio_video_english,
             editorAudioVideoMacedonian: audio_video_macedonian,
             page: global
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitAudioVideo").prop("disabled", true);              
+                $("#btnSubmitAudioVideo").button('reset');              
+                setTimeout(function(){$("#btnSubmitAudioVideo").prop("disabled", true);},1);
                 $("#edit-audio-video-content").html("Edit audio/video content");
                 CKEDITOR.instances.editorAudioVideoEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorAudioVideoMacedonian.setReadOnly (true);
@@ -168,7 +177,7 @@ function update_audio_video_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -206,15 +215,18 @@ function update_defence_security_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitDefenceSecurity").button('loading');
+        },
         data: {
             editorDefenceSecurityEnglish: defence_security_english,
             editorDefenceSecurityMacedonian: defence_security_macedonian,
             page: global
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitDefenceSecurity").prop("disabled", true);              
+                $("#btnSubmitDefenceSecurity").button('reset');
+                setTimeout(function(){$("#btnSubmitDefenceSecurity").prop("disabled", true);},1);
                 $("#edit-defence-security-content").html("Edit security communication content");
                 CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (true);
@@ -224,6 +236,6 @@ function update_defence_security_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }

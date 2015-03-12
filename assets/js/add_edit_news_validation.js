@@ -37,6 +37,8 @@ $(document).ready(function() {
 
 
 	$("#save-news-btn").on("click", function(event){
+		$("#basic-addon3").addClass("sr-only");
+		$("#basic-addon4").addClass("sr-only");
 
 		if($("#news_title_english").val() == ""){
 

@@ -46,7 +46,7 @@ class Model_homepage extends CI_Model {
 	//the right translation for the news.
 	public function get_all_news_homepage($lang,$offset){
 		
-		$this->db->select('n.id, n.news_image_url,n.news_url, tc.title');
+		$this->db->select('n.id, n.news_thumb_url,n.news_url, tc.title');
 		$this->db->from('news n');		
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
 		if($lang == 'english'){
@@ -120,7 +120,7 @@ class Model_homepage extends CI_Model {
 
 	public function get_latest_news($lang){
 
-		$this->db->select('n.id, n.news_image_url, n.news_url, tc.title');
+		$this->db->select('n.id, n.news_thumb_url, n.news_url, tc.title');
 		$this->db->from('news n');		
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
 		if($lang == 'english'){

@@ -1,6 +1,6 @@
 
 <div class="item">
-	<img class="img-rounded" src="<?php echo base_url().$news_image_url; ?>" />
+	<img class="img-rounded" src="<?php echo base_url().$news_thumb_url; ?>" />
 	<h3><?php echo $title; ?></h3>	
 	<p>
 		<a href="<?php echo base_url(); ?>news/<?php echo $news_url; ?>">

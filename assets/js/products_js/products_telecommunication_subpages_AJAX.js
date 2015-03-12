@@ -1,5 +1,3 @@
-
-
 function enableFixedAccessEdit(){
 
     var btnText = $("#edit-fixed-access-content").html();
@@ -32,14 +30,17 @@ function update_fixed_access_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitFixedAccess").button('loading');
+        },
         data: {
             editorFixedAccessEnglish: fixed_access_english,
             editorFixedAccessMacedonian: fixed_access_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitFixedAccess").prop("disabled", true);             
+                $("#btnSubmitFixedAccess").button('reset');
+                setTimeout(function(){$("#btnSubmitFixedAccess").prop("disabled", true);},1);
                 $("#edit-fixed-access-content").html("Edit fixed access content");
                 CKEDITOR.instances.editorFixedAccessEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorFixedAccessMacedonian.setReadOnly (true);
@@ -49,7 +50,7 @@ function update_fixed_access_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -86,14 +87,17 @@ function update_transport_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitTransport").button('loading');
+        },
         data: {
             editorTransportEnglish: transport_english,
             editorTransportMacedonian: transport_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitTransport").prop("disabled", true);             
+                $("#btnSubmitTransport").button('reset');
+                setTimeout(function(){$("#btnSubmitTransport").prop("disabled", true);},1);
                 $("#edit-transport-content").html("Edit transport content");
                 CKEDITOR.instances.editorTransportEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorTransportMacedonian.setReadOnly (true);
@@ -142,14 +146,17 @@ function update_solutions_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitSolutions").button('loading');
+        },
         data: {
             editorSolutionsEnglish: solutions_english,
             editorSolutionsMacedonian: solutions_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitSolutions").prop("disabled", true);             
+                $("#btnSubmitSolutions").button('reset');
+                setTimeout(function(){$("#btnSubmitSolutions").prop("disabled", true);},1);
                 $("#edit-solutions-content").html("Edit solutions content");
                 CKEDITOR.instances.editorSolutionsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorSolutionsMacedonian.setReadOnly (true);

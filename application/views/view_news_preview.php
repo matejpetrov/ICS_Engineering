@@ -3,9 +3,14 @@
 <!-- preview in detail a news that has been selected.  -->
 
 <script type="text/javascript">
-	$(window).ready(function() {
-		$('img:not([class])').css('padding-right', '10px');
+	$(document).ready(function() {
 		$('img:not([class])').addClass('img-responsive');
+		$('img').addClass(
+    function(){
+        var floated = $(this).css('float');
+        return (floated != 'none') ? 'news-img-' + floated : '';
+    });
+
 	});
 </script>
 <style type="text/css">

@@ -8,7 +8,7 @@
 		<tr id="<?php echo $value['news_url']; ?>">														
 			<div class="latest_news_div">
 				<td class="row_image">
-					<img src="<?php echo base_url().$value['news_image_url']; ?>" class="latest_news_image" />
+					<img src="<?php echo base_url().$value['news_thumb_url']; ?>" class="latest_news_image" />
 				</td>
 				<td class="row_title"><?php echo $value['title']; ?></td>
 			</div>	

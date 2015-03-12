@@ -30,14 +30,17 @@ function update_dc_power_systems_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnDcPowerSystemsAccess").button('loading');
+        },
         data: {
             editorDcPowerSystemsEnglish: dc_power_systems_english,
             editorDcPowerSystemsMacedonian: dc_power_systems_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnDcPowerSystemsAccess").prop("disabled", true);             
+                $("#btnDcPowerSystemsAccess").button('reset');
+                setTimeout(function(){$("#btnDcPowerSystemsAccess").prop("disabled", true);},1);
                 $("#edit-dc-power-systems-content").html("Edit DC power systems content");
                 CKEDITOR.instances.editorDcPowerSystemsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorDcPowerSystemsMacedonian.setReadOnly (true);
@@ -47,7 +50,7 @@ function update_dc_power_systems_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -85,14 +88,17 @@ function update_ups_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitUps").button('loading');
+        },
         data: {
             editorUpsEnglish: ups_english,
             editorUpsMacedonian: ups_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitUps").prop("disabled", true);             
+                $("#btnSubmitUps").button('reset');
+                setTimeout(function(){$("#btnSubmitUps").prop("disabled", true);},1);
                 $("#edit-ups-content").html("Edit ups content");
                 CKEDITOR.instances.editorUpsEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorUpsMacedonian.setReadOnly (true);
@@ -141,14 +147,17 @@ function update_monitoring_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitMonitoring").button('loading');             
+        },
         data: {
             editorMonitoringEnglish: monitoring_english,
             editorMonitoringMacedonian: monitoring_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitMonitoring").prop("disabled", true);             
+                $("#btnSubmitMonitoring").button('reset');             
+                setTimeout(function(){$("#btnSubmitMonitoring").prop("disabled", true);},1);
                 $("#edit-monitoring-content").html("Edit monitoring content");
                 CKEDITOR.instances.editorMonitoringEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorMonitoringMacedonian.setReadOnly (true);
@@ -158,7 +167,7 @@ function update_monitoring_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -196,14 +205,18 @@ function update_data_center_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitDataCenter").button('loading');             
+
+        },
         data: {
             editorDataCenterEnglish: data_center_english,
             editorDataCenterMacedonian: data_center_macedonian
         },
-        
         success: function(data) {
             if (data) {                
-                $("#btnSubmitDataCenter").prop("disabled", true);             
+                $("#btnSubmitDataCenter").button('reset');             
+                setTimeout(function(){$("#btnSubmitDataCenter").prop("disabled", true);},1);
                 $("#edit-data-center-content").html("Edit data center content");
                 CKEDITOR.instances.editorDataCenterEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorDataCenterMacedonian.setReadOnly (true);
@@ -213,6 +226,6 @@ function update_data_center_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }

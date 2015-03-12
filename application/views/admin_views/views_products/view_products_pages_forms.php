@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Admin</title>
+	<title>Edit products static pages</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<!--///////////////////////////   Styles   ///////////////////////////-->
@@ -73,46 +73,46 @@
 			<div class="col-md-10 col-md-offset-1">
 
 				<div role="tabpanel">
-				<!-- Nav tabs -->
-				  <ul class="nav nav-tabs nav-justified" role="tablist">			    
-				    <li role="presentation" class="active"><a href="#telecommunications" aria-controls="telecommunications" role="tab" data-toggle="tab">Telecommunications</a></li>				    				    
-				    <li role="presentation"><a href="#power-supply" aria-controls="power-supply" role="tab" data-toggle="tab">Power Supply</a></li>
-				    <li role="presentation"><a href="#audio-video" aria-controls="audio-video" role="tab" data-toggle="tab">Audio/Video</a></li>
-				    <li role="presentation"><a href="#secure-communications" aria-controls="secure-communications" role="tab" data-toggle="tab">Secure Communication</a></li>
-				  </ul>		
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs nav-justified" role="tablist">			    
+						<li role="presentation" class="active"><a href="#telecommunications" aria-controls="telecommunications" role="tab" data-toggle="tab">Telecommunications</a></li>				    				    
+						<li role="presentation"><a href="#power-supply" aria-controls="power-supply" role="tab" data-toggle="tab">Power Supply</a></li>
+						<li role="presentation"><a href="#audio-video" aria-controls="audio-video" role="tab" data-toggle="tab">Audio/Video</a></li>
+						<li role="presentation"><a href="#secure-communications" aria-controls="secure-communications" role="tab" data-toggle="tab">Secure Communication</a></li>
+					</ul>		
 				</div>	
-					  
+				
 
-			
+				
 
 				<div class="tab-content">
 					
 					<!-- Telecommunications CKEditor form begin -->
 					<div role="tabpanel" class="tab-pane fade in active tab-container" id="telecommunications">
 
-				  		<?php echo $telecommunication_subpage; ?>
+						<?php echo $telecommunication_subpage; ?>
 
-				  	</div>
-				  	<!-- Telecommunications CKEditor form end -->
+					</div>
+					<!-- Telecommunications CKEditor form end -->
 
-				  	<!-- Power Supply CKEditor form begin -->
+					<!-- Power Supply CKEditor form begin -->
 					<div role="tabpanel" class="tab-pane fade in tab-container" id="power-supply">
 
-				  		<?php echo $power_supply_subpages; ?>
+						<?php echo $power_supply_subpages; ?>
 
-				  	</div>
-				  	<!-- Power Supply CKEditor form end -->
+					</div>
+					<!-- Power Supply CKEditor form end -->
 
-				  	<!-- Audio/Video CKEditor form begin -->
+					<!-- Audio/Video CKEditor form begin -->
 					<div role="tabpanel" class="tab-pane fade in tab-container" id="audio-video">
 
-				  		<?php echo $audio_video_subpages; ?>
+						<?php echo $audio_video_subpages; ?>
 
-				  	</div>
-				  	<!-- Audio/Video CKEditor form end -->	
+					</div>
+					<!-- Audio/Video CKEditor form end -->	
 
 
-				  	<!-- Secure Communications CKEditor form begin -->
+					<!-- Secure Communications CKEditor form begin -->
 					<div role="tabpanel" class="tab-pane fade in tab-container" id="secure-communications">
 						<h3>Enter the content of the secure communications page</h3>
 
@@ -137,49 +137,45 @@
 
 
 
-							</script>" ?>
+						</script>" ?>
 
-							<div class="form-group">
-								<label for="editorSecureCommunicationsMacedonian">Services (Secure Communication) - Macedonian</label>
-							</div>
+						<div class="form-group">
+							<label for="editorSecureCommunicationsMacedonian">Services (Secure Communication) - Macedonian</label>
+						</div>
 
-							<div class="form-group">																
-								<textarea name="editorSecureCommunicationsMacedonian" id="editorSecureCommunicationsMacedonian"><?php echo $secure_communication_mk; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
+						<div class="form-group">																
+							<textarea name="editorSecureCommunicationsMacedonian" id="editorSecureCommunicationsMacedonian"><?php echo $secure_communication_mk; ?></textarea>
+						</div>							  					        					       					       
+						<?php echo "<script>
 
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorSecureCommunicationsMacedonian', {
-								readOnly: true,
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-
-
-
-							</script>" ?>
-																			
-
-						</form>
-						
-						<button class="btn btn-primary" name="btnSubmitSecureCommunications" id="btnSubmitSecureCommunications" onclick="update_secure_communications_AJAX();" disabled="disabled">Save secure communication</button>
-						
-						<button class="btn btn-default" id="edit-secure-communications-content" onclick="enableSecureCommunicationsEdit();">Edit secure communication content</button>
-
-					</div>
-					<!-- Secure Communications CKEditor form end -->
+						var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
+						CKEDITOR.replace( 'editorSecureCommunicationsMacedonian', {
+							readOnly: true,
+							filebrowserBrowseUrl:roxyFileman,
+							filebrowserImageBrowseUrl:roxyFileman+'?type=image',
+							removeDialogTabs: 'link:upload;image:upload' 
+						});
 
 
-				</div>	
 
-		</div>
+					</script>" ?>
+					
+
+				</form>
+				
+				<button class="btn btn-primary" name="btnSubmitSecureCommunications" data-loading-text="Saving..." id="btnSubmitSecureCommunications" onclick="update_secure_communications_AJAX();" disabled="disabled">Save secure communication</button>
+				
+				<button class="btn btn-default" id="edit-secure-communications-content" onclick="enableSecureCommunicationsEdit();">Edit secure communication content</button>
+
+			</div>
+			<!-- Secure Communications CKEditor form end -->
+
+
+		</div>	
 
 	</div>
 
-
+</div>
+<div style="height:100px;"></div>
 </body>
-
-
-
 </html>

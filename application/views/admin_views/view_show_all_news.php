@@ -59,7 +59,7 @@
 									<td><?php echo $value['title_english']; ?></td>					
 									<td>
 
-										<img src="<?php echo base_url().$value['news_image_url']; ?>" style="height: 100px;width: 250px;" class="news_main_image" />
+										<img src="<?php echo base_url().$value['news_thumb_url']; ?>" style="height: 100px;width: 250px;" class="news_main_image" />
 
 
 									</td>					

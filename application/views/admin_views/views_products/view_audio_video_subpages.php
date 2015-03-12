@@ -56,7 +56,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitAudioConference" id="btnSubmitAudioConference" onclick="update_audio_conference_AJAX();" disabled="disabled">Save Audio Conference</button>
+		<button class="btn btn-primary" name="btnSubmitAudioConference" data-loading-text="Saving..." id="btnSubmitAudioConference" onclick="update_audio_conference_AJAX();" disabled="disabled">Save Audio Conference</button>
 		
 		<button class="btn btn-default" id="edit-audio-conference-content" onclick="enableAudioConferenceEdit();">Edit audio conference content</button>
 
@@ -113,7 +113,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitCourtRecordingSystems" id="btnSubmitCourtRecordingSystems" onclick="update_court_recording_system_AJAX();" disabled="disabled">Save Court recording systems</button>
+		<button class="btn btn-primary" name="btnSubmitCourtRecordingSystems" data-loading-text="Saving..." id="btnSubmitCourtRecordingSystems" onclick="update_court_recording_system_AJAX();" disabled="disabled">Save Court recording systems</button>
 		
 		<button class="btn btn-default" id="edit-court-recording-systems-content" onclick="enableCourtRecordingSystemsEdit();">Edit court recording systems content</button>
 

@@ -57,7 +57,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnDcPowerSystemsAccess" id="btnDcPowerSystemsAccess" onclick="update_dc_power_systems_AJAX();" disabled="disabled">Save DC power systems</button>
+		<button class="btn btn-primary" name="btnDcPowerSystemsAccess" data-loading-text="Saving..." id="btnDcPowerSystemsAccess" onclick="update_dc_power_systems_AJAX();" disabled="disabled">Save DC power systems</button>
 		
 		<button class="btn btn-default" id="edit-dc-power-systems-content" onclick="enableDcPowerSystemsEdit();">Edit DC power systems content</button>
 
@@ -114,7 +114,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitUps" id="btnSubmitUps" onclick="update_ups_AJAX();" disabled="disabled">Save UPS</button>
+		<button class="btn btn-primary" name="btnSubmitUps" data-loading-text="Saving..." id="btnSubmitUps" onclick="update_ups_AJAX();" disabled="disabled">Save UPS</button>
 		
 		<button class="btn btn-default" id="edit-ups-content" onclick="enableUpsEdit();">Edit ups content</button>
 
@@ -172,7 +172,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitMonitoring" id="btnSubmitMonitoring" onclick="update_monitoring_AJAX();" disabled="disabled">Save Monitoring</button>
+		<button class="btn btn-primary" name="btnSubmitMonitoring" data-loading-text="Saving..." id="btnSubmitMonitoring" onclick="update_monitoring_AJAX();" disabled="disabled">Save Monitoring</button>
 		
 		<button class="btn btn-default" id="edit-monitoring-content" onclick="enableMonitoringEdit();">Edit monitoring content</button>
 
@@ -229,7 +229,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitDataCenter" id="btnSubmitDataCenter" onclick="update_data_center_AJAX();" disabled="disabled">Save Data Center</button>
+		<button class="btn btn-primary" name="btnSubmitDataCenter" data-loading-text="Saving..." id="btnSubmitDataCenter" onclick="update_data_center_AJAX();" disabled="disabled">Save Data Center</button>
 		
 		<button class="btn btn-default" id="edit-data-center-content" onclick="enableDataCenterEdit();">Edit data center content</button>
 

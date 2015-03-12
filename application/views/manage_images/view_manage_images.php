@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin</title>
+	<title>Manage Page Images</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<!--///////////////////////////   Styles   ///////////////////////////-->

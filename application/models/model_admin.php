@@ -270,7 +270,7 @@ class Model_admin extends CI_Model {
 	//the news_image_url and the created_at from the news table and the title from the translations.
 	public function get_all_news(){
 
-		$this->db->select('n.id, n.created_at, n.news_image_url, tc.title, tc.lang');
+		$this->db->select('n.id, n.created_at, n.news_thumb_url, tc.title, tc.lang');
 		$this->db->from('news n');
 		$this->db->join('translation_content tc', 'n.id = tc.news_id');
 
@@ -381,5 +381,4 @@ class Model_admin extends CI_Model {
 			return false;
 		}
 	}
-
 }

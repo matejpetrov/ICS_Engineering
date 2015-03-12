@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Admin</title>
+	<title>Edit about us static pages</title>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>"/>
 
 	<!--///////////////////////////   Styles   ///////////////////////////-->
@@ -141,7 +141,7 @@
 							</script>" ?>
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitMission" id="btnSubmitMission" onclick="update_mission_AJAX();" disabled="disabled">Save Mission/Vision</button>
+				    	<button class="btn btn-primary" name="btnSubmitMission" data-loading-text="Saving..." id="btnSubmitMission" onclick="update_mission_AJAX();" disabled="disabled">Save Mission/Vision</button>
 				    	<button class="btn btn-default" id="edit-mission-content" onclick="enableMissionEdit();">Edit mission/vision content</button>
 
 				    </div>
@@ -198,7 +198,7 @@
 							</script>" ?>				    		
 
 				    	</form>
-						<button class="btn btn-primary" name="btnSubmitPartners" id="btnSubmitPartners" onclick="update_partners_AJAX();" disabled="disabled">Save Partners</button>
+						<button class="btn btn-primary" name="btnSubmitPartners" data-loading-text="Saving..." id="btnSubmitPartners" onclick="update_partners_AJAX();" disabled="disabled">Save Partners</button>
 				    	<button class="btn btn-default" id="edit-partners-content" onclick="enablePartnersEdit();">Edit partners content</button>
 
 				    </div>
@@ -256,7 +256,7 @@
 				    		<!-- <input type="submit" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" value="Save Company Information" class="btn btn-primary" disabled="disabled"/> -->							
 
 				    	</form>
-				    	<button class="btn btn-primary" name="btnSubmitCorporateInfo" id="btnSubmitCorporateInfo" onclick="update_corporate_info_AJAX();" disabled="disabled">Save company information</button>
+				    	<button class="btn btn-primary" name="btnSubmitCorporateInfo" data-loading-text="Saving..." id="btnSubmitCorporateInfo" onclick="update_corporate_info_AJAX();" disabled="disabled">Save company information</button>
 				    	<button class="btn btn-default" id="edit-corporate-info-content" onclick="enableCorporateInfoEdit();">Edit company information content</button>
 
 				    </div>

@@ -56,7 +56,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitFixedAccess" id="btnSubmitFixedAccess" onclick="update_fixed_access_AJAX();" disabled="disabled">Save Fixed access</button>
+		<button class="btn btn-primary" name="btnSubmitFixedAccess" data-loading-text="Saving..." id="btnSubmitFixedAccess" onclick="update_fixed_access_AJAX();" disabled="disabled">Save Fixed access</button>
 		
 		<button class="btn btn-default" id="edit-fixed-access-content" onclick="enableFixedAccessEdit();">Edit fixed access content</button>
 
@@ -113,7 +113,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitTransport" id="btnSubmitTransport" onclick="update_transport_AJAX();" disabled="disabled">Save Transport</button>
+		<button class="btn btn-primary" name="btnSubmitTransport" data-loading-text="Saving..." id="btnSubmitTransport" onclick="update_transport_AJAX();" disabled="disabled">Save Transport</button>
 		
 		<button class="btn btn-default" id="edit-transport-content" onclick="enableTransportEdit();">Edit transport content</button>
 
@@ -171,7 +171,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitSolutions" id="btnSubmitSolutions" onclick="update_solutions_AJAX();" disabled="disabled">Save Solutions</button>
+		<button class="btn btn-primary" name="btnSubmitSolutions" data-loading-text="Saving..." id="btnSubmitSolutions" onclick="update_solutions_AJAX();" disabled="disabled">Save Solutions</button>
 		
 		<button class="btn btn-default" id="edit-solutions-content" onclick="enableSolutionsEdit();">Edit solutions content</button>
 

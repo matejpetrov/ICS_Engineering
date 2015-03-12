@@ -30,6 +30,8 @@ class Static_pages_controller extends CI_Controller{
 	public function index(){
 		$data = $this->get_menus_language_values();
 
+		$data['title'] = $this->lang->line("main_page_title");
+
 		$data["additional_address"] = $this->lang->line("additional_address");		
 
 		$data_home_page["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
@@ -53,6 +55,9 @@ class Static_pages_controller extends CI_Controller{
 		$data = $this->get_menus_language_values();
 
 		$data["additional_address"] = $this->lang->line("additional_address");		
+
+		$data['title'] = $this->lang->line("all_news_page_title").$this->lang->line("other_page_title");
+		
 
 		$data_all_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_all_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
@@ -110,7 +115,7 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp['id'] = $news['id'];
 			$data_temp['news_url'] = $news['news_url'];
-			$data_temp['news_image_url'] = $news['news_image_url'];
+			$data_temp['news_thumb_url'] = $news['news_thumb_url'];
 
 
 			$title = $news['title'];
@@ -171,12 +176,14 @@ class Static_pages_controller extends CI_Controller{
 		
 		$data["additional_address"] = $this->lang->line("additional_address");		
 		
-		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
-		$data_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
-
 		$data_news['news_image_url'] = $news['news_image_url'];
 		$data_news['title'] = $news['title'];
 		$data_news['content'] = $news['content'];
+		
+		$data['title']=$news['title'].' | ICS Engineering';
+		
+		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
+		$data_news["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		if($lang == 'macedonian'){
 			setlocale(LC_TIME, 'mk_MK.utf8');
 			$date_new =strftime("%#d %B %Y",strtotime($news['created_at']));
@@ -236,6 +243,8 @@ class Static_pages_controller extends CI_Controller{
 		
 		$data["additional_address"] = $this->lang->line("additional_address");		
 		
+		$data['title'] = $this->lang->line("contact_page_title").$this->lang->line("other_page_title");
+		
 		$data_contact["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
 		$data_contact["footer"] = $this->load->view('shared_layouts/footer', $data, TRUE);
 		
@@ -255,6 +264,7 @@ class Static_pages_controller extends CI_Controller{
 		if($page == 0){
 			$data_temp["about_us_title"] = $this->lang->line("about_us_title");
 			/*$data_temp["about_us_first_page"] = $this->lang->line("about_us_first_page");*/	
+			$data['title'] = $this->lang->line("menus_about_us").$this->lang->line("other_page_title");
 
 			$data_temp["nav_about_us"] = $this->lang->line("nav_about_us");
 			$data_temp["nav_telecommunication"] = $this->lang->line("nav_telecommunication");
@@ -274,6 +284,8 @@ class Static_pages_controller extends CI_Controller{
 		else if($page == 1){
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
 
+			$data['title'] = $this->lang->line("menus_mission").$this->lang->line("other_page_title");
+
 			$column = 'mission';
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
@@ -287,6 +299,8 @@ class Static_pages_controller extends CI_Controller{
 		else if($page == 2){
 			$data_temp["about_us_partners_title"] = $this->lang->line("about_us_partners_title");
 			
+			$data['title'] = $this->lang->line("menus_partners").$this->lang->line("other_page_title");
+
 			$column = 'partners';
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
@@ -297,6 +311,8 @@ class Static_pages_controller extends CI_Controller{
 
 		}else if($page == 3){
 			$data_temp["about_us_corporate_title"] = $this->lang->line("about_us_corporate_title");
+			
+			$data['title'] = $this->lang->line("menus_corporate_info").$this->lang->line("other_page_title");
 			
 			$column = 'corporate_info';
 
@@ -333,6 +349,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["services_consulting_title"] = $this->lang->line("nav_consulting");
 			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
+			$data['title'] = $this->lang->line("menus_consulting").$this->lang->line("other_page_title");
+
 			$column = 'consulting';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
@@ -346,6 +364,8 @@ class Static_pages_controller extends CI_Controller{
 		else if($page == 1){
 			$data_temp["services_engineering_title"] = $this->lang->line("nav_engineering");
 			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
+
+			$data['title'] = $this->lang->line("menus_engineering").$this->lang->line("other_page_title");
 
 			$column = 'engineering';
 
@@ -361,6 +381,8 @@ class Static_pages_controller extends CI_Controller{
 			
 			// $data_temp["services_system_title"] = $this->lang->line("services_power_supply");
 			$data_temp["services_system_integration_title"] = $this->lang->line("nav_system_integration");				
+
+			$data['title'] = $this->lang->line("menus_system_integration").$this->lang->line("other_page_title");
 
 			$column = 'system_integration';
 
@@ -399,6 +421,9 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
 			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");
 
+			$data['title'] = $this->lang->line("menus_telecommunications").$this->lang->line("other_page_title");
+
+
 			$column = 'fixed_access';
 
 			$result = $this->model_products_pages->get_products_page_content($column, $lang);
@@ -418,6 +443,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["products_power_supply_monitoring"] = $this->lang->line("products_power_supply_monitoring");
 			$data_temp["products_power_supply_data_center"] = $this->lang->line("products_power_supply_data_center");
 
+			$data['title'] = $this->lang->line("menus_power_supply").$this->lang->line("other_page_title");
+
 			$data_temp["products_power_supply"] = $this->lang->line("products_power_supply");
 
 			$column = 'dc_power_systems';
@@ -436,6 +463,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
 
+			$data['title'] = $this->lang->line("menus_audio_video").$this->lang->line("other_page_title");
+
 			$column = 'audio_conference';
 
 			$result = $this->model_products_pages->get_products_page_content($column, $lang);
@@ -449,6 +478,8 @@ class Static_pages_controller extends CI_Controller{
 		else if($page == 3){
 
 			$data_temp["products_secure_communications_title"] = $this->lang->line("products_secure_communications");
+
+			$data['title'] = $this->lang->line("menus_defence_security").$this->lang->line("other_page_title");
 
 			$column = 'secure_communication';
 
@@ -555,6 +586,9 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["nav_audio_video"] = $this->lang->line("nav_audio_video");
 			$data_temp["nav_defence_security"] = $this->lang->line("nav_defence_security");				
 
+			$title = $this->lang->line("menus_about_us").$this->lang->line("other_page_title");
+
+
 			$column = 'about_us';
 			$top_nav = $this->input->post('top_nav');
 
@@ -562,6 +596,8 @@ class Static_pages_controller extends CI_Controller{
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);
 				$data_temp["about_us_title"] = $this->lang->line("nav_".$nav_lang);
+				$title = $this->lang->line("nav_".$nav_lang).$this->lang->line("about_us_other_page_title").$this->lang->line("other_page_title");
+
 			}
 			
 
@@ -569,11 +605,15 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp["about_us_first_page"] = $result[$column];
 
-			$data_about_us = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+			$about_us_content = $this->load->view("about_us_views/view_about_us_main", $data_temp, TRUE);
+
+			$data_about_us = array('title' => $title, 'data' => $about_us_content);
 
 		}
 		else if($page == 1){
 			$data_temp["about_us_mission_title"] = $this->lang->line("about_us_mission_title");
+
+			$title = $this->lang->line("menus_mission").$this->lang->line("other_page_title");
 
 			$column = 'mission';
 
@@ -581,12 +621,16 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp["about_us_mission_page"] = $result[$column];			
 
-			$data_about_us = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+			$about_us_content = $this->load->view("about_us_views/view_about_us_mission", $data_temp, TRUE);
+			
+			$data_about_us = array('title' => $title, 'data' => $about_us_content);
 
 		}
 
 		else if($page == 2){
 			$data_temp["about_us_partners_title"] = $this->lang->line("about_us_partners_title");
+			
+			$title = $this->lang->line("menus_partners").$this->lang->line("other_page_title");
 			
 			$column = 'partners';
 
@@ -594,23 +638,29 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp["about_us_partners_page"] = $result[$column];
 
-			$data_about_us = $this->load->view("about_us_views/view_about_us_partners", $data_temp, TRUE);
+			$about_us_content = $this->load->view("about_us_views/view_about_us_partners", $data_temp, TRUE);
+
+			$data_about_us = array('title' => $title, 'data' => $about_us_content);
 
 		}else if($page == 3){
 			$data_temp["about_us_corporate_title"] = $this->lang->line("about_us_corporate_title");
 			
+			$title = $this->lang->line("menus_corporate_info").$this->lang->line("other_page_title");
+
 			$column = 'corporate_info';
 
 			$result = $this->model_about_us_pages->get_about_us_page_content($column, $lang);
 
 			$data_temp["about_us_corporate_page"] = $result[$column];
 
-			$data_about_us = $this->load->view("about_us_views/view_about_us_corporate", $data_temp, TRUE);
+			$about_us_content = $this->load->view("about_us_views/view_about_us_corporate", $data_temp, TRUE);
+			
+			$data_about_us = array('title' => $title, 'data' => $about_us_content);
 
 		}
 
 
-		echo $data_about_us;
+		$this->output->set_output(json_encode($data_about_us));
 
 	}
 
@@ -634,12 +684,16 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["services_consulting_title"] = $this->lang->line("nav_consulting");
 			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
+			$title = $this->lang->line("menus_consulting").$this->lang->line("other_page_title");
+
 			$column = 'consulting';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
 			$data_temp["services_consulting_page"] = $result[$column];
-			$data = $this->load->view("services_views/view_services_consulting", $data_temp, TRUE);
+			$services_content = $this->load->view("services_views/view_services_consulting", $data_temp, TRUE);
+
+			$data_services = array('title' => $title, 'data' => $services_content);
 
 		}
 
@@ -647,16 +701,22 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["services_engineering_title"] = $this->lang->line("nav_engineering");
 			// $data_temp["services_telecommunication_title"] = $this->lang->line("services_telecommunication");
 
+			$title = $this->lang->line("menus_engineering").$this->lang->line("other_page_title");
+
 			$column = 'engineering';
 
 			$result = $this->model_services_pages->get_services_page_content($column, $lang);
 
 			$data_temp["services_engineering_page"] = $result[$column];				
 
-			$data = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
+			$services_content = $this->load->view("services_views/view_services_engineering", $data_temp, TRUE);
+
+			$data_services = array('title' => $title, 'data' => $services_content);
 		}
 		else if($page == 2){
 			$data_temp["services_system_integration_title"] = $this->lang->line("nav_system_integration");				
+
+			$title = $this->lang->line("menus_system_integration").$this->lang->line("other_page_title");
 
 			$column = 'system_integration';
 
@@ -665,10 +725,12 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["services_system_integration_page"] = $result[$column];			
 				
 
-			$data = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+			$services_content = $this->load->view("services_views/view_services_system_integration", $data_temp, TRUE);
+
+			$data_services = array('title' => $title, 'data' => $services_content);
 		}
 		
-		echo $data;
+		$this->output->set_output(json_encode($data_services));
 
 	}
 	
@@ -686,6 +748,8 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["products_telecommunication_transport"] = $this->lang->line("products_telecommunication_transport");
 			$data_temp["products_telecommunication_solutions"] = $this->lang->line("products_telecommunication_solutions");	
 
+			$title = $this->lang->line("menus_telecommunications").$this->lang->line("other_page_title");
+
 			$column = 'fixed_access';
 			$top_nav = $this->input->post('top_nav');
 
@@ -693,6 +757,7 @@ class Static_pages_controller extends CI_Controller{
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);				
 				$data_temp["products_telecommunication_title"] = $this->lang->line("products_telecommunication_".$nav_lang);
+				$title = $this->lang->line("products_telecommunication_".$nav_lang).$this->lang->line("products_other_page_title").$this->lang->line("other_page_title");
 			}
 			
 
@@ -700,8 +765,11 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp["products_first_page"] = $result[$column];
 
-			$data = $this->load->view("products_views/view_products_main", $data_temp, TRUE);
+			$products_content = $this->load->view("products_views/view_products_main", $data_temp, TRUE);
 
+			$data_products = array('title' => $title, 'data' => $products_content);
+
+	
 		}
 		elseif ($page == 1) {
 			$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_dc_power_systems");
@@ -709,8 +777,9 @@ class Static_pages_controller extends CI_Controller{
 			$data_temp["products_power_supply_ups"] = $this->lang->line("products_power_supply_ups");
 			$data_temp["products_power_supply_monitoring"] = $this->lang->line("products_power_supply_monitoring");
 			$data_temp["products_power_supply_data_center"] = $this->lang->line("products_power_supply_data_center");
-
 			$data_temp["products_power_supply"] = $this->lang->line("products_power_supply");
+
+			$title = $this->lang->line("menus_power_supply").$this->lang->line("other_page_title");
 
 			$column = 'dc_power_systems';
 			$top_nav = $this->input->post('top_nav');
@@ -719,18 +788,25 @@ class Static_pages_controller extends CI_Controller{
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);				
 				$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_".$nav_lang);
+				$title = $this->lang->line("products_power_supply_".$nav_lang).$this->lang->line("products_other_page_title").$this->lang->line("other_page_title");
+
 			}
 
 			$result = $this->model_products_pages->get_products_page_content($column, $lang);
 
 			$data_temp["products_power_supply_dc_power_systems_page"] = $result[$column];
 
-			$data = $this->load->view("products_views/view_products_dc_power_systems", $data_temp, TRUE);
-		}
+			$products_content = $this->load->view("products_views/view_products_dc_power_systems", $data_temp, TRUE);
+
+			$data_products = array('title' => $title, 'data' => $products_content);
+
+			}
 		else if($page == 2){
 			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
+			
+			$title = $this->lang->line("menus_audio_video").$this->lang->line("other_page_title");
 
 			$column = 'audio_conference';
 			$top_nav = $this->input->post('top_nav');
@@ -739,20 +815,23 @@ class Static_pages_controller extends CI_Controller{
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);				
 				$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_".$nav_lang);
+				$title = $this->lang->line("products_audio_video_".$nav_lang).$this->lang->line("products_other_page_title").$this->lang->line("other_page_title");
 			}
 
 			$result = $this->model_products_pages->get_products_page_content($column, $lang);
 
 			$data_temp["products_audio_video_audio_conference_page"] = $result[$column];
 
-			$data = $this->load->view("products_views/view_products_audio_conference", $data_temp, TRUE);
+			$products_content = $this->load->view("products_views/view_products_audio_conference", $data_temp, TRUE);
 
-
+			$data_products = array('title' => $title, 'data' => $products_content);
 		}
 
 		else if($page == 3){
 
 			$data_temp["products_secure_communications_title"] = $this->lang->line("products_secure_communications");
+			
+			$title = html_entity_decode($this->lang->line("menus_defence_security")).$this->lang->line("other_page_title");
 
 			$column = 'secure_communication';
 
@@ -760,18 +839,12 @@ class Static_pages_controller extends CI_Controller{
 
 			$data_temp["products_secure_communications_page"] = $result[$column];
 
-			$data = $this->load->view("products_views/view_products_secure_communications", $data_temp, TRUE);
+			$products_content = $this->load->view("products_views/view_products_secure_communications", $data_temp, TRUE);
 
-
+			$data_products = array('title' => $title, 'data' => $products_content);
 		}	
 
-
-
-
-		echo $data;
-
-
-
+		$this->output->set_output(json_encode($data_products));
 	}
 
 	public function getSetLanguageAjax(){

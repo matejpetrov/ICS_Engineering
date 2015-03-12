@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-	<title>ICS Engineering</title>
+	<title><?php echo $title; ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">

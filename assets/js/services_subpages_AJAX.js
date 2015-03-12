@@ -42,9 +42,9 @@ function update_services_AJAX(){
         success: function(data) {
             if (data) {                
                 $("#btnSubmitServices").prop("disabled", true);				
-				$("#edit-services-content").html("Edit services content");
-				CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
-				CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
+                $("#edit-services-content").html("Edit services content");
+                CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
+                CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
             };
         },
         error: function(data) {
@@ -88,6 +88,9 @@ function update_engineering_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitEngineering").button('loading');
+        },
         data: {
             editorEngineeringEnglish: engineering_english,
             editorEngineeringMacedonian: engineering_macedonian
@@ -95,7 +98,8 @@ function update_engineering_AJAX(){
         
         success: function(data) {
             if (data) {                
-                $("#btnSubmitEngineering").prop("disabled", true);             
+                $("#btnSubmitEngineering").button('reset');
+                setTimeout(function(){$("#btnSubmitEngineering").prop("disabled", true);},1);
                 $("#edit-engineering-content").html("Edit engineering content");
                 CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorEngineeringMacedonian.setReadOnly (true);
@@ -105,7 +109,7 @@ function update_engineering_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 
 }
@@ -143,6 +147,9 @@ function update_system_integration_AJAX(){
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitSystemIntegration").button('loading'); 
+        },
         data: {
             editorSystemIntegrationEnglish: system_integration_english,
             editorSystemIntegrationMacedonian: system_integration_macedonian
@@ -150,7 +157,8 @@ function update_system_integration_AJAX(){
         
         success: function(data) {
             if (data) {                
-                $("#btnSubmitSystemIntegration").prop("disabled", true);             
+                $("#btnSubmitSystemIntegration").button('reset'); 
+                setTimeout(function(){$("#btnSubmitSystemIntegration").prop("disabled", true);},1);
                 $("#edit-system-integration-content").html("Edit system integration content");
                 CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorSystemIntegrationMacedonian.setReadOnly (true);
@@ -160,7 +168,7 @@ function update_system_integration_AJAX(){
             $('.success').html('There was an error');           
         }
     });
-    return false;
+return false;
 
 }
 
@@ -191,12 +199,14 @@ function update_consulting_AJAX(){
     var consulting_english = CKEDITOR.instances.editorConsultingEnglish.getData();
     var consulting_macedonian = CKEDITOR.instances.editorConsultingMacedonian.getData();
 
-
     $.ajax({
         url: base_url + "staticPagesAdminController/update_consulting_content",
         type: 'POST',
         dataType: 'json',
         cache: false,
+        beforeSend:function(){
+            $("#btnSubmitConsulting").button('loading');
+        },
         data: {
             editorConsultingEnglish: consulting_english,
             editorConsultingMacedonian: consulting_macedonian
@@ -204,7 +214,8 @@ function update_consulting_AJAX(){
         
         success: function(data) {
             if (data) {                
-                $("#btnSubmitConsulting").prop("disabled", true);             
+                $("#btnSubmitConsulting").button('reset');
+                setTimeout(function(){$("#btnSubmitConsulting").prop("disabled", true);},1);
                 $("#edit-consulting-content").html("Edit consulting content");
                 CKEDITOR.instances.editorConsultingEnglish.setReadOnly (true);
                 CKEDITOR.instances.editorConsultingMacedonian.setReadOnly (true);

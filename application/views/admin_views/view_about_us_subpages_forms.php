@@ -61,7 +61,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitAboutUs" id="btnSubmitAboutUs" onclick="update_about_us_AJAX();" disabled="disabled">Save About us</button>
+		<button class="btn btn-primary" name="btnSubmitAboutUs" data-loading-text="Saving..." id="btnSubmitAboutUs" onclick="update_about_us_AJAX();" disabled="disabled">Save About us</button>
 		
 		<button class="btn btn-default" id="edit-about-us-content" onclick="enableAboutUsEdit();">Edit about us content</button>
 
@@ -120,7 +120,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitTelecommunication" id="btnSubmitTelecommunication" onclick="update_telecommunication_AJAX();" disabled="disabled">Save Telecommunication</button>
+		<button class="btn btn-primary" name="btnSubmitTelecommunication" data-loading-text="Saving..." id="btnSubmitTelecommunication" onclick="update_telecommunication_AJAX();" disabled="disabled">Save Telecommunication</button>
 		
 		<button class="btn btn-default" id="edit-telecommunication-content" onclick="enableTelecommunicationEdit();">Edit telecommunication content</button>
 
@@ -178,7 +178,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitPowerSupply" id="btnSubmitPowerSupply" onclick="update_power_supply_AJAX();" disabled="disabled">Save Power Supply</button>
+		<button class="btn btn-primary" name="btnSubmitPowerSupply" data-loading-text="Saving..." id="btnSubmitPowerSupply" onclick="update_power_supply_AJAX();" disabled="disabled">Save Power Supply</button>
 		
 		<button class="btn btn-default" id="edit-power-supply-content" onclick="enablePowerSupplyEdit();">Edit power supply content</button>
 
@@ -236,7 +236,7 @@
 															
 
 		</form>
-		<button class="btn btn-primary" name="btnSubmitAudioVideo" id="btnSubmitAudioVideo" onclick="update_audio_video_AJAX();" disabled="disabled">Save Audio/Video</button>
+		<button class="btn btn-primary" name="btnSubmitAudioVideo" data-loading-text="Saving..." id="btnSubmitAudioVideo" onclick="update_audio_video_AJAX();" disabled="disabled">Save Audio/Video</button>
 		
 		<button class="btn btn-default" id="edit-audio-video-content" onclick="enableAudioVideoEdit();">Edit audio/video content</button>
 
@@ -295,7 +295,7 @@
 
 		</form>
 		
-		<button class="btn btn-primary" name="btnSubmitDefenceSecurity" id="btnSubmitDefenceSecurity" onclick="update_defence_security_AJAX();" disabled="disabled">Save Secure Communication</button>
+		<button class="btn btn-primary" name="btnSubmitDefenceSecurity" data-loading-text="Saving..." id="btnSubmitDefenceSecurity" onclick="update_defence_security_AJAX();" disabled="disabled">Save Secure Communication</button>
 		
 		<button class="btn btn-default" id="edit-defence-security-content" onclick="enableDefenceSecurityEdit();">Edit secure communication content</button>
 
