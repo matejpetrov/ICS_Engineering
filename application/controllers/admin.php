@@ -187,6 +187,8 @@ class Admin extends CI_Controller {
 
 	public function post_edit_news(){
 
+		$image = $_FILES['file-input'];
+
 		foreach($_POST as $key => $value){
 			$post[$key] = $value;
 		}
@@ -216,6 +218,15 @@ class Admin extends CI_Controller {
 				);
 
 			if($this->model_admin->edit_news($id, $translation_english, $translation_macedonian)){
+				
+				//if the news is saved in the database, i need to call the edit_news_image function to upload the new
+				//image. 				
+
+				//ONLY if there is a new image uploaded should we upload that image, otherwise, we don't need to do anything
+				if( !($image['name'] == "") ){
+					$this->edit_news_image($id, $_FILES['file-input']);		
+				}
+				
 				$this->show_news($id);
 			}
 			else{
@@ -227,88 +238,40 @@ class Admin extends CI_Controller {
 	}
 
 	//function invoked from the popup for changin image, located on the edit news page.
-	public function edit_news_image($id){
+	public function edit_news_image($id, $file_input){
 
-		$tag_upload = true;
+		$image = $file_input;
 
-		$image = $_FILES['file-input'];
 		$config['upload_path'] = 'assets/images/news_main_images';
 		$config['allowed_types'] = 'gif|jpg|png';
-
 		$this->load->library('upload', $config);
-
-		if($image['name'] == ""){
-			$image['name'] = "ics_default_image.png";
-			$tag_upload = false;
-		}
-
-		#base_url().
-		#removed the base_url, in the database we should not save the base_url
 		$news_image_url = $config['upload_path'].'/'.$image['name'];
-
 		$news = array(
 			'news_image_url' => $news_image_url
 			);
-
-
-		#=====================================================================
-
-		if($tag_upload == true){
-
-			//first upload the image -> then add the news (id, created_at and news_image_url) -> then add the 
-			//translation_content		
-			if ( ! $this->upload->do_upload('file-input'))
-			{
-				$data['image'] = $image;
-				$data['errors'] = $this->upload->display_errors();
-				$data['upload_path'] = $config['upload_path'];
-
-				$this->load->view('temp', $data);
-			}
-			else
-			{						
-				if($this->model_admin->edit_news_image($id, $news)){
-					
-					$json = array(
-						'news_image_url' => $news['news_image_url'],
-						'temp' => 'matej'
-						);
-
-					$json_encode = json_encode($json);
-
-					echo $json_encode;
-				}
-				else{
-					$data['image_path'] = "temp";
-					#TODO
-					$this->load->view('temp_to_delete/view_temp', $data, FALSE);
-				}
-			}
-
+		if ( ! $this->upload->do_upload('file-input'))
+		{
+			$data['image'] = $image;
+			$data['errors'] = $this->upload->display_errors();
+			$data['upload_path'] = $config['upload_path'];
+			$this->load->view('temp_to_delete/view_temp', $data);
 		}
-
-		else{
+		else
+		{						
 			if($this->model_admin->edit_news_image($id, $news)){
-
+				
 				$json = array(
 					'news_image_url' => $news['news_image_url'],
 					'temp' => 'matej'
 					);
-
 				$json_encode = json_encode($json);
-
 				echo $json_encode;
 			}
 			else{
 				$data['image_path'] = "temp";
-				#TODO
-				$this->load->view('temp_to_delete/view_temp', $data, FALSE);
+				$this->load->view('temp_p', $data, FALSE);
 			}
 		}
-
-
-		#=====================================================================
-
 		
 		
 	}

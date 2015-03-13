@@ -27,24 +27,28 @@
 	<script type="text/javascript">
 		$( document ).ready(function() {			    
 
-			var url = window.location.href;
+			/*var url = window.location.href;
 			var url_split = url.split("/");
 			var length = url_split.length;
-			var id = url_split[length-1];
+			var id = url_split[length-1];*/
+
+			//'uploadUrl':'http://localhost/ICS_Engineering/admin/edit_news_image/'+id,
+			//'previewFileType':'image',			
+			//'allowedFileExtensions':['jpg','png','gif']
 
 			$("#file-input").fileinput(
 			{
-				'uploadUrl':'http://localhost/ICS_Engineering/admin/edit_news_image/'+id,
-				'previewFileType':'image',			
-				'allowedFileExtensions':['jpg','png','gif']
+				'showUpload':false, 
+				'previewFileType':'image',
+				'allowedFileExtensions':['jpg','png','gif']						
 			});
 
-			$('#file-input').on('fileuploaded', function(event, data) {
+			/*$('#file-input').on('fileuploaded', function(event, data) {
 				$('#myModal').modal('hide');				    
 				var news_image_url = data.response.news_image_url;
 				$('#news_image').attr("src", news_image_url);
 				console.log('File uploaded triggered');
-			});
+			});*/
 		});	
 	</script>
 
@@ -73,7 +77,7 @@
 		<div class="row admin-holder">
 			<div class="col-md-12"><h2>Edit news article</h2></div>
 		</div>
-		<form action="<?php echo base_url(); ?>admin/post_edit_news" method="POST">
+		<form action="<?php echo base_url(); ?>admin/post_edit_news" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<input type="hidden" name="id" value="<?php echo $id; ?>" />
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -109,63 +113,72 @@
 
 
 
-							</script>" ?>						        
+								</script>" ?>						        
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingTwo">
-						<h4 class="panel-title">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								News Macedonian
-							</a>
-						</h4>
-					</div>
-					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						<div class="panel-body">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									News Macedonian
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+							<div class="panel-body">
 
-							<div class="form-group">
-								<label for="news_title_macedonian">Title</label>
-								<input class="form-control" name="news_title_macedonian" placeholder="Enter news title..." 
-								value="<?php echo $news_macedonian['title']; ?>" />								
+								<div class="form-group">
+									<label for="news_title_macedonian">Title</label>
+									<input class="form-control" name="news_title_macedonian" placeholder="Enter news title..." 
+									value="<?php echo $news_macedonian['title']; ?>" />								
+								</div>
+
+								<div class="form-group">
+									<label for="editorMacedonian">News Content</label>
+									<!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> -->
+									<textarea name="editorMacedonian" id="editorMacedonian"><?php echo $news_macedonian['content']; ?></textarea>
+								</div>							  					        					       					       
+								<?php echo "<script>
+
+									var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
+									CKEDITOR.replace( 'editorMacedonian', {
+										filebrowserBrowseUrl:roxyFileman,
+										filebrowserImageBrowseUrl:roxyFileman+'?type=image',
+										removeDialogTabs: 'link:upload;image:upload' 
+									});
+								</script>" ?>	
 							</div>
+						</div>
+					</div>		  
+				</div>																		
+			</div>
 
-							<div class="form-group">
-								<label for="editorMacedonian">News Content</label>
-								<!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> -->
-								<textarea name="editorMacedonian" id="editorMacedonian"><?php echo $news_macedonian['content']; ?></textarea>
-							</div>							  					        					       					       
-							<?php echo "<script>
-
-							var roxyFileman ='" . base_url() .  "assets/RoxyFileman/index.html';
-							CKEDITOR.replace( 'editorMacedonian', {
-								filebrowserBrowseUrl:roxyFileman,
-								filebrowserImageBrowseUrl:roxyFileman+'?type=image',
-								removeDialogTabs: 'link:upload;image:upload' 
-							});
-						</script>" ?>	
-					</div>
+			<div class="row">
+				<div class="col-md-12 news-image-holder" style="text-align:center;">
+					<img class="img-responsive" src="<?php echo base_url(). $news_image_url; ?>" alt="No image yet" style="display:initial;height:350px;" id="news_image" />	
 				</div>
-			</div>		  
-		</div>																		
-	</div>
+			</div>
 
-	<div class="row">
-		<div class="col-md-12 news-image-holder" style="text-align:center;">
-			<img class="img-responsive" src="<?php echo base_url(). $news_image_url; ?>" alt="No image yet" style="display:initial;height:350px;" id="news_image" />	
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-12" style="text-align:center;">
+					<label>Edit the news image</label>					
+					<input type="file" name="file-input" size="20" id="file-input" />
+				</div>
+			</div>
 
-	<div class="row">
-		<div class="col-md-12" style="text-align:center;">
-			<button type="submit" class="btn btn-default" name="btn-save">Save changes</button>
-			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-				Edit news image
-			</button>
-			<button type="submit" class="btn btn-default" name="btn-cancel">Cancel</button>
-		</div>
-	</div>
-</form>
+			<br/>
+
+			<div class="row">
+				<div class="col-md-12" style="text-align:center;">
+					<button type="submit" class="btn btn-default" name="btn-save">Save changes</button>
+					<!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+						Edit news image
+					</button> -->
+					<button type="submit" class="btn btn-default" name="btn-cancel">Cancel</button>
+				</div>
+			</div>
+		</form>
 
 
 </div>    
@@ -175,7 +188,7 @@
 
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -190,7 +203,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 </body>    
