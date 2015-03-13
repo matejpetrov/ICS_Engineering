@@ -122,6 +122,8 @@
 								<label for="editorSecureCommunicationsEnglish">Services (Secure Communication) - English</label>
 							</div>
 
+							<textarea id="editorSecureCommunicationsEnglishOld" style="display: none;"><?php echo $secure_communication_en; ?></textarea>
+
 							<div class="form-group">														
 								<textarea name="editorSecureCommunicationsEnglish" id="editorSecureCommunicationsEnglish"><?php echo $secure_communication_en ?></textarea>
 							</div>							  					        					       					       
@@ -142,6 +144,8 @@
 						<div class="form-group">
 							<label for="editorSecureCommunicationsMacedonian">Services (Secure Communication) - Macedonian</label>
 						</div>
+
+						<textarea id="editorSecureCommunicationsMacedonianOld" style="display: none;"><?php echo $secure_communication_mk; ?></textarea>
 
 						<div class="form-group">																
 							<textarea name="editorSecureCommunicationsMacedonian" id="editorSecureCommunicationsMacedonian"><?php echo $secure_communication_mk; ?></textarea>

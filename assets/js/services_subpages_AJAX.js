@@ -1,61 +1,6 @@
 //file where we will implement the functions for sending AJAX calls to the server and change the DOM content 
 //upon success for the services pages.
 
-
-function enableServicesEdit(){
-
-    var btnText = $("#edit-services-content").html();
-    var isEnabled = $("#btnSubmitServices").prop("disabled");
-
-    if(isEnabled && btnText != "Cancel"){
-        $("#btnSubmitServices").prop("disabled", false);                
-        $("#edit-services-content").html("Cancel");
-        CKEDITOR.instances.editorServicesEnglish.setReadOnly (false);
-        CKEDITOR.instances.editorServicesMacedonian.setReadOnly (false);
-    }
-    else{
-        $("#btnSubmitServices").prop("disabled", true);             
-        $("#edit-services-content").html("Edit services content");
-        CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
-        CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
-    }
-
-}
-
-function update_services_AJAX(){
-
-	var base_url = $("#base_url").val();	
-	var services_english = CKEDITOR.instances.editorServicesEnglish.getData();
-	var services_macedonian = CKEDITOR.instances.editorServicesMacedonian.getData();
-
-
-	$.ajax({
-        url: base_url + "staticPagesAdminController/update_services_content",
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: {
-            editorServicesEnglish: services_english,
-            editorServicesMacedonian: services_macedonian
-        },
-        
-        success: function(data) {
-            if (data) {                
-                $("#btnSubmitServices").prop("disabled", true);				
-                $("#edit-services-content").html("Edit services content");
-                CKEDITOR.instances.editorServicesEnglish.setReadOnly (true);
-                CKEDITOR.instances.editorServicesMacedonian.setReadOnly (true);
-            };
-        },
-        error: function(data) {
-        	$('.success').html('There was an error');        	
-        }
-    });
-    return false;
-
-}
-
-
 function enableEngineeringEdit(){
 
     var btnText = $("#edit-engineering-content").html();
@@ -69,7 +14,14 @@ function enableEngineeringEdit(){
     }
     else{
         $("#btnSubmitEngineering").prop("disabled", true);              
-        $("#edit-engineering-content").html("Edit engineering content");                
+        $("#edit-engineering-content").html("Edit engineering content"); 
+
+        var oldContentEnglish = $("#editorEngineeringEnglishOld").val();
+        var oldContentMacedonian = $("#editorEngineeringMacedonianOld").val();
+
+        CKEDITOR.instances.editorEngineeringEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorEngineeringMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorEngineeringEnglish.setReadOnly (true);
         CKEDITOR.instances.editorEngineeringMacedonian.setReadOnly (true);
     }
@@ -127,7 +79,14 @@ function enableSystemIntegrationEdit(){
     }
     else{
         $("#btnSubmitSystemIntegration").prop("disabled", true);                
-        $("#edit-system-integration-content").html("Edit vision content");              
+        $("#edit-system-integration-content").html("Edit vision content");           
+
+        var oldContentEnglish = $("#editorSystemIntegrationEnglishOld").val();
+        var oldContentMacedonian = $("#editorSystemIntegrationMacedonianOld").val();
+
+        CKEDITOR.instances.editorSystemIntegrationEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorSystemIntegrationMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorSystemIntegrationEnglish.setReadOnly (true);
         CKEDITOR.instances.editorSystemIntegrationMacedonian.setReadOnly (true);
     }
@@ -186,7 +145,14 @@ function enableConsultingEdit(){
     }
     else{
         $("#btnSubmitConsulting").prop("disabled", true);               
-        $("#edit-consulting-content").html("Edit consulting content");              
+        $("#edit-consulting-content").html("Edit consulting content");
+
+        var oldContentEnglish = $("#editorConsultingEnglishOld").val();
+        var oldContentMacedonian = $("#editorConsultingMacedonianOld").val();
+
+        CKEDITOR.instances.editorConsultingEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorConsultingMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorConsultingEnglish.setReadOnly (true);
         CKEDITOR.instances.editorConsultingMacedonian.setReadOnly (true);
     }

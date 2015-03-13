@@ -94,6 +94,8 @@
 				    			<label for="editorConsultingEnglish">Consulting - English</label>
 				    		</div>
 
+				    		<textarea id="editorConsultingEnglishOld" style="display: none;"><?php echo $services_english['consulting']; ?></textarea>
+
 				    		<div class="form-group">														
 								<textarea name="editorConsultingEnglish" id="editorConsultingEnglish"><?php echo $services_english['consulting']; ?></textarea>
 							</div>							  					        					       					       
@@ -114,6 +116,8 @@
 							<div class="form-group">
 				    			<label for="editorConsultingMacedonian">Consulting - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorConsultingMacedonianOld" style="display: none;"><?php echo $services_macedonian['consulting']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorConsultingMacedonian" id="editorConsultingMacedonian"><?php echo $services_macedonian['consulting']; ?></textarea>
@@ -151,6 +155,8 @@
 				    			<label for="editorEngineeringEnglish">Engineering - English</label>
 				    		</div>
 
+				    		<textarea id="editorEngineeringEnglishOld" style="display: none;"><?php echo $services_english['engineering']; ?></textarea>
+
 				    		<div class="form-group">														
 								<textarea name="editorEngineeringEnglish" id="editorEngineeringEnglish"><?php echo $services_english['engineering']; ?></textarea>
 							</div>							  					        					       					       
@@ -171,6 +177,8 @@
 							<div class="form-group">
 				    			<label for="editorEngineeringMacedonian">Engineering - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorEngineeringMacedonianOld" style="display: none;"><?php echo $services_macedonian['engineering']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorEngineeringMacedonian" id="editorEngineeringMacedonian"><?php echo $services_macedonian['engineering']; ?></textarea>
@@ -208,6 +216,8 @@
 				    			<label for="editorSystemIntegrationEnglish">System Integration - English</label>
 				    		</div>
 
+				    		<textarea id="editorSystemIntegrationEnglishOld" style="display: none;"><?php echo $services_english['system_integration']; ?></textarea>
+
 				    		<div class="form-group">														
 								<textarea name="editorSystemIntegrationEnglish" id="editorSystemIntegrationEnglish"><?php echo $services_english['system_integration']; ?></textarea>
 							</div>							  					        					       					       
@@ -228,6 +238,8 @@
 							<div class="form-group">
 				    			<label for="editorSystemIntegrationMacedonian">System Integration - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorSystemIntegrationMacedonianOld" style="display: none;"><?php echo $services_macedonian['system_integration']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorSystemIntegrationMacedonian" id="editorSystemIntegrationMacedonian"><?php echo $services_macedonian['system_integration']; ?></textarea>

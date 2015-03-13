@@ -101,6 +101,8 @@
 				    		<div class="form-group">
 				    			<label for="editorMissionEnglish">About us (Mission&Vision) - English</label>
 				    		</div>
+				    		
+				    		<textarea id="editorMissionEnglishOld" style="display: none;"><?php echo $about_us_english['mission']; ?></textarea>				    		
 
 				    		<div class="form-group">																
 								<textarea name="editorMissionEnglish" id="editorMissionEnglish"><?php echo $about_us_english['mission']; ?></textarea>
@@ -122,6 +124,8 @@
 							<div class="form-group">
 				    			<label for="editorMissionMacedonian">About us (Mission&Vision) - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorMissionMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['mission']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorMissionMacedonian" id="editorMissionMacedonian"><?php echo $about_us_macedonian['mission']; ?></textarea>
@@ -159,6 +163,8 @@
 				    			<label for="editorPartnersEnglish">About us (Partners) - English</label>
 				    		</div>
 
+				    		<textarea id="editorPartnersEnglishOld" style="display: none;"><?php echo $about_us_english['partners']; ?></textarea>
+
 				    		<div class="form-group">																
 								<textarea name="editorPartnersEnglish" id="editorPartnersEnglish"><?php echo $about_us_english['partners']; ?></textarea>
 							</div>							  					        					       					       
@@ -179,6 +185,8 @@
 							<div class="form-group">
 				    			<label for="editorPartnersMacedonian">About us (Partners) - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorPartnersMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['partners']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorPartnersMacedonian" id="editorPartnersMacedonian"><?php echo $about_us_macedonian['partners']; ?></textarea>
@@ -215,6 +223,8 @@
 				    			<label for="editorCorporateInfoEnglish">About us (Company Information) - English</label>
 				    		</div>
 
+				    		<textarea id="editorCorporateInfoEnglishOld" style="display: none;"><?php echo $about_us_english['corporate_info']; ?></textarea>
+
 				    		<div class="form-group">																
 								<textarea name="editorCorporateInfoEnglish" id="editorCorporateInfoEnglish"><?php echo $about_us_english['corporate_info']; ?></textarea>
 							</div>							  					        					       					       
@@ -235,6 +245,8 @@
 							<div class="form-group">
 				    			<label for="editorCorporateInfoMacedonian">About us (Company Information) - Macedonian</label>
 				    		</div>
+
+				    		<textarea id="editorCorporateInfoMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['corporate_info']; ?></textarea>
 
 				    		<div class="form-group">																
 								<textarea name="editorCorporateInfoMacedonian" id="editorCorporateInfoMacedonian"><?php echo $about_us_macedonian['corporate_info']; ?></textarea>

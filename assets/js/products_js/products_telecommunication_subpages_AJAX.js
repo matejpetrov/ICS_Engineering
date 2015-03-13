@@ -12,6 +12,13 @@ function enableFixedAccessEdit(){
     else{
         $("#btnSubmitFixedAccess").prop("disabled", true);             
         $("#edit-fixed-access-content").html("Edit fixed access content");
+
+        var oldContentEnglish = $("#editorFixedAccessEnglishOld").val();
+        var oldContentMacedonian = $("#editorFixedAccessMacedonianOld").val();
+
+        CKEDITOR.instances.editorFixedAccessEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorFixedAccessMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorFixedAccessEnglish.setReadOnly (true);
         CKEDITOR.instances.editorFixedAccessMacedonian.setReadOnly (true);
     }
@@ -69,6 +76,13 @@ function enableTransportEdit(){
     else{
         $("#btnSubmitTransport").prop("disabled", true);             
         $("#edit-transport-content").html("Edit transport content");
+
+        var oldContentEnglish = $("#editorTransportEnglishOld").val();
+        var oldContentMacedonian = $("#editorTransportMacedonianOld").val();
+
+        CKEDITOR.instances.editorTransportEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorTransportMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorTransportEnglish.setReadOnly (true);
         CKEDITOR.instances.editorTransportMacedonian.setReadOnly (true);
     }
@@ -127,6 +141,13 @@ function enableSolutionsEdit(){
     else{
         $("#btnSubmitSolutions").prop("disabled", true);             
         $("#edit-solutions-content").html("Edit solutions content");
+
+        var oldContentEnglish = $("#editorSolutionsEnglishOld").val();
+        var oldContentMacedonian = $("#editorSolutionsMacedonianOld").val();
+
+        CKEDITOR.instances.editorSolutionsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorSolutionsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorSolutionsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorSolutionsMacedonian.setReadOnly (true);
     }

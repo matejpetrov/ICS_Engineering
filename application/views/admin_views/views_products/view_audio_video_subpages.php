@@ -16,6 +16,8 @@
 				<label for="editorAudioConferenceEnglish">Audio Conference - English</label>
 			</div>
 
+			<textarea id="editorAudioConferenceEnglishOld" style="display: none;"><?php echo $audio_conference_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorAudioConferenceEnglish"  id="editorAudioConferenceEnglish"><?php echo $audio_conference_en; ?></textarea>
 			</div>							  					        					       					       
@@ -36,6 +38,8 @@
 			<div class="form-group">
 				<label for="editorAudioConferenceMacedonian">Audio Conference - Macedonian</label>
 			</div>
+
+			<textarea id="editorAudioConferenceMacedonianOld" style="display: none;"><?php echo $audio_conference_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorAudioConferenceMacedonian" id="editorAudioConferenceMacedonian"><?php echo $audio_conference_mk; ?></textarea>
@@ -73,6 +77,8 @@
 				<label for="editorCourtRecordingSystemsEnglish">Court recording systems - English</label>
 			</div>
 
+			<textarea id="editorCourtRecordingSystemsEnglishOld" style="display: none;"><?php echo $court_recording_systems_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorCourtRecordingSystemsEnglish"  id="editorCourtRecordingSystemsEnglish"><?php echo $court_recording_systems_en; ?></textarea>
 			</div>							  					        					       					       
@@ -93,6 +99,8 @@
 			<div class="form-group">
 				<label for="editorCourtRecordingSystemsMacedonian">Court recording systems - Macedonian</label>
 			</div>
+
+			<textarea id="editorCourtRecordingSystemsMacedonianOld" style="display: none;"><?php echo $court_recording_systems_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorCourtRecordingSystemsMacedonian" id="editorCourtRecordingSystemsMacedonian"><?php echo $court_recording_systems_mk; ?></textarea>

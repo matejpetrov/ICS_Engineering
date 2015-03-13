@@ -21,6 +21,8 @@
 				<label for="editorAboutUsEnglish">About us - English</label>
 			</div>
 
+			<textarea id="editorAboutUsEnglishOld" style="display: none;"><?php echo $about_us_english['about_us']; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorAboutUsEnglish"  id="editorAboutUsEnglish"><?php echo $about_us_english['about_us']; ?></textarea>
 			</div>							  					        					       					       
@@ -41,6 +43,8 @@
 			<div class="form-group">
 				<label for="editorAboutUsMacedonian">About us - Macedonian</label>
 			</div>
+
+			<textarea id="editorAboutUsMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['about_us']; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorAboutUsMacedonian" id="editorAboutUsMacedonian"><?php echo $about_us_macedonian['about_us']; ?></textarea>
@@ -80,6 +84,8 @@
 				<label for="editorTelecommunicationEnglish">Telecommunication - English</label>
 			</div>
 
+			<textarea id="editorTelecommunicationEnglishOld" style="display: none;"><?php echo $about_us_english['telecommunication']; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorTelecommunicationEnglish" id="editorTelecommunicationEnglish"><?php echo $about_us_english['telecommunication']; ?></textarea>
 			</div>							  					        					       					       
@@ -100,6 +106,8 @@
 			<div class="form-group">
 				<label for="editorTelecommunicationMacedonian">Telecommunication - Macedonian</label>
 			</div>
+
+			<textarea id="editorTelecommunicationMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['telecommunication']; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorTelecommunicationMacedonian" id="editorTelecommunicationMacedonian"><?php echo $about_us_macedonian['telecommunication']; ?></textarea>
@@ -138,6 +146,8 @@
 				<label for="editorPowerSupplyEnglish">Power Supply - English</label>
 			</div>
 
+			<textarea id="editorPowerSupplyEnglishOld" style="display: none;"><?php echo $about_us_english['power-supply']; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorPowerSupplyEnglish" id="editorPowerSupplyEnglish"><?php echo $about_us_english['power-supply']; ?></textarea>
 			</div>							  					        					       					       
@@ -158,6 +168,8 @@
 			<div class="form-group">
 				<label for="editorPowerSupplyMacedonian">Power Supply - Macedonian</label>
 			</div>
+
+			<textarea id="editorPowerSupplyMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['power-supply']; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorPowerSupplyMacedonian" id="editorPowerSupplyMacedonian"><?php echo $about_us_macedonian['power-supply']; ?></textarea>
@@ -196,6 +208,8 @@
 				<label for="editorAudioVideoEnglish">Audio/Video - English</label>
 			</div>
 
+			<textarea id="editorAudioVideoEnglishOld" style="display: none;"><?php echo $about_us_english['audio-video']; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorAudioVideoEnglish" id="editorAudioVideoEnglish"><?php echo $about_us_english['audio-video']; ?></textarea>
 			</div>							  					        					       					       
@@ -216,6 +230,8 @@
 			<div class="form-group">
 				<label for="editorAudioVideoMacedonian">Audio/Video - Macedonian</label>
 			</div>
+
+			<textarea id="editorAudioVideoMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['audio-video']; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorAudioVideoMacedonian" id="editorAudioVideoMacedonian"><?php echo $about_us_macedonian['audio-video']; ?></textarea>
@@ -254,6 +270,8 @@
 				<label for="editorDefenceSecurityEnglish">Secure Communication - English</label>
 			</div>
 
+			<textarea id="editorDefenceSecurityEnglishOld" style="display: none;"><?php echo $about_us_english['defence-security']; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorDefenceSecurityEnglish" id="editorDefenceSecurityEnglish"><?php echo $about_us_english['defence-security']; ?></textarea>
 			</div>							  					        					       					       
@@ -274,6 +292,8 @@
 			<div class="form-group">
 				<label for="editorDefenceSecurityMacedonian">Secure Communication - Macedonian</label>
 			</div>
+
+			<textarea id="editorDefenceSecurityMacedonianOld" style="display: none;"><?php echo $about_us_macedonian['defence-security']; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorDefenceSecurityMacedonian" id="editorDefenceSecurityMacedonian"><?php echo $about_us_macedonian['defence-security']; ?></textarea>

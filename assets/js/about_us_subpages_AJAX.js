@@ -20,6 +20,13 @@ function enableTelecommunicationEdit(){
     else{
         $("#btnSubmitTelecommunication").prop("disabled", true);              
         $("#edit-telecommunication-content").html("Edit telecommunication content");
+
+        var oldContentEnglish = $("#editorTelecommunicationEnglishOld").val();
+        var oldContentMacedonian = $("#editorTelecommunicationMacedonianOld").val();
+
+        CKEDITOR.instances.editorTelecommunicationEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorTelecommunicationMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorTelecommunicationEnglish.setReadOnly (true);
         CKEDITOR.instances.editorTelecommunicationMacedonian.setReadOnly (true);
     }    
@@ -78,6 +85,13 @@ function enablePowerSupplyEdit(){
     else{
         $("#btnSubmitPowerSupply").prop("disabled", true);              
         $("#edit-power-supply-content").html("Edit power supply content");
+            
+        var oldContentEnglish = $("#editorPowerSupplyEnglishOld").val();
+        var oldContentMacedonian = $("#editorPowerSupplyMacedonianOld").val();
+
+        CKEDITOR.instances.editorPowerSupplyEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorPowerSupplyMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorPowerSupplyEnglish.setReadOnly (true);
         CKEDITOR.instances.editorPowerSupplyMacedonian.setReadOnly (true);
     }
@@ -137,6 +151,13 @@ function enableAudioVideoEdit(){
     else{
         $("#btnSubmitAudioVideo").prop("disabled", true);              
         $("#edit-audio-video-content").html("Edit audio/video content");
+
+        var oldContentEnglish = $("#editorAudioVideoEnglishOld").val();
+        var oldContentMacedonian = $("#editorAudioVideoMacedonianOld").val();
+
+        CKEDITOR.instances.editorAudioVideoEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorAudioVideoMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorAudioVideoEnglish.setReadOnly (true);
         CKEDITOR.instances.editorAudioVideoMacedonian.setReadOnly (true);
     }
@@ -196,6 +217,13 @@ function enableDefenceSecurityEdit(){
     else{
         $("#btnSubmitDefenceSecurity").prop("disabled", true);              
         $("#edit-defence-security-content").html("Edit secure communication content");
+
+        var oldContentEnglish = $("#editorDefenceSecurityEnglishOld").val();
+        var oldContentMacedonian = $("#editorDefenceSecurityMacedonianOld").val();
+
+        CKEDITOR.instances.editorDefenceSecurityEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorDefenceSecurityMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorDefenceSecurityEnglish.setReadOnly (true);
         CKEDITOR.instances.editorDefenceSecurityMacedonian.setReadOnly (true);
     }

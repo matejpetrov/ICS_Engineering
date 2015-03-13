@@ -17,6 +17,8 @@
 				<label for="editorDcPowerSystemsEnglish">DC Power Systems - English</label>
 			</div>
 
+			<textarea id="editorDcPowerSystemsEnglishOld" style="display: none;"><?php echo $dc_power_systems_en; ?></textarea>
+			
 			<div class="form-group">														
 				<textarea name="editorDcPowerSystemsEnglish"  id="editorDcPowerSystemsEnglish"><?php echo $dc_power_systems_en; ?></textarea>
 			</div>							  					        					       					       
@@ -37,6 +39,8 @@
 			<div class="form-group">
 				<label for="editorDcPowerSystemsMacedonian">DC Power Systems - Macedonian</label>
 			</div>
+
+			<textarea id="editorDcPowerSystemsMacedonianOld" style="display: none;"><?php echo $dc_power_systems_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorDcPowerSystemsMacedonian" id="editorDcPowerSystemsMacedonian"><?php echo $dc_power_systems_mk; ?></textarea>
@@ -74,6 +78,8 @@
 				<label for="editorUpsEnglish">UPS - English</label>
 			</div>
 
+			<textarea id="editorUpsEnglishOld" style="display: none;"><?php echo $ups_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorUpsEnglish"  id="editorUpsEnglish"><?php echo $ups_en; ?></textarea>
 			</div>							  					        					       					       
@@ -94,6 +100,8 @@
 			<div class="form-group">
 				<label for="editorUpsMacedonian">UPS - Macedonian</label>
 			</div>
+
+			<textarea id="editorUpsMacedonianOld" style="display: none;"><?php echo $ups_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorUpsMacedonian" id="editorUpsMacedonian"><?php echo $ups_mk; ?></textarea>
@@ -132,6 +140,8 @@
 				<label for="editorMonitoringEnglish">Monitoring - English</label>
 			</div>
 
+			<textarea id="editorMonitoringEnglishOld" style="display: none;"><?php echo $monitoring_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorMonitoringEnglish"  id="editorMonitoringEnglish"><?php echo $monitoring_en; ?></textarea>
 			</div>							  					        					       					       
@@ -152,6 +162,8 @@
 			<div class="form-group">
 				<label for="editorMonitoringMacedonian">Monitoring - Macedonian</label>
 			</div>
+
+			<textarea id="editorMonitoringMacedonianOld" style="display: none;"><?php echo $monitoring_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorMonitoringMacedonian" id="editorMonitoringMacedonian"><?php echo $monitoring_mk; ?></textarea>
@@ -189,6 +201,8 @@
 				<label for="editorDataCenterEnglish">Data Center - English</label>
 			</div>
 
+			<textarea id="editorDataCenterEnglishOld" style="display: none;"><?php echo $data_center_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorDataCenterEnglish"  id="editorDataCenterEnglish"><?php echo $data_center_en; ?></textarea>
 			</div>							  					        					       					       
@@ -209,6 +223,8 @@
 			<div class="form-group">
 				<label for="editorDataCenterMacedonian">Data Center - Macedonian</label>
 			</div>
+
+			<textarea id="editorDataCenterMacedonianOld" style="display: none;"><?php echo $data_center_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorDataCenterMacedonian" id="editorDataCenterMacedonian"><?php echo $data_center_mk; ?></textarea>

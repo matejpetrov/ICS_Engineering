@@ -8,13 +8,20 @@ function enableAboutUsEdit(){
 
     if(isEnabled && btnText != "Cancel"){
         $("#btnSubmitAboutUs").prop("disabled", false);             
-        $("#edit-about-us-content").html("Cancel");
+        $("#edit-about-us-content").html("Cancel");        
         CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (false);
         CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (false);
     }
     else{
         $("#btnSubmitAboutUs").prop("disabled", true);              
         $("#edit-about-us-content").html("Edit about us content");
+
+        var oldContentEnglish = $("#editorAboutUsEnglishOld").val();
+        var oldContentMacedonian = $("#editorAboutUsMacedonianOld").val();
+
+        CKEDITOR.instances.editorAboutUsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorAboutUsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorAboutUsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorAboutUsMacedonian.setReadOnly (true);
     }
@@ -66,13 +73,20 @@ function enableMissionEdit(){
 
     if(isEnabled && btnText != "Cancel"){
         $("#btnSubmitMission").prop("disabled", false);             
-        $("#edit-mission-content").html("Cancel");
+        $("#edit-mission-content").html("Cancel");        
         CKEDITOR.instances.editorMissionEnglish.setReadOnly (false);
         CKEDITOR.instances.editorMissionMacedonian.setReadOnly (false);
     }
     else{
         $("#btnSubmitMission").prop("disabled", true);              
         $("#edit-mission-content").html("Edit mission/vision content");             
+        
+        var oldContentEnglish = $("#editorMissionEnglishOld").val();
+        var oldContentMacedonian = $("#editorMissionMacedonianOld").val();
+
+        CKEDITOR.instances.editorMissionEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorMissionMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorMissionEnglish.setReadOnly (true);
         CKEDITOR.instances.editorMissionMacedonian.setReadOnly (true);
     }
@@ -129,7 +143,14 @@ function enablePartnersEdit(){
     }
     else{
         $("#btnSubmitPartners").prop("disabled", true);             
-        $("#edit-partners-content").html("Edit partners content");              
+        $("#edit-partners-content").html("Edit partners content");     
+
+        var oldContentEnglish = $("#editorPartnersEnglishOld").val();
+        var oldContentMacedonian = $("#editorPartnersMacedonianOld").val();
+
+        CKEDITOR.instances.editorPartnersEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorPartnersMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorPartnersEnglish.setReadOnly (true);
         CKEDITOR.instances.editorPartnersMacedonian.setReadOnly (true);
     }
@@ -185,9 +206,17 @@ function enableCorporateInfoEdit(){
         CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (false);
         CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (false);
     }
-    else{
+    else{        
+
         $("#btnSubmitCorporateInfo").prop("disabled", true);                
-        $("#edit-corporate-info-content").html("Edit company information content");             
+        $("#edit-corporate-info-content").html("Edit company information content");          
+
+        var oldContentEnglish = $("#editorCorporateInfoEnglishOld").val();
+        var oldContentMacedonian = $("#editorCorporateInfoMacedonianOld").val();
+
+        CKEDITOR.instances.editorCorporateInfoEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorCorporateInfoMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorCorporateInfoEnglish.setReadOnly (true);
         CKEDITOR.instances.editorCorporateInfoMacedonian.setReadOnly (true);
     }

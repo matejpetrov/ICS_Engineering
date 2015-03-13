@@ -16,6 +16,8 @@
 				<label for="editorFixedAccessEnglish">Fixed access - English</label>
 			</div>
 
+			<textarea id="editorFixedAccessEnglishOld" style="display: none;"><?php echo $fixed_access_en; ?></textarea>
+			
 			<div class="form-group">														
 				<textarea name="editorFixedAccessEnglish"  id="editorFixedAccessEnglish"><?php echo $fixed_access_en; ?></textarea>
 			</div>							  					        					       					       
@@ -36,6 +38,8 @@
 			<div class="form-group">
 				<label for="editorFixedAccessMacedonian">Fixed access - Macedonian</label>
 			</div>
+
+			<textarea id="editorFixedAccessMacedonianOld" style="display: none;"><?php echo $fixed_access_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorFixedAccessMacedonian" id="editorFixedAccessMacedonian"><?php echo $fixed_access_mk; ?></textarea>
@@ -73,6 +77,8 @@
 				<label for="editorTransportEnglish">Transport - English</label>
 			</div>
 
+			<textarea id="editorTransportEnglishOld" style="display: none;"><?php echo $transport_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorTransportEnglish"  id="editorTransportEnglish"><?php echo $transport_en; ?></textarea>
 			</div>							  					        					       					       
@@ -93,6 +99,8 @@
 			<div class="form-group">
 				<label for="editorTransportMacedonian">Transport - Macedonian</label>
 			</div>
+
+			<textarea id="editorTransportMacedonianOld" style="display: none;"><?php echo $transport_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorTransportMacedonian" id="editorTransportMacedonian"><?php echo $transport_mk; ?></textarea>
@@ -131,6 +139,8 @@
 				<label for="editorSolutionsEnglish">Solutions - English</label>
 			</div>
 
+			<textarea id="editorSolutionsEnglishOld" style="display: none;"><?php echo $solutions_en; ?></textarea>
+
 			<div class="form-group">														
 				<textarea name="editorSolutionsEnglish"  id="editorSolutionsEnglish"><?php echo $solutions_en; ?></textarea>
 			</div>							  					        					       					       
@@ -151,6 +161,8 @@
 			<div class="form-group">
 				<label for="editorSolutionsMacedonian">Solutions - Macedonian</label>
 			</div>
+
+			<textarea id="editorSolutionsMacedonianOld" style="display: none;"><?php echo $solutions_mk; ?></textarea>
 
 			<div class="form-group">																
 				<textarea name="editorSolutionsMacedonian" id="editorSolutionsMacedonian"><?php echo $solutions_mk; ?></textarea>

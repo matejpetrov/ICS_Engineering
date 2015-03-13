@@ -12,6 +12,13 @@ function enableAudioConferenceEdit(){
     else{
         $("#btnSubmitAudioConference").prop("disabled", true);             
         $("#edit-audio-conference-content").html("Edit audio conference content");
+
+        var oldContentEnglish = $("#editorAudioConferenceEnglishOld").val();
+        var oldContentMacedonian = $("#editorAudioConferenceMacedonianOld").val();
+
+        CKEDITOR.instances.editorAudioConferenceEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorAudioConferenceMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorAudioConferenceEnglish.setReadOnly (true);
         CKEDITOR.instances.editorAudioConferenceMacedonian.setReadOnly (true);
     }
@@ -71,6 +78,13 @@ function enableCourtRecordingSystemsEdit(){
     else{
         $("#btnSubmitCourtRecordingSystems").prop("disabled", true);             
         $("#edit-court-recording-systems-content").html("Edit court recording systems content");
+
+        var oldContentEnglish = $("#editorCourtRecordingSystemsEnglishOld").val();
+        var oldContentMacedonian = $("#editorCourtRecordingSystemsMacedonianOld").val();
+
+        CKEDITOR.instances.editorCourtRecordingSystemsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorCourtRecordingSystemsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorCourtRecordingSystemsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorCourtRecordingSystemsMacedonian.setReadOnly (true);
     }
@@ -127,6 +141,13 @@ function enableSecureCommunicationsEdit(){
     else{
         $("#btnSubmitSecureCommunications").prop("disabled", true);             
         $("#edit-secure-communications-content").html("Edit secure communications content");
+
+        var oldContentEnglish = $("#editorSecureCommunicationsEnglishOld").val();
+        var oldContentMacedonian = $("#editorSecureCommunicationsMacedonianOld").val();
+
+        CKEDITOR.instances.editorSecureCommunicationsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorSecureCommunicationsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorSecureCommunicationsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorSecureCommunicationsMacedonian.setReadOnly (true);
     }

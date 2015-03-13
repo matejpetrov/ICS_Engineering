@@ -12,6 +12,13 @@ function enableDcPowerSystemsEdit(){
     else{
         $("#btnDcPowerSystemsAccess").prop("disabled", true);             
         $("#edit-dc-power-systems-content").html("Edit DC power systems content");
+
+        var oldContentEnglish = $("#editorDcPowerSystemsEnglishOld").val();
+        var oldContentMacedonian = $("#editorDcPowerSystemsMacedonianOld").val();
+
+        CKEDITOR.instances.editorDcPowerSystemsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorDcPowerSystemsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorDcPowerSystemsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorDcPowerSystemsMacedonian.setReadOnly (true);
     }
@@ -69,6 +76,13 @@ function enableUpsEdit(){
     else{
         $("#btnSubmitUps").prop("disabled", true);             
         $("#edit-ups-content").html("Edit ups content");
+
+        var oldContentEnglish = $("#editorUpsEnglishOld").val();
+        var oldContentMacedonian = $("#editorUpsMacedonianOld").val();
+
+        CKEDITOR.instances.editorUpsEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorUpsMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorUpsEnglish.setReadOnly (true);
         CKEDITOR.instances.editorUpsMacedonian.setReadOnly (true);
     }
@@ -128,6 +142,13 @@ function enableMonitoringEdit(){
     else{
         $("#btnSubmitMonitoring").prop("disabled", true);             
         $("#edit-monitoring-content").html("Edit ups content");
+
+        var oldContentEnglish = $("#editorMonitoringEnglishOld").val();
+        var oldContentMacedonian = $("#editorMonitoringMacedonianOld").val();
+
+        CKEDITOR.instances.editorMonitoringEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorMonitoringMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorMonitoringEnglish.setReadOnly (true);
         CKEDITOR.instances.editorMonitoringMacedonian.setReadOnly (true);
     }
@@ -187,6 +208,13 @@ function enableDataCenterEdit(){
     else{
         $("#btnSubmitDataCenter").prop("disabled", true);             
         $("#edit-data-center-content").html("Edit ups content");
+
+        var oldContentEnglish = $("#editorDataCenterEnglishOld").val();
+        var oldContentMacedonian = $("#editorDataCenterMacedonianOld").val();
+
+        CKEDITOR.instances.editorDataCenterEnglish.setData(oldContentEnglish);
+        CKEDITOR.instances.editorDataCenterMacedonian.setData(oldContentMacedonian);
+
         CKEDITOR.instances.editorDataCenterEnglish.setReadOnly (true);
         CKEDITOR.instances.editorDataCenterMacedonian.setReadOnly (true);
     }
