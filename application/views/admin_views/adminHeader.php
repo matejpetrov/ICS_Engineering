@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-12 lang">
 				<a href="<?php echo base_url(); ?>admin" class="i_header home"><i class="fa fa-home"></i></a>
-				<ul class="user-info-list">
+				<ul class="user-info-list inline">
 					<li class="user-info first" >
 						<?php echo $name; ?>
 					</li>

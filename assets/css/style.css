@@ -1,3 +1,8 @@
+/*
+Author:Boris Siljanovski & Matej Petrov
+Copyright: ICS Consulting Engineering;
+*/
+
 ::selection {
     color: #FFFFFF;
     background-color: #CD5A01;
@@ -162,11 +167,17 @@ div.navbar-collapse > ul {
     margin: 0;
     text-align: right;
 }
-ul > li {
+ul.inline > li {
     text-decoration: none;
     text-align: center;
     list-style: none;
     display: inline;
+}
+.sidebar > li {
+    text-align: center;
+}
+.dropdown > ul > li {
+    text-align: center;
 }
 li > a {
     padding-left: 30px;
@@ -216,11 +227,11 @@ div.collapse-custom > ul > li > a.selected {
     background-color: #FFFFFF !important;
 }
 .sub-selected{
- color: #CD5A01 !important;
- background-color: #ffffff;
- background-image: none;    
- border-left: 3px solid #CD5A01;
- border-right: 3px solid #CD5A01;
+   color: #CD5A01 !important;
+   background-color: #ffffff;
+   background-image: none;    
+   border-left: 3px solid #CD5A01;
+   border-right: 3px solid #CD5A01;
     /*background-color: #cd5a01;
     color: #ffffff !important;
     border-left: 3px solid #ffffff;
@@ -304,8 +315,8 @@ div.collapse-custom > ul > li > a.selected {
 
 /* Owl Carousel Logos Styles Begin */
 .partners-logo {
- width: 260px;
- height: 80px;
+   width: 210px;
+   height: 40px;
 }
 
 /* Owl Carousel Logos Styles End */
@@ -351,16 +362,16 @@ div.collapse-custom > ul > li > a.selected {
 
 .wordRight{
     position: absolute;
-    font-size:35px;
-    color:#ffffff;
+    font-size:40px;
+    color:#cd5a01;
     left: 100%;
     white-space: nowrap;
     /*top:5%;*/
 }
 .wordLeft{
     position: absolute;
-    font-size:35px;
-    color:#ffffff;
+    font-size:40px;
+    color:#cd5a01;
     right: 100%;
     /*top:5%;*/
     white-space: nowrap;
@@ -368,24 +379,24 @@ div.collapse-custom > ul > li > a.selected {
 }
 .wordTop{
     position: absolute;
-    font-size:35px;
-    color:#ffffff;
+    font-size:40px;
+    color:#cd5a01;
     bottom: 100%;
     white-space: nowrap;
     
 }
 .wordBottom{
     position: absolute;
-    font-size:35px;
-    color:#ffffff;
+    font-size:40px;
+    color:#cd5a01;
     top: 100%;
     white-space: nowrap;
     
 }
 .wordFade{
     position: absolute;
-    font-size:35px;
-    color:#ffffff;
+    font-size:40px;
+    color:#cd5a01;
     opacity: 0;
     white-space: nowrap;
     
@@ -403,11 +414,11 @@ div.collapse-custom > ul > li > a.selected {
 }
 
 .loading-news > div{
-   width: 50px;
-   height: 50px;
-   top: 35%;
-   left: 50%;
-   position: absolute;
+ width: 50px;
+ height: 50px;
+ top: 35%;
+ left: 50%;
+ position: absolute;
 }
 
 .loading{
@@ -436,6 +447,17 @@ div.collapse-custom > ul > li > a.selected {
     width: 96.6%;
     opacity: 0.9;
     margin-top: 75px;
+    z-index: 99999;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.loading-topnav-dc{
+    position: absolute;
+    background-color: #ffffff;
+    height: 90%;
+    width: 96.6%;
+    opacity: 0.9;
+    margin-top: 86px;
     z-index: 99999;
     transition: background-color 0.4s ease-in-out;
 }
@@ -754,6 +776,10 @@ ul.social-media > li.go-up-logo > a:hover .top {
     opacity: 0;
     transform: rotate(360deg);
 }
+.back-to-top{
+    padding-left: 11px;
+    padding-right: 0px;
+}
 
 /* Footer Styles End */
 
@@ -971,8 +997,8 @@ span.image-add {
     padding: 0;
 }
 .words > li{
- display: flex;
- padding-left: 220px;
+   display: flex;
+   padding-left: 220px;
 }
 
 .modal-content{
@@ -1054,13 +1080,13 @@ span.image-add {
 }
 
 .message::after{
- content: "";
- border-style: solid;
- position: absolute;
- display: block;
- left: -7px;
- top: 15px;
- border-width: 5px 7px 5px 0;
+   content: "";
+   border-style: solid;
+   position: absolute;
+   display: block;
+   left: -7px;
+   top: 15px;
+   border-width: 5px 7px 5px 0;
 }
 
 .message-success{
@@ -1272,20 +1298,79 @@ div.news-item-container{
 
     /* Responsive media Begin */
 
-    @media screen and (max-width: 761px) {} 
+    @media screen and (max-width: 1200px) {
+        .inline > .first > a{
+            padding-right: 30px !important;
+            margin-left: -120px !important;
+        }
+        ul.footer-nav > li > a {
+            padding-right: 30px;
+        }
+    } 
     @media screen and (max-width: 751px) {
         ul.footer-nav > li > a {
             padding-right: 30px;
         }
+
+        .wordRight{
+            font-size:30px;
+            white-space: normal;            
+        }
+        .wordLeft{
+            font-size:30px;
+            white-space: normal;
+        }
+        .wordTop{
+            font-size:30px;
+            white-space: normal;
+        }
+        .wordBottom{
+            font-size:30px;
+            white-space: normal;
+        }
+        .wordFade{
+            font-size:30px;
+            white-space: normal;
+        }
     }
+
     @media screen and (max-width: 585px) {
         li.go-up-logo {
-            display: block;
+            /*display: block;*/
+
+        }
+    }
+    @media screen and (max-width: 991px) {
+        .address{
+            margin-top: 20px;
+        }
+        .footer-menu{
+            display: none;
         }
     }
     @media screen and (max-width: 428px) {
         ul.footer-nav > li > a {
             padding-right: 5px;
+        }
+        .wordRight{
+            font-size:25px;
+            white-space: normal;            
+        }
+        .wordLeft{
+            font-size:25px;
+            white-space: normal;
+        }
+        .wordTop{
+            font-size:25px;
+            white-space: normal;
+        }
+        .wordBottom{
+            font-size:25px;
+            white-space: normal;
+        }
+        .wordFade{
+            font-size:25px;
+            white-space: normal;
         }
     }
     @media screen and (max-width: 390px) {}

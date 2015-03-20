@@ -179,7 +179,22 @@ class Static_pages_controller extends CI_Controller{
 		$data_news['news_image_url'] = $news['news_image_url'];
 		$data_news['title'] = $news['title'];
 		$data_news['content'] = $news['content'];
-		
+		$data['image'] = $news['news_thumb_url'];
+		$dot = '.';
+
+		$description = strip_tags($news['content']);
+		$description = preg_replace('/&[a-z]*\;/', '', $description);
+
+		$position1 = strpos($description, $dot);
+		$offset=$position1+1;
+		$position2 = stripos($description,$dot,$offset);
+
+		$description = substr($description, 0,$position2);
+
+		$description = preg_replace('/\r?\n/', '', $description);
+
+		$data['description'] = $description;
+
 		$data['title']=$news['title'].' | ICS Engineering';
 		
 		$data_news["header"] = $this->load->view('shared_layouts/header', $data, TRUE);
@@ -222,6 +237,27 @@ class Static_pages_controller extends CI_Controller{
 		else $lang = 'english';
 
 		$news = $this->model_homepage->get_news_homepage($news_url, $lang);
+		if($lang == 'macedonian'){
+			setlocale(LC_TIME, 'mk_MK.utf8');
+			$news['created_at'] =strftime("%#d %B %Y",strtotime($news['created_at']));
+		}else{
+			setlocale(LC_TIME, 'en_US.utf8');
+			$news['created_at'] =strftime("%#d %B %Y",strtotime($news['created_at']));
+		}
+		$dot = '.';
+
+		$description = strip_tags($news['content']);
+		$description = preg_replace('/&[a-z]*\;/', '', $description);
+
+		$position1 = strpos($description, $dot);
+		$offset=$position1+1;
+		$position2 = stripos($description,$dot,$offset);
+
+		$description = substr($description, 0,$position2);
+
+		$description = preg_replace('/\r?\n/', '', $description);
+
+		$news['description'] = $description;
 
 		$news["news_url"] = $news_url;
 
@@ -465,7 +501,7 @@ class Static_pages_controller extends CI_Controller{
 
 			$data['title'] = $this->lang->line("menus_audio_video").$this->lang->line("other_page_title");
 
-			$column = 'audio_conference';
+			$column = 'court_recording_systems';
 
 			$result = $this->model_products_pages->get_products_page_content($column, $lang);
 
@@ -645,7 +681,7 @@ class Static_pages_controller extends CI_Controller{
 		}else if($page == 3){
 			$data_temp["about_us_corporate_title"] = $this->lang->line("about_us_corporate_title");
 			
-			$title = $this->lang->line("menus_corporate_info").$this->lang->line("other_page_title");
+			$title = preg_replace('/&nbsp;/',' ',$this->lang->line("menus_corporate_info")).$this->lang->line("other_page_title");
 
 			$column = 'corporate_info';
 
@@ -787,8 +823,8 @@ class Static_pages_controller extends CI_Controller{
 			if (!empty($top_nav)) {
 				$column = $top_nav;
 				$nav_lang = preg_replace('/-/', '_', $top_nav);				
-				$data_temp["products_power_supply_title"] = $this->lang->line("products_power_supply_".$nav_lang);
-				$title = $this->lang->line("products_power_supply_".$nav_lang).$this->lang->line("products_other_page_title").$this->lang->line("other_page_title");
+				$data_temp["products_power_supply_title"] = preg_replace('/<br\\/>/',' ',$this->lang->line("products_power_supply_".$nav_lang));
+				$title = preg_replace('/<br\\/>/',' ',$this->lang->line("products_power_supply_".$nav_lang)).$this->lang->line("products_other_page_title").$this->lang->line("other_page_title");
 
 			}
 
@@ -808,7 +844,9 @@ class Static_pages_controller extends CI_Controller{
 			
 			$title = $this->lang->line("menus_audio_video").$this->lang->line("other_page_title");
 
-			$column = 'audio_conference';
+			// $column = 'audio_conference';
+			$column = 'court_recording_systems';
+			// court_recording_systems
 			$top_nav = $this->input->post('top_nav');
 
 			if (!empty($top_nav)) {

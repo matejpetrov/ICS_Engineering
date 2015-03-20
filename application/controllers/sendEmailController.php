@@ -6,24 +6,21 @@ class SendEmailController extends CI_Controller
 		$nameSurname=$this->input->post('name');
 		$email = $this->input->post('email');
 		$subject = $this->input->post('subject');
-		$message = $this->input->post('message');
-		$toSelf = $this->input->post('myself');
+		$temp_message = $this->input->post('message');
+		$message = 'FROM: '.$nameSurname.'('.$email.')<br><br>'.$temp_message;
 		$array = array(
 			'ime' => $nameSurname,
-			'mejl' => $email,
+			'mail' => $email,
 			'sub' => $subject,
-			'self'=>$toSelf,
 			'msg' => $message
 			);
 		
 		$this->load->library('mail_sender');
-
-		$this->mail_sender->setFrom('info@ics.net.mk',$nameSurname);
+		$this->mail_sender->setUsername('icsinfo@t-home.mk');
+		$this->mail_sender->setFrom('icsinfo@t-home.mk','ICS Engineering Info');
 		$this->mail_sender->setSubject($subject);
 		$this->mail_sender->setAddress("info@ics.net.mk");
-		if ($toSelf) {
-			$this->mail_sender->setAddress($email);
-		}
+		
 		$this->mail_sender->setBody($message);
 
 		$this->mail_sender->sendMail();

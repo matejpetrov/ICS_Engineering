@@ -42,13 +42,14 @@
 // $route['404_override'] = '';
 
 $default_controller = "static_pages_controller";
-$controller_exceptions = array('admin');
-
-$route['default_controller'] = $default_controller;
-// $route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $default_controller.'/$1';
-// $route['static_pages_controller/(:any)']= $default_controller.'/$1';
+$controller_exceptions = array('admin','news','sendEmailController','langSwitch');
 $route['404_override'] = '';
 
+$route['default_controller'] = $default_controller;
+$route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $default_controller.'/$1';
+$route['static_pages_controller/(:any)']= $default_controller.'/$1';
+$route['news'] = 'static_pages_controller/news';
+$route['news/(:num)'] = 'static_pages_controller/news/$1';
 $route['news/(:any)'] = 'static_pages_controller/show_news_homepage/$1';
 
 /* End of file routes.php */

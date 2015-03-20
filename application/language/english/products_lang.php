@@ -3,7 +3,7 @@
 
 $lang["products_telecommunication"] = "Telecommunications";
 $lang["products_telecommunication_fixed_access"] = "Fixed Access Networks";
-$lang["products_telecommunication_transport"] = "Transport";
+$lang["products_telecommunication_transport"] = "Transport networks";
 $lang["products_telecommunication_solutions"] = "Solutions";
 
 $lang["products_power_supply"] = "Power Supply";

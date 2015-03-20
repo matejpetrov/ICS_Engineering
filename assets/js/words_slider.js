@@ -23,7 +23,7 @@ var word = {
 	retrieveWord:function(){
 		var base_url = $('#base_url').val();
 		return $.ajax({
-			url: base_url + 'static_pages_controller/getWord',
+			url: base_url + 'getWord',
 			type: 'GET',
 			dataType: 'text',
 		});	
@@ -49,7 +49,7 @@ var word = {
 	moveFromLeft:function(){
 		var recievedWord,
 		top = Math.floor(Math.random() * (70-5+1)+ 5) ,
-		right = Math.floor(Math.random() * (58-15+1) + 15),
+		right = Math.floor(Math.random() * (50-15+1) + 15),
 		div=$('<div class=\'wordLeft\'></div>');
 		this.retrieveWord().done(function(result){
 			recievedWord = result;

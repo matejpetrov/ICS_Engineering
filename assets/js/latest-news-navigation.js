@@ -24,6 +24,10 @@ $(document).ready(function() {
 			if(data){
 				//change the content and change the url, to represent the currently displayed news. 				 
 				$(".current_news_title").find("h1").html(data.title);
+				$('title').text(data.title);
+				$('.date').text(data.created_at);
+				$('meta[property="og:description"]').attr('content', data.description);
+				$('meta[property="og:image"]').attr('content', base_url+data.news_thumb_url);
 				$(".current_news_image").attr({src: base_url + data.news_image_url});								
 				$(".current_news_content").html(data.content).append('<div style="height: 50px;"></div>');		
 
@@ -49,8 +53,13 @@ $(document).ready(function() {
 
 	function put_padding(){
 
-		$('img:not([class])').css('padding-right', '20px');
 		$('img:not([class])').addClass('img-responsive');
+		$('img').addClass(
+    function(){
+        var floated = $(this).css('float');
+        return (floated != 'none') ? 'news-img-' + floated : '';
+    });
+
 
 	}	
 

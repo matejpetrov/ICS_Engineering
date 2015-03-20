@@ -22,7 +22,7 @@
 <script type="text/javascript" src='<?php echo base_url(); ?>assets/js/latest-news-navigation.js'></script>
 
 
-<input type="hidden" id="get_news_url" value="<?php echo base_url(); ?>static_pages_controller/show_news_homepage_AJAX" />
+<input type="hidden" id="get_news_url" value="<?php echo base_url(); ?>show_news_homepage_AJAX" />
 <input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
 
 <div class="container news-page">
@@ -63,7 +63,7 @@
 					<!-- </div> -->
 
 					<div class="row all_news_btn" style="text-align:center;">
-						<a href="<?php echo base_url(); ?>static_pages_controller/news">
+						<a href="<?php echo base_url(); ?>news">
 							<button class="btn btn-default"><?php echo $all_news_btn; ?></button>
 						</a>
 					</div>

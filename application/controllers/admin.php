@@ -409,7 +409,8 @@ class Admin extends CI_Controller {
 			if ($result) {
 				$this->load->library('mail_sender');
 				$this->mail_sender->setAddress($email);
-				$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
+				$this->mail_sender->setUsername('ics@t-home.mk');
+				$this->mail_sender->setFrom('ics@t-home.mk','ICS Engineering');
 				$this->mail_sender->setSubject('New User Created');
 				$message="<h3>New user account created</h3></br><p>Hello, ".$name." ".$surname."<br><br>Your CMS administrator account for ICS Engineering website has been created</p><br><p>Username: ".$username."</p><br><p>Please click the link below to complete your registration</p></br><p><a href=\"" .base_url()."admin/auth/" . $auth_link . "\">".base_url()."admin/auth/" . $auth_link . "</a></p><br><p>From ICS Engineering</p><br>";
 				$this->mail_sender->setBody($message);
@@ -522,9 +523,10 @@ class Admin extends CI_Controller {
 			if ($result) {
 				$this->load->library('mail_sender');
 				$this->mail_sender->setAddress($email);
-				$this->mail_sender->setFrom('noreply@ics.net.mk','ICS Engineering');
+				$this->mail_sender->setUsername('ics@t-home.mk');
+				$this->mail_sender->setFrom('ics@t-home.mk','ICS Engineering');
 				$this->mail_sender->setSubject('Password reset');
-				$message="<h3>Password resset</h3></br><p>Hello,<br><br>You requested password reset for your administrator account for ICS Engineering website.</p><br><p>Please click the link below to reset your password.</p></br><p><a href=\"" .base_url()."admin/reset/" . $auth_link . "\">".base_url()."admin/reset/" . $auth_link . "</a></p><br><p>If you didn't request this please ignore this message.</p><p>The link will become unusable in 24 hours.</p><p>From ICS Engineering</p><br>";
+				$message="<h3>Password resset</h3></br><p>Hello,<br><br>You requested password reset for your administrator account for ICS Engineering website.</p><br><p>Please click the link below to reset your password.</p></br><p><a href=\"" .base_url()."admin/reset/" . $auth_link . "\">".base_url()."admin/reset/" . $auth_link . "</a></p><br><p>If you didn't request this please ignore this message.</p><p>The link will become unavailable in 24 hours.</p><p>From ICS Engineering</p><br>";
 				$this->mail_sender->setBody($message);
 
 				if($this->mail_sender->sendMail()){

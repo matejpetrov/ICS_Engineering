@@ -57,7 +57,7 @@ $(document).ready(function(){
 	};
 	var base_url = $('#base_url').val();
 	$.ajax({
-		url: base_url + 'static_pages_controller/getSetLanguageAjax',
+		url: base_url + 'getSetLanguageAjax',
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
@@ -95,7 +95,6 @@ $(document).ready(function(){
 				name: $('#name').val(),
 				email: $('#email').val(),
 				subject: $('#subject').val(),
-				myself: myself,
 				message: newText
 			},
 			dataType: "json",

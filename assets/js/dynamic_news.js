@@ -13,6 +13,8 @@ $(document).ready(function() {
 		rewindNav : false,
 		pagination : false,
 		lazyLoad : true,
+		itemsDesktop : [1200,3],
+		itemsDesktopSmall : [990,2],
 		navigationText : ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
 		afterAction : afterAction
 	});
@@ -30,7 +32,7 @@ $(document).ready(function() {
 
 		if (current == (length) && !(allLoaded) && (done) && (lock)) {					
 			$.ajax({
-				url: base_url + 'static_pages_controller/get_all_news_homepage/0',
+				url: base_url + 'get_all_news_homepage/0',
 				cache:false,
 				type: 'post',
 				dataType: 'json',

@@ -7,7 +7,7 @@ function about_us_ajax_page(page_id){
 
 	var base_url = document.getElementById('base_url').value;
 
-	var url = base_url + controller + func;
+	var url = base_url + func;
 
 	$.ajax({
 		'url' : url,        
@@ -36,6 +36,16 @@ function about_us_ajax_page(page_id){
 		if (temp == 0) {
 			$('.top-nav').find('#' + temp).addClass('active');
 		};
+		if (temp == 3) {
+			$('head').append('<script type="text/javascript" src="'+base_url+'assets/js/map.js"></script>')
+			map.init();
+		};
+		$('#content-container').find('img').each(function(){
+			$(this).addClass('img-responsive');
+			if (temp == 2) {
+			$(this).css('padding-right','20px');
+		};
+		});
 		window.history.pushState("", "", window.location.href.replace(/[0-9]#/, page_id));
 	});
 
@@ -50,7 +60,7 @@ function services_ajax_page(page_id){
 
 	var base_url = document.getElementById('base_url').value;
 
-	var url = base_url + controller + func;
+	var url = base_url + func;
 
 	$.ajax({
 		'url' : url,        
@@ -89,7 +99,7 @@ function products_ajax_page(page_id){
 
 	var base_url = document.getElementById('base_url').value;
 
-	var url = base_url + controller + func;
+	var url = base_url + func;
 
 	$.ajax({
 		'url' : url,        
@@ -142,12 +152,19 @@ var getSubpage = {
 		// "ajax_about_us_page_navigation";
 
 		$.ajax({
-			url: base_url + controller + func,
+			url: base_url + func,
 			type: 'post',
 			dataType: 'json',
 			beforeSend:function() {
+				if ($('.sidebar').find('.active').attr('id')==1) {
+				$('#content-container').find('#loading').addClass('loading-topnav-dc');
+				$('#' + parent).removeClass('active');
+
+				}else{
 				$('#content-container').find('#loading').addClass('loading-topnav');
 				$('#' + parent).removeClass('active');
+					
+				};
 			},
 			data: {
 				'page_id':page_id,
@@ -162,6 +179,7 @@ var getSubpage = {
 			container.find('#' + parent).addClass('active');
 			$('#content-container').find('#loading').removeClass('loading-topnav');
 			$('#content-container').prepend('<div id="loading"><div></div></div>');
+			
 		});
 	}
 };

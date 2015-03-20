@@ -36,6 +36,15 @@
 				</div>
 			</a>
 
+			<a href="#" class="items"  style="visibility: hidden;">
+				<div class="col-md-3 control-pannel-item">
+					<div class="tumbnail">
+						<i class="fa fa-picture-o fa-custom" ></i></br>
+						<span class="text">Manage Sidebar Images</span>
+					</div>
+				</div>
+			</a>
+
 			<a href="<?php echo base_url(); ?>admin_images_controller/homepageWords" class="items" >
 				<div class="col-md-3 control-pannel-item">
 					<div class="tumbnail">
@@ -45,14 +54,6 @@
 				</div>
 			</a>
 
-			<a href="#" class="items" >
-				<div class="col-md-3 control-pannel-item">
-					<div class="tumbnail">
-						<i class="fa fa-picture-o fa-custom" ></i></br>
-						<span class="text">Manage Sidebar Images</span>
-					</div>
-				</div>
-			</a>
 
 
 		</div>

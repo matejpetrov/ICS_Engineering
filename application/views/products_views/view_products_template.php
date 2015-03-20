@@ -30,6 +30,10 @@
 		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
 	}
 
+	.loading-topnav-dc > div{
+		background:url("<?php echo base_url(); ?>assets/images/ajax-loading.gif") no-repeat 0 0;
+	}
+
 </style>
 
 
