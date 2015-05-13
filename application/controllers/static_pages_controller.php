@@ -494,7 +494,7 @@ class Static_pages_controller extends CI_Controller{
 		}
 
 		else if($page == 2){
-			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_audio_conference");
+			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_court_recording_systems");
 			
 			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
@@ -838,7 +838,7 @@ class Static_pages_controller extends CI_Controller{
 
 			}
 		else if($page == 2){
-			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_audio_conference");
+			$data_temp["products_audio_video_title"] = $this->lang->line("products_audio_video_court_recording_systems");
 			$data_temp["products_audio_video_audio_conference"] = $this->lang->line("products_audio_video_audio_conference");
 			$data_temp["products_audio_video_court_recording_systems"] = $this->lang->line("products_audio_video_court_recording_systems");
 			
